@@ -1,0 +1,1170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="hm_download_achievements" xml:space="preserve">
+    <value>Downloading Achievements</value>
+  </data>
+  <data name="hm_download_arenadetails" xml:space="preserve">
+    <value>Downloading Arena details</value>
+  </data>
+  <data name="hm_download_club" xml:space="preserve">
+    <value>Downloading Club</value>
+  </data>
+  <data name="hm_download_economy" xml:space="preserve">
+    <value>Downloading Economy</value>
+  </data>
+  <data name="hm_download_fans" xml:space="preserve">
+    <value>Downloading Fans</value>
+  </data>
+  <data name="hm_download_leaguedetails" xml:space="preserve">
+    <value>Downloading League details</value>
+  </data>
+  <data name="hm_download_leaguefixtures" xml:space="preserve">
+    <value>Downloading League fixtures</value>
+  </data>
+  <data name="hm_download_login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="hm_download_logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="hm_download_matchdetails" xml:space="preserve">
+    <value>Downloading Match details</value>
+  </data>
+  <data name="hm_download_matches" xml:space="preserve">
+    <value>Downloading Matches</value>
+  </data>
+  <data name="hm_download_matchesarchive" xml:space="preserve">
+    <value>Downloading Matches archive</value>
+  </data>
+  <data name="hm_download_matchlineup" xml:space="preserve">
+    <value>Downloading Match lineup</value>
+  </data>
+  <data name="hm_download_playerdetails" xml:space="preserve">
+    <value>Downloading Player details</value>
+  </data>
+  <data name="hm_download_players" xml:space="preserve">
+    <value>Downloading Players</value>
+  </data>
+  <data name="hm_download_recommendedserver" xml:space="preserve">
+    <value>Get recommended server</value>
+  </data>
+  <data name="hm_download_teamdetails" xml:space="preserve">
+    <value>Downloading Team details</value>
+  </data>
+  <data name="hm_download_training" xml:space="preserve">
+    <value>Downloading Training</value>
+  </data>
+  <data name="hm_download_transfersplayer" xml:space="preserve">
+    <value>Downloading Player transfers</value>
+  </data>
+  <data name="hm_download_transfersteam" xml:space="preserve">
+    <value>Downloading Team transfers</value>
+  </data>
+  <data name="hm_download_worlddetails" xml:space="preserve">
+    <value>Downloading World details</value>
+  </data>
+  <data name="ht_achievementcategory_Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="ht_achievementcategory_Matches" xml:space="preserve">
+    <value>Matches</value>
+  </data>
+  <data name="ht_achievementcategory_Ranking" xml:space="preserve">
+    <value>Ranking</value>
+  </data>
+  <data name="ht_achievementcategory_SpecialAward" xml:space="preserve">
+    <value>Special awards</value>
+  </data>
+  <data name="ht_achievementcategory_Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="ht_achievementcategory_Undefined" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="ht_aggressiveness_00" xml:space="preserve">
+    <value>tranquil</value>
+  </data>
+  <data name="ht_aggressiveness_01" xml:space="preserve">
+    <value>calm</value>
+  </data>
+  <data name="ht_aggressiveness_02" xml:space="preserve">
+    <value>balanced</value>
+  </data>
+  <data name="ht_aggressiveness_03" xml:space="preserve">
+    <value>temperamental</value>
+  </data>
+  <data name="ht_aggressiveness_04" xml:space="preserve">
+    <value>fiery</value>
+  </data>
+  <data name="ht_aggressiveness_05" xml:space="preserve">
+    <value>unstable</value>
+  </data>
+  <data name="ht_agreeability_00" xml:space="preserve">
+    <value>nasty fellow</value>
+  </data>
+  <data name="ht_agreeability_01" xml:space="preserve">
+    <value>controversial person</value>
+  </data>
+  <data name="ht_agreeability_02" xml:space="preserve">
+    <value>pleasant guy</value>
+  </data>
+  <data name="ht_agreeability_03" xml:space="preserve">
+    <value>sympathetic guy</value>
+  </data>
+  <data name="ht_agreeability_04" xml:space="preserve">
+    <value>popular guy</value>
+  </data>
+  <data name="ht_agreeability_05" xml:space="preserve">
+    <value>beloved team member</value>
+  </data>
+  <data name="ht_coach_skill_level_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_coach_skill_level_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_coach_skill_level_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_coach_skill_level_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_coach_skill_level_04" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_coach_skill_level_05" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_coach_skill_level_06" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_coach_skill_level_07" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_coach_skill_level_08" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ht_fan_match_expectation_00" xml:space="preserve">
+    <value>Better not show up</value>
+  </data>
+  <data name="ht_fan_match_expectation_01" xml:space="preserve">
+    <value>We are outclassed</value>
+  </data>
+  <data name="ht_fan_match_expectation_02" xml:space="preserve">
+    <value>We will lose</value>
+  </data>
+  <data name="ht_fan_match_expectation_03" xml:space="preserve">
+    <value>They are favourites</value>
+  </data>
+  <data name="ht_fan_match_expectation_04" xml:space="preserve">
+    <value>They have the edge</value>
+  </data>
+  <data name="ht_fan_match_expectation_05" xml:space="preserve">
+    <value>It will be a close affair</value>
+  </data>
+  <data name="ht_fan_match_expectation_06" xml:space="preserve">
+    <value>We have the edge</value>
+  </data>
+  <data name="ht_fan_match_expectation_07" xml:space="preserve">
+    <value>We are favourites</value>
+  </data>
+  <data name="ht_fan_match_expectation_08" xml:space="preserve">
+    <value>We will win</value>
+  </data>
+  <data name="ht_fan_match_expectation_09" xml:space="preserve">
+    <value>Piece of cake!</value>
+  </data>
+  <data name="ht_fan_match_expectation_10" xml:space="preserve">
+    <value>Let's humiliate them</value>
+  </data>
+  <data name="ht_fan_season_expectation_00" xml:space="preserve">
+    <value>We are not worthy of this division</value>
+  </data>
+  <data name="ht_fan_season_expectation_01" xml:space="preserve">
+    <value>Every day in this division is a bonus</value>
+  </data>
+  <data name="ht_fan_season_expectation_02" xml:space="preserve">
+    <value>We will have to fight to stay up</value>
+  </data>
+  <data name="ht_fan_season_expectation_03" xml:space="preserve">
+    <value>A mid table finish is nice</value>
+  </data>
+  <data name="ht_fan_season_expectation_04" xml:space="preserve">
+    <value>We belong in the top 4</value>
+  </data>
+  <data name="ht_fan_season_expectation_05" xml:space="preserve">
+    <value>Aim for the title!</value>
+  </data>
+  <data name="ht_fan_season_expectation_06" xml:space="preserve">
+    <value>We have to win this season</value>
+  </data>
+  <data name="ht_fan_season_expectation_07" xml:space="preserve">
+    <value>We are so much better than this division!</value>
+  </data>
+  <data name="ht_formation_experience_00" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_formation_experience_01" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_formation_experience_02" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_formation_experience_03" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_formation_experience_04" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_formation_experience_05" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ht_formation_experience_06" xml:space="preserve">
+    <value>formidable</value>
+  </data>
+  <data name="ht_formation_experience_07" xml:space="preserve">
+    <value>outstanding</value>
+  </data>
+  <data name="ht_honesty_00" xml:space="preserve">
+    <value>infamous</value>
+  </data>
+  <data name="ht_honesty_01" xml:space="preserve">
+    <value>dishonest</value>
+  </data>
+  <data name="ht_honesty_02" xml:space="preserve">
+    <value>honest</value>
+  </data>
+  <data name="ht_honesty_03" xml:space="preserve">
+    <value>upright</value>
+  </data>
+  <data name="ht_honesty_04" xml:space="preserve">
+    <value>righteous</value>
+  </data>
+  <data name="ht_honesty_05" xml:space="preserve">
+    <value>saintly</value>
+  </data>
+  <data name="ht_leadership_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_leadership_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_leadership_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_leadership_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_leadership_04" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_leadership_05" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_leadership_06" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_leadership_07" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_leadership_08" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ht_morale_00" xml:space="preserve">
+    <value>like the Cold War</value>
+  </data>
+  <data name="ht_morale_01" xml:space="preserve">
+    <value>murderous</value>
+  </data>
+  <data name="ht_morale_02" xml:space="preserve">
+    <value>furious</value>
+  </data>
+  <data name="ht_morale_03" xml:space="preserve">
+    <value>irritated</value>
+  </data>
+  <data name="ht_morale_04" xml:space="preserve">
+    <value>composed</value>
+  </data>
+  <data name="ht_morale_05" xml:space="preserve">
+    <value>calm</value>
+  </data>
+  <data name="ht_morale_06" xml:space="preserve">
+    <value>content</value>
+  </data>
+  <data name="ht_morale_07" xml:space="preserve">
+    <value>satisfied</value>
+  </data>
+  <data name="ht_morale_08" xml:space="preserve">
+    <value>delirious</value>
+  </data>
+  <data name="ht_morale_09" xml:space="preserve">
+    <value>walking on clouds</value>
+  </data>
+  <data name="ht_morale_10" xml:space="preserve">
+    <value>Paradise on Earth!</value>
+  </data>
+  <data name="ht_player_form_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_player_form_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_player_form_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_player_form_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_player_form_04" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_player_form_05" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_player_form_06" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_player_form_07" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_player_form_08" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ht_player_skill_level_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_player_skill_level_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_player_skill_level_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_player_skill_level_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_player_skill_level_04" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_player_skill_level_05" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_player_skill_level_06" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_player_skill_level_07" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_player_skill_level_08" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ht_player_skill_level_09" xml:space="preserve">
+    <value>formidable</value>
+  </data>
+  <data name="ht_player_skill_level_10" xml:space="preserve">
+    <value>outstanding</value>
+  </data>
+  <data name="ht_player_skill_level_11" xml:space="preserve">
+    <value>brilliant</value>
+  </data>
+  <data name="ht_player_skill_level_12" xml:space="preserve">
+    <value>magnificent</value>
+  </data>
+  <data name="ht_player_skill_level_13" xml:space="preserve">
+    <value>world class</value>
+  </data>
+  <data name="ht_player_skill_level_14" xml:space="preserve">
+    <value>supernatural</value>
+  </data>
+  <data name="ht_player_skill_level_15" xml:space="preserve">
+    <value>titanic</value>
+  </data>
+  <data name="ht_player_skill_level_16" xml:space="preserve">
+    <value>extra-terrestrial</value>
+  </data>
+  <data name="ht_player_skill_level_17" xml:space="preserve">
+    <value>mythical</value>
+  </data>
+  <data name="ht_player_skill_level_18" xml:space="preserve">
+    <value>magical</value>
+  </data>
+  <data name="ht_player_skill_level_19" xml:space="preserve">
+    <value>utopian</value>
+  </data>
+  <data name="ht_player_skill_level_20" xml:space="preserve">
+    <value>divine</value>
+  </data>
+  <data name="ht_selfconfidence_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_selfconfidence_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_selfconfidence_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_selfconfidence_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_selfconfidence_04" xml:space="preserve">
+    <value>decent</value>
+  </data>
+  <data name="ht_selfconfidence_05" xml:space="preserve">
+    <value>strong</value>
+  </data>
+  <data name="ht_selfconfidence_06" xml:space="preserve">
+    <value>wonderful</value>
+  </data>
+  <data name="ht_selfconfidence_07" xml:space="preserve">
+    <value>slightly exaggerated</value>
+  </data>
+  <data name="ht_selfconfidence_08" xml:space="preserve">
+    <value>exaggerated</value>
+  </data>
+  <data name="ht_selfconfidence_09" xml:space="preserve">
+    <value>completely exaggerated</value>
+  </data>
+  <data name="ht_sponsors_mood_00" xml:space="preserve">
+    <value>murderous</value>
+  </data>
+  <data name="ht_sponsors_mood_01" xml:space="preserve">
+    <value>furious</value>
+  </data>
+  <data name="ht_sponsors_mood_02" xml:space="preserve">
+    <value>irritated</value>
+  </data>
+  <data name="ht_sponsors_mood_03" xml:space="preserve">
+    <value>calm</value>
+  </data>
+  <data name="ht_sponsors_mood_04" xml:space="preserve">
+    <value>content</value>
+  </data>
+  <data name="ht_sponsors_mood_05" xml:space="preserve">
+    <value>satisfied</value>
+  </data>
+  <data name="ht_sponsors_mood_06" xml:space="preserve">
+    <value>delirious</value>
+  </data>
+  <data name="ht_sponsors_mood_07" xml:space="preserve">
+    <value>high on life</value>
+  </data>
+  <data name="ht_sponsors_mood_08" xml:space="preserve">
+    <value>dancing in the streets</value>
+  </data>
+  <data name="ht_sponsors_mood_09" xml:space="preserve">
+    <value>Sending love poems to you</value>
+  </data>
+  <data name="ht_sponsors_mood_unavailable" xml:space="preserve">
+    <value>unavailable</value>
+  </data>
+  <data name="ht_supporters_mood_00" xml:space="preserve">
+    <value>murderous</value>
+  </data>
+  <data name="ht_supporters_mood_01" xml:space="preserve">
+    <value>furious</value>
+  </data>
+  <data name="ht_supporters_mood_02" xml:space="preserve">
+    <value>angry</value>
+  </data>
+  <data name="ht_supporters_mood_03" xml:space="preserve">
+    <value>irritated</value>
+  </data>
+  <data name="ht_supporters_mood_04" xml:space="preserve">
+    <value>disappointed</value>
+  </data>
+  <data name="ht_supporters_mood_05" xml:space="preserve">
+    <value>calm</value>
+  </data>
+  <data name="ht_supporters_mood_06" xml:space="preserve">
+    <value>content</value>
+  </data>
+  <data name="ht_supporters_mood_07" xml:space="preserve">
+    <value>satisfied</value>
+  </data>
+  <data name="ht_supporters_mood_08" xml:space="preserve">
+    <value>delirious</value>
+  </data>
+  <data name="ht_supporters_mood_09" xml:space="preserve">
+    <value>high on life</value>
+  </data>
+  <data name="ht_supporters_mood_10" xml:space="preserve">
+    <value>dancing in the streets</value>
+  </data>
+  <data name="ht_supporters_mood_11" xml:space="preserve">
+    <value>Sending love poems to you</value>
+  </data>
+  <data name="ht_supporters_mood_unavailable" xml:space="preserve">
+    <value>unavailable</value>
+  </data>
+  <data name="ht_trainer_level_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_trainer_level_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_trainer_level_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_trainer_level_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_trainer_level_04" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_trainer_level_05" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_trainer_level_06" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_trainer_level_07" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_trainer_level_08" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ht_youth_level_00" xml:space="preserve">
+    <value>non-existent</value>
+  </data>
+  <data name="ht_youth_level_01" xml:space="preserve">
+    <value>disastrous</value>
+  </data>
+  <data name="ht_youth_level_02" xml:space="preserve">
+    <value>wretched</value>
+  </data>
+  <data name="ht_youth_level_03" xml:space="preserve">
+    <value>poor</value>
+  </data>
+  <data name="ht_youth_level_04" xml:space="preserve">
+    <value>weak</value>
+  </data>
+  <data name="ht_youth_level_05" xml:space="preserve">
+    <value>inadequate</value>
+  </data>
+  <data name="ht_youth_level_06" xml:space="preserve">
+    <value>passable</value>
+  </data>
+  <data name="ht_youth_level_07" xml:space="preserve">
+    <value>solid</value>
+  </data>
+  <data name="ht_youth_level_08" xml:space="preserve">
+    <value>excellent</value>
+  </data>
+  <data name="ui_achievements_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_achievements_columnCategoryID" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ui_achievements_columnEventDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ui_achievements_columnMultiLevel" xml:space="preserve">
+    <value>Multilevel</value>
+  </data>
+  <data name="ui_achievements_columnNumberOfEvents" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="ui_achievements_columnPoints" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="ui_achievements_columnText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ui_achievements_columnTypeID" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ui_achievements_FormText" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="ui_achievements_labelCategory" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="ui_achievements_labelPoints" xml:space="preserve">
+    <value>Points:</value>
+  </data>
+  <data name="ui_achievements_labelTotalPoints" xml:space="preserve">
+    <value>{0} points out of {1} points.</value>
+  </data>
+  <data name="ui_addedituser_browseFormDescription" xml:space="preserve">
+    <value>Please, select the folder where your team's files will be stored. (A folder with your team's ID will be created)</value>
+  </data>
+  <data name="ui_addedituser_buttonBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="ui_addedituser_buttonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ui_addedituser_buttonOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ui_addedituser_buttonTest" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="ui_addedituser_checkBoxStoreSecurityCode" xml:space="preserve">
+    <value>Store security code.</value>
+  </data>
+  <data name="ui_addedituser_FormText_Add" xml:space="preserve">
+    <value>Add user profile</value>
+  </data>
+  <data name="ui_addedituser_FormText_Edit" xml:space="preserve">
+    <value>Edit user profile</value>
+  </data>
+  <data name="ui_addedituser_groupBoxUserCredentials" xml:space="preserve">
+    <value>User credentials:</value>
+  </data>
+  <data name="ui_addedituser_groupBoxUserData" xml:space="preserve">
+    <value>User data:</value>
+  </data>
+  <data name="ui_addedituser_labelActivationDate" xml:space="preserve">
+    <value>Activation date:</value>
+  </data>
+  <data name="ui_addedituser_labelDataFolder" xml:space="preserve">
+    <value>Data folder:</value>
+  </data>
+  <data name="ui_addedituser_labelLoginname" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="ui_addedituser_labelSecurityCode" xml:space="preserve">
+    <value>Security code:</value>
+  </data>
+  <data name="ui_addedituser_labelTeamId" xml:space="preserve">
+    <value>Team ID:</value>
+  </data>
+  <data name="ui_addedituser_labelYouthTeamId" xml:space="preserve">
+    <value>Youth team ID:</value>
+  </data>
+  <data name="ui_arena_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_arena_FormText" xml:space="preserve">
+    <value>Arena</value>
+  </data>
+  <data name="ui_arena_groupBoxArena" xml:space="preserve">
+    <value>Arena:</value>
+  </data>
+  <data name="ui_arena_groupBoxSeats" xml:space="preserve">
+    <value>Seats:</value>
+  </data>
+  <data name="ui_arena_labelArenaName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="ui_arena_labelBasic" xml:space="preserve">
+    <value>Basic:</value>
+  </data>
+  <data name="ui_arena_labelCurrent" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="ui_arena_labelDifference" xml:space="preserve">
+    <value>Difference</value>
+  </data>
+  <data name="ui_arena_labelExpanded" xml:space="preserve">
+    <value>Expanded</value>
+  </data>
+  <data name="ui_arena_labelMaintenance" xml:space="preserve">
+    <value>Maintenance:</value>
+  </data>
+  <data name="ui_arena_labelMaxIncome" xml:space="preserve">
+    <value>Max income:</value>
+  </data>
+  <data name="ui_arena_labelPercentage" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="ui_arena_labelRegion" xml:space="preserve">
+    <value>Region:</value>
+  </data>
+  <data name="ui_arena_labelRoof" xml:space="preserve">
+    <value>Roof:</value>
+  </data>
+  <data name="ui_arena_labelSeats" xml:space="preserve">
+    <value>Seats</value>
+  </data>
+  <data name="ui_arena_labelTerraces" xml:space="preserve">
+    <value>Terraces:</value>
+  </data>
+  <data name="ui_arena_labelTotal" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="ui_arena_labelVip" xml:space="preserve">
+    <value>Vip:</value>
+  </data>
+  <data name="ui_club_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_club_FormText" xml:space="preserve">
+    <value>Club</value>
+  </data>
+  <data name="ui_club_groupBoxInfo" xml:space="preserve">
+    <value>Info:</value>
+  </data>
+  <data name="ui_club_groupBoxStaff" xml:space="preserve">
+    <value>Staff:</value>
+  </data>
+  <data name="ui_club_groupBoxYouth" xml:space="preserve">
+    <value>Youth:</value>
+  </data>
+  <data name="ui_club_labelAssistants" xml:space="preserve">
+    <value>Assistant Coaches:</value>
+  </data>
+  <data name="ui_club_labelDoctors" xml:space="preserve">
+    <value>Doctors:</value>
+  </data>
+  <data name="ui_club_labelHasPromoted" xml:space="preserve">
+    <value>Promoted this week:</value>
+  </data>
+  <data name="ui_club_labelInvestments" xml:space="preserve">
+    <value>Investments:</value>
+  </data>
+  <data name="ui_club_labelPhysiotherapists" xml:space="preserve">
+    <value>Physiotherapists:</value>
+  </data>
+  <data name="ui_club_labelPsychologists" xml:space="preserve">
+    <value>Sport Psychologists:</value>
+  </data>
+  <data name="ui_club_labelSpokespersons" xml:space="preserve">
+    <value>Spokespersons:</value>
+  </data>
+  <data name="ui_club_labelTeamID" xml:space="preserve">
+    <value>Team ID:</value>
+  </data>
+  <data name="ui_club_labelTeamName" xml:space="preserve">
+    <value>Team name:</value>
+  </data>
+  <data name="ui_club_labelTotal" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="ui_club_labelYouthLevel" xml:space="preserve">
+    <value>Level:</value>
+  </data>
+  <data name="ui_download_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_download_buttonDownload" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ui_download_checkBoxDownloadFullMatchesArchive" xml:space="preserve">
+    <value>Download full matches archive.</value>
+  </data>
+  <data name="ui_download_FormText" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ui_download_groupBoxDownload" xml:space="preserve">
+    <value>Download:</value>
+  </data>
+  <data name="ui_economy_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_economy_FormText" xml:space="preserve">
+    <value>Economy</value>
+  </data>
+  <data name="ui_economy_groupBoxEconomy" xml:space="preserve">
+    <value>Economy:</value>
+  </data>
+  <data name="ui_economy_groupBoxLastWeek" xml:space="preserve">
+    <value>Last week:</value>
+  </data>
+  <data name="ui_economy_groupBoxThisWeek" xml:space="preserve">
+    <value>This week:</value>
+  </data>
+  <data name="ui_economy_labelCash" xml:space="preserve">
+    <value>Cash:</value>
+  </data>
+  <data name="ui_economy_labelCosts" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="ui_economy_labelCostsArena" xml:space="preserve">
+    <value>Arena maintenance</value>
+  </data>
+  <data name="ui_economy_labelCostsFinancial" xml:space="preserve">
+    <value>Interest</value>
+  </data>
+  <data name="ui_economy_labelCostsPlayers" xml:space="preserve">
+    <value>Wages</value>
+  </data>
+  <data name="ui_economy_labelCostsStaff" xml:space="preserve">
+    <value>Staff</value>
+  </data>
+  <data name="ui_economy_labelCostsSum" xml:space="preserve">
+    <value>Total expenses</value>
+  </data>
+  <data name="ui_economy_labelCostsTemporary" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="ui_economy_labelCostsYouth" xml:space="preserve">
+    <value>Youth</value>
+  </data>
+  <data name="ui_economy_labelExpectedWeeksTotal" xml:space="preserve">
+    <value>Expected income/loss</value>
+  </data>
+  <data name="ui_economy_labelFanclubSize" xml:space="preserve">
+    <value>Fans:</value>
+  </data>
+  <data name="ui_economy_labelIncome" xml:space="preserve">
+    <value>Revenue</value>
+  </data>
+  <data name="ui_economy_labelIncomeFinancial" xml:space="preserve">
+    <value>Financial</value>
+  </data>
+  <data name="ui_economy_labelIncomeSpectators" xml:space="preserve">
+    <value>Match takings</value>
+  </data>
+  <data name="ui_economy_labelIncomeSponsors" xml:space="preserve">
+    <value>Sponsors</value>
+  </data>
+  <data name="ui_economy_labelIncomeSum" xml:space="preserve">
+    <value>Total renueve</value>
+  </data>
+  <data name="ui_economy_labelIncomeTemporary" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="ui_economy_labelLastWeeksTotal" xml:space="preserve">
+    <value>Last week's income/loss</value>
+  </data>
+  <data name="ui_economy_labelSponsorsMood" xml:space="preserve">
+    <value>Sponsors mood:</value>
+  </data>
+  <data name="ui_economy_labelSupportersMood" xml:space="preserve">
+    <value>Supporters mood:</value>
+  </data>
+  <data name="ui_league_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_league_columnAwayTeam" xml:space="preserve">
+    <value>Away team</value>
+  </data>
+  <data name="ui_league_columnDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ui_league_columnDraw" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="ui_league_columnGoalDifference" xml:space="preserve">
+    <value>GD</value>
+  </data>
+  <data name="ui_league_columnGoalsAgainst" xml:space="preserve">
+    <value>GA</value>
+  </data>
+  <data name="ui_league_columnGoalsFor" xml:space="preserve">
+    <value>GF</value>
+  </data>
+  <data name="ui_league_columnHomeTeam" xml:space="preserve">
+    <value>Home team</value>
+  </data>
+  <data name="ui_league_columnLost" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="ui_league_columnMatches" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="ui_league_columnPoints" xml:space="preserve">
+    <value>Pts</value>
+  </data>
+  <data name="ui_league_columnRound" xml:space="preserve">
+    <value>Round</value>
+  </data>
+  <data name="ui_league_columnScore" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="ui_league_columnTeam" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="ui_league_columnWon" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="ui_league_FormText" xml:space="preserve">
+    <value>League</value>
+  </data>
+  <data name="ui_league_labelLevel" xml:space="preserve">
+    <value>Level:</value>
+  </data>
+  <data name="ui_league_labelLevelValue" xml:space="preserve">
+    <value>{0} out of {1}</value>
+  </data>
+  <data name="ui_league_labelRound" xml:space="preserve">
+    <value>Match round:</value>
+  </data>
+  <data name="ui_league_labelRoundValue" xml:space="preserve">
+    <value>{0} (Season: {1})</value>
+  </data>
+  <data name="ui_league_labelSeries" xml:space="preserve">
+    <value>League:</value>
+  </data>
+  <data name="ui_league_labelSeriesValue" xml:space="preserve">
+    <value>{0} ({1})</value>
+  </data>
+  <data name="ui_league_tabPageLeagueDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="ui_league_tabPageLeagueFixtures" xml:space="preserve">
+    <value>Fixtures</value>
+  </data>
+  <data name="ui_main_buttonAchievements" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="ui_main_buttonArena" xml:space="preserve">
+    <value>Arena</value>
+  </data>
+  <data name="ui_main_buttonClub" xml:space="preserve">
+    <value>Club</value>
+  </data>
+  <data name="ui_main_buttonDownload" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ui_main_buttonEconomy" xml:space="preserve">
+    <value>Economy</value>
+  </data>
+  <data name="ui_main_buttonLeague" xml:space="preserve">
+    <value>League</value>
+  </data>
+  <data name="ui_main_buttonMatches" xml:space="preserve">
+    <value>Matches</value>
+  </data>
+  <data name="ui_main_buttonSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ui_main_buttonTopScorers" xml:space="preserve">
+    <value>Top scorers</value>
+  </data>
+  <data name="ui_main_buttonTraining" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="ui_main_buttonWorldDetails" xml:space="preserve">
+    <value>World details</value>
+  </data>
+  <data name="ui_main_FormText" xml:space="preserve">
+    <value>Hattrick Manager</value>
+  </data>
+  <data name="ui_main_menuFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ui_main_menuItemAchievements" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="ui_main_menuItemArena" xml:space="preserve">
+    <value>Arena</value>
+  </data>
+  <data name="ui_main_menuItemClub" xml:space="preserve">
+    <value>Club</value>
+  </data>
+  <data name="ui_main_menuItemDownload" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ui_main_menuItemEconomy" xml:space="preserve">
+    <value>Economy</value>
+  </data>
+  <data name="ui_main_menuItemLeague" xml:space="preserve">
+    <value>League</value>
+  </data>
+  <data name="ui_main_menuItemMatches" xml:space="preserve">
+    <value>Matches</value>
+  </data>
+  <data name="ui_main_menuItemQuit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="ui_main_menuItemSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ui_main_menuItemTopScorers" xml:space="preserve">
+    <value>Top scorers</value>
+  </data>
+  <data name="ui_main_menuItemTraining" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="ui_main_menuItemWorldDetails" xml:space="preserve">
+    <value>World details</value>
+  </data>
+  <data name="ui_main_menuTools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="ui_userselection_buttonAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="ui_userselection_buttonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ui_userselection_buttonEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ui_userselection_buttonOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ui_userselection_FormText" xml:space="preserve">
+    <value>User selection</value>
+  </data>
+  <data name="ui_userselection_groupBoxUserProfiles" xml:space="preserve">
+    <value>User profiles:</value>
+  </data>
+  <data name="ui_worlddetails_buttonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ui_worlddetails_FormText" xml:space="preserve">
+    <value>World details</value>
+  </data>
+  <data name="ui_worlddetails_groupBoxLeagueEvents" xml:space="preserve">
+    <value>League events:</value>
+  </data>
+  <data name="ui_worlddetails_groupBoxLeagueInfo" xml:space="preserve">
+    <value>League info:</value>
+  </data>
+  <data name="ui_worlddetails_labelActiveUsers" xml:space="preserve">
+    <value>Active users:</value>
+  </data>
+  <data name="ui_worlddetails_labelCupMatchDate" xml:space="preserve">
+    <value>Cup matches:</value>
+  </data>
+  <data name="ui_worlddetails_labelCupName" xml:space="preserve">
+    <value>Cup name:</value>
+  </data>
+  <data name="ui_worlddetails_labelCurrencyName" xml:space="preserve">
+    <value>Currency:</value>
+  </data>
+  <data name="ui_worlddetails_labelCurrencyRate" xml:space="preserve">
+    <value>Currency rate:</value>
+  </data>
+  <data name="ui_worlddetails_labelEconomyDate" xml:space="preserve">
+    <value>Economy update:</value>
+  </data>
+  <data name="ui_worlddetails_labelEnglishName" xml:space="preserve">
+    <value>Name (english):</value>
+  </data>
+  <data name="ui_worlddetails_labelLeague" xml:space="preserve">
+    <value>League:</value>
+  </data>
+  <data name="ui_worlddetails_labelLeagueLevels" xml:space="preserve">
+    <value>League levels:</value>
+  </data>
+  <data name="ui_worlddetails_labelLeagueSeason" xml:space="preserve">
+    <value>Season:</value>
+  </data>
+  <data name="ui_worlddetails_labelMatchRound" xml:space="preserve">
+    <value>Match round:</value>
+  </data>
+  <data name="ui_worlddetails_labelSeriesMatchDate" xml:space="preserve">
+    <value>Series matches:</value>
+  </data>
+  <data name="ui_worlddetails_labelTrainingDate" xml:space="preserve">
+    <value>Training update:</value>
+  </data>
+  <data name="ui_worlddetails_labelWaitingUsers" xml:space="preserve">
+    <value>Waiting users:</value>
+  </data>
+  <data name="ui_worlddetails_labelZoneName" xml:space="preserve">
+    <value>Zone:</value>
+  </data>
+</root>
