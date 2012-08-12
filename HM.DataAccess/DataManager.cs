@@ -143,17 +143,7 @@ namespace HM.DataAccess {
                                                                 break;
                                                             }
                                                         case Tags.Loginname: {
-                                                                hattrickManagerDataUser.loginNameField = xmlNodeUser.InnerText;
-                                                                break;
-                                                            }
-                                                        case Tags.SecurityCode: {
-                                                                if (GenericFunctions.ConvertStringToBool(xmlNodeUser.Attributes[Tags.Store].Value)) {
-                                                                    hattrickManagerDataUser.securityCodeField = GenericFunctions.DecryptString(xmlNodeUser.InnerText, General.EncryptionKey);
-                                                                    hattrickManagerDataUser.storeSecurityCodeField = true;
-                                                                } else {
-                                                                    hattrickManagerDataUser.storeSecurityCodeField = false;
-                                                                    hattrickManagerDataUser.securityCodeField = string.Empty;
-                                                                }
+                                                                hattrickManagerDataUser.authorizationField = xmlNodeUser.InnerText;
                                                                 break;
                                                             }
                                                         case Tags.ActivationDate: {
@@ -250,12 +240,7 @@ namespace HM.DataAccess {
 
                     xmlElementTeamId.InnerText = currentUser.teamIdField.ToString();
                     xmlElementYouthTeamId.InnerText = currentUser.youthTeamIdField.ToString();
-                    xmlElementLoginname.InnerText = currentUser.loginNameField;
-                    xmlAttributeStoreSecurityCode.Value = currentUser.storeSecurityCodeField.ToString();
-
-                    if (currentUser.storeSecurityCodeField) {
-                        xmlElementSecurityCode.InnerText = GenericFunctions.EncryptString(currentUser.securityCodeField, General.EncryptionKey);
-                    }
+                    xmlElementLoginname.InnerText = currentUser.authorizationField;
 
                     xmlElementSecurityCode.Attributes.Append(xmlAttributeStoreSecurityCode);
                     xmlElementActivation.InnerText = currentUser.activationDateField.ToString(General.DateTimeFormat);

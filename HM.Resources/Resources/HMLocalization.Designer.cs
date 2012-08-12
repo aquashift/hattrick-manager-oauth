@@ -1924,11 +1924,11 @@ namespace HM.Resources.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username:.
+        ///   Looks up a localized string similar to Authorization URL:.
         /// </summary>
-        internal static string ui_addedituser_labelLoginname {
+        internal static string ui_addedituser_labelOAuth {
             get {
-                return ResourceManager.GetString("ui_addedituser_labelLoginname", resourceCulture);
+                return ResourceManager.GetString("ui_addedituser_labelOAuth", resourceCulture);
             }
         }
         

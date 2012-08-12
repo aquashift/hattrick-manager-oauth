@@ -60,6 +60,18 @@ namespace HM.Core {
             }
         }
 
+        public String GetRequestTokenURL() {
+            try {
+                if (IsConnected()) {
+                    return (this.chppManager.GetRequestTokenURL());
+                }
+
+                return (null);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Checks that there is an active internet connection using Windows API
         /// </summary>
@@ -69,6 +81,7 @@ namespace HM.Core {
             return InternetGetConnectedState(out Desc, 0);
         }
 
+        /*
         /// <summary>
         /// Checks if the user has seted a security code
         /// </summary>
@@ -83,6 +96,7 @@ namespace HM.Core {
                 throw ex;
             }
         }
+        */
 
         public bool DownloadUserBasicData(out HTEntities.TeamDetails.TeamDetails teamDetails) {
             try {
