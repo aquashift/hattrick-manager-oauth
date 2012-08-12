@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public static class QueryString
-    {
+namespace HM.Resources.Constants {
+    public static class QueryString {
         public const string Achievements = "file=achievements&version=1.0";
         public const string ArenaDetails = "file=arenadetails&version=1.3";
         public const string CheckSecurityCode = "file=login&actiontype=checksecuritycode&loginname={0}";

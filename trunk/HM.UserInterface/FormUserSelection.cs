@@ -55,7 +55,7 @@ namespace HM.UserInterface {
             int selectedIndex = listBoxUserProfiles.SelectedIndex;
 
             foreach (HMEntities.UserProfiles.User currentUser in userProfiles.userListField) {
-                if (listBoxUserProfiles.SelectedItem.ToString() == currentUser.loginNameField) {
+                if (listBoxUserProfiles.SelectedItem.ToString() == currentUser.authorizationField) {
                     selectedUser = currentUser;
                     break;
                 }
@@ -78,7 +78,7 @@ namespace HM.UserInterface {
             new Core.DataManager().WriteUserProfilesFile(this.userProfiles);
 
             foreach (HMEntities.UserProfiles.User currentUser in userProfiles.userListField) {
-                if (currentUser.loginNameField == selectedLoginname) {
+                if (currentUser.authorizationField == selectedLoginname) {
                     this.selectedUser = currentUser;
                     break;
                 }
@@ -97,7 +97,7 @@ namespace HM.UserInterface {
             listBoxUserProfiles.Items.Clear();
 
             foreach (HMEntities.UserProfiles.User userProfile in userProfiles.userListField) {
-                listBoxUserProfiles.Items.Add(userProfile.loginNameField);
+                listBoxUserProfiles.Items.Add(userProfile.authorizationField);
             }
         }
 

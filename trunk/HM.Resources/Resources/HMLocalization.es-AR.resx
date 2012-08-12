@@ -738,7 +738,7 @@
   <data name="ui_addedituser_labelDataFolder" xml:space="preserve">
     <value>Carpeta de datos:</value>
   </data>
-  <data name="ui_addedituser_labelLoginname" xml:space="preserve">
+  <data name="ui_addedituser_labelOAuth" xml:space="preserve">
     <value>Usuario:</value>
   </data>
   <data name="ui_addedituser_labelSecurityCode" xml:space="preserve">

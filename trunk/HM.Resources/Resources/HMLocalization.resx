@@ -738,8 +738,8 @@
   <data name="ui_addedituser_labelDataFolder" xml:space="preserve">
     <value>Data folder:</value>
   </data>
-  <data name="ui_addedituser_labelLoginname" xml:space="preserve">
-    <value>Username:</value>
+  <data name="ui_addedituser_labelOAuth" xml:space="preserve">
+    <value>Authorization URL:</value>
   </data>
   <data name="ui_addedituser_labelSecurityCode" xml:space="preserve">
     <value>Security code:</value>

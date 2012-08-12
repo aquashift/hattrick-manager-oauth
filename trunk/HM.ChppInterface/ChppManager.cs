@@ -36,7 +36,7 @@ namespace HM.ChppInterface {
         private int filesDownloaded;
         private int totalFilesToDownload;
         private string path;
-        private OAuth.Manager _oAuth;
+        private OAuth.Manager oAuth;
 
         #endregion
 
@@ -48,6 +48,7 @@ namespace HM.ChppInterface {
         /// <param name="currentUser">Current active user</param>
         /// <param name="commonFolder">Common files download folder</param>
         public ChppManager(HMEntities.UserProfiles.User currentUser) {
+            this.oAuth = new OAuth.Manager();
             this.recommendedServer = string.Empty;
             this.currentUser = currentUser;
             this.dataManager = new HM.DataAccess.DataManager(System.IO.Path.Combine(Directory.GetCurrentDirectory(), FolderNames.CommonDataFolder));
@@ -55,8 +56,14 @@ namespace HM.ChppInterface {
             this.filesDownloaded = 0;
             this.totalFilesToDownload = 0;
             this.path = System.IO.Path.Combine(currentUser.dataFolderField, currentUser.teamIdField.ToString());
+
+            oAuth["consumer_key"] = Chpp.ConsumerKey;
+            oAuth["consumer_secret"] = Chpp.ConsumerSecret;
+            oAuth["signature_method"] = Chpp.SignatureMethod;
+            oAuth["callback"] = Chpp.OAuthCallback;
         }
 
+        /*
         /// <summary>
         /// Checks if the user has seted a security code
         /// </summary>
@@ -64,7 +71,7 @@ namespace HM.ChppInterface {
         public bool CheckSecurityCode() {
             try {
                 GetRecommendedServer();
-                HttpWebRequest request = CreateXmlRequest(QueryString.CheckSecurityCode, currentUser.loginNameField);
+                HttpWebRequest request = CreateXmlRequest(QueryString.CheckSecurityCode, currentUser.authorizationField);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
                 //Reads the response
@@ -77,27 +84,15 @@ namespace HM.ChppInterface {
                 throw ex;
             }
         }
-
+        */
+        
         /// <summary>
         /// Performs file download process
         /// </summary>
         public void Download(bool downloadFullMatchesArchive) {
             try {
-                GetRecommendedServer();
-
-                switch (Login()) {
-                    case LoginResult.LoginFailed:
-                    case LoginResult.LockedChppCredentials:
-                    case LoginResult.WrongChppCredentials:
-                        // TODO. Three cases above should be handled somehow. For now, nothing happens.
-                        break;
-                    case LoginResult.Successful:
-                        //Adds download task
-                        totalFilesToDownload += 1;
-                        DownloadAll(downloadFullMatchesArchive);
-                        Logout();
-                        break;
-                }
+                totalFilesToDownload += 1;
+                DownloadAll(downloadFullMatchesArchive);
             } catch (Exception ex) {
                 throw ex;
             }
@@ -108,22 +103,28 @@ namespace HM.ChppInterface {
                 bool result = false;
                 teamDetails = new HM.Entities.Hattrick.TeamDetails.TeamDetails();
 
-                GetRecommendedServer();
-
-                switch (Login()) {
-                    case LoginResult.Successful:
-                        result = true;
-                        teamDetails = DownloadUserBasicData();
-                        Logout();
-                        break;
-                    case LoginResult.LoginFailed:
-                    case LoginResult.WrongChppCredentials:
-                    case LoginResult.LockedChppCredentials:
-                        result = false;
-                        break;
+                try {
+                    result = true;
+                    teamDetails = DownloadUserBasicData();
+                } catch {
+                    result = false;
                 }
 
                 return result;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public String GetRequestTokenURL() {
+            try {
+                OAuthResponse response = oAuth.AcquireRequestToken(Chpp.RequestTokenURL, "GET");
+
+                if (!String.IsNullOrEmpty(response["oauth_token"])) {
+                    return (Chpp.AuthorizeURL + "?oauth_token=" + response["oauth_token"]);
+                }
+
+                return null;
             } catch (Exception ex) {
                 throw ex;
             }
@@ -224,11 +225,12 @@ namespace HM.ChppInterface {
         /// <returns>UriBuilder initialized with recommended server URI and download path.</returns>
         private UriBuilder GetXmlUriBuilder() {
             UriBuilder uriBuilder = new UriBuilder(recommendedServer);
-            uriBuilder.Path += Chpp.DownloadUrl;
+            uriBuilder.Path += Chpp.ResourcesURL;
 
             return uriBuilder;
         }
 
+        /*
         /// <summary>
         /// Gets the recommended server's url
         /// </summary>
@@ -238,7 +240,7 @@ namespace HM.ChppInterface {
                 totalFilesToDownload += 1;
 
                 //Builds the request
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Chpp.UrlServers);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Chpp.RequestTokenURL);
 
                 //Set Hattrick Manager as User agent
                 request.UserAgent = Chpp.UserAgent;
@@ -269,8 +271,7 @@ namespace HM.ChppInterface {
             try {
                 totalFilesToDownload += 1;
 
-                HttpWebRequest request = CreateXmlRequest(QueryString.Login,
-                    new string[] { currentUser.loginNameField, currentUser.securityCodeField, Chpp.ChppId, Chpp.ChppKey });
+                HttpWebRequest request = CreateXmlRequest(QueryString.Login, new string[] { currentUser.authorizationField, Chpp.ConsumerSecret, Chpp.ConsumerKey });
 
                 //Get the response
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -307,6 +308,7 @@ namespace HM.ChppInterface {
                 throw ex;
             }
         }
+        */
 
         /// <summary>
         /// Downloads Achievements file

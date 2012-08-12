@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public static class FolderNames
-    {
+namespace HM.Resources.Constants {
+    public static class FolderNames {
         public const string CommonFolder = "Common";
         public const string CommonDataFolder = "Common\\Data";
         public const string Achievements = "Achievements";

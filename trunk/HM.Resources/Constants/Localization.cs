@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
+namespace HM.Resources.Constants {
     /// <summary>
     /// Contains localization string names.
     /// </summary>
-    public static class Localization
-    {
+    public static class Localization {
         public const string hm_download_achievements = "hm_download_achievements";
         public const string hm_download_arenadetails = "hm_download_arenadetails";
         public const string hm_download_club = "hm_download_club";
@@ -166,7 +164,7 @@ namespace HM.Resources.Constants
         public const string ui_arena_labelSeats = "ui_arena_labelSeats";
         public const string ui_arena_labelPercentage = "ui_arena_labelPercentage";
         public const string ui_arena_groupBoxSeats = "ui_arena_groupBoxSeats";
-        public const string ui_arena_FormText = "ui_arena_FormText";        
+        public const string ui_arena_FormText = "ui_arena_FormText";
         public const string ui_arena_labelDifference = "ui_arena_labelDifference";
         public const string ui_arena_labelVip = "ui_arena_labelVip";
         public const string ui_arena_labelExpanded = "ui_arena_labelExpanded";
@@ -202,7 +200,7 @@ namespace HM.Resources.Constants
         public const string ui_addedituser_groupBoxUserData = "ui_addedituser_groupBoxUserData";
         public const string ui_addedituser_labelActivationDate = "ui_addedituser_labelActivationDate";
         public const string ui_addedituser_labelDataFolder = "ui_addedituser_labelDataFolder";
-        public const string ui_addedituser_labelLoginname = "ui_addedituser_labelLoginname";
+        public const string ui_addedituser_labelOAuth = "ui_addedituser_labelOAuth";
         public const string ui_addedituser_labelSecurityCode = "ui_addedituser_labelSecurityCode";
         public const string ui_addedituser_labelTeamId = "ui_addedituser_labelTeamId";
         public const string ui_addedituser_labelYouthTeamId = "ui_addedituser_labelYouthTeamId";

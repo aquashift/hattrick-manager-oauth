@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.CustomEvents
-{
-    public class ChppDownloadProgressChangedEventArgs : EventArgs
-    {
+namespace HM.Resources.CustomEvents {
+    public class ChppDownloadProgressChangedEventArgs : EventArgs {
         #region Properties
 
         public string FileName { get; set; }
@@ -19,8 +17,7 @@ namespace HM.Resources.CustomEvents
 
         #region Methods
 
-        public ChppDownloadProgressChangedEventArgs(string FileName, bool Successful, int FilesDownloaded, int TotalFilesToDownload, bool DownloadFinished)
-        {
+        public ChppDownloadProgressChangedEventArgs(string FileName, bool Successful, int FilesDownloaded, int TotalFilesToDownload, bool DownloadFinished) {
             this.FileName = FileName;
             this.Successful = Successful;
             this.FilesDownloaded = FilesDownloaded;
