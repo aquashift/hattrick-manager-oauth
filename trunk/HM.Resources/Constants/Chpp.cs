@@ -5,8 +5,8 @@ using System.Text;
 
 namespace HM.Resources.Constants {
     public static class Chpp {
-        public const string ConsumerKey = "CB0FF20E-A1BC-447B-A7FF-D334AF6B1957";
-        public const string ConsumerSecret = "3183";
+        public const string ConsumerKey = "dpf43f3p2l4k3l03";
+        public const string ConsumerSecret = "kd94hf93k423kf44";
         public const string UserAgent = "Hattrick Manager v0.01 (Gavry)";
         public const string SignatureMethod = "HMAC-SHA1";
         public const string OAuthCallback = "oob";

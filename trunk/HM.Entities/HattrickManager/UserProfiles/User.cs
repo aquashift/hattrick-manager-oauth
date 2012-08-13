@@ -9,7 +9,8 @@ namespace HM.Entities.HattrickManager.UserProfiles {
 
         public uint teamIdField { get; set; }
         public uint youthTeamIdField { get; set; }
-        public string authorizationField { get; set; }
+        public string accessToken { get; set; }
+        public string accessTokenSecret { get; set; }
         public DateTime activationDateField { get; set; }
         public string dataFolderField { get; set; }
 
@@ -23,12 +24,14 @@ namespace HM.Entities.HattrickManager.UserProfiles {
         public User() {
             teamIdField = 0;
             youthTeamIdField = 0;
-            authorizationField = string.Empty;
+            accessToken = string.Empty;
+            accessTokenSecret = string.Empty;
             dataFolderField = string.Empty;
         }
 
         public void CopyData(User source) {
-            this.authorizationField = source.authorizationField;
+            this.accessToken = source.accessToken;
+            this.accessTokenSecret = source.accessTokenSecret;
             this.dataFolderField = source.dataFolderField;
             this.youthTeamIdField = source.youthTeamIdField;
         }

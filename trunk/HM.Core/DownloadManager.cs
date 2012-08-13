@@ -60,18 +60,6 @@ namespace HM.Core {
             }
         }
 
-        public String GetRequestTokenURL() {
-            try {
-                if (IsConnected()) {
-                    return (this.chppManager.GetRequestTokenURL());
-                }
-
-                return (null);
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
         /// <summary>
         /// Checks that there is an active internet connection using Windows API
         /// </summary>
