@@ -12,6 +12,8 @@ using HM.Core;
 using HM.Resources.Constants;
 using HM.Resources;
 using HM.Resources.CustomEvents;
+using DevDefined.OAuth.Consumer;
+using DevDefined.OAuth.Framework;
 
 namespace HM.UserInterface {
     public partial class FormAddEditUser : FormBase {
@@ -19,7 +21,7 @@ namespace HM.UserInterface {
 
         private HMEntities.UserProfiles.User userProfile;
         private FormMode formMode;
-        private bool validatedCredentials;
+        private IToken requestToken;
 
         #endregion
 
@@ -28,16 +30,13 @@ namespace HM.UserInterface {
         public FormAddEditUser() {
             InitializeComponent();
             formMode = FormMode.Add;
-            validatedCredentials = false;
             userProfile = new HM.Entities.HattrickManager.UserProfiles.User();
-            validatedCredentials = false;
-            GetRequestToken();
+            textBoxAuthorizationURL.Text = GetRequestTokenURL();
         }
 
         public FormAddEditUser(HMEntities.UserProfiles.User selectedUser) {
             InitializeComponent();
             formMode = FormMode.Edit;
-            validatedCredentials = false;
             this.userProfile = selectedUser;
             this.buttonTest.Enabled = true;
             LoadControls();
@@ -58,21 +57,21 @@ namespace HM.UserInterface {
         }
 
         private void buttonTest_Click(object sender, EventArgs e) {
+            IToken accessToken = ExchangeRequestTokenForAccessToken(textBoxSecurityCode.Text);
             HTEntities.TeamDetails.TeamDetails teamDetails = new HTEntities.TeamDetails.TeamDetails();
 
-            userProfile.authorizationField = textBoxAuthorizationURL.Text;
+            userProfile.accessToken = accessToken.Token;
+            userProfile.accessTokenSecret = accessToken.TokenSecret;
 
             Core.DownloadManager downloadManager = new DownloadManager(userProfile);
 
             this.Enabled = false;
 
-            validatedCredentials = downloadManager.DownloadUserBasicData(out teamDetails);
+            downloadManager.DownloadUserBasicData(out teamDetails);
 
             this.Enabled = true;
 
-            if (validatedCredentials) {
-                LoadUserBasicData(teamDetails);
-            }
+            LoadUserBasicData(teamDetails);
 
             ToggleControls();
         }
@@ -139,7 +138,7 @@ namespace HM.UserInterface {
         /// Loads controls with user's data
         /// </summary>
         private void LoadControls() {
-            this.textBoxAuthorizationURL.Text = userProfile.authorizationField;
+            //this.textBoxAuthorizationURL.Text = userProfile.authorizationField;
             this.textBoxDataFolder.Text = userProfile.dataFolderField;
             this.labelActivationDateValue.Text = userProfile.activationDateField.ToString(General.DateTimeFormat);
             this.labelTeamIdValue.Text = userProfile.teamIdField.ToString();
@@ -147,7 +146,7 @@ namespace HM.UserInterface {
         }
 
         private void ToggleControls() {
-            buttonOk.Enabled = (validatedCredentials);
+            buttonOk.Enabled = true;
 
             bool enableControls = labelActivationDateValue.Text != string.Empty ? true : false;
 
@@ -158,12 +157,6 @@ namespace HM.UserInterface {
             labelTeamIdValue.Enabled = enableControls;
             labelYouthTeamId.Enabled = enableControls;
             labelYouthTeamIdValue.Enabled = enableControls;
-        }
-
-        private void GetRequestToken() {
-            Core.DownloadManager downloadManager = new DownloadManager(userProfile);
-
-            this.textBoxAuthorizationURL.Text = downloadManager.GetRequestTokenURL();
         }
 
         private void LoadUserBasicData(HTEntities.TeamDetails.TeamDetails teamDetails) {
@@ -182,8 +175,43 @@ namespace HM.UserInterface {
         /// Copies data from form to user profile
         /// </summary>
         private void UpdateUserProfile() {
-            this.userProfile.authorizationField = this.textBoxAuthorizationURL.Text;
+            //this.userProfile.authorizationField = this.textBoxAuthorizationURL.Text;
             this.userProfile.dataFolderField = this.textBoxDataFolder.Text;
+        }
+
+        #endregion
+
+        #region oAuth
+
+        private String GetRequestTokenURL() {
+            String AuthorizationURL = String.Empty;
+            OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
+            requestToken = oauthSession.GetRequestToken("GET");
+
+            try {
+                AuthorizationURL = oauthSession.GetUserAuthorizationUrlForToken(requestToken);
+            } catch {
+                AuthorizationURL = String.Empty;
+            }
+
+            return (AuthorizationURL);
+        }
+
+        private IToken ExchangeRequestTokenForAccessToken(String verifier) {
+            OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
+            IToken accessToken = oauthSession.ExchangeRequestTokenForAccessToken(requestToken, verifier);
+
+            return (accessToken);
+        }
+
+        private OAuthSession GetOAuthSession(String key, String secret) {
+            OAuthConsumerContext consumerContext = new OAuthConsumerContext();
+
+            consumerContext.ConsumerKey = key;
+            consumerContext.ConsumerSecret = secret;
+            consumerContext.SignatureMethod = "HMAC-SHA1";
+
+            return (new OAuthSession(consumerContext, Chpp.RequestTokenURL, Chpp.AuthorizeURL, Chpp.AccessTokenURL));
         }
 
         #endregion

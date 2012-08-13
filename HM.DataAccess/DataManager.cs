@@ -143,7 +143,7 @@ namespace HM.DataAccess {
                                                                 break;
                                                             }
                                                         case Tags.Loginname: {
-                                                                hattrickManagerDataUser.authorizationField = xmlNodeUser.InnerText;
+                                                                //hattrickManagerDataUser.authorizationField = xmlNodeUser.InnerText;
                                                                 break;
                                                             }
                                                         case Tags.ActivationDate: {
@@ -240,7 +240,7 @@ namespace HM.DataAccess {
 
                     xmlElementTeamId.InnerText = currentUser.teamIdField.ToString();
                     xmlElementYouthTeamId.InnerText = currentUser.youthTeamIdField.ToString();
-                    xmlElementLoginname.InnerText = currentUser.authorizationField;
+                    //xmlElementLoginname.InnerText = currentUser.authorizationField;
 
                     xmlElementSecurityCode.Attributes.Append(xmlAttributeStoreSecurityCode);
                     xmlElementActivation.InnerText = currentUser.activationDateField.ToString(General.DateTimeFormat);

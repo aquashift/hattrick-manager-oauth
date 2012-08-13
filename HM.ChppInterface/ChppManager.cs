@@ -10,7 +10,8 @@ using HM.Resources.Constants;
 using HMEntities = HM.Entities.HattrickManager;
 using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.CustomEvents;
-using OAuth;
+using DevDefined.OAuth.Consumer;
+using DevDefined.OAuth.Framework;
 
 namespace HM.ChppInterface {
     public class ChppManager {
@@ -29,14 +30,37 @@ namespace HM.ChppInterface {
         #region Properties
 
         private HMEntities.UserProfiles.User currentUser;
-        private CookieCollection sessionCookies;
         private DataAccess.DataManager dataManager;
         private string recommendedServer;
         private string currentDate;
         private int filesDownloaded;
         private int totalFilesToDownload;
         private string path;
-        private OAuth.Manager oAuth;
+
+        #endregion
+
+        #region OAuth
+
+        public String AccessProtectedResource(String accessToken, String accessTokenSecret, String parameters) {
+            String URL = Chpp.ResourcesURL + "?" + parameters;
+            OAuthSession oAuthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
+
+            oAuthSession.AccessToken = new TokenBase() { ConsumerKey = Chpp.ConsumerKey, Token = accessToken, TokenSecret = accessTokenSecret };
+
+            IConsumerRequest request = oAuthSession.Request().Get().ForUrl(URL);
+
+            return (request.ToString());
+        }
+
+        private OAuthSession GetOAuthSession(String key, String secret) {
+            OAuthConsumerContext consumerContext = new OAuthConsumerContext();
+
+            consumerContext.ConsumerKey = key;
+            consumerContext.ConsumerSecret = secret;
+            consumerContext.SignatureMethod = "HMAC-SHA1";
+
+            return (new OAuthSession(consumerContext, Chpp.RequestTokenURL, Chpp.AuthorizeURL, Chpp.AccessTokenURL));
+        }
 
         #endregion
 
@@ -48,7 +72,6 @@ namespace HM.ChppInterface {
         /// <param name="currentUser">Current active user</param>
         /// <param name="commonFolder">Common files download folder</param>
         public ChppManager(HMEntities.UserProfiles.User currentUser) {
-            this.oAuth = new OAuth.Manager();
             this.recommendedServer = string.Empty;
             this.currentUser = currentUser;
             this.dataManager = new HM.DataAccess.DataManager(System.IO.Path.Combine(Directory.GetCurrentDirectory(), FolderNames.CommonDataFolder));
@@ -56,36 +79,8 @@ namespace HM.ChppInterface {
             this.filesDownloaded = 0;
             this.totalFilesToDownload = 0;
             this.path = System.IO.Path.Combine(currentUser.dataFolderField, currentUser.teamIdField.ToString());
-
-            oAuth["consumer_key"] = Chpp.ConsumerKey;
-            oAuth["consumer_secret"] = Chpp.ConsumerSecret;
-            oAuth["signature_method"] = Chpp.SignatureMethod;
-            oAuth["callback"] = Chpp.OAuthCallback;
         }
 
-        /*
-        /// <summary>
-        /// Checks if the user has seted a security code
-        /// </summary>
-        /// <returns>true if he has/false if he hasn't</returns>
-        public bool CheckSecurityCode() {
-            try {
-                GetRecommendedServer();
-                HttpWebRequest request = CreateXmlRequest(QueryString.CheckSecurityCode, currentUser.authorizationField);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                //Reads the response
-                HM.Entities.Hattrick.Authentication.Authentication checkSecurityCodeXml = new HM.Entities.Hattrick.Authentication.Authentication();
-
-                checkSecurityCodeXml = (HTEntities.Authentication.Authentication)dataManager.ReadFile(response.GetResponseStream(), FileType.Login);
-
-                return checkSecurityCodeXml.hasSecurityCodeField;
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-        */
-        
         /// <summary>
         /// Performs file download process
         /// </summary>
@@ -111,20 +106,6 @@ namespace HM.ChppInterface {
                 }
 
                 return result;
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        public String GetRequestTokenURL() {
-            try {
-                OAuthResponse response = oAuth.AcquireRequestToken(Chpp.RequestTokenURL, "GET");
-
-                if (!String.IsNullOrEmpty(response["oauth_token"])) {
-                    return (Chpp.AuthorizeURL + "?oauth_token=" + response["oauth_token"]);
-                }
-
-                return null;
             } catch (Exception ex) {
                 throw ex;
             }
@@ -229,86 +210,6 @@ namespace HM.ChppInterface {
 
             return uriBuilder;
         }
-
-        /*
-        /// <summary>
-        /// Gets the recommended server's url
-        /// </summary>
-        /// <returns>Server url</returns>
-        private void GetRecommendedServer() {
-            try {
-                totalFilesToDownload += 1;
-
-                //Builds the request
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Chpp.RequestTokenURL);
-
-                //Set Hattrick Manager as User agent
-                request.UserAgent = Chpp.UserAgent;
-
-                //Get response
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                //Reads response
-                HTEntities.Servers.Servers serversXml = new HM.Entities.Hattrick.Servers.Servers();
-
-                serversXml = (HTEntities.Servers.Servers)dataManager.ReadFile(response.GetResponseStream(), FileType.Servers);
-
-                //Return recommended server's url
-                recommendedServer = serversXml.recommendedUrlField;
-
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_recommendedserver, false));
-            } catch (Exception ex) {
-                throw ex;
-            }
-
-        }
-
-        /// <summary>
-        /// Perform user's login into Hattrick
-        /// </summary>
-        /// <returns>Login result code</returns>
-        private LoginResult Login() {
-            try {
-                totalFilesToDownload += 1;
-
-                HttpWebRequest request = CreateXmlRequest(QueryString.Login, new string[] { currentUser.authorizationField, Chpp.ConsumerSecret, Chpp.ConsumerKey });
-
-                //Get the response
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                //Reads the response
-                HM.Entities.Hattrick.Authentication.Authentication loginXml = new HM.Entities.Hattrick.Authentication.Authentication();
-
-                loginXml = (HTEntities.Authentication.Authentication)dataManager.ReadFile(response.GetResponseStream(), FileType.Login);
-
-                if (loginXml.loginResultField == LoginResult.Successful) {
-                    sessionCookies = response.Cookies;
-                }
-
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_login, false));
-
-                return loginXml.loginResultField;
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Performs user's logout from Hattrick
-        /// </summary>
-        private void Logout() {
-            try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Logout);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                response.GetResponseStream();
-
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_logout, true));
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-        */
 
         /// <summary>
         /// Downloads Achievements file
@@ -531,7 +432,6 @@ namespace HM.ChppInterface {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uriBuilder.Uri.AbsoluteUri);
             request.UserAgent = Chpp.UserAgent;
             request.CookieContainer = new CookieContainer();
-            request.CookieContainer.Add(sessionCookies);
 
             return request;
         }
