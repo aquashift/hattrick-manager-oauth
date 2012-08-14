@@ -289,6 +289,7 @@
             this.Name = "FormAddEditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormAddEditUser";
+            this.Load += new System.EventHandler(this.FormAddEditUser_Load);
             this.groupBoxUserCredentials.ResumeLayout(false);
             this.groupBoxUserCredentials.PerformLayout();
             this.groupBoxUserData.ResumeLayout(false);

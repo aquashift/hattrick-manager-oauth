@@ -12,7 +12,6 @@ using HM.Core;
 using HM.Resources.Constants;
 using HM.Resources;
 using HM.Resources.CustomEvents;
-using System.Threading;
 using DevDefined.OAuth.Consumer;
 using DevDefined.OAuth.Framework;
 
@@ -24,25 +23,18 @@ namespace HM.UserInterface {
         private FormMode formMode;
         private IToken requestToken;
 
-        Thread thread;
-        public delegate void CallbackRT(string responce, IToken token);
-        public CallbackRT rtDelegate;
-
-        public delegate void CallbackAT(IToken token);
-        public CallbackAT atDelegate;
         #endregion
 
         #region Control's events
+
+        private void FormAddEditUser_Load(object sender, EventArgs e) {
+            textBoxAuthorizationURL.Text = GetRequestTokenURL();
+        }
 
         public FormAddEditUser() {
             InitializeComponent();
             formMode = FormMode.Add;
             userProfile = new HM.Entities.HattrickManager.UserProfiles.User();
-
-            rtDelegate = new CallbackRT(CallbackRTMethod);
-            thread = new Thread(new ThreadStart(GetRequestTokenURL));
-            thread.IsBackground = true;
-            thread.Start();
         }
 
         public FormAddEditUser(HMEntities.UserProfiles.User selectedUser) {
@@ -68,10 +60,23 @@ namespace HM.UserInterface {
         }
 
         private void buttonTest_Click(object sender, EventArgs e) {
-            atDelegate = new CallbackAT(CallbackATMethod);
-            thread = new Thread(() => ExchangeRequestTokenForAccessToken(requestToken, textBoxSecurityCode.Text));
-            thread.IsBackground = true;
-            thread.Start();
+            HTEntities.TeamDetails.TeamDetails teamDetails = new HTEntities.TeamDetails.TeamDetails();
+            IToken accessToken = ExchangeRequestTokenForAccessToken(textBoxSecurityCode.Text);
+
+            userProfile.accessToken = accessToken.Token;
+            userProfile.accessTokenSecret = accessToken.TokenSecret;
+
+            Core.DownloadManager downloadManager = new DownloadManager(userProfile);
+
+            this.Enabled = false;
+
+            downloadManager.DownloadUserBasicData(out teamDetails);
+
+            this.Enabled = true;
+
+            LoadUserBasicData(teamDetails);
+
+            ToggleControls();
         }
 
         private void buttonOpenURL_Click(object sender, EventArgs e) {
@@ -181,50 +186,25 @@ namespace HM.UserInterface {
 
         #region oAuth
 
-        private void CallbackRTMethod(String responce, IToken token) {
-            requestToken = token;
-            textBoxAuthorizationURL.Text = responce;
-        }
-
-        private void GetRequestTokenURL() {
+        private String GetRequestTokenURL() {
             String AuthorizationURL = String.Empty;
             OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
-            IToken requestToken = oauthSession.GetRequestToken("GET");
 
             try {
+                requestToken = oauthSession.GetRequestToken("GET");
                 AuthorizationURL = oauthSession.GetUserAuthorizationUrlForToken(requestToken);
             } catch {
                 AuthorizationURL = String.Empty;
             }
 
-            this.Invoke(rtDelegate, new object[] { AuthorizationURL, requestToken });
+            return (AuthorizationURL);
         }
 
-        private void CallbackATMethod(IToken token) {
-            HTEntities.TeamDetails.TeamDetails teamDetails = new HTEntities.TeamDetails.TeamDetails();
-            IToken accessToken = token;
-
-            userProfile.accessToken = accessToken.Token;
-            userProfile.accessTokenSecret = accessToken.TokenSecret;
-
-            Core.DownloadManager downloadManager = new DownloadManager(userProfile);
-
-            this.Enabled = false;
-
-            downloadManager.DownloadUserBasicData(out teamDetails);
-
-            this.Enabled = true;
-
-            LoadUserBasicData(teamDetails);
-
-            ToggleControls();
-        }
-
-        private void ExchangeRequestTokenForAccessToken(IToken token, String verifier) {
+        private IToken ExchangeRequestTokenForAccessToken(String verifier) {
             OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
-            IToken accessToken = oauthSession.ExchangeRequestTokenForAccessToken(token, verifier);
+            IToken accessToken = oauthSession.ExchangeRequestTokenForAccessToken(requestToken, verifier);
 
-            this.Invoke(atDelegate, new object[] { accessToken });
+            return (accessToken);
         }
 
         private OAuthSession GetOAuthSession(String key, String secret) {
