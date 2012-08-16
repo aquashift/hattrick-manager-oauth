@@ -189,9 +189,9 @@ namespace HM.UserInterface {
         private String GetRequestTokenURL() {
             String AuthorizationURL = String.Empty;
             OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
+            requestToken = oauthSession.GetRequestToken("GET");
 
             try {
-                requestToken = oauthSession.GetRequestToken("GET");
                 AuthorizationURL = oauthSession.GetUserAuthorizationUrlForToken(requestToken);
             } catch {
                 AuthorizationURL = String.Empty;
