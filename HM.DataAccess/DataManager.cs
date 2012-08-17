@@ -108,6 +108,77 @@ namespace HM.DataAccess {
         }
 
         /// <summary>
+        /// Reads a HT xml file and returns a HattrickBase object
+        /// </summary>
+        /// <param name="xmlStream">Xml file content</param>
+        /// <param name="fileType">HT file type to read</param>
+        /// <returns>HattrickBase object loaded with readed data</returns>
+        public HTEntities.HattrickBase ParseXMLString(String xmlString, FileType fileType) {
+            try {
+                HTEntities.HattrickBase hattrickData = null;
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(xmlString);
+
+                switch (fileType) {
+                    case FileType.Achievements:
+                        hattrickData = new Parsers.AchievementsParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.ArenaDetails:
+                        hattrickData = new Parsers.ArenaDetailsParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.Club:
+                        hattrickData = new Parsers.ClubParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.Economy:
+                        hattrickData = new Parsers.EconomyParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.Servers:
+                        hattrickData = new Parsers.ServersParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.Login:
+                        hattrickData = new Parsers.AuthenticationParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.LeagueDetails:
+                        hattrickData = new Parsers.LeagueDetailsParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.LeagueFixtures:
+                        hattrickData = new Parsers.LeagueFixturesParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.MatchLineup:
+                        hattrickData = new Parsers.MatchLineupParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.Matches:
+                        hattrickData = new Parsers.MatchesParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.MatchesArchive:
+                        hattrickData = new Parsers.MatchesArchiveParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.MatchDetails:
+                        hattrickData = new Parsers.MatchDetailsParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.Players:
+                        hattrickData = new Parsers.PlayersParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.TeamDetails:
+                        hattrickData = new Parsers.TeamDetailsParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.TransfersPlayer:
+                        hattrickData = new Parsers.TransfersPlayerParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    case FileType.WorldDetails:
+                        hattrickData = new Parsers.WorldDetailsParser().ParseXmlDocument(xmlDocument);
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                return hattrickData;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Reads UserProfile xml file
         /// </summary>
         /// <param name="xmlStream">Xml file content</param>

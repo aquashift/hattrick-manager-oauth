@@ -8,41 +8,31 @@ using HM.Resources.Constants;
 using HM.Entities.Hattrick;
 using HM.Entities.Hattrick.TeamDetails;
 
-namespace HM.DataAccess.Parsers
-{
-    public class TeamDetailsParser : BaseParser
-    {
+namespace HM.DataAccess.Parsers {
+    public class TeamDetailsParser : BaseParser {
         #region Implementation of abstract methods
 
-        protected override HattrickBase CreateEntity()
-        {
+        protected override HattrickBase CreateEntity() {
             return new TeamDetails();
         }
 
-        protected override void ParseSpecificNode(XmlNode xmlNode, HattrickBase entity)
-        {
-            try
-            {
+        protected override void ParseSpecificNode(XmlNode xmlNode, HattrickBase entity) {
+            try {
                 TeamDetails teamDetails = (TeamDetails)entity;
 
-                switch (xmlNode.Name)
-                {
+                switch (xmlNode.Name) {
                     case Tags.User:
-                        if (xmlNode.ChildNodes != null)
-                        {
+                        if (xmlNode.ChildNodes != null) {
                             teamDetails.userField = ParseUserNode(xmlNode);
                         }
                         break;
                     case Tags.Team:
-                        if (xmlNode.ChildNodes != null)
-                        {
+                        if (xmlNode.ChildNodes != null) {
                             teamDetails.teamField = ParseTeamNode(xmlNode);
                         }
                         break;
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -51,22 +41,17 @@ namespace HM.DataAccess.Parsers
 
         #region Private methods
 
-        private User ParseUserNode(XmlNode userNode)
-        {
-            try
-            {
+        private User ParseUserNode(XmlNode userNode) {
+            try {
                 User user = new User();
 
-                foreach (XmlNode xmlNode in userNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in userNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.UserID:
                             user.userIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
                         case Tags.Language:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 user.languageField = ParseLanguageNode(xmlNode);
                             }
                             break;
@@ -92,8 +77,7 @@ namespace HM.DataAccess.Parsers
                             user.lastLoginDateField = GenericFunctions.ConvertStringToDateTime(xmlNode.InnerText);
                             break;
                         case Tags.NationalTeamCoach:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 user.nationalTeamCoachField = ParseNationalTeamCoachNode(xmlNode);
                             }
                             break;
@@ -101,23 +85,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return user;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Language ParseLanguageNode(XmlNode languageNode)
-        {
-            try
-            {
+        private Language ParseLanguageNode(XmlNode languageNode) {
+            try {
                 Language language = new Language();
 
-                foreach (XmlNode xmlNode in languageNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in languageNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.LanguageID:
                             language.languageIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -128,32 +106,23 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return language;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private List<NationalTeam> ParseNationalTeamCoachNode(XmlNode nationalTeamNode)
-        {
-            try
-            {
+        private List<NationalTeam> ParseNationalTeamCoachNode(XmlNode nationalTeamNode) {
+            try {
                 List<NationalTeam> nationalTeamList = new List<NationalTeam>();
 
-                foreach (XmlNode xmlNode in nationalTeamNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in nationalTeamNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.NationalTeam:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 NationalTeam newNationalTeam = new NationalTeam();
 
-                                foreach (XmlNode xmlNodeNationalTeam in xmlNode.ChildNodes)
-                                {
-                                    switch (xmlNodeNationalTeam.Name)
-                                    {
+                                foreach (XmlNode xmlNodeNationalTeam in xmlNode.ChildNodes) {
+                                    switch (xmlNodeNationalTeam.Name) {
                                         case Tags.NationalTeamID:
                                             newNationalTeam.nationalTeamIdField = GenericFunctions.ConvertStringToUInt(xmlNodeNationalTeam.InnerText);
                                             break;
@@ -169,23 +138,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return nationalTeamList;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Team ParseTeamNode(XmlNode teamNode)
-        {
-            try
-            {
+        private Team ParseTeamNode(XmlNode teamNode) {
+            try {
                 Team team = new Team();
 
-                foreach (XmlNode xmlNode in teamNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in teamNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.TeamID:
                             team.teamIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -196,26 +159,22 @@ namespace HM.DataAccess.Parsers
                             team.shortTeamNameField = xmlNode.InnerText;
                             break;
                         case Tags.Arena:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.arenaField = ParseArenaNode(xmlNode);
                             }
                             break;
                         case Tags.League:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.leagueField = ParseLeagueNode(xmlNode);
                             }
                             break;
                         case Tags.Region:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.regionField = ParseRegionNode(xmlNode);
                             }
                             break;
                         case Tags.Trainer:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.trainerField = ParseTrainerNode(xmlNode);
                             }
                             break;
@@ -229,20 +188,17 @@ namespace HM.DataAccess.Parsers
                             team.dressAlternateField = xmlNode.InnerText;
                             break;
                         case Tags.LeagueLevelUnit:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.leagueLevelUnitField = ParseLeagueLevelUnitNode(xmlNode);
                             }
                             break;
                         case Tags.BotStatus:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.botStatusField = ParseBotStatusNode(xmlNode);
                             }
                             break;
                         case Tags.Cup:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.cupField = ParseCupNode(xmlNode);
                             }
                             break;
@@ -262,20 +218,17 @@ namespace HM.DataAccess.Parsers
                             team.logoUrlField = xmlNode.InnerText;
                             break;
                         case Tags.Fanclub:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.fanclubField = ParseFanclubNode(xmlNode);
                             }
                             break;
                         case Tags.Guestbook:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.guestbookField = ParseGuestbookNode(xmlNode);
                             }
                             break;
                         case Tags.PressAnnouncement:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.pressAnnouncementField = ParsePressAnnouncementNode(xmlNode);
                             }
                             break;
@@ -292,23 +245,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return team;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Arena ParseArenaNode(XmlNode arenaNode)
-        {
-            try
-            {
+        private Arena ParseArenaNode(XmlNode arenaNode) {
+            try {
                 Arena arena = new Arena();
 
-                foreach (XmlNode xmlNode in arenaNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in arenaNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.ArenaID:
                             arena.arenaIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -319,23 +266,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return arena;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Flags ParseFlagsNode(XmlNode flagsNode)
-        {
-            try
-            {
+        private Flags ParseFlagsNode(XmlNode flagsNode) {
+            try {
                 Flags flags = new Flags();
 
-                foreach (XmlNode xmlNode in flagsNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in flagsNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.AwayFlags:
                             flags.awayFlagsField = ParseFlagListNode(xmlNode);
                             break;
@@ -346,23 +287,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return flags;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private List<Flag> ParseFlagListNode(XmlNode flagsListNode)
-        {
-            try
-            {
+        private List<Flag> ParseFlagListNode(XmlNode flagsListNode) {
+            try {
                 List<Flag> flagsList = new List<Flag>();
 
-                foreach (XmlNode xmlNode in flagsListNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in flagsListNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.Flag:
                             flagsList.Add(ParseFlagNode(xmlNode));
                             break;
@@ -370,23 +305,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return flagsList;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Flag ParseFlagNode(XmlNode flagsListNode)
-        {
-            try
-            {
+        private Flag ParseFlagNode(XmlNode flagsListNode) {
+            try {
                 Flag flag = new Flag();
 
-                foreach (XmlNode xmlNode in flagsListNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in flagsListNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.LeagueId:
                             flag.leagueIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -400,23 +329,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return flag;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private League ParseLeagueNode(XmlNode leagueNode)
-        {
-            try
-            {
+        private League ParseLeagueNode(XmlNode leagueNode) {
+            try {
                 League league = new League();
 
-                foreach (XmlNode xmlNode in leagueNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in leagueNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.LeagueID:
                             league.leagueIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -427,23 +350,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return league;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Region ParseRegionNode(XmlNode regionNode)
-        {
-            try
-            {
+        private Region ParseRegionNode(XmlNode regionNode) {
+            try {
                 Region region = new Region();
 
-                foreach (XmlNode xmlNode in regionNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in regionNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.RegionID:
                             region.regionIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -454,23 +371,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return region;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Trainer ParseTrainerNode(XmlNode trainerNode)
-        {
-            try
-            {
+        private Trainer ParseTrainerNode(XmlNode trainerNode) {
+            try {
                 Trainer trainer = new Trainer();
 
-                foreach (XmlNode xmlNode in trainerNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in trainerNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.PlayerID:
                             trainer.playerIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -478,23 +389,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return trainer;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private LeagueLevelUnit ParseLeagueLevelUnitNode(XmlNode leagueLevelUnitNode)
-        {
-            try
-            {
+        private LeagueLevelUnit ParseLeagueLevelUnitNode(XmlNode leagueLevelUnitNode) {
+            try {
                 LeagueLevelUnit leagueLevelUnit = new LeagueLevelUnit();
 
-                foreach (XmlNode xmlNode in leagueLevelUnitNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in leagueLevelUnitNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.LeagueLevelUnitID:
                             leagueLevelUnit.leagueLevelUnitIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -508,23 +413,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return leagueLevelUnit;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private BotStatus ParseBotStatusNode(XmlNode botStatusNode)
-        {
-            try
-            {
+        private BotStatus ParseBotStatusNode(XmlNode botStatusNode) {
+            try {
                 BotStatus botStatus = new BotStatus();
 
-                foreach (XmlNode xmlNode in botStatusNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in botStatusNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.IsBot:
                             botStatus.isBotField = GenericFunctions.ConvertStringToBool(xmlNode.InnerText);
                             break;
@@ -532,23 +431,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return botStatus;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Cup ParseCupNode(XmlNode cupNode)
-        {
-            try
-            {
+        private Cup ParseCupNode(XmlNode cupNode) {
+            try {
                 Cup cup = new Cup();
 
-                foreach (XmlNode xmlNode in cupNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in cupNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.StillInCup:
                             cup.stillInCupField = GenericFunctions.ConvertStringToBool(xmlNode.InnerText);
                             break;
@@ -556,23 +449,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return cup;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Fanclub ParseFanclubNode(XmlNode fanclubNode)
-        {
-            try
-            {
+        private Fanclub ParseFanclubNode(XmlNode fanclubNode) {
+            try {
                 Fanclub fanclub = new Fanclub();
 
-                foreach (XmlNode xmlNode in fanclubNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in fanclubNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.FanclubID:
                             fanclub.fanclubIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -583,23 +470,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return fanclub;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private Guestbook ParseGuestbookNode(XmlNode guestbookNode)
-        {
-            try
-            {
+        private Guestbook ParseGuestbookNode(XmlNode guestbookNode) {
+            try {
                 Guestbook guestbook = new Guestbook();
 
-                foreach (XmlNode xmlNode in guestbookNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in guestbookNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.NumberOfGuestbookItems:
                             guestbook.numberOfGuestbookItemsField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -607,23 +488,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return guestbook;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private PressAnnouncement ParsePressAnnouncementNode(XmlNode pressAnnouncementNode)
-        {
-            try
-            {
+        private PressAnnouncement ParsePressAnnouncementNode(XmlNode pressAnnouncementNode) {
+            try {
                 PressAnnouncement pressAnnouncement = new PressAnnouncement();
 
-                foreach (XmlNode xmlNode in pressAnnouncementNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in pressAnnouncementNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.Subject:
                             pressAnnouncement.subjectField = xmlNode.InnerText;
                             break;
@@ -637,9 +512,7 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return pressAnnouncement;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }

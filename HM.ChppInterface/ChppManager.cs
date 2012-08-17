@@ -10,8 +10,7 @@ using HM.Resources.Constants;
 using HMEntities = HM.Entities.HattrickManager;
 using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.CustomEvents;
-using DevDefined.OAuth.Consumer;
-using DevDefined.OAuth.Framework;
+using HM.Core;
 
 namespace HM.ChppInterface {
     public class ChppManager {
@@ -31,36 +30,11 @@ namespace HM.ChppInterface {
 
         private HMEntities.UserProfiles.User currentUser;
         private DataAccess.DataManager dataManager;
-        private string recommendedServer;
         private string currentDate;
         private int filesDownloaded;
         private int totalFilesToDownload;
         private string path;
-
-        #endregion
-
-        #region OAuth
-
-        public String AccessProtectedResource(String accessToken, String accessTokenSecret, String parameters) {
-            String URL = Chpp.ResourcesURL + "?" + parameters;
-            OAuthSession oAuthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
-
-            oAuthSession.AccessToken = new TokenBase() { ConsumerKey = Chpp.ConsumerKey, Token = accessToken, TokenSecret = accessTokenSecret };
-
-            IConsumerRequest request = oAuthSession.Request().Get().ForUrl(URL);
-
-            return (request.ToString());
-        }
-
-        private OAuthSession GetOAuthSession(String key, String secret) {
-            OAuthConsumerContext consumerContext = new OAuthConsumerContext();
-
-            consumerContext.ConsumerKey = key;
-            consumerContext.ConsumerSecret = secret;
-            consumerContext.SignatureMethod = "HMAC-SHA1";
-
-            return (new OAuthSession(consumerContext, Chpp.RequestTokenURL, Chpp.AuthorizeURL, Chpp.AccessTokenURL));
-        }
+        private OAuthInterface oAuth;
 
         #endregion
 
@@ -72,7 +46,7 @@ namespace HM.ChppInterface {
         /// <param name="currentUser">Current active user</param>
         /// <param name="commonFolder">Common files download folder</param>
         public ChppManager(HMEntities.UserProfiles.User currentUser) {
-            this.recommendedServer = string.Empty;
+            this.oAuth = new OAuthInterface();
             this.currentUser = currentUser;
             this.dataManager = new HM.DataAccess.DataManager(System.IO.Path.Combine(Directory.GetCurrentDirectory(), FolderNames.CommonDataFolder));
             this.currentDate = DateTime.Now.ToString(HM.Resources.Constants.Chpp.HMDateFormat);
@@ -200,6 +174,7 @@ namespace HM.ChppInterface {
             }
         }
 
+        /*
         /// <summary>
         /// Creates standard UriBuilder for HT XML requests.
         /// </summary>
@@ -210,7 +185,8 @@ namespace HM.ChppInterface {
 
             return uriBuilder;
         }
-
+        */
+        
         /// <summary>
         /// Downloads Achievements file
         /// </summary>
@@ -425,7 +401,7 @@ namespace HM.ChppInterface {
         /// <returns>HttpWebRequest ready to be executed</returns>
         private HttpWebRequest CreateXmlRequest(string query, params string[] parameters) {
             // Prepare UriBuilder
-            UriBuilder uriBuilder = GetXmlUriBuilder();
+            UriBuilder uriBuilder = null;
             uriBuilder.Query = string.Format(query, parameters);
 
             // Construct request
@@ -573,13 +549,8 @@ namespace HM.ChppInterface {
 
         private HTEntities.TeamDetails.TeamDetails DownloadUserBasicData() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.UserBasicData);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
                 HTEntities.TeamDetails.TeamDetails teamDetails = new HTEntities.TeamDetails.TeamDetails();
-                teamDetails = (HTEntities.TeamDetails.TeamDetails)dataManager.ReadFile(response.GetResponseStream(), FileType.TeamDetails);
-
-                OnChppDownloadProgressChanged(BuildReportArguments(string.Empty, false));
+                teamDetails = (HTEntities.TeamDetails.TeamDetails)dataManager.ParseXMLString(oAuth.AccessProtectedResource(currentUser, QueryString.UserBasicData), FileType.TeamDetails);
 
                 return teamDetails;
             } catch (Exception ex) {

@@ -12,8 +12,6 @@ using HM.Core;
 using HM.Resources.Constants;
 using HM.Resources;
 using HM.Resources.CustomEvents;
-using DevDefined.OAuth.Consumer;
-using DevDefined.OAuth.Framework;
 
 namespace HM.UserInterface {
     public partial class FormAddEditUser : FormBase {
@@ -21,20 +19,18 @@ namespace HM.UserInterface {
 
         private HMEntities.UserProfiles.User userProfile;
         private FormMode formMode;
-        private IToken requestToken;
+        private HM.Core.OAuthInterface oAuth;
 
         #endregion
 
         #region Control's events
 
-        private void FormAddEditUser_Load(object sender, EventArgs e) {
-            textBoxAuthorizationURL.Text = GetRequestTokenURL();
-        }
-
         public FormAddEditUser() {
             InitializeComponent();
             formMode = FormMode.Add;
             userProfile = new HM.Entities.HattrickManager.UserProfiles.User();
+            oAuth = new OAuthInterface();
+            textBoxAuthorizationURL.Text = oAuth.GetRequestTokenURL();
         }
 
         public FormAddEditUser(HMEntities.UserProfiles.User selectedUser) {
@@ -42,6 +38,7 @@ namespace HM.UserInterface {
             formMode = FormMode.Edit;
             this.userProfile = selectedUser;
             this.buttonTest.Enabled = true;
+            oAuth = new OAuthInterface();
             LoadControls();
         }
 
@@ -61,10 +58,7 @@ namespace HM.UserInterface {
 
         private void buttonTest_Click(object sender, EventArgs e) {
             HTEntities.TeamDetails.TeamDetails teamDetails = new HTEntities.TeamDetails.TeamDetails();
-            IToken accessToken = ExchangeRequestTokenForAccessToken(textBoxSecurityCode.Text);
-
-            userProfile.accessToken = accessToken.Token;
-            userProfile.accessTokenSecret = accessToken.TokenSecret;
+            oAuth.ExchangeRequestTokenForAccessToken(textBoxSecurityCode.Text, out userProfile);
 
             Core.DownloadManager downloadManager = new DownloadManager(userProfile);
 
@@ -180,41 +174,6 @@ namespace HM.UserInterface {
         private void UpdateUserProfile() {
             //this.userProfile.authorizationField = this.textBoxAuthorizationURL.Text;
             this.userProfile.dataFolderField = this.textBoxDataFolder.Text;
-        }
-
-        #endregion
-
-        #region oAuth
-
-        private String GetRequestTokenURL() {
-            String AuthorizationURL = String.Empty;
-            OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
-            requestToken = oauthSession.GetRequestToken("GET");
-
-            try {
-                AuthorizationURL = oauthSession.GetUserAuthorizationUrlForToken(requestToken);
-            } catch {
-                AuthorizationURL = String.Empty;
-            }
-
-            return (AuthorizationURL);
-        }
-
-        private IToken ExchangeRequestTokenForAccessToken(String verifier) {
-            OAuthSession oauthSession = GetOAuthSession(Chpp.ConsumerKey, Chpp.ConsumerSecret);
-            IToken accessToken = oauthSession.ExchangeRequestTokenForAccessToken(requestToken, verifier);
-
-            return (accessToken);
-        }
-
-        private OAuthSession GetOAuthSession(String key, String secret) {
-            OAuthConsumerContext consumerContext = new OAuthConsumerContext();
-
-            consumerContext.ConsumerKey = key;
-            consumerContext.ConsumerSecret = secret;
-            consumerContext.SignatureMethod = SignatureMethod.HmacSha1;
-
-            return (new OAuthSession(consumerContext, Chpp.RequestTokenURL, Chpp.AuthorizeURL, Chpp.AccessTokenURL));
         }
 
         #endregion
