@@ -97,7 +97,7 @@ namespace HM.UserInterface {
             listBoxUserProfiles.Items.Clear();
 
             foreach (HMEntities.UserProfiles.User userProfile in userProfiles.userListField) {
-                listBoxUserProfiles.Items.Add(userProfile.accessToken);
+                listBoxUserProfiles.Items.Add(userProfile.teamIdField);
             }
         }
 

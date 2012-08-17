@@ -26,7 +26,7 @@ namespace HM.Resources.Constants {
         public const string Training = "file=training&version=1.5";
         public const string TransfersTeam = "file=transfersTeam&TeamID={0}&pageIndex={1}&version=1.1";
         public const string TransfersPlayer = "file=transfersPlayer&playerID={0}&version=1.1";
-        public const string UserBasicData = "file=team&version=2.1";
+        public const string UserBasicData = "file=teamdetails&version=2.6";
         public const string WorldDetails = "file=worlddetails&version=1.2";
     }
 }
