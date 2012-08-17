@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.UserInterface", "HM.UserInterface\HM.UserInterface.csproj", "{1F506328-5C53-43CE-97F8-C9CD291E3E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.Core", "HM.Core\HM.Core.csproj", "{7662753F-3394-4C7D-B4D7-D24D45E8EF54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.DataAccess", "HM.DataAccess\HM.DataAccess.csproj", "{0BF1D9BE-F0CA-4BE6-A7AB-9DE6A8BD0609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.ChppInterface", "HM.ChppInterface\HM.ChppInterface.csproj", "{A2FA6CFA-1404-49AE-9266-124CED7B9958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.Entities", "HM.Entities\HM.Entities.csproj", "{26FC881F-87DE-4CC1-91C5-48927E007CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HM.Resources", "HM.Resources\HM.Resources.csproj", "{B66C1BB6-A97C-474D-885E-25D7C1F39B04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F506328-5C53-43CE-97F8-C9CD291E3E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F506328-5C53-43CE-97F8-C9CD291E3E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F506328-5C53-43CE-97F8-C9CD291E3E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F506328-5C53-43CE-97F8-C9CD291E3E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7662753F-3394-4C7D-B4D7-D24D45E8EF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7662753F-3394-4C7D-B4D7-D24D45E8EF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7662753F-3394-4C7D-B4D7-D24D45E8EF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7662753F-3394-4C7D-B4D7-D24D45E8EF54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF1D9BE-F0CA-4BE6-A7AB-9DE6A8BD0609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF1D9BE-F0CA-4BE6-A7AB-9DE6A8BD0609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF1D9BE-F0CA-4BE6-A7AB-9DE6A8BD0609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF1D9BE-F0CA-4BE6-A7AB-9DE6A8BD0609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FA6CFA-1404-49AE-9266-124CED7B9958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FA6CFA-1404-49AE-9266-124CED7B9958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FA6CFA-1404-49AE-9266-124CED7B9958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FA6CFA-1404-49AE-9266-124CED7B9958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26FC881F-87DE-4CC1-91C5-48927E007CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FC881F-87DE-4CC1-91C5-48927E007CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FC881F-87DE-4CC1-91C5-48927E007CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FC881F-87DE-4CC1-91C5-48927E007CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B66C1BB6-A97C-474D-885E-25D7C1F39B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66C1BB6-A97C-474D-885E-25D7C1F39B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66C1BB6-A97C-474D-885E-25D7C1F39B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66C1BB6-A97C-474D-885E-25D7C1F39B04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = HM.UserInterface\HM.UserInterface.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 120
+		$2.TabWidth = 4
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/plain
+		$2.scope = text/plain
+	EndGlobalSection
+EndGlobal
