@@ -7,7 +7,7 @@ using HM.Resources.Constants;
 using DevDefined.OAuth.Consumer;
 using DevDefined.OAuth.Framework;
 
-namespace HM.Core {
+namespace HM.ChppInterface {
     public class OAuthInterface {
         private IToken requestToken;
 

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.HattrickManager.UserProfiles
-{
-    public class UserProfiles : HattrickManagerBase
-    {
+namespace HM.Entities.HattrickManager.UserProfiles {
+    public class UserProfiles : HattrickManagerBase {
         #region Properties
 
         public List<User> userListField { get; set; }
@@ -18,8 +16,7 @@ namespace HM.Entities.HattrickManager.UserProfiles
         /// <summary>
         /// Constructor
         /// </summary>
-        public UserProfiles()
-        {
+        public UserProfiles() {
             savedDateField = DateTime.MinValue;
             userListField = new List<User>();
         }

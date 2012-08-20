@@ -19,7 +19,7 @@ namespace HM.UserInterface {
 
         private HMEntities.UserProfiles.User userProfile;
         private FormMode formMode;
-        private HM.Core.OAuthInterface oAuth;
+        private HM.ChppInterface.OAuthInterface oAuth;
 
         #endregion
 
@@ -29,8 +29,8 @@ namespace HM.UserInterface {
             InitializeComponent();
             formMode = FormMode.Add;
             userProfile = new HM.Entities.HattrickManager.UserProfiles.User();
-            oAuth = new OAuthInterface();
-            textBoxAuthorizationURL.Text = oAuth.GetRequestTokenURL();
+            oAuth = new HM.ChppInterface.OAuthInterface();
+            bwOAuth.RunWorkerAsync();
         }
 
         public FormAddEditUser(HMEntities.UserProfiles.User selectedUser) {
@@ -38,7 +38,7 @@ namespace HM.UserInterface {
             formMode = FormMode.Edit;
             this.userProfile = selectedUser;
             this.buttonTest.Enabled = true;
-            oAuth = new OAuthInterface();
+            oAuth = new HM.ChppInterface.OAuthInterface();
             LoadControls();
         }
 
@@ -100,8 +100,17 @@ namespace HM.UserInterface {
         }
 
         private void buttonOk_Click(object sender, EventArgs e) {
-            UpdateUserProfile();
+            UpdateUserProfile("");
             EntityManager.SaveUser(userProfile);
+        }
+
+        // BGWorker Get Token URL
+        private void bwOAuth_GetRequestTokenURL(object sender, DoWorkEventArgs e) {
+            e.Result = oAuth.GetRequestTokenURL();
+        }
+
+        private void bwOAuth_CompleteGetRequestTokenURL(object sender, RunWorkerCompletedEventArgs e) {
+            textBoxAuthorizationURL.Text = e.Result.ToString();
         }
         #endregion
 
@@ -135,7 +144,6 @@ namespace HM.UserInterface {
         /// Loads controls with user's data
         /// </summary>
         private void LoadControls() {
-            //this.textBoxAuthorizationURL.Text = userProfile.authorizationField;
             this.textBoxDataFolder.Text = userProfile.dataFolderField;
             this.labelActivationDateValue.Text = userProfile.activationDateField.ToString(General.DateTimeFormat);
             this.labelTeamIdValue.Text = userProfile.teamIdField.ToString();
@@ -143,9 +151,8 @@ namespace HM.UserInterface {
         }
 
         private void ToggleControls() {
-            buttonOk.Enabled = true;
-
             bool enableControls = labelActivationDateValue.Text != string.Empty ? true : false;
+            buttonOk.Enabled = true;
 
             groupBoxUserData.Enabled = enableControls;
             labelActivationDate.Enabled = enableControls;
@@ -165,14 +172,17 @@ namespace HM.UserInterface {
             this.userProfile.activationDateField = teamDetails.userField.activationDateField;
             this.userProfile.youthTeamIdField = teamDetails.teamField.youthTeamIdField;
 
-            UpdateUserProfile();
+            UpdateUserProfile(teamDetails.userField.loginnameField);
         }
 
         /// <summary>
         /// Copies data from form to user profile
         /// </summary>
-        private void UpdateUserProfile() {
-            //this.userProfile.authorizationField = this.textBoxAuthorizationURL.Text;
+        private void UpdateUserProfile(String username) {
+            if (username != string.Empty) {
+                this.userProfile.username = username;
+            }
+
             this.userProfile.dataFolderField = this.textBoxDataFolder.Text;
         }
 

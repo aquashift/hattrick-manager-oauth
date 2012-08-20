@@ -60,32 +60,6 @@ namespace HM.Core {
             }
         }
 
-        /// <summary>
-        /// Checks that there is an active internet connection using Windows API
-        /// </summary>
-        /// <returns>Returns true if the computer is connected to the internet, false if not</returns>
-        private static bool IsConnected() {
-            int Desc;
-            return InternetGetConnectedState(out Desc, 0);
-        }
-
-        /*
-        /// <summary>
-        /// Checks if the user has seted a security code
-        /// </summary>
-        /// <returns>true if he has/false if he hasn't</returns>
-        public bool CheckSecurityCode() {
-            try {
-                if (IsConnected()) {
-                    return chppManager.CheckSecurityCode();
-                }
-                return false;
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-        */
-
         public bool DownloadUserBasicData(out HTEntities.TeamDetails.TeamDetails teamDetails) {
             try {
                 bool result = false;
@@ -99,6 +73,15 @@ namespace HM.Core {
             } catch (Exception ex) {
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// Checks that there is an active internet connection using Windows API
+        /// </summary>
+        /// <returns>Returns true if the computer is connected to the internet, false if not</returns>
+        private static bool IsConnected() {
+            int Desc;
+            return InternetGetConnectedState(out Desc, 0);
         }
 
         #endregion

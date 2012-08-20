@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public static class Tags
-    {
+namespace HM.Resources.Constants {
+    public static class Tags {
         public const string Achievement = "Achievement";
         public const string AchievementList = "AchievementList";
         public const string AchievementText = "AchievementText";
@@ -311,6 +309,8 @@ namespace HM.Resources.Constants
         public const string TeamName = "TeamName";
         public const string TeamRank = "TeamRank";
         public const string Terraces = "Terraces";
+        public const string UserToken = "UserToken";
+        public const string UserTokenSecret = "UserTokenSecret";        
         public const string Total = "Total";
         public const string Trainer = "Trainer";
         public const string TrainerData = "TrainerData";

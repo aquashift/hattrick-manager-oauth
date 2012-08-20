@@ -49,6 +49,7 @@
             this.labelTeamId = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.bwOAuth = new System.ComponentModel.BackgroundWorker();
             this.groupBoxUserCredentials.SuspendLayout();
             this.groupBoxUserData.SuspendLayout();
             this.SuspendLayout();
@@ -271,6 +272,11 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
+            // bwOAuth
+            // 
+            this.bwOAuth.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwOAuth_GetRequestTokenURL);
+            this.bwOAuth.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwOAuth_CompleteGetRequestTokenURL);
+            // 
             // FormAddEditUser
             // 
             this.AcceptButton = this.buttonOk;
@@ -318,5 +324,6 @@
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.Button buttonOpenURL;
         private System.Windows.Forms.Label labelOAuthInstructions;
+        private System.ComponentModel.BackgroundWorker bwOAuth;
     }
 }

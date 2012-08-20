@@ -10,7 +10,6 @@ using HM.Resources.Constants;
 using HMEntities = HM.Entities.HattrickManager;
 using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.CustomEvents;
-using HM.Core;
 
 namespace HM.ChppInterface {
     public class ChppManager {
@@ -60,7 +59,6 @@ namespace HM.ChppInterface {
         /// </summary>
         public void Download(bool downloadFullMatchesArchive) {
             try {
-                totalFilesToDownload += 1;
                 DownloadAll(downloadFullMatchesArchive);
             } catch (Exception ex) {
                 throw ex;
@@ -92,15 +90,15 @@ namespace HM.ChppInterface {
         private void DownloadAll(bool downloadFullMatchesArchive) {
             totalFilesToDownload += 13;
 
+            DownloadArenaDetails();           
             DownloadAchievements();
-            DownloadArenaDetails();
             DownloadClub();
             DownloadEconomy();
             DownloadFans();
-            DownloadLeagueDetails();
+            DownloadLeagueDetails();            
             DownloadLeagueFixtures();
             DownloadMatches();
-
+            
             if (downloadFullMatchesArchive) {
                 DownloadMatchesArchiveAll();
             } else {
@@ -109,7 +107,7 @@ namespace HM.ChppInterface {
 
             DownloadPlayersData();
             DownloadTeamDetails();
-            DownloadTraining();
+            DownloadTraining();            
             DownloadWorldDetails();
         }
 
@@ -140,7 +138,7 @@ namespace HM.ChppInterface {
                 matchList.AddRange(matches);
             }
 
-            OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchesarchive, false));
+            OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchesarchive));
 
             totalFilesToDownload += Convert.ToInt32(matchList.Count * 3);
 
@@ -160,7 +158,7 @@ namespace HM.ChppInterface {
             List<HM.Entities.Hattrick.MatchesArchive.Match> matches = DownloadMatchesArchive(false);
             matchList.AddRange(matches);
 
-            OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchesarchive, false));
+            OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchesarchive));
 
             totalFilesToDownload += Convert.ToInt32(matchList.Count * 3);
 
@@ -174,33 +172,19 @@ namespace HM.ChppInterface {
             }
         }
 
-        /*
-        /// <summary>
-        /// Creates standard UriBuilder for HT XML requests.
-        /// </summary>
-        /// <returns>UriBuilder initialized with recommended server URI and download path.</returns>
-        private UriBuilder GetXmlUriBuilder() {
-            UriBuilder uriBuilder = new UriBuilder(recommendedServer);
-            uriBuilder.Path += Chpp.ResourcesURL;
-
-            return uriBuilder;
-        }
-        */
-        
         /// <summary>
         /// Downloads Achievements file
         /// </summary>
         private void DownloadAchievements() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Achievements);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Achievements);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Achievements);
                 string fileName = FileNames.Achievements;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_achievements, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_achievements));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -211,15 +195,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadArenaDetails() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.ArenaDetails);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.ArenaDetails);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.ArenaDetails);
                 string fileName = FileNames.ArenaDetails;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_arenadetails, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_arenadetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -230,15 +213,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadClub() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Club);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Club);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Club);
                 string fileName = FileNames.Club;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_club, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_club));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -249,15 +231,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadEconomy() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Economy);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Economy);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Economy);
                 string fileName = FileNames.Economy;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_economy, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_economy));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -268,15 +249,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadFans() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Fans);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Fans);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Fans);
                 string fileName = FileNames.Fans;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_fans, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_fans));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -287,15 +267,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadLeagueDetails() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.LeagueDetails);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.LeagueDetails);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.LeagueDetails);
                 string fileName = FileNames.LeagueDetails;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_leaguedetails, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_leaguedetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -306,15 +285,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadLeagueFixtures() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.LeagueFixtures);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.LeagueFixtures);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.LeagueFixtures);
                 string fileName = FileNames.LeagueFixtures;
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_leaguefixtures, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_leaguefixtures));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -332,10 +310,9 @@ namespace HM.ChppInterface {
                 string firstDate = firstMatchDate.ToString(dateFormat) + General.DayTimeStart;
                 string lastDate = lastMatchDate.ToString(dateFormat) + General.DayTimeEnd;
 
-                HttpWebRequest request = CreateXmlRequest(QueryString.MatchesArchiveAll, teamId, firstDate, lastDate, youthTeam.ToString());
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchesArchiveAll, teamId, firstDate, lastDate, youthTeam.ToString()));
 
-                return ((HTEntities.MatchesArchive.MatchesArchive)dataManager.ReadFile(response.GetResponseStream(), FileType.MatchesArchive)).teamField.matchListField;
+                return ((HTEntities.MatchesArchive.MatchesArchive)dataManager.ReadXMLString(xmlData, FileType.MatchesArchive)).teamField.matchListField;
             } catch (Exception ex) {
                 throw ex;
             }
@@ -348,10 +325,9 @@ namespace HM.ChppInterface {
             try {
                 string teamId = youthTeam ? currentUser.youthTeamIdField.ToString() : currentUser.teamIdField.ToString();
 
-                HttpWebRequest request = CreateXmlRequest(QueryString.MatchesArchiveCurrent, teamId, youthTeam.ToString());
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchesArchiveCurrent, teamId, youthTeam.ToString()));
 
-                return ((HTEntities.MatchesArchive.MatchesArchive)dataManager.ReadFile(response.GetResponseStream(), FileType.MatchesArchive)).teamField.matchListField;
+                return ((HTEntities.MatchesArchive.MatchesArchive)dataManager.ReadXMLString(xmlData, FileType.MatchesArchive)).teamField.matchListField;
             } catch (Exception ex) {
                 throw ex;
             }
@@ -363,15 +339,14 @@ namespace HM.ChppInterface {
         /// <param name="matchId">Match id</param>
         private void DownloadMatchDetails(string matchId) {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.MatchDetails, matchId);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchDetails, matchId));
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.MatchDetails);
                 string fileName = String.Format(FileNames.MatchDetails, matchId);
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchdetails, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchdetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -382,34 +357,18 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadMatches() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Matches);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Matches);
 
-                dataManager.SaveMatches(currentUser, response.GetResponseStream());
+                dataManager.SaveMatches(currentUser, xmlData);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matches, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matches));
             } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        /// <summary>
-        /// Given a query and its parameters, creates a request for HT XML.
-        /// </summary>
-        /// <param name="query">Query strings</param>
-        /// <param name="parameters">Query parameters</param>
-        /// <returns>HttpWebRequest ready to be executed</returns>
-        private HttpWebRequest CreateXmlRequest(string query, params string[] parameters) {
-            // Prepare UriBuilder
-            UriBuilder uriBuilder = null;
-            uriBuilder.Query = string.Format(query, parameters);
-
-            // Construct request
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uriBuilder.Uri.AbsoluteUri);
-            request.UserAgent = Chpp.UserAgent;
-            request.CookieContainer = new CookieContainer();
-
-            return request;
+        private string CreateParameterURL(string query, params string[] parameters) {
+            return (string.Format(query, parameters));
         }
 
         /// <summary>
@@ -419,15 +378,14 @@ namespace HM.ChppInterface {
         /// <param name="teamId">Team id</param>
         private void DownloadMatchLineup(string matchId, string teamId) {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.MatchLineup, teamId, matchId);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchLineup, teamId, matchId));
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.MatchLineup);
                 string fileName = String.Format(FileNames.MatchLineup, matchId, teamId);
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchlineup, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchlineup));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -438,25 +396,18 @@ namespace HM.ChppInterface {
         /// </summary>
         private List<HTEntities.Players.Player> DownloadPlayers() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Players);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                //Converts the response Stream in a MemoryStream in order to read it more than once
-                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(new System.IO.StreamReader(response.GetResponseStream()).ReadToEnd()));
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Players);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Players);
                 string fileName = String.Format(FileNames.Players, currentDate);
 
                 //Writes the file
-                dataManager.WriteFile(memoryStream, currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_players, false));
-
-                //Rewinds the Stream
-                memoryStream.Position = 0;
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_players));
 
                 //Returns the PlayerList
-                return ((HTEntities.Players.Players)dataManager.ReadFile(memoryStream, FileType.Players)).teamField.playerListField;
+                return ((HTEntities.Players.Players)dataManager.ReadXMLString(xmlData, FileType.Players)).teamField.playerListField;
             } catch (Exception ex) {
                 throw ex;
             }
@@ -468,15 +419,14 @@ namespace HM.ChppInterface {
         /// <param name="playerId">Player id</param>
         private void DownloadPlayerDetails(string playerId) {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.PlayerDetails, playerId);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.PlayerDetails, playerId));
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.PlayerDetails);
                 string fileName = String.Format(FileNames.PlayerDetails, playerId);
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_playerdetails, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_playerdetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -487,15 +437,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadTeamDetails() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.TeamDetails, currentUser.teamIdField.ToString());
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.TeamDetails);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.TeamDetails);
                 string fileName = String.Format(FileNames.TeamDetails, currentUser.teamIdField.ToString());
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_teamdetails, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_teamdetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -506,15 +455,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadTraining() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.Training);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Training);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Training);
                 string fileName = String.Format(FileNames.Training, currentDate);
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_training, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_training));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -526,15 +474,14 @@ namespace HM.ChppInterface {
         /// <param name="playerId">Player id</param>
         private void DownloadTransfersPlayers(string playerId) {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.TransfersPlayer, playerId);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.TransfersPlayer, playerId));
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.TransfersPlayer);
                 string fileName = String.Format(FileNames.TransfersPlayer, playerId);
 
-                dataManager.WriteFile(response.GetResponseStream(), currentFilePath, fileName);
+                dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_transfersplayer, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_transfersplayer));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -550,7 +497,7 @@ namespace HM.ChppInterface {
         private HTEntities.TeamDetails.TeamDetails DownloadUserBasicData() {
             try {
                 HTEntities.TeamDetails.TeamDetails teamDetails = new HTEntities.TeamDetails.TeamDetails();
-                teamDetails = (HTEntities.TeamDetails.TeamDetails)dataManager.ParseXMLString(oAuth.AccessProtectedResource(currentUser, QueryString.UserBasicData), FileType.TeamDetails);
+                teamDetails = (HTEntities.TeamDetails.TeamDetails)dataManager.ReadXMLString(oAuth.AccessProtectedResource(currentUser, QueryString.UserBasicData), FileType.TeamDetails);
 
                 return teamDetails;
             } catch (Exception ex) {
@@ -563,12 +510,11 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadWorldDetails() {
             try {
-                HttpWebRequest request = CreateXmlRequest(QueryString.WorldDetails);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.WorldDetails);
 
-                dataManager.WriteFile(response.GetResponseStream(), FileNames.WorldDetails);
+                dataManager.WriteFile(xmlData, FileNames.WorldDetails);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_worlddetails, false));
+                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_worlddetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -580,9 +526,17 @@ namespace HM.ChppInterface {
         /// <param name="fileName">File downloaded</param>
         /// <param name="finished">Indicates whether the download process has ended</param>
         /// <returns></returns>
-        private ChppDownloadProgressChangedEventArgs BuildReportArguments(string fileName, bool finished) {
+        private ChppDownloadProgressChangedEventArgs BuildReportArguments(string fileName) {
+            bool finishedDownloading = false;
+
             filesDownloaded += 1;
-            return new ChppDownloadProgressChangedEventArgs(fileName, true, this.filesDownloaded, this.totalFilesToDownload, finished);
+
+            if (filesDownloaded == totalFilesToDownload) {
+                finishedDownloading = true;
+            } else {
+                finishedDownloading = false;
+            }
+            return new ChppDownloadProgressChangedEventArgs(fileName, true, this.filesDownloaded, this.totalFilesToDownload, finishedDownloading);
         }
 
         #endregion

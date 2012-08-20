@@ -10,10 +10,8 @@ using HTEntities = HM.Entities.Hattrick.ArenaDetails;
 using HMEntities = HM.Entities.HattrickManager.UserProfiles;
 using HM.Resources.Constants;
 
-namespace HM.UserInterface
-{
-    public partial class FormArena : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormArena : FormBase {
         #region Properties
 
         private HTEntities.ArenaDetails arenaDetails;
@@ -23,16 +21,14 @@ namespace HM.UserInterface
 
         #region Events
 
-        public FormArena(HTEntities.ArenaDetails arenaDetails, HMEntities.User user)
-        {
+        public FormArena(HTEntities.ArenaDetails arenaDetails, HMEntities.User user) {
             this.arenaDetails = arenaDetails;
             this.user = user;
             InitializeComponent();
             LoadControls();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
+        private void buttonClose_Click(object sender, EventArgs e) {
             this.Close();
         }
         #endregion
@@ -42,8 +38,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Fills the form's controls with the selected language
         /// </summary>
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_arena_buttonClose);
             this.groupBoxArena.Text = resourceManager.GetString(Localization.ui_arena_groupBoxArena);
             this.groupBoxSeats.Text = resourceManager.GetString(Localization.ui_arena_groupBoxSeats);
@@ -74,8 +69,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Loads all the controls
         /// </summary>
-        private void LoadControls()
-        {
+        private void LoadControls() {
             //Obtaining and calculating values
             int terracesCurrent = Convert.ToInt32(this.arenaDetails.currentCapacityField.terracesField);
             int basicCurrent = Convert.ToInt32(this.arenaDetails.currentCapacityField.basicField);
@@ -111,16 +105,13 @@ namespace HM.UserInterface
                                      + vipCurrent * DefaultValues.ArenaVipIncome;
             decimal maxIncomeExpanded;
 
-            if (this.arenaDetails.expandedCapacityField.availableField)
-            {
+            if (this.arenaDetails.expandedCapacityField.availableField) {
                 terracesExpanded = Convert.ToInt32(this.arenaDetails.expandedCapacityField.terracesField);
                 basicExpanded = Convert.ToInt32(this.arenaDetails.expandedCapacityField.basicField);
                 roofExpanded = Convert.ToInt32(this.arenaDetails.expandedCapacityField.roofField);
                 vipExpanded = Convert.ToInt32(this.arenaDetails.expandedCapacityField.vipField);
                 totalExpanded = terracesExpanded + basicExpanded + roofExpanded + vipExpanded;
-            }
-            else
-            {
+            } else {
                 terracesExpanded = terracesCurrent;
                 basicExpanded = basicCurrent;
                 roofExpanded = roofCurrent;
