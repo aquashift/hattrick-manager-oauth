@@ -55,8 +55,8 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Core">
-      <HintPath>..\HM.Core\bin\Debug\Core.dll</HintPath>
+    <Reference Include="DevDefined.OAuth">
+      <HintPath>..\ExternalResources\OAuth\DevDefined.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChppManager.cs" />
+    <Compile Include="OAuth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

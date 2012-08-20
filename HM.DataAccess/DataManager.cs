@@ -113,7 +113,7 @@ namespace HM.DataAccess {
         /// <param name="xmlStream">Xml file content</param>
         /// <param name="fileType">HT file type to read</param>
         /// <returns>HattrickBase object loaded with readed data</returns>
-        public HTEntities.HattrickBase ParseXMLString(String xmlString, FileType fileType) {
+        public HTEntities.HattrickBase ReadXMLString(String xmlString, FileType fileType) {
             try {
                 HTEntities.HattrickBase hattrickData = null;
                 XmlDocument xmlDocument = new XmlDocument();
@@ -214,7 +214,15 @@ namespace HM.DataAccess {
                                                                 break;
                                                             }
                                                         case Tags.Loginname: {
-                                                                //hattrickManagerDataUser.authorizationField = xmlNodeUser.InnerText;
+                                                                hattrickManagerDataUser.username = xmlNodeUser.InnerText;
+                                                                break;
+                                                            }
+                                                        case Tags.UserToken: {
+                                                                hattrickManagerDataUser.accessToken = xmlNodeUser.InnerText;
+                                                                break;
+                                                            }
+                                                        case Tags.UserTokenSecret: {
+                                                                hattrickManagerDataUser.accessTokenSecret = xmlNodeUser.InnerText;
                                                                 break;
                                                             }
                                                         case Tags.ActivationDate: {
@@ -265,6 +273,26 @@ namespace HM.DataAccess {
         }
 
         /// <summary>
+        /// Writes the content to the specified path and file name
+        /// </summary>
+        /// <param name="xmlData">Content to write</param>
+        /// <param name="path">Path to write the file in</param>
+        /// <param name="fileName">Name of the file to write</param>
+        public void WriteFile(String xmlData, string path, string fileName) {
+            try {
+                //Creates the directory if it doesn't exists
+                Directory.CreateDirectory(path);
+
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(xmlData);
+
+                xmlDocument.Save(Path.Combine(path, fileName));
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Writes a file with the specified name in the common data folder
         /// </summary>
         /// <param name="xmlStream">Content to write</param>
@@ -276,6 +304,25 @@ namespace HM.DataAccess {
 
                 XmlDocument xmlDocument = new XmlDocument();
                 xmlDocument.Load(xmlStream);
+
+                xmlDocument.Save(Path.Combine(this.commonFolder, fileName));
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Writes a file with the specified name in the common data folder
+        /// </summary>
+        /// <param name="xmlData">Content to write</param>
+        /// <param name="fileName">Name of the file to write</param>
+        public void WriteFile(String xmlData, string fileName) {
+            try {
+                //Creates the directory if it doesn't exists
+                Directory.CreateDirectory(this.commonFolder);
+
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(xmlData);
 
                 xmlDocument.Save(Path.Combine(this.commonFolder, fileName));
             } catch (Exception ex) {
@@ -303,17 +350,17 @@ namespace HM.DataAccess {
                     XmlElement xmlElementTeamId = xmlDocument.CreateElement(Tags.TeamID);
                     XmlElement xmlElementYouthTeamId = xmlDocument.CreateElement(Tags.YouthTeamID);
                     XmlElement xmlElementLoginname = xmlDocument.CreateElement(Tags.Loginname);
-                    XmlElement xmlElementSecurityCode = xmlDocument.CreateElement(Tags.SecurityCode);
-                    XmlAttribute xmlAttributeStoreSecurityCode = xmlDocument.CreateAttribute(Tags.Store);
+                    XmlElement xmlElementToken = xmlDocument.CreateElement(Tags.UserToken);
+                    XmlElement xmlElementTokenSecret = xmlDocument.CreateElement(Tags.UserTokenSecret);
                     XmlElement xmlElementActivation = xmlDocument.CreateElement(Tags.ActivationDate);
                     XmlElement xmlElementDataFolder = xmlDocument.CreateElement(Tags.DataFolder);
 
-
                     xmlElementTeamId.InnerText = currentUser.teamIdField.ToString();
                     xmlElementYouthTeamId.InnerText = currentUser.youthTeamIdField.ToString();
-                    //xmlElementLoginname.InnerText = currentUser.authorizationField;
+                    xmlElementLoginname.InnerText = currentUser.username;
+                    xmlElementToken.InnerText = currentUser.accessToken;
+                    xmlElementTokenSecret.InnerText = currentUser.accessTokenSecret;
 
-                    xmlElementSecurityCode.Attributes.Append(xmlAttributeStoreSecurityCode);
                     xmlElementActivation.InnerText = currentUser.activationDateField.ToString(General.DateTimeFormat);
                     xmlElementDataFolder.InnerText = currentUser.dataFolderField;
 
@@ -322,7 +369,9 @@ namespace HM.DataAccess {
                     xmlElementUser.AppendChild(xmlElementTeamId);
                     xmlElementUser.AppendChild(xmlElementYouthTeamId);
                     xmlElementUser.AppendChild(xmlElementLoginname);
-                    xmlElementUser.AppendChild(xmlElementSecurityCode);
+                    xmlElementUser.AppendChild(xmlElementToken);
+                    xmlElementUser.AppendChild(xmlElementTokenSecret);
+
                     xmlElementUser.AppendChild(xmlElementActivation);
                     xmlElementUser.AppendChild(xmlElementDataFolder);
 
@@ -350,12 +399,12 @@ namespace HM.DataAccess {
         /// Saves Matches XML from stream to disk.
         /// </summary>
         /// <param name="user"></param>
-        /// <param name="xmlStream"></param>
-        public void SaveMatches(User user, Stream xmlStream) {
+        /// <param name="xmlData"></param>
+        public void SaveMatches(User user, string xmlData) {
             string folderPath = System.IO.Path.Combine(System.IO.Path.Combine(user.dataFolderField, user.teamIdField.ToString()), FolderNames.Matches);
             string fileName = FileNames.Matches;
 
-            SaveXml(xmlStream, folderPath, fileName);
+            SaveXml(xmlData, folderPath, fileName);
         }
 
         //public void SaveMatches(User user, Stream xmlStream)
@@ -396,6 +445,26 @@ namespace HM.DataAccess {
 
                 XmlDocument xmlDocument = new XmlDocument();
                 xmlDocument.Load(xmlStream);
+
+                xmlDocument.Save(Path.Combine(folderPath, fileName));
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Saves given XML stream to disk.
+        /// </summary>
+        /// <param name="xmlData">XML stream</param>
+        /// <param name="folderPath">Folder to save file to</param>
+        /// <param name="fileName">File name</param>
+        private void SaveXml(string xmlData, string folderPath, string fileName) {
+            try {
+                //Creates the directory if it doesn't exists
+                Directory.CreateDirectory(folderPath);
+
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(xmlData);
 
                 xmlDocument.Save(Path.Combine(folderPath, fileName));
             } catch (Exception ex) {

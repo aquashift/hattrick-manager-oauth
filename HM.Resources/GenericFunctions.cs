@@ -6,10 +6,8 @@ using System.Drawing;
 using System.Security.Cryptography;
 using HM.Resources.Constants;
 
-namespace HM.Resources
-{
-    public static class GenericFunctions
-    {
+namespace HM.Resources {
+    public static class GenericFunctions {
         /// <summary>
         /// Calculates Hatstats
         /// </summary>
@@ -23,10 +21,8 @@ namespace HM.Resources
         /// <returns>Hatstats value</returns>
         public static int CalculateHatstats(SectorRating midfield, SectorRating rightAttack, SectorRating centralAttack,
                                             SectorRating leftAttack, SectorRating rightDefence, SectorRating centralDefence,
-                                            SectorRating leftDefence)
-        {
-            try
-            {
+                                            SectorRating leftDefence) {
+            try {
                 return Convert.ToInt32((Int32)midfield * 3 +
                                        (Int32)rightAttack +
                                        (Int32)centralAttack +
@@ -34,9 +30,7 @@ namespace HM.Resources
                                        (Int32)rightDefence +
                                        (Int32)centralDefence +
                                        (Int32)leftDefence);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -46,16 +40,12 @@ namespace HM.Resources
         /// </summary>
         /// <param name="stringValue">String to convert</param>
         /// <returns></returns>
-        public static decimal ConvertStringToDecimal(string stringValue)
-        {
+        public static decimal ConvertStringToDecimal(string stringValue) {
             decimal decimalValue = 0;
 
-            try
-            {
+            try {
                 decimalValue = Convert.ToDecimal(stringValue.Replace(General.Dot, System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 decimalValue = 0;
             }
 
@@ -67,16 +57,12 @@ namespace HM.Resources
         /// </summary>
         /// <param name="stringValue">String to convert</param>
         /// <returns></returns>
-        public static uint ConvertStringToUInt(string stringValue)
-        {
+        public static uint ConvertStringToUInt(string stringValue) {
             uint uintValue = 0;
 
-            try
-            {
+            try {
                 uintValue = Convert.ToUInt32(stringValue);
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 uintValue = 0;
             }
 
@@ -88,16 +74,12 @@ namespace HM.Resources
         /// </summary>
         /// <param name="stringValue">String to convert</param>
         /// <returns></returns>
-        public static byte ConvertStringToByte(string stringValue)
-        {
+        public static byte ConvertStringToByte(string stringValue) {
             byte byteValue = 0;
 
-            try
-            {
+            try {
                 byteValue = Convert.ToByte(stringValue);
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 byteValue = 0;
             }
 
@@ -109,16 +91,12 @@ namespace HM.Resources
         /// </summary>
         /// <param name="stringValue">String to convert</param>
         /// <returns></returns>
-        public static DateTime ConvertStringToDateTime(string stringValue)
-        {
+        public static DateTime ConvertStringToDateTime(string stringValue) {
             DateTime dateTimeValue = DateTime.Now;
 
-            try
-            {
+            try {
                 dateTimeValue = Convert.ToDateTime(stringValue);
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 dateTimeValue = DateTime.Now;
             }
 
@@ -130,26 +108,19 @@ namespace HM.Resources
         /// </summary>
         /// <param name="stringValue">String to convert</param>
         /// <returns></returns>
-        public static bool ConvertStringToBool(string stringValue)
-        {
+        public static bool ConvertStringToBool(string stringValue) {
             bool boolValue = false;
 
-            try
-            {
+            try {
                 //Checks if the string should be treated as a number or as a string
-                if (IsNumeric(stringValue))
-                {
+                if (IsNumeric(stringValue)) {
                     boolValue = Convert.ToBoolean(Convert.ToInt32(stringValue));
-                }
-                else
-                {
+                } else {
                     //Since HT bool values are presented like "True"/"False" they should be converted to "true"/"false" otherwise it throws an exception
                     boolValue = Convert.ToBoolean(stringValue.ToLower());
                 }
 
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 boolValue = false;
             }
 
@@ -162,8 +133,7 @@ namespace HM.Resources
         /// <param name="stringToDecrypt">String to decrypt</param>
         /// <param name="encryptionKey">Key used to encrypt</param>
         /// <returns></returns>
-        public static string DecryptString(string stringToDecrypt, string encryptionKey)
-        {
+        public static string DecryptString(string stringToDecrypt, string encryptionKey) {
             byte[] Results;
             System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();
 
@@ -186,13 +156,10 @@ namespace HM.Resources
             byte[] DataToDecrypt = Convert.FromBase64String(stringToDecrypt);
 
             // Step 5. Attempt to decrypt the string
-            try
-            {
+            try {
                 ICryptoTransform Decryptor = TDESAlgorithm.CreateDecryptor();
                 Results = Decryptor.TransformFinalBlock(DataToDecrypt, 0, DataToDecrypt.Length);
-            }
-            finally
-            {
+            } finally {
                 // Clear the TripleDes and Hashprovider services of any sensitive information
                 TDESAlgorithm.Clear();
                 HashProvider.Clear();
@@ -208,8 +175,7 @@ namespace HM.Resources
         /// <param name="stringToEncrypt">String to encrypt</param>
         /// <param name="encryptionKey">Key used to encrypt</param>
         /// <returns>Encrypted string</returns>
-        public static string EncryptString(string stringToEncrypt, string encryptionKey)
-        {
+        public static string EncryptString(string stringToEncrypt, string encryptionKey) {
             byte[] Results;
             System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();
 
@@ -232,13 +198,10 @@ namespace HM.Resources
             byte[] DataToEncrypt = UTF8.GetBytes(stringToEncrypt);
 
             // Step 5. Attempt to encrypt the string
-            try
-            {
+            try {
                 ICryptoTransform Encryptor = TDESAlgorithm.CreateEncryptor();
                 Results = Encryptor.TransformFinalBlock(DataToEncrypt, 0, DataToEncrypt.Length);
-            }
-            finally
-            {
+            } finally {
                 // Clear the TripleDes and Hashprovider services of any sensitive information
                 TDESAlgorithm.Clear();
                 HashProvider.Clear();
@@ -253,13 +216,11 @@ namespace HM.Resources
         /// </summary>
         /// <param name="leagueId">Flag's league id</param>
         /// <returns>Flag image</returns>
-        public static Image GetFlagByLeagueId(uint leagueId)
-        {
+        public static Image GetFlagByLeagueId(uint leagueId) {
             //Creates a new image 22x14
             Image flagImage = new Bitmap(22, 14);
 
-            try
-            {
+            try {
                 //Creates the selected flag's rectangle 20x12
                 Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * leagueId), 0, 20, 12);
 
@@ -274,9 +235,7 @@ namespace HM.Resources
 
                 //Draws the flag
                 graphics.DrawImage(Properties.Resources.Flags, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
 
@@ -288,12 +247,10 @@ namespace HM.Resources
         /// </summary>
         /// <param name="fileType">Folder's file type</param>
         /// <returns>Folder name</returns>
-        public static string GetFolderNameByFileType(FileType fileType)
-        {
+        public static string GetFolderNameByFileType(FileType fileType) {
             string folderName = string.Empty;
 
-            switch (fileType)
-            {
+            switch (fileType) {
                 case FileType.Achievements:
                     folderName = FolderNames.Achievements;
                     break;
@@ -352,13 +309,10 @@ namespace HM.Resources
         /// </summary>
         /// <param name="positionChange">Position change</param>
         /// <returns>Image object</returns>
-        public static Image GetPositionChange(PositionChange positionChange)
-        {
-            try
-            {
+        public static Image GetPositionChange(PositionChange positionChange) {
+            try {
                 Image positionImage = null;
-                switch (positionChange)
-                {
+                switch (positionChange) {
                     case PositionChange.MovingUp:
                         positionImage = Properties.Resources.PositionUp;
                         break;
@@ -371,9 +325,7 @@ namespace HM.Resources
                 }
 
                 return positionImage;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -385,45 +337,31 @@ namespace HM.Resources
         /// <param name="awayGoals">Away team's goals</param>
         /// <param name="location">User team's location</param>
         /// <returns>Image object</returns>
-        public static Image GetResultImage(byte homeGoals, byte awayGoals, TeamLocation location)
-        {
+        public static Image GetResultImage(byte homeGoals, byte awayGoals, TeamLocation location) {
             Image resultImage = null;
 
-            try
-            {
-                if (homeGoals == awayGoals)
-                {
+            try {
+                if (homeGoals == awayGoals) {
                     resultImage = Properties.Resources.Yellow;
-                }
-                else
-                {
-                    switch (location)
-                    {
+                } else {
+                    switch (location) {
                         case TeamLocation.Home:
-                            if (homeGoals > awayGoals)
-                            {
+                            if (homeGoals > awayGoals) {
                                 resultImage = Properties.Resources.Green;
-                            }
-                            else
-                            {
+                            } else {
                                 resultImage = Properties.Resources.Red;
                             }
                             break;
                         case TeamLocation.Away:
-                            if (awayGoals > homeGoals)
-                            {
+                            if (awayGoals > homeGoals) {
                                 resultImage = Properties.Resources.Green;
-                            }
-                            else
-                            {
+                            } else {
                                 resultImage = Properties.Resources.Red;
                             }
                             break;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
 
@@ -435,14 +373,11 @@ namespace HM.Resources
         /// </summary>
         /// <param name="weatherId">Weather ID</param>
         /// <returns>Image object</returns>
-        public static Image GetWeatherImage(Weather weatherId)
-        {
-            try
-            {
+        public static Image GetWeatherImage(Weather weatherId) {
+            try {
                 Image weatherImager = null;
 
-                switch (weatherId)
-                {
+                switch (weatherId) {
                     case Weather.Overcast:
                         weatherImager = Properties.Resources.WheatherOvercast;
                         break;
@@ -457,9 +392,7 @@ namespace HM.Resources
                         break;
                 }
                 return weatherImager;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -469,8 +402,7 @@ namespace HM.Resources
         /// </summary>
         /// <param name="text">String with tags to remove</param>
         /// <returns>Returns the string without HTML tags</returns>
-        public static string RemoveTagsFromString(string text)
-        {
+        public static string RemoveTagsFromString(string text) {
             return System.Text.RegularExpressions.Regex.Replace(text, @"<(.|\n)*?>", string.Empty);
         }
 
@@ -480,10 +412,8 @@ namespace HM.Resources
         /// <param name="startDate">Start date</param>
         /// <param name="endDate">End date</param>
         /// <returns>String array with first and last day of each month separated by '|'</returns>
-        public static string[] GetMonthsBetweenDates(DateTime startDate, DateTime endDate)
-        {
-            try
-            {
+        public static string[] GetMonthsBetweenDates(DateTime startDate, DateTime endDate) {
+            try {
                 string[] months = new string[GetMonthDifferenceBetweenDates(startDate, endDate) + 1];
 
                 DateTime monthStart = startDate;
@@ -491,8 +421,7 @@ namespace HM.Resources
 
                 months[0] = monthStart.ToString(Chpp.HMDateFormat) + General.SplitChar + monthEnd.ToString(Chpp.HMDateFormat);
 
-                for (int i = 1; i < months.Length - 1; i++)
-                {
+                for (int i = 1; i < months.Length - 1; i++) {
                     Console.WriteLine(i);
                     monthStart = monthEnd.AddDays(1);
                     monthEnd = ConvertStringToDateTime(DateTime.DaysInMonth(monthStart.Year, monthStart.Month).ToString() + General.Hyphen + monthStart.Month.ToString() + General.Hyphen + monthStart.Year.ToString());
@@ -504,9 +433,7 @@ namespace HM.Resources
                 months[months.Length - 1] = monthStart.ToString(Chpp.HMDateFormat) + General.SplitChar + monthEnd.ToString(Chpp.HMDateFormat);
 
                 return months;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -519,14 +446,12 @@ namespace HM.Resources
         /// <returns>Two-dimensional array of DateTime. First dimension is months (there will be as many
         /// items as there are months in the period). In the second dimension, first element is month's 
         /// start date, second - month's end date.</returns>
-        public static DateTime[,] GetMonthDates(DateTime startDate, DateTime endDate)
-        {
+        public static DateTime[,] GetMonthDates(DateTime startDate, DateTime endDate) {
             DateTime[,] monthDates = new DateTime[GetMonthDifferenceBetweenDates(startDate, endDate) + 1, 2];
 
             DateTime date = startDate;
             int monthIndex = 0;
-            while (monthIndex < monthDates.GetLength(0))
-            {
+            while (monthIndex < monthDates.GetLength(0)) {
                 DateTime monthStart = new DateTime(date.Year, date.Month, 1);
                 DateTime monthEnd = monthStart.AddMonths(1).AddDays(-1);
 
@@ -546,8 +471,7 @@ namespace HM.Resources
         /// <param name="startDate">Start date</param>
         /// <param name="endDate">End date</param>
         /// <returns>Number of months between dates</returns>
-        private static int GetMonthDifferenceBetweenDates(DateTime startDate, DateTime endDate)
-        {
+        private static int GetMonthDifferenceBetweenDates(DateTime startDate, DateTime endDate) {
             int monthsApart = 12 * (startDate.Year - endDate.Year) + startDate.Month - endDate.Month;
             return Math.Abs(monthsApart);
         }
@@ -557,25 +481,19 @@ namespace HM.Resources
         /// </summary>
         /// <param name="stringValue">String to check</param>
         /// <returns>Boolean indication whether the string is a number</returns>
-        private static bool IsNumeric(string stringValue)
-        {
-            try
-            {
+        private static bool IsNumeric(string stringValue) {
+            try {
                 bool isNumeric = true;
 
-                foreach (char currentChar in stringValue.ToCharArray())
-                {
-                    if (!Char.IsNumber(currentChar))
-                    {
+                foreach (char currentChar in stringValue.ToCharArray()) {
+                    if (!Char.IsNumber(currentChar)) {
                         isNumeric = false;
                         break;
                     }
                 }
 
                 return isNumeric;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.TeamDetails
-{
-    public class User
-    {
+namespace HM.Entities.Hattrick.TeamDetails {
+    public class User {
         #region Properties
 
         public uint userIdField { get; set; }
@@ -27,8 +25,7 @@ namespace HM.Entities.Hattrick.TeamDetails
         /// <summary>
         /// Constructor
         /// </summary>
-        public User()
-        {
+        public User() {
             this.userIdField = 0;
             this.languageField = new Language();
             this.hasSupporterField = false;

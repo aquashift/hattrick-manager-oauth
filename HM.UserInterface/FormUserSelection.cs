@@ -75,10 +75,10 @@ namespace HM.UserInterface {
         private void buttonOk_Click(object sender, EventArgs e) {
             string selectedLoginname = listBoxUserProfiles.SelectedItem.ToString();
 
-            new Core.DataManager().WriteUserProfilesFile(this.userProfiles);
+            //new Core.DataManager().WriteUserProfilesFile(this.userProfiles);
 
             foreach (HMEntities.UserProfiles.User currentUser in userProfiles.userListField) {
-                if (currentUser.accessToken == selectedLoginname) {
+                if (currentUser.username == selectedLoginname) {
                     this.selectedUser = currentUser;
                     break;
                 }
@@ -97,7 +97,7 @@ namespace HM.UserInterface {
             listBoxUserProfiles.Items.Clear();
 
             foreach (HMEntities.UserProfiles.User userProfile in userProfiles.userListField) {
-                listBoxUserProfiles.Items.Add(userProfile.teamIdField);
+                listBoxUserProfiles.Items.Add(userProfile.username);
             }
         }
 

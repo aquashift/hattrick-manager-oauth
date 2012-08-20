@@ -12,10 +12,8 @@ using HM.Resources.CustomEvents;
 using System.Threading;
 using HM.Resources.Constants;
 
-namespace HM.UserInterface
-{
-    public partial class FormDownload : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormDownload : FormBase {
         #region Delegates
 
         public delegate void UpdateDownloadStatusCallback(ChppDownloadProgressChangedEventArgs eventArgs);
@@ -31,21 +29,18 @@ namespace HM.UserInterface
 
         #region Events
 
-        public FormDownload(HMEntities.UserProfiles.User currentUser)
-        {
+        public FormDownload(HMEntities.UserProfiles.User currentUser) {
             InitializeComponent();
             this.currentUser = currentUser;
             this.downloadManager = new DownloadManager(currentUser);
             downloadManager.ChppDownloadProgressChanged += new ChppDownloadProgressChangedEventHandler(OnChppDownloadProgressChanged);
         }
 
-        protected virtual void OnChppDownloadProgressChanged(ChppDownloadProgressChangedEventArgs eventArgs)
-        {
+        protected virtual void OnChppDownloadProgressChanged(ChppDownloadProgressChangedEventArgs eventArgs) {
             UpdateDownloadStatus(eventArgs);
         }
 
-        private void buttonDownload_Click(object sender, EventArgs e)
-        {
+        private void buttonDownload_Click(object sender, EventArgs e) {
             this.UseWaitCursor = true;
             this.buttonClose.Enabled = false;
             this.buttonDownload.Enabled = false;
@@ -57,13 +52,11 @@ namespace HM.UserInterface
             downloadThread.Start();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
+        private void buttonClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void FormDownload_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void FormDownload_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = true;
         }
 
@@ -71,38 +64,29 @@ namespace HM.UserInterface
 
         #region Methods
 
-        private void StartDownload()
-        {
+        private void StartDownload() {
             downloadManager.Download(checkBoxDownloadFullMatchesArchive.Checked);
         }
 
-        private void UpdateDownloadStatus(ChppDownloadProgressChangedEventArgs eventArgs)
-        {
-            try
-            {
-                if (this.InvokeRequired)
-                {
+        private void UpdateDownloadStatus(ChppDownloadProgressChangedEventArgs eventArgs) {
+            try {
+                if (this.InvokeRequired) {
                     this.Invoke(new UpdateDownloadStatusCallback(UpdateDownloadStatus), eventArgs);
-                }
-                else
-                {
+                } else {
                     progressBarDownload.Maximum = eventArgs.TotalFilesToDownload;
                     progressBarDownload.Value = eventArgs.FilesDownloaded;
                     listBoxDownload.Items.Add(resourceManager.GetString(eventArgs.FileName));
                     listBoxDownload.SelectedIndex = (listBoxDownload.Items.Count - 1);
                 }
 
-                if (eventArgs.DownloadFinished)
-                {
+                if (eventArgs.DownloadFinished) {
                     this.UseWaitCursor = false;
                     this.buttonClose.Enabled = true;
                     this.buttonDownload.Enabled = true;
                     this.checkBoxDownloadFullMatchesArchive.Enabled = true;
                     this.FormClosing -= FormDownload_FormClosing;
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -110,8 +94,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Fills the form's controls with the selected language
         /// </summary>
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.Text = resourceManager.GetString(Localization.ui_download_FormText);
             this.buttonDownload.Text = resourceManager.GetString(Localization.ui_download_buttonDownload);
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_download_buttonClose);
