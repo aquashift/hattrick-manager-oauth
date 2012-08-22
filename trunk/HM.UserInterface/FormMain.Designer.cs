@@ -58,8 +58,22 @@
             this.buttonTraining = new System.Windows.Forms.ToolStripButton();
             this.buttonTopScorers = new System.Windows.Forms.ToolStripButton();
             this.buttonWorldDetails = new System.Windows.Forms.ToolStripButton();
+            this.dataGridViewPlayers = new System.Windows.Forms.DataGridView();
+            this.ColumnPlayerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerLastPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerBestPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerStamina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPlayerLoyality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkedListBoxPlayerGroups = new System.Windows.Forms.CheckedListBox();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -188,6 +202,7 @@
             // 
             // toolStripMain
             // 
+            this.toolStripMain.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buttonDownload,
             this.buttonSettings,
@@ -203,33 +218,34 @@
             this.buttonWorldDetails});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(992, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(992, 31);
             this.toolStripMain.TabIndex = 3;
             this.toolStripMain.Text = "toolStripMain";
             // 
             // buttonDownload
             // 
             this.buttonDownload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonDownload.Image = ((System.Drawing.Image)(resources.GetObject("buttonDownload.Image")));
+            this.buttonDownload.Image = global::HM.UserInterface.Properties.Resources.download;
+            this.buttonDownload.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.buttonDownload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(23, 22);
+            this.buttonDownload.Size = new System.Drawing.Size(28, 28);
             this.buttonDownload.Text = "buttonDownload";
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
             // buttonSettings
             // 
             this.buttonSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
+            this.buttonSettings.Image = global::HM.UserInterface.Properties.Resources.settings;
             this.buttonSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(23, 22);
+            this.buttonSettings.Size = new System.Drawing.Size(28, 28);
             this.buttonSettings.Text = "buttonSettings";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // buttonAchievements
             // 
@@ -237,37 +253,38 @@
             this.buttonAchievements.Image = ((System.Drawing.Image)(resources.GetObject("buttonAchievements.Image")));
             this.buttonAchievements.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonAchievements.Name = "buttonAchievements";
-            this.buttonAchievements.Size = new System.Drawing.Size(23, 22);
+            this.buttonAchievements.Size = new System.Drawing.Size(28, 28);
             this.buttonAchievements.Text = "buttonAchievements";
+            this.buttonAchievements.Visible = false;
             this.buttonAchievements.Click += new System.EventHandler(this.buttonAchievements_Click);
             // 
             // buttonArena
             // 
             this.buttonArena.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonArena.Image = ((System.Drawing.Image)(resources.GetObject("buttonArena.Image")));
+            this.buttonArena.Image = global::HM.UserInterface.Properties.Resources.arena;
             this.buttonArena.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonArena.Name = "buttonArena";
-            this.buttonArena.Size = new System.Drawing.Size(23, 22);
+            this.buttonArena.Size = new System.Drawing.Size(28, 28);
             this.buttonArena.Text = "buttonArena";
             this.buttonArena.Click += new System.EventHandler(this.buttonArena_Click);
             // 
             // buttonClub
             // 
             this.buttonClub.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonClub.Image = ((System.Drawing.Image)(resources.GetObject("buttonClub.Image")));
+            this.buttonClub.Image = global::HM.UserInterface.Properties.Resources.club;
             this.buttonClub.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonClub.Name = "buttonClub";
-            this.buttonClub.Size = new System.Drawing.Size(23, 22);
+            this.buttonClub.Size = new System.Drawing.Size(28, 28);
             this.buttonClub.Text = "buttonClub";
             this.buttonClub.Click += new System.EventHandler(this.buttonClub_Click);
             // 
             // buttonEconomy
             // 
             this.buttonEconomy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonEconomy.Image = ((System.Drawing.Image)(resources.GetObject("buttonEconomy.Image")));
+            this.buttonEconomy.Image = global::HM.UserInterface.Properties.Resources.finance;
             this.buttonEconomy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonEconomy.Name = "buttonEconomy";
-            this.buttonEconomy.Size = new System.Drawing.Size(23, 22);
+            this.buttonEconomy.Size = new System.Drawing.Size(28, 28);
             this.buttonEconomy.Text = "buttonEconomy";
             this.buttonEconomy.Click += new System.EventHandler(this.buttonEconomy_Click);
             // 
@@ -277,8 +294,9 @@
             this.buttonLeague.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeague.Image")));
             this.buttonLeague.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonLeague.Name = "buttonLeague";
-            this.buttonLeague.Size = new System.Drawing.Size(23, 22);
+            this.buttonLeague.Size = new System.Drawing.Size(28, 28);
             this.buttonLeague.Text = "buttonLeague";
+            this.buttonLeague.Visible = false;
             this.buttonLeague.Click += new System.EventHandler(this.buttonLeague_Click);
             // 
             // buttonMatches
@@ -287,17 +305,18 @@
             this.buttonMatches.Image = ((System.Drawing.Image)(resources.GetObject("buttonMatches.Image")));
             this.buttonMatches.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonMatches.Name = "buttonMatches";
-            this.buttonMatches.Size = new System.Drawing.Size(23, 22);
+            this.buttonMatches.Size = new System.Drawing.Size(28, 28);
             this.buttonMatches.Text = "buttonMatches";
+            this.buttonMatches.Visible = false;
             this.buttonMatches.Click += new System.EventHandler(this.buttonMatches_Click);
             // 
             // buttonTraining
             // 
             this.buttonTraining.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonTraining.Image = ((System.Drawing.Image)(resources.GetObject("buttonTraining.Image")));
+            this.buttonTraining.Image = global::HM.UserInterface.Properties.Resources.training;
             this.buttonTraining.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonTraining.Name = "buttonTraining";
-            this.buttonTraining.Size = new System.Drawing.Size(23, 22);
+            this.buttonTraining.Size = new System.Drawing.Size(28, 28);
             this.buttonTraining.Text = "buttonTraining";
             // 
             // buttonTopScorers
@@ -306,8 +325,9 @@
             this.buttonTopScorers.Image = ((System.Drawing.Image)(resources.GetObject("buttonTopScorers.Image")));
             this.buttonTopScorers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonTopScorers.Name = "buttonTopScorers";
-            this.buttonTopScorers.Size = new System.Drawing.Size(23, 22);
+            this.buttonTopScorers.Size = new System.Drawing.Size(28, 28);
             this.buttonTopScorers.Text = "buttonTopScorers";
+            this.buttonTopScorers.Visible = false;
             // 
             // buttonWorldDetails
             // 
@@ -315,15 +335,126 @@
             this.buttonWorldDetails.Image = ((System.Drawing.Image)(resources.GetObject("buttonWorldDetails.Image")));
             this.buttonWorldDetails.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonWorldDetails.Name = "buttonWorldDetails";
-            this.buttonWorldDetails.Size = new System.Drawing.Size(23, 22);
+            this.buttonWorldDetails.Size = new System.Drawing.Size(28, 28);
             this.buttonWorldDetails.Text = "buttonWorldDetails";
+            this.buttonWorldDetails.Visible = false;
             this.buttonWorldDetails.Click += new System.EventHandler(this.buttonWorldDetails_Click);
+            // 
+            // dataGridViewPlayers
+            // 
+            this.dataGridViewPlayers.AllowUserToAddRows = false;
+            this.dataGridViewPlayers.AllowUserToDeleteRows = false;
+            this.dataGridViewPlayers.AllowUserToResizeRows = false;
+            this.dataGridViewPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPlayers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridViewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnPlayerID,
+            this.ColumnPlayerNumber,
+            this.ColumnPlayerName,
+            this.ColumnPlayerLastPos,
+            this.ColumnPlayerBestPos,
+            this.ColumnPlayerAge,
+            this.ColumnPlayerForm,
+            this.ColumnPlayerStamina,
+            this.ColumnPlayerLoyality});
+            this.dataGridViewPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewPlayers.Location = new System.Drawing.Point(165, 3);
+            this.dataGridViewPlayers.Name = "dataGridViewPlayers";
+            this.dataGridViewPlayers.RowHeadersVisible = false;
+            this.dataGridViewPlayers.Size = new System.Drawing.Size(697, 326);
+            this.dataGridViewPlayers.TabIndex = 6;
+            // 
+            // ColumnPlayerID
+            // 
+            this.ColumnPlayerID.HeaderText = "ID";
+            this.ColumnPlayerID.Name = "ColumnPlayerID";
+            this.ColumnPlayerID.Visible = false;
+            // 
+            // ColumnPlayerNumber
+            // 
+            this.ColumnPlayerNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnPlayerNumber.HeaderText = "#";
+            this.ColumnPlayerNumber.Name = "ColumnPlayerNumber";
+            this.ColumnPlayerNumber.ReadOnly = true;
+            this.ColumnPlayerNumber.Width = 39;
+            // 
+            // ColumnPlayerName
+            // 
+            this.ColumnPlayerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnPlayerName.HeaderText = "Name";
+            this.ColumnPlayerName.Name = "ColumnPlayerName";
+            this.ColumnPlayerName.ReadOnly = true;
+            // 
+            // ColumnPlayerLastPos
+            // 
+            this.ColumnPlayerLastPos.HeaderText = "Last Position";
+            this.ColumnPlayerLastPos.Name = "ColumnPlayerLastPos";
+            // 
+            // ColumnPlayerBestPos
+            // 
+            this.ColumnPlayerBestPos.HeaderText = "Best Position";
+            this.ColumnPlayerBestPos.Name = "ColumnPlayerBestPos";
+            // 
+            // ColumnPlayerAge
+            // 
+            this.ColumnPlayerAge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColumnPlayerAge.HeaderText = "Age";
+            this.ColumnPlayerAge.Name = "ColumnPlayerAge";
+            this.ColumnPlayerAge.ReadOnly = true;
+            this.ColumnPlayerAge.Width = 51;
+            // 
+            // ColumnPlayerForm
+            // 
+            this.ColumnPlayerForm.HeaderText = "Form";
+            this.ColumnPlayerForm.Name = "ColumnPlayerForm";
+            // 
+            // ColumnPlayerStamina
+            // 
+            this.ColumnPlayerStamina.HeaderText = "Stamina";
+            this.ColumnPlayerStamina.Name = "ColumnPlayerStamina";
+            // 
+            // ColumnPlayerLoyality
+            // 
+            this.ColumnPlayerLoyality.HeaderText = "Loyality";
+            this.ColumnPlayerLoyality.Name = "ColumnPlayerLoyality";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.69879F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.3012F));
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewPlayers, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkedListBoxPlayerGroups, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 55);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.66507F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.33493F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(992, 418);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // checkedListBoxPlayerGroups
+            // 
+            this.checkedListBoxPlayerGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxPlayerGroups.FormattingEnabled = true;
+            this.checkedListBoxPlayerGroups.Items.AddRange(new object[] {
+            "All",
+            "A Squad",
+            "B Squad"});
+            this.checkedListBoxPlayerGroups.Location = new System.Drawing.Point(3, 3);
+            this.checkedListBoxPlayerGroups.Name = "checkedListBoxPlayerGroups";
+            this.checkedListBoxPlayerGroups.Size = new System.Drawing.Size(156, 326);
+            this.checkedListBoxPlayerGroups.TabIndex = 7;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 473);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.menuStripMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -337,6 +468,8 @@
             this.menuStripMain.PerformLayout();
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,6 +506,18 @@
         private System.Windows.Forms.ToolStripButton buttonTraining;
         private System.Windows.Forms.ToolStripButton buttonTopScorers;
         private System.Windows.Forms.ToolStripButton buttonWorldDetails;
+        private System.Windows.Forms.DataGridView dataGridViewPlayers;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckedListBox checkedListBoxPlayerGroups;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerLastPos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerBestPos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerForm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerStamina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerLoyality;
     }
 }
 

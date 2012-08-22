@@ -11,10 +11,8 @@ using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.Constants;
 using HM.Resources;
 
-namespace HM.UserInterface
-{
-    public partial class FormLeague : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormLeague : FormBase {
         #region Properties
 
         private HTEntities.LeagueDetails.LeagueDetails leagueDetails;
@@ -51,8 +49,7 @@ namespace HM.UserInterface
 
         #region Control events
 
-        public FormLeague(HTEntities.LeagueDetails.LeagueDetails leagueDetails, HTEntities.LeagueFixtures.LeagueFixtures leagueFixtures, uint teamId)
-        {
+        public FormLeague(HTEntities.LeagueDetails.LeagueDetails leagueDetails, HTEntities.LeagueFixtures.LeagueFixtures leagueFixtures, uint teamId) {
             this.teamId = teamId;
             this.leagueDetails = leagueDetails;
             this.leagueFixtures = leagueFixtures;
@@ -79,49 +76,39 @@ namespace HM.UserInterface
             LoadControls();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
+        private void buttonClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void dataGridViewPositions_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
+        private void dataGridViewPositions_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             int index = dataGridViewPositions.Columns[columnTeamIDName].Index;
 
-            foreach (DataGridViewRow row in dataGridViewPositions.Rows)
-            {
-                if (Convert.ToUInt32(row.Cells[index].Value) == teamId)
-                {
+            foreach (DataGridViewRow row in dataGridViewPositions.Rows) {
+                if (Convert.ToUInt32(row.Cells[index].Value) == teamId) {
                     row.DefaultCellStyle.Font = new Font(FontFamily.GenericSansSerif, (float)8.25, FontStyle.Bold);
                     break;
                 }
             }
         }
 
-        private void dataGridViewFixtures_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
+        private void dataGridViewFixtures_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             int indexAwayTeamID = dataGridViewFixtures.Columns[columnAwayTeamIDName].Index;
             int indexHomeTeamID = dataGridViewFixtures.Columns[columnHomeTeamIDName].Index;
             int indexHomeTeam = dataGridViewFixtures.Columns[columnHomeTeamName].Index;
             int indexAwayTeam = dataGridViewFixtures.Columns[columnAwayTeamName].Index;
 
-            foreach (DataGridViewRow row in dataGridViewFixtures.Rows)
-            {
-                if (Convert.ToUInt32(row.Cells[indexHomeTeamID].Value) == teamId)
-                {
+            foreach (DataGridViewRow row in dataGridViewFixtures.Rows) {
+                if (Convert.ToUInt32(row.Cells[indexHomeTeamID].Value) == teamId) {
                     row.Cells[indexHomeTeam].Style.Font = new Font(FontFamily.GenericSansSerif, (float)8.25, FontStyle.Bold);
                 }
-                if (Convert.ToUInt32(row.Cells[indexAwayTeamID].Value) == teamId)
-                {
+                if (Convert.ToUInt32(row.Cells[indexAwayTeamID].Value) == teamId) {
                     row.Cells[indexAwayTeam].Style.Font = new Font(FontFamily.GenericSansSerif, (float)8.25, FontStyle.Bold);
                 }
             }
         }
 
-        private void dataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (((DataGridView)sender).SelectedCells.Count > 0)
-            {
+        private void dataGridView_SelectionChanged(object sender, EventArgs e) {
+            if (((DataGridView)sender).SelectedCells.Count > 0) {
                 ((DataGridView)sender).ClearSelection();
             }
         }
@@ -133,8 +120,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Fills the form's controls with the selected language
         /// </summary>
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_league_buttonClose);
             this.dataGridViewPositions.Columns[columnChangeName].HeaderText = string.Empty;
             this.dataGridViewPositions.Columns[columnDrawName].HeaderText = resourceManager.GetString(Localization.ui_league_columnDraw);
@@ -166,8 +152,7 @@ namespace HM.UserInterface
 
         #region Private methods
 
-        private void LoadControls()
-        {
+        private void LoadControls() {
             this.labelLevelValue.Text = string.Format(resourceManager.GetString(Localization.ui_league_labelLevelValue), leagueDetails.leagueLevelField, leagueDetails.maxLevelField);
             this.labelRoundValue.Text = string.Format(resourceManager.GetString(Localization.ui_league_labelRoundValue), leagueDetails.matchRoundField, leagueFixtures.seasonField);
             this.labelSeriesValue.Text = string.Format(resourceManager.GetString(Localization.ui_league_labelSeriesValue), leagueDetails.leagueLevelUnitNameField, leagueDetails.leagueLevelUnitIdField);
@@ -175,8 +160,7 @@ namespace HM.UserInterface
             LoadFixturesGrid();
         }
 
-        private void LoadDetailsGrid()
-        {
+        private void LoadDetailsGrid() {
             DataTable detailsDataTable = new DataTable();
             detailsDataTable.Columns.Add(Columns.Position, typeof(byte));
             detailsDataTable.Columns.Add(Columns.PositionChange, typeof(Image));
@@ -191,8 +175,7 @@ namespace HM.UserInterface
             detailsDataTable.Columns.Add(Columns.Points, typeof(byte));
             detailsDataTable.Columns.Add(Columns.TeamID, typeof(uint));
 
-            foreach (HTEntities.LeagueDetails.Team team in leagueDetails.teamField)
-            {
+            foreach (HTEntities.LeagueDetails.Team team in leagueDetails.teamField) {
                 DataRow newDataRow = detailsDataTable.NewRow();
 
                 newDataRow[Columns.Position] = team.positionField;
@@ -214,8 +197,7 @@ namespace HM.UserInterface
             dataGridViewPositions.DataSource = detailsDataTable;
         }
 
-        private void LoadFixturesGrid()
-        {
+        private void LoadFixturesGrid() {
             DataTable fixturesDataTable = new DataTable();
             fixturesDataTable.Columns.Add(Columns.Round, typeof(byte));
             fixturesDataTable.Columns.Add(Columns.MatchDate, typeof(string));
@@ -227,8 +209,7 @@ namespace HM.UserInterface
             fixturesDataTable.Columns.Add(Columns.AwayTeam, typeof(string));
             fixturesDataTable.Columns.Add(Columns.AwayResult, typeof(Image));
 
-            foreach (HTEntities.LeagueFixtures.Match match in leagueFixtures.matchListField)
-            {
+            foreach (HTEntities.LeagueFixtures.Match match in leagueFixtures.matchListField) {
                 DataRow newDataRow = fixturesDataTable.NewRow();
 
                 newDataRow[Columns.Round] = match.matchRoundField;
@@ -239,13 +220,10 @@ namespace HM.UserInterface
                 newDataRow[Columns.AwayTeamID] = match.awayTeamField.awayTeamIdField;
                 newDataRow[Columns.AwayTeam] = match.awayTeamField.awayTeamNameField;
 
-                if (match.matchDateField < leagueFixtures.fetchedDateField)
-                {
+                if (match.matchDateField < leagueFixtures.fetchedDateField) {
                     newDataRow[Columns.HomeResult] = GenericFunctions.GetResultImage(match.homeGoalsField, match.awayGoalsField, TeamLocation.Home);
                     newDataRow[Columns.AwayResult] = GenericFunctions.GetResultImage(match.homeGoalsField, match.awayGoalsField, TeamLocation.Away);
-                }
-                else
-                {
+                } else {
                     newDataRow[Columns.HomeResult] = HM.Resources.Properties.Resources.Grey;
                     newDataRow[Columns.AwayResult] = HM.Resources.Properties.Resources.Grey;
                 }
