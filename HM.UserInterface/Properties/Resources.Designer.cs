@@ -60,10 +60,59 @@ namespace HM.UserInterface.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap arena {
+            get {
+                object obj = ResourceManager.GetObject("arena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap club {
+            get {
+                object obj = ResourceManager.GetObject("club", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap download {
+            get {
+                object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap finance {
+            get {
+                object obj = ResourceManager.GetObject("finance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon HM3 {
             get {
                 object obj = ResourceManager.GetObject("HM3", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap lineup {
+            get {
+                object obj = ResourceManager.GetObject("lineup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap settings {
+            get {
+                object obj = ResourceManager.GetObject("settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap training {
+            get {
+                object obj = ResourceManager.GetObject("training", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

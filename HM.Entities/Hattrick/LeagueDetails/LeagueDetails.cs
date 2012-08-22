@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.LeagueDetails
-{
-    public class LeagueDetails : HattrickBase
-    {
+namespace HM.Entities.Hattrick.LeagueDetails {
+    public class LeagueDetails : HattrickBase {
         #region Properties
 
         public uint leagueIdField { get; set; }
@@ -15,11 +13,10 @@ namespace HM.Entities.Hattrick.LeagueDetails
         public byte maxLevelField { get; set; }
         public uint leagueLevelUnitIdField { get; set; }
         public string leagueLevelUnitNameField { get; set; }
+        public uint currentMatchRound { get; set; }
         public Team[] teamField { get; set; }
-        public byte matchRoundField
-        {
-            get
-            {
+        public byte matchRoundField {
+            get {
                 return teamField[0].matchesField;
             }
         }
@@ -31,14 +28,14 @@ namespace HM.Entities.Hattrick.LeagueDetails
         /// <summary>
         /// Constructor
         /// </summary>
-        public LeagueDetails()
-        {
+        public LeagueDetails() {
             leagueIdField = 0;
             leagueNameField = string.Empty;
             leagueLevelField = 0;
             maxLevelField = 0;
             leagueLevelUnitIdField = 0;
             leagueLevelUnitNameField = string.Empty;
+            currentMatchRound = 0;
             teamField = new Team[8];
         }
 

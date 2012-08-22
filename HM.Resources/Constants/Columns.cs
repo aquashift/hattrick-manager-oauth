@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public class Columns
-    {
+namespace HM.Resources.Constants {
+    public class Columns {
         public const string Display = "Display";
         public const string Value = "Value";
         public const string Position = "Position";

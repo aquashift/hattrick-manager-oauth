@@ -68,6 +68,7 @@ namespace HM.Resources.Constants {
         public const string CurrencyName = "CurrencyName";
         public const string CurrencyRate = "CurrencyRate";
         public const string CurrentCapacity = "CurrentCapacity";
+        public const string CurrentMatchRound = "CurrentMatchRound";
         public const string DataFolder = "DataFolder";
         public const string Deadline = "Deadline";
         public const string DefenderSkill = "DefenderSkill";

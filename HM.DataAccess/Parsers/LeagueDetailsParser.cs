@@ -8,23 +8,18 @@ using HM.Resources.Constants;
 using HM.Entities.Hattrick;
 using HM.Entities.Hattrick.LeagueDetails;
 
-namespace HM.DataAccess.Parsers
-{
-    public class LeagueDetailsParser : BaseParser
-    {
+namespace HM.DataAccess.Parsers {
+    public class LeagueDetailsParser : BaseParser {
         #region Implementations of abstract methods
 
-        protected override HM.Entities.Hattrick.HattrickBase CreateEntity()
-        {
+        protected override HM.Entities.Hattrick.HattrickBase CreateEntity() {
             return new LeagueDetails();
         }
 
-        protected override void ParseSpecificNode(System.Xml.XmlNode xmlNode, HM.Entities.Hattrick.HattrickBase entity)
-        {
+        protected override void ParseSpecificNode(System.Xml.XmlNode xmlNode, HM.Entities.Hattrick.HattrickBase entity) {
             LeagueDetails leagueDetails = (LeagueDetails)entity;
 
-            switch (xmlNode.Name)
-            {
+            switch (xmlNode.Name) {
                 case Tags.LeagueID:
                     leagueDetails.leagueIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                     break;
@@ -43,6 +38,9 @@ namespace HM.DataAccess.Parsers
                 case Tags.LeagueLevelUnitName:
                     leagueDetails.leagueLevelUnitNameField = xmlNode.InnerText;
                     break;
+                case Tags.CurrentMatchRound:
+                    leagueDetails.currentMatchRound = GenericFunctions.ConvertStringToByte(xmlNode.InnerText);
+                    break;
                 case Tags.Team:
                     Team newTeam = ParseTeamNode(xmlNode);
                     leagueDetails.teamField[newTeam.positionField - 1] = newTeam;
@@ -56,14 +54,11 @@ namespace HM.DataAccess.Parsers
 
         #region Priveate Methods
 
-        private Team ParseTeamNode(XmlNode teamArrayNode)
-        {
+        private Team ParseTeamNode(XmlNode teamArrayNode) {
             Team team = new Team();
 
-            foreach (XmlNode teamNode in teamArrayNode.ChildNodes)
-            {
-                switch (teamNode.Name)
-                {
+            foreach (XmlNode teamNode in teamArrayNode.ChildNodes) {
+                switch (teamNode.Name) {
                     case Tags.TeamID:
                         team.teamIdField = GenericFunctions.ConvertStringToUInt(teamNode.InnerText);
                         break;
