@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.Players
-{
-    public class Players : HattrickBase
-    {
+namespace HM.Entities.Hattrick.Players {
+    public class Players : HattrickBase {
         #region Properties
 
         public bool userIsSupporterField { get; set; }
@@ -22,8 +20,7 @@ namespace HM.Entities.Hattrick.Players
         /// <summary>
         /// Constructor
         /// </summary>
-        public Players()
-        {
+        public Players() {
             fileNameField = string.Empty;
             versionField = 0;
             userIdField = 0;

@@ -404,6 +404,9 @@ namespace HM.ChppInterface {
                 //Writes the file
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
+                //Writes again for current players
+                dataManager.WriteFile(xmlData, currentFilePath, FileNames.CurrentPlayers);
+
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_players));
 
                 //Returns the PlayerList

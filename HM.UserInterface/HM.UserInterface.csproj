@@ -88,6 +88,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\Lineup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Lineup.Designer.cs">
+      <DependentUpon>Lineup.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAchievements.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomControls\Lineup.resx">
+      <DependentUpon>Lineup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAchievements.resx">
       <DependentUpon>FormAchievements.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -268,27 +277,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\download.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\club.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\finance.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lineup.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\training.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arena.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

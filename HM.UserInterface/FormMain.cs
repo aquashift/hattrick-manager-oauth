@@ -85,6 +85,16 @@ namespace HM.UserInterface {
             }
         }
 
+        private void buttonLineup_Click(object sender, EventArgs e) {
+            panelMainContent.Controls.Clear();
+
+            CustomControls.Lineup lineup = new CustomControls.Lineup(entityManager.GetPlayerDetails(), currentUser);
+
+            lineup.Dock = DockStyle.Fill;
+
+            panelMainContent.Controls.Add(lineup);
+        }
+
         private void buttonMatches_Click(object sender, EventArgs e) {
         }
 
@@ -102,11 +112,21 @@ namespace HM.UserInterface {
             if (!selectedUser) {
                 this.Close();
             }
+
+            SetToolbarButtons();
         }
 
         #endregion
 
         #region Methods
+
+        private void SetToolbarButtons() {
+            for (int i = 0; i < toolStripMain.Items.Count; i++) {
+                ToolStripItem item = toolStripMain.Items[i];
+
+                item.Image = HM.Resources.GenericFunctions.GetToolbarImage(item.Text);
+            }
+        }
 
         protected override void PopulateLanguage() {
             this.Text = resourceManager.GetString(Localization.ui_main_FormText);
@@ -126,19 +146,6 @@ namespace HM.UserInterface {
             this.menuItemClub.Text = resourceManager.GetString(Localization.ui_main_menuItemClub);
             this.menuItemTopScorers.Text = resourceManager.GetString(Localization.ui_main_menuItemTopScorers);
             this.menuItemWorldDetails.Text = resourceManager.GetString(Localization.ui_main_menuItemWorldDetails);
-
-            // Buttons
-            this.buttonDownload.Text = resourceManager.GetString(Localization.ui_main_menuItemDownload);
-            this.buttonSettings.Text = resourceManager.GetString(Localization.ui_main_menuItemSettings);
-            this.buttonAchievements.Text = resourceManager.GetString(Localization.ui_main_menuItemAchievements);
-            this.buttonArena.Text = resourceManager.GetString(Localization.ui_main_menuItemArena);
-            this.buttonClub.Text = resourceManager.GetString(Localization.ui_main_menuItemClub);
-            this.buttonEconomy.Text = resourceManager.GetString(Localization.ui_main_menuItemEconomy);
-            this.buttonLeague.Text = resourceManager.GetString(Localization.ui_main_menuItemLeague);
-            this.buttonMatches.Text = resourceManager.GetString(Localization.ui_main_menuItemMatches);
-            this.buttonTraining.Text = resourceManager.GetString(Localization.ui_main_menuItemTraining);
-            this.buttonTopScorers.Text = resourceManager.GetString(Localization.ui_main_menuItemTopScorers);
-            this.buttonWorldDetails.Text = resourceManager.GetString(Localization.ui_main_menuItemWorldDetails);
         }
 
         #endregion

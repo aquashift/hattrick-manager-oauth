@@ -243,6 +243,38 @@ namespace HM.Resources {
         }
 
         /// <summary>
+        /// Gets the country flag for the specified country id
+        /// </summary>
+        /// <param name="leagueId">Flag's country id</param>
+        /// <returns>Flag image</returns>
+        public static Image GetFlagByCountryId(uint countryId) {
+            //Creates a new image 22x14
+
+            Image flagImage = new Bitmap(22, 14);
+
+            try {
+                //Creates the selected flag's rectangle 20x12
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * countryId), 0, 20, 12);
+
+                //Creates the rectangle where the flag is going to be drawed
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 12);
+
+                //Creates the Graphics object
+                Graphics graphics = Graphics.FromImage(flagImage);
+
+                //Draws a black rectangle around the flag for better visualization
+                graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(0, 0, 21, 13));
+
+                //Draws the flag
+                graphics.DrawImage(Properties.Resources.Flags, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            return flagImage;
+        }
+
+        /// <summary>
         /// Gets the folder name by file type
         /// </summary>
         /// <param name="fileType">Folder's file type</param>
@@ -392,6 +424,28 @@ namespace HM.Resources {
                         break;
                 }
                 return weatherImager;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public static Image GetToolbarImage(string buttonID) {
+            Image toolbarImage = null;
+
+            try {
+                switch (buttonID) {
+                    case "buttonDownload":
+                        toolbarImage = Properties.Resources.download;
+                        break;
+                    case "buttonSettings":
+                        toolbarImage = Properties.Resources.settings;
+                        break;
+                    case "buttonLineup":
+                        toolbarImage = Properties.Resources.lineup;
+                        break;
+                }
+
+                return toolbarImage;
             } catch (Exception ex) {
                 throw ex;
             }

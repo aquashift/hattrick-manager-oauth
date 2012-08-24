@@ -8,25 +8,19 @@ using HM.Resources.Constants;
 using HM.Entities.Hattrick;
 using HM.Entities.Hattrick.Players;
 
-namespace HM.DataAccess.Parsers
-{
-    public class PlayersParser : BaseParser
-    {
+namespace HM.DataAccess.Parsers {
+    public class PlayersParser : BaseParser {
         #region Implementation of abstract methods
 
-        protected override HattrickBase CreateEntity()
-        {
+        protected override HattrickBase CreateEntity() {
             return new Players();
         }
 
-        protected override void ParseSpecificNode(XmlNode xmlNode, HattrickBase entity)
-        {
-            try
-            {
+        protected override void ParseSpecificNode(XmlNode xmlNode, HattrickBase entity) {
+            try {
                 Players players = (Players)entity;
 
-                switch (xmlNode.Name)
-                {
+                switch (xmlNode.Name) {
                     case Tags.UserIsSupporter:
                         players.userIsSupporterField = GenericFunctions.ConvertStringToBool(xmlNode.InnerText);
                         break;
@@ -40,15 +34,12 @@ namespace HM.DataAccess.Parsers
                         players.isPlayingMatchField = GenericFunctions.ConvertStringToBool(xmlNode.InnerText);
                         break;
                     case Tags.Team:
-                        if (xmlNode.ChildNodes != null)
-                        {
+                        if (xmlNode.ChildNodes != null) {
                             players.teamField = ParseTeamNode(xmlNode);
                         }
                         break;
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
@@ -57,16 +48,12 @@ namespace HM.DataAccess.Parsers
 
         #region Private methods
 
-        private Team ParseTeamNode(XmlNode teamNode)
-        {
-            try
-            {
+        private Team ParseTeamNode(XmlNode teamNode) {
+            try {
                 Team team = new Team();
 
-                foreach (XmlNode xmlNode in teamNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in teamNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.TeamID:
                             team.teamIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -74,8 +61,7 @@ namespace HM.DataAccess.Parsers
                             team.teamNameField = xmlNode.InnerText;
                             break;
                         case Tags.PlayerList:
-                            if (xmlNode.ChildNodes != null)
-                            {
+                            if (xmlNode.ChildNodes != null) {
                                 team.playerListField = ParsePlayerListNode(xmlNode);
                             }
                             break;
@@ -83,29 +69,21 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return team;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private List<Player> ParsePlayerListNode(XmlNode playerListNode)
-        {
-            try
-            {
+        private List<Player> ParsePlayerListNode(XmlNode playerListNode) {
+            try {
                 List<Player> playerList = new List<Player>();
 
-                foreach (XmlNode xmlPlayerNode in playerListNode.ChildNodes)
-                {
-                    if (xmlPlayerNode.ChildNodes != null)
-                    {
+                foreach (XmlNode xmlPlayerNode in playerListNode.ChildNodes) {
+                    if (xmlPlayerNode.ChildNodes != null) {
                         Player player = new Player();
 
-                        foreach (XmlNode xmlNode in xmlPlayerNode.ChildNodes)
-                        {
-                            switch (xmlNode.Name)
-                            {
+                        foreach (XmlNode xmlNode in xmlPlayerNode.ChildNodes) {
+                            switch (xmlNode.Name) {
                                 case Tags.PlayerID:
                                     player.playerIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                                     break;
@@ -224,8 +202,7 @@ namespace HM.DataAccess.Parsers
                                     player.playerCategoryIdField = (PlayerSkill)Convert.ToInt32(xmlNode.InnerText);
                                     break;
                                 case Tags.TrainerData:
-                                    if (xmlNode.ChildNodes != null)
-                                    {
+                                    if (xmlNode.ChildNodes != null) {
                                         player.trainerDataField = ParseTrainerDataNode(xmlNode);
                                     }
                                     break;
@@ -237,30 +214,22 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return playerList;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private TrainerData ParseTrainerDataNode(XmlNode trainerDataNode)
-        {
-            try
-            {
+        private TrainerData ParseTrainerDataNode(XmlNode trainerDataNode) {
+            try {
                 TrainerData trainerData = new TrainerData();
 
-                foreach (XmlNode xmlNode in trainerDataNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
-                        case Tags.TrainerType:
-                            {
+                foreach (XmlNode xmlNode in trainerDataNode.ChildNodes) {
+                    switch (xmlNode.Name) {
+                        case Tags.TrainerType: {
                                 trainerData.trainerTypeField = (TrainerType)Convert.ToInt32(xmlNode.InnerText);
                                 break;
                             }
-                        case Tags.TrainerSkill:
-                            {
+                        case Tags.TrainerSkill: {
                                 trainerData.trainerSkillField = GenericFunctions.ConvertStringToByte(xmlNode.InnerText);
                                 break;
                             }
@@ -268,9 +237,7 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return trainerData;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }

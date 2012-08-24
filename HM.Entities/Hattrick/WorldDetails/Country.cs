@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.WorldDetails
-{
-    public class Country
-    {
+namespace HM.Entities.Hattrick.WorldDetails {
+    public class Country {
         #region Properties
 
         public uint countryIdField { get; set; }
@@ -21,8 +19,7 @@ namespace HM.Entities.Hattrick.WorldDetails
         /// <summary>
         /// Constructor
         /// </summary>
-        public Country()
-        {
+        public Country() {
             this.countryIdField = 0;
             this.countryNameField = string.Empty;
             this.currencyNameField = string.Empty;
