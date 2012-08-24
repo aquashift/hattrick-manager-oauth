@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public static class FileNames
-    {
+namespace HM.Resources.Constants {
+    public static class FileNames {
         public const string Achievements = "Achievements.xml";
         public const string ArenaDetails = "ArenaDetails.xml";
         public const string Club = "Club.xml";
+        public const string CurrentPlayers = "Players.xml";
         public const string Economy = "Economy.xml";
         public const string Fans = "Fans.xml";
         public const string LeagueDetails = "LeagueDetails.xml";

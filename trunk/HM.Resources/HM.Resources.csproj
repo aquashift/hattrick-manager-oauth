@@ -57,6 +57,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -158,6 +159,27 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\arena.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\club.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\finance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\lineup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\training.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

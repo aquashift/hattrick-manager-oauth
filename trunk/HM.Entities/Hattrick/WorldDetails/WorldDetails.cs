@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.WorldDetails
-{
-    public class WorldDetails : HattrickBase
-    {
+namespace HM.Entities.Hattrick.WorldDetails {
+    public class WorldDetails : HattrickBase {
         #region Properties
 
         public List<League> leagueListField { get; set; }
@@ -18,10 +16,9 @@ namespace HM.Entities.Hattrick.WorldDetails
         /// <summary>
         /// Constructor
         /// </summary>
-        public WorldDetails()
-        {
+        public WorldDetails() {
             this.leagueListField = new List<League>();
-        }        
+        }
 
         #endregion
     }

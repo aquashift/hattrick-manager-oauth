@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using HM.Resources;
 
-namespace HM.Entities.Hattrick.Players
-{
-    public class Player
-    {
+namespace HM.Entities.Hattrick.Players {
+    public class Player {
         #region Properties
 
         public uint playerIdField { get; set; }
@@ -58,8 +56,7 @@ namespace HM.Entities.Hattrick.Players
         /// <summary>
         /// Constructor
         /// </summary>
-        public Player()
-        {
+        public Player() {
             playerIdField = 0;
             firstNameField = string.Empty;
             nickNameField = string.Empty;

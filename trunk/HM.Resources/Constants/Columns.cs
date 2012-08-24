@@ -34,5 +34,16 @@ namespace HM.Resources.Constants {
         public const string TeamID = "TeamID";
         public const string HomeTeamID = "HomeTeamID";
         public const string AwayTeamID = "AwayTeamID";
+
+        public const string PlayerID = "PlayerID";
+        public const string PlayerNumber = "PlayerNumber"; 
+        public const string PlayerName = "PlayerName";
+        public const string PlayerFlag = "PlayerFlag"; 
+        public const string LastPosition = "LastPosition";
+        public const string BestPosition = "BestPosition";
+        public const string Age = "Age";
+        public const string Form = "Form";
+        public const string Stamina = "Stamina";
+        public const string Loyality = "Loyality";
     }
 }

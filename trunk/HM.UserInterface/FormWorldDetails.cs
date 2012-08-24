@@ -12,10 +12,8 @@ using System.Globalization;
 using System.Threading;
 using HM.Resources.Constants;
 
-namespace HM.UserInterface
-{
-    public partial class FormWorldDetails : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormWorldDetails : FormBase {
         #region Properties
 
         private HM.Entities.Hattrick.WorldDetails.WorldDetails _worldDetails = new HM.Entities.Hattrick.WorldDetails.WorldDetails();
@@ -24,8 +22,7 @@ namespace HM.UserInterface
 
         #region Methods
 
-        public FormWorldDetails(HM.Entities.Hattrick.WorldDetails.WorldDetails worldDetails)
-        {
+        public FormWorldDetails(HM.Entities.Hattrick.WorldDetails.WorldDetails worldDetails) {
             InitializeComponent();
 
             _worldDetails = worldDetails;
@@ -36,8 +33,7 @@ namespace HM.UserInterface
 
         public FormWorldDetails(HM.Entities.Hattrick.WorldDetails.WorldDetails worldDetails,
             uint initialLeagueId)
-            : this(worldDetails)
-        {
+            : this(worldDetails) {
             comboBoxLeague.SelectedIndex =
                 worldDetails.leagueListField.FindIndex(l => l.leagueIdField == initialLeagueId);
         }
@@ -45,8 +41,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Fills the form's controls with the selected language
         /// </summary>
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_worlddetails_buttonClose);
             this.Text = resourceManager.GetString(Localization.ui_worlddetails_FormText);
             this.groupBoxLeagueEvents.Text = resourceManager.GetString(Localization.ui_worlddetails_groupBoxLeagueEvents);
@@ -71,8 +66,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Loads the controls
         /// </summary>
-        private void LoadControls()
-        {
+        private void LoadControls() {
             comboBoxLeague.DataSource = _worldDetails.leagueListField;
             comboBoxLeague.DisplayMember = "englishNameField";
         }
@@ -81,8 +75,7 @@ namespace HM.UserInterface
         /// Sets selected league data to the controls
         /// </summary>
         /// <param name="selectedLeague">Selected league id</param>
-        private void SetSelectedLeagueInfo(HM.Entities.Hattrick.WorldDetails.League selectedLeague)
-        {
+        private void SetSelectedLeagueInfo(HM.Entities.Hattrick.WorldDetails.League selectedLeague) {
             pictureBoxFlag.Image = GenericFunctions.GetFlagByLeagueId(selectedLeague.leagueIdField);
             linkLabelLeague.Text = selectedLeague.leagueNameField;
             labelEnglishNameValue.Text = selectedLeague.englishNameField;
@@ -106,8 +99,7 @@ namespace HM.UserInterface
         /// </summary>
         /// <param name="eventDate">Date to format</param>
         /// <returns>String in "weekday, time" format, in CurrentUICulture.</returns>
-        private string GetEventTimeString(DateTime eventDate)
-        {
+        private string GetEventTimeString(DateTime eventDate) {
             // TODO. Either move date format to Resources, or make it culture-dependant
             return eventDate.ToString(General.LongDateFormat, Thread.CurrentThread.CurrentUICulture);
         }
@@ -116,18 +108,15 @@ namespace HM.UserInterface
 
         #region Events
 
-        private void comboBoxLeague_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxLeague_SelectedIndexChanged(object sender, EventArgs e) {
             SetSelectedLeagueInfo((HM.Entities.Hattrick.WorldDetails.League)comboBoxLeague.SelectedValue);
         }
 
-        private void buttonOk_Click(object sender, EventArgs e)
-        {
+        private void buttonOk_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void linkLabelLeague_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+        private void linkLabelLeague_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
             // TODO. Move link to Resources
             System.Diagnostics.Process.Start("http://maps.google.com/?q=" + linkLabelLeague.Text);
         }

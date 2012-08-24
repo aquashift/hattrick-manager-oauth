@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources
-{
-    public enum LoginResult : int
-    {
+namespace HM.Resources {
+    public enum LoginResult : int {
         Unavailable = 1,
         Successful = 0,
         LoginFailed = -1,
@@ -14,8 +12,7 @@ namespace HM.Resources
         LockedChppCredentials = -3
     };
 
-    public enum MatchType : int
-    {
+    public enum MatchType : int {
         Unavailable = 0,
         LeagueMatch = 1,
         QualificationMatch = 2,
@@ -39,8 +36,7 @@ namespace HM.Resources
         NotInUse04 = 107
     };
 
-    public enum FileType : int
-    {
+    public enum FileType : int {
         Servers = 0,
         CheckSecurityCode = 1,
         Login = 2,
@@ -64,8 +60,7 @@ namespace HM.Resources
         WorldDetails = 20
     };
 
-    public enum AchievementCategory : int
-    {
+    public enum AchievementCategory : int {
         Unavailable = 0,
         Ranking = 1,
         Team = 2,
@@ -74,16 +69,14 @@ namespace HM.Resources
         SpecialAward = 5
     };
 
-    public enum TrainerType : int
-    {
+    public enum TrainerType : int {
         Unavailable = -1,
         Defensive = 0,
         Offensive = 1,
         Balanced = 2
     };
 
-    public enum PlayerSpecialty : int
-    {
+    public enum PlayerSpecialty : int {
         NoSpecialty = 0,
         Technical = 1,
         Quick = 2,
@@ -92,34 +85,29 @@ namespace HM.Resources
         HeadSpecialist = 5
     };
 
-    public enum MatchStatus
-    {
+    public enum MatchStatus {
         Finished,
         Upcoming
     };
 
-    public enum FormMode
-    {
+    public enum FormMode {
         Add,
         Edit
     };
 
-    public enum PositionChange : int
-    {
+    public enum PositionChange : int {
         Unavailable = -1,
         NoChange = 0,
         MovingUp = 1,
         MovingDown = 2
     };
 
-    public enum TeamLocation
-    {
+    public enum TeamLocation {
         Home,
         Away
     };
 
-    public enum SupportersMood : int
-    {
+    public enum SupportersMood : int {
         Unavailable = -1,
         Furious = 1,
         Angry = 2,
@@ -134,8 +122,7 @@ namespace HM.Resources
         SendingLovePoemsToYou = 11
     };
 
-    public enum SponsorsMood : int
-    {
+    public enum SponsorsMood : int {
         Unavailable = -1,
         Murderous = 0,
         Furious = 1,
@@ -149,8 +136,7 @@ namespace HM.Resources
         SendingLovePoemsToYou = 9
     };
 
-    public enum Weather : int
-    {
+    public enum Weather : int {
         Unavailable = -1,
         Rain = 0,
         Overcast = 1,
@@ -158,16 +144,14 @@ namespace HM.Resources
         Sunny = 3
     };
 
-    public enum TeamAttitude : int
-    {
+    public enum TeamAttitude : int {
         Unavailable = -2,
         PlayItCool = -1,
         Normal = 0,
         MatchOfTheSeason = 1
     };
 
-    public enum TacticType : int
-    {
+    public enum TacticType : int {
         Unavailable = -1,
         Normal = 0,
         Pressing = 1,
@@ -178,8 +162,7 @@ namespace HM.Resources
         LongShots = 8
     };
 
-    public enum TacticSkill : int
-    {
+    public enum TacticSkill : int {
         Unavailable = -1,
         NonExistent = 0,
         Disastrous = 1,
@@ -204,8 +187,7 @@ namespace HM.Resources
         Divine = 20
     };
 
-    public enum PlayerSkill : int
-    {
+    public enum PlayerSkill : int {
         Unavailable = -1,
         NonExistent = 0,
         Disastrous = 1,
@@ -230,8 +212,7 @@ namespace HM.Resources
         Divine = 20
     };
 
-    public enum CoachSkill : int
-    {
+    public enum CoachSkill : int {
         Unavailable = -1,
         NonExistent = 0,
         Disastrous = 1,
@@ -244,8 +225,7 @@ namespace HM.Resources
         Excellent = 8
     };
 
-    public enum Leadership : int
-    {
+    public enum Leadership : int {
         Unavailable = -1,
         NonExistent = 0,
         Disastrous = 1,
@@ -258,8 +238,7 @@ namespace HM.Resources
         Excellent = 8
     };
 
-    public enum PlayerForm : int
-    {
+    public enum PlayerForm : int {
         Unavailable = -1,
         NonExistent = 0,
         Disastrous = 1,
@@ -272,8 +251,7 @@ namespace HM.Resources
         Excellent = 8
     };
 
-    public enum ScoutingNetwork : int
-    {
+    public enum ScoutingNetwork : int {
         Unavailable = -1,
         NonExistent = 0,
         Disastrous = 1,
@@ -286,8 +264,7 @@ namespace HM.Resources
         Excellent = 8
     };
 
-    public enum FormationExperience : int
-    {
+    public enum FormationExperience : int {
         Unavailable = -1,
         Poor = 3,
         Weak = 4,
@@ -299,8 +276,7 @@ namespace HM.Resources
         Outstanding = 10
     };
 
-    public enum SectorRating : int
-    {
+    public enum SectorRating : int {
         Unavailable = -1,
         NonExistent = 0,
         DisastrousVeryLow = 1,
@@ -385,8 +361,7 @@ namespace HM.Resources
         DivineVeryHigh = 80
     };
 
-    public enum FanSeasonExpectation : int
-    {
+    public enum FanSeasonExpectation : int {
         Unavailable = -1,
         WeAreNotWorthyOfThisDivision = 0,
         EveryDayInThisDivisionIsBonus = 1,
@@ -398,8 +373,7 @@ namespace HM.Resources
         WeAreSoMuchBetterThanThisDivision = 7
     };
 
-    public enum FanMatchExpectation : int
-    {
+    public enum FanMatchExpectation : int {
         Unavailable = -1,
         BetterNotShowUp = 0,
         WeAreOutclassed = 1,
@@ -414,8 +388,7 @@ namespace HM.Resources
         LetsHumiliateThem = 10
     };
 
-    public enum Agreeability : int
-    {
+    public enum Agreeability : int {
         Unavailable = -1,
         NastyFellow = 0,
         ControversialPerson = 1,
@@ -425,8 +398,7 @@ namespace HM.Resources
         BelovedTeamMember = 5
     };
 
-    public enum Honesty : int
-    {
+    public enum Honesty : int {
         Unavailable = -1,
         Infamous = 0,
         Dishonest = 1,
@@ -436,8 +408,7 @@ namespace HM.Resources
         Saintly = 5
     };
 
-    public enum Aggressiveness : int
-    {
+    public enum Aggressiveness : int {
         Unavailable = -1,
         Tranquil = 0,
         Calm = 1,
@@ -447,8 +418,7 @@ namespace HM.Resources
         Unstable = 5
     };
 
-    public enum TeamSpirit : int
-    {
+    public enum TeamSpirit : int {
         Unavailable = -1,
         LikeTheColdWar = 0,
         Murderous = 1,
@@ -463,8 +433,7 @@ namespace HM.Resources
         ParadiseOnEarth = 10
     };
 
-    public enum TeamConfidence : int
-    {
+    public enum TeamConfidence : int {
         CompletelyExaggerated = 9,
         Exaggerated = 8,
         SlightlyExaggerated = 7,
@@ -478,8 +447,7 @@ namespace HM.Resources
         Unavailable = -1
     };
 
-    public enum Role : int
-    {
+    public enum Role : int {
         Unavailable = -1,
         SetPieces = 17,
         Captain = 18,
@@ -507,8 +475,7 @@ namespace HM.Resources
         SubstitutionForward = 118
     };
 
-    public enum PositionCode : int
-    {
+    public enum PositionCode : int {
         Unavailable = -1,
         Keeper = 1,
         Rightback = 2,
@@ -523,8 +490,7 @@ namespace HM.Resources
         Forward2 = 11
     };
 
-    public enum Behaviour : int
-    {
+    public enum Behaviour : int {
         Unavailable = -1,
         Normal = 0,
         Offensive = 1,

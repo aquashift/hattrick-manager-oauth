@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick
-{
+namespace HM.Entities.Hattrick {
     using System.IO;
     using System.Xml;
     using HM.Resources.Constants;
     using HM.Resources;
 
-    public abstract class HattrickBase
-    {
+    public abstract class HattrickBase {
         #region Properties
 
         public string fileNameField { get; set; }
@@ -26,8 +24,7 @@ namespace HM.Entities.Hattrick
         /// <summary>
         /// Constructor for initializing all the common properties of HT data.
         /// </summary>
-        public HattrickBase()
-        {
+        public HattrickBase() {
             this.fileNameField = string.Empty;
             this.versionField = 0;
             this.userIdField = 0;
@@ -38,43 +35,34 @@ namespace HM.Entities.Hattrick
         /// Reads the xml document and populates internal state with its data.
         /// </summary>
         /// <param name="xmlDocument">Xml document</param>
-        public void ReadXml(XmlDocument xmlDocument)
-        {
-            if (xmlDocument.DocumentElement.ChildNodes != null)
-            {
+        public void ReadXml(XmlDocument xmlDocument) {
+            if (xmlDocument.DocumentElement.ChildNodes != null) {
                 //Iterates thru each node in HattrickData node
-                foreach (XmlNode xmlNode in xmlDocument.DocumentElement.ChildNodes)
-                {
+                foreach (XmlNode xmlNode in xmlDocument.DocumentElement.ChildNodes) {
                     bool generalNode = false;
-                    switch (xmlNode.Name)
-                    {
-                        case Tags.FileName:
-                            {
+                    switch (xmlNode.Name) {
+                        case Tags.FileName: {
                                 this.fileNameField = xmlNode.InnerText;
                                 generalNode = true;
                                 break;
                             }
-                        case Tags.Version:
-                            {
+                        case Tags.Version: {
                                 this.versionField = GenericFunctions.ConvertStringToDecimal(xmlNode.InnerText);
                                 generalNode = true;
                                 break;
                             }
-                        case Tags.UserID:
-                            {
+                        case Tags.UserID: {
                                 this.userIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                                 generalNode = true;
                                 break;
                             }
-                        case Tags.FetchedDate:
-                            {
+                        case Tags.FetchedDate: {
                                 this.fetchedDateField = GenericFunctions.ConvertStringToDateTime(xmlNode.InnerText);
                                 generalNode = true;
                                 break;
                             }
                     }
-                    if (!generalNode)
-                    {
+                    if (!generalNode) {
                         // Not one of the general nodes, 
                         // try reading it as a specific node
                         //ReadSpecificNode(xmlNode);

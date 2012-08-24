@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.WorldDetails
-{
-    public class League
-    {
+namespace HM.Entities.Hattrick.WorldDetails {
+    public class League {
         #region Comparison
 
-        public static Comparison<League> englishNameComparison = delegate(League league1, League league2)
-        {
+        public static Comparison<League> englishNameComparison = delegate(League league1, League league2) {
             return league1.englishNameField.CompareTo(league2.englishNameField);
         };
 
@@ -43,8 +40,7 @@ namespace HM.Entities.Hattrick.WorldDetails
         /// <summary>
         /// Constructor
         /// </summary>
-        public League()
-        {
+        public League() {
             this.leagueIdField = 0;
             this.leagueNameField = string.Empty;
             this.seasonField = 0;
