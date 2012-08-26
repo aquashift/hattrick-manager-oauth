@@ -40,9 +40,9 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(244, 292);
+            this.buttonClose.Location = new System.Drawing.Point(285, 337);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(85, 24);
+            this.buttonClose.Size = new System.Drawing.Size(99, 28);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "buttonClose";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -54,18 +54,18 @@
             this.groupBoxDownload.Controls.Add(this.listBoxDownload);
             this.groupBoxDownload.Controls.Add(this.progressBarDownload);
             this.groupBoxDownload.Controls.Add(this.buttonDownload);
-            this.groupBoxDownload.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxDownload.Location = new System.Drawing.Point(14, 14);
             this.groupBoxDownload.Name = "groupBoxDownload";
-            this.groupBoxDownload.Size = new System.Drawing.Size(323, 274);
+            this.groupBoxDownload.Size = new System.Drawing.Size(377, 316);
             this.groupBoxDownload.TabIndex = 2;
             this.groupBoxDownload.TabStop = false;
             this.groupBoxDownload.Text = "groupBoxDownload";
             // 
             // checkBoxDownloadFullMatchesArchive
             // 
-            this.checkBoxDownloadFullMatchesArchive.Location = new System.Drawing.Point(6, 238);
+            this.checkBoxDownloadFullMatchesArchive.Location = new System.Drawing.Point(7, 275);
             this.checkBoxDownloadFullMatchesArchive.Name = "checkBoxDownloadFullMatchesArchive";
-            this.checkBoxDownloadFullMatchesArchive.Size = new System.Drawing.Size(220, 24);
+            this.checkBoxDownloadFullMatchesArchive.Size = new System.Drawing.Size(257, 28);
             this.checkBoxDownloadFullMatchesArchive.TabIndex = 21;
             this.checkBoxDownloadFullMatchesArchive.Text = "checkBoxDownloadFullMatchesArchive";
             this.checkBoxDownloadFullMatchesArchive.UseVisualStyleBackColor = true;
@@ -73,23 +73,24 @@
             // listBoxDownload
             // 
             this.listBoxDownload.FormattingEnabled = true;
-            this.listBoxDownload.Location = new System.Drawing.Point(6, 19);
+            this.listBoxDownload.ItemHeight = 15;
+            this.listBoxDownload.Location = new System.Drawing.Point(7, 22);
             this.listBoxDownload.Name = "listBoxDownload";
-            this.listBoxDownload.Size = new System.Drawing.Size(311, 186);
+            this.listBoxDownload.Size = new System.Drawing.Size(362, 214);
             this.listBoxDownload.TabIndex = 20;
             // 
             // progressBarDownload
             // 
-            this.progressBarDownload.Location = new System.Drawing.Point(6, 211);
+            this.progressBarDownload.Location = new System.Drawing.Point(7, 243);
             this.progressBarDownload.Name = "progressBarDownload";
-            this.progressBarDownload.Size = new System.Drawing.Size(311, 21);
+            this.progressBarDownload.Size = new System.Drawing.Size(363, 24);
             this.progressBarDownload.TabIndex = 19;
             // 
             // buttonDownload
             // 
-            this.buttonDownload.Location = new System.Drawing.Point(232, 238);
+            this.buttonDownload.Location = new System.Drawing.Point(271, 275);
             this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(85, 24);
+            this.buttonDownload.Size = new System.Drawing.Size(99, 28);
             this.buttonDownload.TabIndex = 18;
             this.buttonDownload.Text = "buttonDownload";
             this.buttonDownload.UseVisualStyleBackColor = true;
@@ -97,11 +98,12 @@
             // 
             // FormDownload
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 328);
+            this.ClientSize = new System.Drawing.Size(405, 378);
             this.Controls.Add(this.groupBoxDownload);
             this.Controls.Add(this.buttonClose);
+            this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

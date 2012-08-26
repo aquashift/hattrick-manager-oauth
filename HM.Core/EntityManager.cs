@@ -136,6 +136,8 @@ namespace HM.Core {
             }
         }
 
+        #endregion        
+        
         public static void SaveUser(HMEntities.UserProfiles.User user) {
             HMDal.DataManager dataManager = new HMDal.DataManager();
 
@@ -153,8 +155,6 @@ namespace HM.Core {
 
             dataManager.SaveUserProfiles(userProfiles);
         }
-
-        #endregion
 
         public HTEntities.Club.Club GetClub() {
             HMDal.DataManager dataManager = new HMDal.DataManager();

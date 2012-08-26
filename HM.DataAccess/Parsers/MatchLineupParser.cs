@@ -25,7 +25,7 @@ namespace HM.DataAccess.Parsers
 
             switch (xmlNode.Name)
             {
-                case Tags.MatchID:
+                case Tags.MatchId:
                     matchLineup.matchIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                     break;
                 case Tags.IsYouth:

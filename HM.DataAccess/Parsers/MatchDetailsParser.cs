@@ -58,7 +58,7 @@ namespace HM.DataAccess.Parsers
                 {
                     switch (matchNode.Name)
                     {
-                        case Tags.MatchID:
+                        case Tags.MatchId:
                             match.matchIdField = GenericFunctions.ConvertStringToUInt(matchNode.InnerText);
                             break;
                         case Tags.MatchType:

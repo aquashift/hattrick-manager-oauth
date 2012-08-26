@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using HM.Resources;
 
-namespace HM.Entities.Hattrick.Players
-{
-    public class TrainerData
-    {
+namespace HM.Entities.Hattrick.Players {
+    public class TrainerData {
         #region Properties
 
         public TrainerType trainerTypeField { get; set; }
@@ -20,8 +18,7 @@ namespace HM.Entities.Hattrick.Players
         /// <summary>
         /// Constructor
         /// </summary>
-        public TrainerData()
-        {
+        public TrainerData() {
             trainerTypeField = TrainerType.Unavailable;
             trainerSkillField = 0;
         }

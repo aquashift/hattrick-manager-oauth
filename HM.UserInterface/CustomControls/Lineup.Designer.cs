@@ -23,181 +23,148 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.splitContainerTop = new System.Windows.Forms.SplitContainer();
             this.dataGridViewPlayers = new System.Windows.Forms.DataGridView();
-            this.checkedListBoxPlayerGroups = new System.Windows.Forms.CheckedListBox();
-            this.ColumnPlayerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerFlag = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnPlayerLastPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerBestPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPlayerStamina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tabControlPlayerDetails = new System.Windows.Forms.TabControl();
+            this.tabPageSkills = new System.Windows.Forms.TabPage();
+            this.tabPagePositions = new System.Windows.Forms.TabPage();
+            this.splitContainerMain.Panel1.SuspendLayout();
+            this.splitContainerMain.SuspendLayout();
+            this.splitContainerTop.Panel1.SuspendLayout();
+            this.splitContainerTop.Panel2.SuspendLayout();
+            this.splitContainerTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).BeginInit();
+            this.tabControlPlayerDetails.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // splitContainerMain
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewPlayers, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkedListBoxPlayerGroups, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(654, 387);
-            this.tableLayoutPanel1.TabIndex = 9;
+            this.splitContainerMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMain.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMain.Name = "splitContainerMain";
+            this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerMain.Panel1
+            // 
+            this.splitContainerMain.Panel1.Controls.Add(this.splitContainerTop);
+            this.splitContainerMain.Size = new System.Drawing.Size(901, 605);
+            this.splitContainerMain.SplitterDistance = 394;
+            this.splitContainerMain.SplitterWidth = 5;
+            this.splitContainerMain.TabIndex = 0;
+            // 
+            // splitContainerTop
+            // 
+            this.splitContainerTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainerTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTop.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerTop.Name = "splitContainerTop";
+            // 
+            // splitContainerTop.Panel1
+            // 
+            this.splitContainerTop.Panel1.Controls.Add(this.dataGridViewPlayers);
+            // 
+            // splitContainerTop.Panel2
+            // 
+            this.splitContainerTop.Panel2.Controls.Add(this.tabControlPlayerDetails);
+            this.splitContainerTop.Size = new System.Drawing.Size(901, 394);
+            this.splitContainerTop.SplitterDistance = 696;
+            this.splitContainerTop.SplitterWidth = 5;
+            this.splitContainerTop.TabIndex = 0;
             // 
             // dataGridViewPlayers
             // 
             this.dataGridViewPlayers.AllowUserToAddRows = false;
             this.dataGridViewPlayers.AllowUserToDeleteRows = false;
             this.dataGridViewPlayers.AllowUserToResizeRows = false;
-            this.dataGridViewPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewPlayers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridViewPlayers.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewPlayers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnPlayerID,
-            this.ColumnPlayerNumber,
-            this.ColumnPlayerName,
-            this.ColumnPlayerFlag,
-            this.ColumnPlayerLastPos,
-            this.ColumnPlayerBestPos,
-            this.ColumnPlayerAge,
-            this.ColumnPlayerForm,
-            this.ColumnPlayerStamina});
+            this.dataGridViewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewPlayers.Location = new System.Drawing.Point(155, 5);
-            this.dataGridViewPlayers.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridViewPlayers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewPlayers.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewPlayers.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewPlayers.MultiSelect = false;
             this.dataGridViewPlayers.Name = "dataGridViewPlayers";
             this.dataGridViewPlayers.RowHeadersVisible = false;
-            this.dataGridViewPlayers.Size = new System.Drawing.Size(294, 222);
-            this.dataGridViewPlayers.TabIndex = 6;
+            this.dataGridViewPlayers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewPlayers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPlayers.ShowCellErrors = false;
+            this.dataGridViewPlayers.ShowEditingIcon = false;
+            this.dataGridViewPlayers.ShowRowErrors = false;
+            this.dataGridViewPlayers.Size = new System.Drawing.Size(692, 390);
+            this.dataGridViewPlayers.TabIndex = 10;
             // 
-            // checkedListBoxPlayerGroups
+            // tabControlPlayerDetails
             // 
-            this.checkedListBoxPlayerGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedListBoxPlayerGroups.FormattingEnabled = true;
-            this.checkedListBoxPlayerGroups.Items.AddRange(new object[] {
-            "All",
-            "A Squad",
-            "B Squad"});
-            this.checkedListBoxPlayerGroups.Location = new System.Drawing.Point(5, 5);
-            this.checkedListBoxPlayerGroups.Margin = new System.Windows.Forms.Padding(5);
-            this.checkedListBoxPlayerGroups.Name = "checkedListBoxPlayerGroups";
-            this.checkedListBoxPlayerGroups.Size = new System.Drawing.Size(140, 222);
-            this.checkedListBoxPlayerGroups.TabIndex = 7;
+            this.tabControlPlayerDetails.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tabControlPlayerDetails.Controls.Add(this.tabPageSkills);
+            this.tabControlPlayerDetails.Controls.Add(this.tabPagePositions);
+            this.tabControlPlayerDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPlayerDetails.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlPlayerDetails.Location = new System.Drawing.Point(0, 0);
+            this.tabControlPlayerDetails.Multiline = true;
+            this.tabControlPlayerDetails.Name = "tabControlPlayerDetails";
+            this.tabControlPlayerDetails.SelectedIndex = 0;
+            this.tabControlPlayerDetails.Size = new System.Drawing.Size(196, 390);
+            this.tabControlPlayerDetails.TabIndex = 0;
             // 
-            // ColumnPlayerID
+            // tabPageSkills
             // 
-            this.ColumnPlayerID.DataPropertyName = "PlayerID";
-            this.ColumnPlayerID.HeaderText = "ID";
-            this.ColumnPlayerID.Name = "ColumnPlayerID";
-            this.ColumnPlayerID.Visible = false;
+            this.tabPageSkills.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPageSkills.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageSkills.Location = new System.Drawing.Point(4, 4);
+            this.tabPageSkills.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageSkills.Name = "tabPageSkills";
+            this.tabPageSkills.Size = new System.Drawing.Size(188, 362);
+            this.tabPageSkills.TabIndex = 0;
+            this.tabPageSkills.Text = "SKILLS";
+            this.tabPageSkills.UseVisualStyleBackColor = true;
             // 
-            // ColumnPlayerNumber
+            // tabPagePositions
             // 
-            this.ColumnPlayerNumber.DataPropertyName = "PlayerNumber";
-            this.ColumnPlayerNumber.HeaderText = "#";
-            this.ColumnPlayerNumber.Name = "ColumnPlayerNumber";
-            // 
-            // ColumnPlayerName
-            // 
-            this.ColumnPlayerName.DataPropertyName = "PlayerName";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnPlayerName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnPlayerName.HeaderText = "Name";
-            this.ColumnPlayerName.Name = "ColumnPlayerName";
-            this.ColumnPlayerName.ReadOnly = true;
-            // 
-            // ColumnPlayerFlag
-            // 
-            this.ColumnPlayerFlag.DataPropertyName = "PlayerFlag";
-            this.ColumnPlayerFlag.HeaderText = "Nationality";
-            this.ColumnPlayerFlag.Name = "ColumnPlayerFlag";
-            this.ColumnPlayerFlag.ToolTipText = "Nationality";
-            // 
-            // ColumnPlayerLastPos
-            // 
-            this.ColumnPlayerLastPos.DataPropertyName = "LastPosition";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnPlayerLastPos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnPlayerLastPos.HeaderText = "Last Position";
-            this.ColumnPlayerLastPos.Name = "ColumnPlayerLastPos";
-            // 
-            // ColumnPlayerBestPos
-            // 
-            this.ColumnPlayerBestPos.DataPropertyName = "BestPosition";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnPlayerBestPos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnPlayerBestPos.HeaderText = "Best Position";
-            this.ColumnPlayerBestPos.Name = "ColumnPlayerBestPos";
-            // 
-            // ColumnPlayerAge
-            // 
-            this.ColumnPlayerAge.DataPropertyName = "Age";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnPlayerAge.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnPlayerAge.HeaderText = "Age";
-            this.ColumnPlayerAge.Name = "ColumnPlayerAge";
-            this.ColumnPlayerAge.ReadOnly = true;
-            // 
-            // ColumnPlayerForm
-            // 
-            this.ColumnPlayerForm.DataPropertyName = "Form";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnPlayerForm.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnPlayerForm.HeaderText = "Form";
-            this.ColumnPlayerForm.Name = "ColumnPlayerForm";
-            // 
-            // ColumnPlayerStamina
-            // 
-            this.ColumnPlayerStamina.DataPropertyName = "Stamina";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnPlayerStamina.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnPlayerStamina.HeaderText = "Stamina";
-            this.ColumnPlayerStamina.Name = "ColumnPlayerStamina";
+            this.tabPagePositions.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPagePositions.Location = new System.Drawing.Point(4, 4);
+            this.tabPagePositions.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPagePositions.Name = "tabPagePositions";
+            this.tabPagePositions.Size = new System.Drawing.Size(188, 362);
+            this.tabPagePositions.TabIndex = 1;
+            this.tabPagePositions.Text = "POSITIONS";
+            this.tabPagePositions.UseVisualStyleBackColor = true;
             // 
             // Lineup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.splitContainerMain);
+            this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Lineup";
-            this.Size = new System.Drawing.Size(654, 387);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(901, 605);
+            this.Load += new System.EventHandler(this.Lineup_Load);
+            this.splitContainerMain.Panel1.ResumeLayout(false);
+            this.splitContainerMain.ResumeLayout(false);
+            this.splitContainerTop.Panel1.ResumeLayout(false);
+            this.splitContainerTop.Panel2.ResumeLayout(false);
+            this.splitContainerTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).EndInit();
+            this.tabControlPlayerDetails.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.SplitContainer splitContainerMain;
+        private System.Windows.Forms.SplitContainer splitContainerTop;
         private System.Windows.Forms.DataGridView dataGridViewPlayers;
-        private System.Windows.Forms.CheckedListBox checkedListBoxPlayerGroups;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerName;
-        private System.Windows.Forms.DataGridViewImageColumn ColumnPlayerFlag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerLastPos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerBestPos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerForm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlayerStamina;
+        private System.Windows.Forms.TabControl tabControlPlayerDetails;
+        private System.Windows.Forms.TabPage tabPageSkills;
+        private System.Windows.Forms.TabPage tabPagePositions;
+
+
+
+
     }
 }

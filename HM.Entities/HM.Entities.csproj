@@ -119,10 +119,13 @@
     <Compile Include="Hattrick\MatchLineup\MatchLineup.cs" />
     <Compile Include="Hattrick\MatchLineup\Player.cs" />
     <Compile Include="Hattrick\MatchLineup\Team.cs" />
+    <Compile Include="Hattrick\Players\LastMatchData.cs" />
     <Compile Include="Hattrick\Players\Players.cs" />
     <Compile Include="Hattrick\Players\Team.cs" />
     <Compile Include="Hattrick\Players\Player.cs" />
-    <Compile Include="Hattrick\Players\TrainerData.cs" />
+    <Compile Include="Hattrick\Players\TrainerData.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Hattrick\Servers\Servers.cs" />
     <Compile Include="Hattrick\TeamDetails\Arena.cs" />
     <Compile Include="Hattrick\TeamDetails\BotStatus.cs" />

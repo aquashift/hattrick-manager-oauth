@@ -66,9 +66,9 @@
             this.groupBoxUserCredentials.Controls.Add(this.labelSecurityCode);
             this.groupBoxUserCredentials.Controls.Add(this.textBoxAuthorizationURL);
             this.groupBoxUserCredentials.Controls.Add(this.labelOAuth);
-            this.groupBoxUserCredentials.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxUserCredentials.Location = new System.Drawing.Point(14, 14);
             this.groupBoxUserCredentials.Name = "groupBoxUserCredentials";
-            this.groupBoxUserCredentials.Size = new System.Drawing.Size(476, 169);
+            this.groupBoxUserCredentials.Size = new System.Drawing.Size(555, 195);
             this.groupBoxUserCredentials.TabIndex = 0;
             this.groupBoxUserCredentials.TabStop = false;
             this.groupBoxUserCredentials.Text = "groupBoxUserCredentials";
@@ -76,19 +76,19 @@
             // labelOAuthInstructions
             // 
             this.labelOAuthInstructions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelOAuthInstructions.Location = new System.Drawing.Point(9, 50);
+            this.labelOAuthInstructions.Location = new System.Drawing.Point(10, 58);
             this.labelOAuthInstructions.Name = "labelOAuthInstructions";
             this.labelOAuthInstructions.Padding = new System.Windows.Forms.Padding(3);
-            this.labelOAuthInstructions.Size = new System.Drawing.Size(461, 49);
+            this.labelOAuthInstructions.Size = new System.Drawing.Size(537, 56);
             this.labelOAuthInstructions.TabIndex = 12;
             this.labelOAuthInstructions.Text = resources.GetString("labelOAuthInstructions.Text");
             // 
             // buttonOpenURL
             // 
             this.buttonOpenURL.Enabled = false;
-            this.buttonOpenURL.Location = new System.Drawing.Point(385, 106);
+            this.buttonOpenURL.Location = new System.Drawing.Point(449, 122);
             this.buttonOpenURL.Name = "buttonOpenURL";
-            this.buttonOpenURL.Size = new System.Drawing.Size(85, 24);
+            this.buttonOpenURL.Size = new System.Drawing.Size(99, 28);
             this.buttonOpenURL.TabIndex = 4;
             this.buttonOpenURL.Text = "Open URL";
             this.buttonOpenURL.UseVisualStyleBackColor = true;
@@ -97,9 +97,9 @@
             // buttonTest
             // 
             this.buttonTest.Enabled = false;
-            this.buttonTest.Location = new System.Drawing.Point(385, 135);
+            this.buttonTest.Location = new System.Drawing.Point(449, 156);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(85, 24);
+            this.buttonTest.Size = new System.Drawing.Size(99, 28);
             this.buttonTest.TabIndex = 6;
             this.buttonTest.Text = "buttonTest";
             this.buttonTest.UseVisualStyleBackColor = true;
@@ -107,9 +107,9 @@
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(385, 19);
+            this.buttonBrowse.Location = new System.Drawing.Point(449, 22);
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(85, 24);
+            this.buttonBrowse.Size = new System.Drawing.Size(99, 28);
             this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "buttonBrowse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
@@ -118,55 +118,55 @@
             // textBoxDataFolder
             // 
             this.textBoxDataFolder.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxDataFolder.Location = new System.Drawing.Point(122, 21);
+            this.textBoxDataFolder.Location = new System.Drawing.Point(142, 24);
             this.textBoxDataFolder.MaxLength = 20;
             this.textBoxDataFolder.Name = "textBoxDataFolder";
             this.textBoxDataFolder.ReadOnly = true;
-            this.textBoxDataFolder.Size = new System.Drawing.Size(257, 20);
+            this.textBoxDataFolder.Size = new System.Drawing.Size(299, 23);
             this.textBoxDataFolder.TabIndex = 1;
             // 
             // labelDataFolder
             // 
-            this.labelDataFolder.Location = new System.Drawing.Point(6, 21);
+            this.labelDataFolder.Location = new System.Drawing.Point(7, 24);
             this.labelDataFolder.Margin = new System.Windows.Forms.Padding(3);
             this.labelDataFolder.Name = "labelDataFolder";
-            this.labelDataFolder.Size = new System.Drawing.Size(110, 21);
+            this.labelDataFolder.Size = new System.Drawing.Size(128, 24);
             this.labelDataFolder.TabIndex = 7;
             this.labelDataFolder.Text = "labelDataFolder";
             this.labelDataFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxSecurityCode
             // 
-            this.textBoxSecurityCode.Location = new System.Drawing.Point(122, 137);
+            this.textBoxSecurityCode.Location = new System.Drawing.Point(142, 158);
             this.textBoxSecurityCode.Name = "textBoxSecurityCode";
-            this.textBoxSecurityCode.Size = new System.Drawing.Size(257, 20);
+            this.textBoxSecurityCode.Size = new System.Drawing.Size(299, 23);
             this.textBoxSecurityCode.TabIndex = 5;
             this.textBoxSecurityCode.TextChanged += new System.EventHandler(this.textBoxSecurityCode_TextChanged);
             // 
             // labelSecurityCode
             // 
-            this.labelSecurityCode.Location = new System.Drawing.Point(6, 137);
+            this.labelSecurityCode.Location = new System.Drawing.Point(7, 158);
             this.labelSecurityCode.Margin = new System.Windows.Forms.Padding(3);
             this.labelSecurityCode.Name = "labelSecurityCode";
-            this.labelSecurityCode.Size = new System.Drawing.Size(110, 21);
+            this.labelSecurityCode.Size = new System.Drawing.Size(128, 24);
             this.labelSecurityCode.TabIndex = 4;
             this.labelSecurityCode.Text = "labelSecurityCode";
             this.labelSecurityCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxAuthorizationURL
             // 
-            this.textBoxAuthorizationURL.Location = new System.Drawing.Point(122, 108);
+            this.textBoxAuthorizationURL.Location = new System.Drawing.Point(142, 125);
             this.textBoxAuthorizationURL.Name = "textBoxAuthorizationURL";
-            this.textBoxAuthorizationURL.Size = new System.Drawing.Size(257, 20);
+            this.textBoxAuthorizationURL.Size = new System.Drawing.Size(299, 23);
             this.textBoxAuthorizationURL.TabIndex = 3;
             this.textBoxAuthorizationURL.TextChanged += new System.EventHandler(this.textBoxAuthorizationURL_TextChanged);
             // 
             // labelOAuth
             // 
-            this.labelOAuth.Location = new System.Drawing.Point(6, 108);
+            this.labelOAuth.Location = new System.Drawing.Point(7, 125);
             this.labelOAuth.Margin = new System.Windows.Forms.Padding(3);
             this.labelOAuth.Name = "labelOAuth";
-            this.labelOAuth.Size = new System.Drawing.Size(110, 21);
+            this.labelOAuth.Size = new System.Drawing.Size(128, 24);
             this.labelOAuth.TabIndex = 1;
             this.labelOAuth.Text = "labelOAuth";
             this.labelOAuth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,9 +180,9 @@
             this.groupBoxUserData.Controls.Add(this.labelTeamIdValue);
             this.groupBoxUserData.Controls.Add(this.labelTeamId);
             this.groupBoxUserData.Enabled = false;
-            this.groupBoxUserData.Location = new System.Drawing.Point(12, 187);
+            this.groupBoxUserData.Location = new System.Drawing.Point(14, 216);
             this.groupBoxUserData.Name = "groupBoxUserData";
-            this.groupBoxUserData.Size = new System.Drawing.Size(476, 104);
+            this.groupBoxUserData.Size = new System.Drawing.Size(555, 120);
             this.groupBoxUserData.TabIndex = 10;
             this.groupBoxUserData.TabStop = false;
             this.groupBoxUserData.Text = "groupBoxUserData";
@@ -190,20 +190,20 @@
             // labelActivationDateValue
             // 
             this.labelActivationDateValue.Enabled = false;
-            this.labelActivationDateValue.Location = new System.Drawing.Point(140, 72);
+            this.labelActivationDateValue.Location = new System.Drawing.Point(163, 83);
             this.labelActivationDateValue.Margin = new System.Windows.Forms.Padding(3);
             this.labelActivationDateValue.Name = "labelActivationDateValue";
-            this.labelActivationDateValue.Size = new System.Drawing.Size(330, 21);
+            this.labelActivationDateValue.Size = new System.Drawing.Size(385, 24);
             this.labelActivationDateValue.TabIndex = 16;
             this.labelActivationDateValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelActivationDate
             // 
             this.labelActivationDate.Enabled = false;
-            this.labelActivationDate.Location = new System.Drawing.Point(6, 72);
+            this.labelActivationDate.Location = new System.Drawing.Point(7, 83);
             this.labelActivationDate.Margin = new System.Windows.Forms.Padding(3);
             this.labelActivationDate.Name = "labelActivationDate";
-            this.labelActivationDate.Size = new System.Drawing.Size(128, 21);
+            this.labelActivationDate.Size = new System.Drawing.Size(149, 24);
             this.labelActivationDate.TabIndex = 15;
             this.labelActivationDate.Text = "labelActivationDate";
             this.labelActivationDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,20 +211,20 @@
             // labelYouthTeamIdValue
             // 
             this.labelYouthTeamIdValue.Enabled = false;
-            this.labelYouthTeamIdValue.Location = new System.Drawing.Point(140, 46);
+            this.labelYouthTeamIdValue.Location = new System.Drawing.Point(163, 53);
             this.labelYouthTeamIdValue.Margin = new System.Windows.Forms.Padding(3);
             this.labelYouthTeamIdValue.Name = "labelYouthTeamIdValue";
-            this.labelYouthTeamIdValue.Size = new System.Drawing.Size(330, 21);
+            this.labelYouthTeamIdValue.Size = new System.Drawing.Size(385, 24);
             this.labelYouthTeamIdValue.TabIndex = 14;
             this.labelYouthTeamIdValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelYouthTeamId
             // 
             this.labelYouthTeamId.Enabled = false;
-            this.labelYouthTeamId.Location = new System.Drawing.Point(6, 46);
+            this.labelYouthTeamId.Location = new System.Drawing.Point(7, 53);
             this.labelYouthTeamId.Margin = new System.Windows.Forms.Padding(3);
             this.labelYouthTeamId.Name = "labelYouthTeamId";
-            this.labelYouthTeamId.Size = new System.Drawing.Size(128, 21);
+            this.labelYouthTeamId.Size = new System.Drawing.Size(149, 24);
             this.labelYouthTeamId.TabIndex = 13;
             this.labelYouthTeamId.Text = "labelYouthTeamId";
             this.labelYouthTeamId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,20 +232,20 @@
             // labelTeamIdValue
             // 
             this.labelTeamIdValue.Enabled = false;
-            this.labelTeamIdValue.Location = new System.Drawing.Point(140, 20);
+            this.labelTeamIdValue.Location = new System.Drawing.Point(163, 23);
             this.labelTeamIdValue.Margin = new System.Windows.Forms.Padding(3);
             this.labelTeamIdValue.Name = "labelTeamIdValue";
-            this.labelTeamIdValue.Size = new System.Drawing.Size(330, 21);
+            this.labelTeamIdValue.Size = new System.Drawing.Size(385, 24);
             this.labelTeamIdValue.TabIndex = 12;
             this.labelTeamIdValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelTeamId
             // 
             this.labelTeamId.Enabled = false;
-            this.labelTeamId.Location = new System.Drawing.Point(6, 20);
+            this.labelTeamId.Location = new System.Drawing.Point(7, 23);
             this.labelTeamId.Margin = new System.Windows.Forms.Padding(3);
             this.labelTeamId.Name = "labelTeamId";
-            this.labelTeamId.Size = new System.Drawing.Size(128, 21);
+            this.labelTeamId.Size = new System.Drawing.Size(149, 24);
             this.labelTeamId.TabIndex = 11;
             this.labelTeamId.Text = "labelTeamId";
             this.labelTeamId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,9 +253,9 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(312, 301);
+            this.buttonCancel.Location = new System.Drawing.Point(364, 347);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(85, 24);
+            this.buttonCancel.Size = new System.Drawing.Size(99, 28);
             this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -264,9 +264,9 @@
             // 
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOk.Enabled = false;
-            this.buttonOk.Location = new System.Drawing.Point(403, 301);
+            this.buttonOk.Location = new System.Drawing.Point(470, 347);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(85, 24);
+            this.buttonOk.Size = new System.Drawing.Size(99, 28);
             this.buttonOk.TabIndex = 8;
             this.buttonOk.Text = "buttonOk";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -280,14 +280,15 @@
             // FormAddEditUser
             // 
             this.AcceptButton = this.buttonOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(500, 332);
+            this.ClientSize = new System.Drawing.Size(583, 383);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.groupBoxUserData);
             this.Controls.Add(this.groupBoxUserCredentials);
+            this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

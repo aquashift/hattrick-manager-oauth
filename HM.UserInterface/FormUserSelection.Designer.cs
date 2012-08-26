@@ -41,9 +41,9 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(151, 116);
+            this.buttonCancel.Location = new System.Drawing.Point(176, 134);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(85, 24);
+            this.buttonCancel.Size = new System.Drawing.Size(99, 28);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -51,9 +51,9 @@
             // buttonOk
             // 
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(242, 116);
+            this.buttonOk.Location = new System.Drawing.Point(282, 134);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(85, 24);
+            this.buttonOk.Size = new System.Drawing.Size(99, 28);
             this.buttonOk.TabIndex = 2;
             this.buttonOk.Text = "buttonOk";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@
             this.groupBoxUserProfiles.Controls.Add(this.buttonEdit);
             this.groupBoxUserProfiles.Controls.Add(this.buttonAdd);
             this.groupBoxUserProfiles.Controls.Add(this.listBoxUserProfiles);
-            this.groupBoxUserProfiles.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxUserProfiles.Location = new System.Drawing.Point(14, 14);
             this.groupBoxUserProfiles.Name = "groupBoxUserProfiles";
-            this.groupBoxUserProfiles.Size = new System.Drawing.Size(321, 98);
+            this.groupBoxUserProfiles.Size = new System.Drawing.Size(374, 113);
             this.groupBoxUserProfiles.TabIndex = 3;
             this.groupBoxUserProfiles.TabStop = false;
             this.groupBoxUserProfiles.Text = "groupBoxUserProfiles";
@@ -74,9 +74,9 @@
             // buttonEdit
             // 
             this.buttonEdit.Enabled = false;
-            this.buttonEdit.Location = new System.Drawing.Point(230, 54);
+            this.buttonEdit.Location = new System.Drawing.Point(268, 62);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(85, 24);
+            this.buttonEdit.Size = new System.Drawing.Size(99, 28);
             this.buttonEdit.TabIndex = 7;
             this.buttonEdit.Text = "buttonEdit";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(230, 24);
+            this.buttonAdd.Location = new System.Drawing.Point(268, 28);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(85, 24);
+            this.buttonAdd.Size = new System.Drawing.Size(99, 28);
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "buttonAdd";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -95,22 +95,24 @@
             // listBoxUserProfiles
             // 
             this.listBoxUserProfiles.FormattingEnabled = true;
-            this.listBoxUserProfiles.Location = new System.Drawing.Point(6, 17);
+            this.listBoxUserProfiles.ItemHeight = 15;
+            this.listBoxUserProfiles.Location = new System.Drawing.Point(7, 20);
             this.listBoxUserProfiles.Name = "listBoxUserProfiles";
-            this.listBoxUserProfiles.Size = new System.Drawing.Size(218, 69);
+            this.listBoxUserProfiles.Size = new System.Drawing.Size(254, 79);
             this.listBoxUserProfiles.TabIndex = 5;
             this.listBoxUserProfiles.SelectedIndexChanged += new System.EventHandler(this.listBoxUserProfiles_SelectedIndexChanged);
             // 
             // FormUserSelection
             // 
             this.AcceptButton = this.buttonOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(345, 152);
+            this.ClientSize = new System.Drawing.Size(402, 175);
             this.Controls.Add(this.groupBoxUserProfiles);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
+            this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
