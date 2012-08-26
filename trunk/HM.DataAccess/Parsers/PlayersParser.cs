@@ -201,6 +201,11 @@ namespace HM.DataAccess.Parsers {
                                 case Tags.PlayerCategoryId:
                                     player.playerCategoryIdField = (PlayerSkill)Convert.ToInt32(xmlNode.InnerText);
                                     break;
+                                case Tags.LastMatch:
+                                    if (xmlNode.ChildNodes != null) {
+                                        player.lastMatchField = ParseLastMatchDataNode(xmlNode);
+                                    }
+                                    break;
                                 case Tags.TrainerData:
                                     if (xmlNode.ChildNodes != null) {
                                         player.trainerDataField = ParseTrainerDataNode(xmlNode);
@@ -237,6 +242,39 @@ namespace HM.DataAccess.Parsers {
                 }
 
                 return trainerData;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        private LastMatchData ParseLastMatchDataNode(XmlNode lastMatchDataNode) {
+            try {
+                LastMatchData lastMatchData = new LastMatchData();
+
+                foreach (XmlNode xmlNode in lastMatchDataNode.ChildNodes) {
+                    switch (xmlNode.Name) {
+                        case Tags.Date:
+                            lastMatchData.dateField = Convert.ToDateTime(xmlNode.InnerText);
+                            break;
+                        case Tags.MatchId:
+                            lastMatchData.matchIdField = Convert.ToInt32(xmlNode.InnerText);
+                            break;
+                        case Tags.PositionCode:
+                            lastMatchData.roleField = (Role)Convert.ToInt32(xmlNode.InnerText);
+                            break;
+                        case Tags.Rating:
+                            lastMatchData.ratingField = Convert.ToDouble(xmlNode.InnerText);
+                            break;
+                        case Tags.RatingEndOfGame:
+                            lastMatchData.ratingEndOfGameField = Convert.ToDouble(xmlNode.InnerText);
+                            break;
+                        case Tags.PlayedMatches:
+                            lastMatchData.minutesPlayedField = Convert.ToInt32(xmlNode.InnerText);
+                            break;
+                    }
+                }
+
+                return lastMatchData;
             } catch (Exception ex) {
                 throw ex;
             }

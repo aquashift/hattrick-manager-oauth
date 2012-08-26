@@ -17,8 +17,8 @@ namespace HM.Resources.Constants {
         public const string MatchesArchiveCurrent = "file=matchesarchive&teamID={0}&isYouth={1}&version=1.1";
         public const string MatchDetails = "file=matchdetails&matchID={0}&matchEvents=true&version=1.8";
         public const string MatchLineup = "file=matchlineup&teamid={0}&matchID={1}&version=1.4";
-        public const string Players = "file=players&orderby=PlayerID&version=1.6";
-        public const string PlayerDetails = "file=playerdetails&playerId={0}&version=1.4";
+        public const string Players = "file=players&orderby=PlayerID&includeMatchInfo=true&version=2.2";
+        public const string PlayerDetails = "file=playerdetails&includeMatchInfo=true&playerId={0}&version=2.3";
         public const string TeamDetails = "file=team&teamId={0}&version=2.3";
         public const string Training = "file=training&version=1.5";
         public const string TransfersTeam = "file=transfersTeam&TeamID={0}&pageIndex={1}&version=1.1";

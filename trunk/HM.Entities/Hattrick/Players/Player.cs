@@ -48,6 +48,7 @@ namespace HM.Entities.Hattrick.Players {
         public PlayerSkill setPiecesSkillField { get; set; }
         public PlayerSkill playerCategoryIdField { get; set; }
         public TrainerData trainerDataField { get; set; }
+        public LastMatchData lastMatchField { get; set; }
 
         #endregion
 
@@ -97,6 +98,7 @@ namespace HM.Entities.Hattrick.Players {
             setPiecesSkillField = PlayerSkill.Unavailable;
             playerCategoryIdField = 0;
             trainerDataField = new TrainerData();
+            lastMatchField = new LastMatchData();
         }
 
         #endregion

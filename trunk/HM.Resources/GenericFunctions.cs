@@ -243,35 +243,77 @@ namespace HM.Resources {
         }
 
         /// <summary>
-        /// Gets the country flag for the specified country id
+        /// Gets the cards image fopr a player
         /// </summary>
-        /// <param name="leagueId">Flag's country id</param>
+        /// <param name="leagueId">Players number of cards</param>
         /// <returns>Flag image</returns>
-        public static Image GetFlagByCountryId(uint countryId) {
+        public static Image GetCardImage(int numCards) {
             //Creates a new image 22x14
-
-            Image flagImage = new Bitmap(22, 14);
+            Image cardImage = new Bitmap(20, 20);
 
             try {
                 //Creates the selected flag's rectangle 20x12
-                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * countryId), 0, 20, 12);
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * numCards), 0, 20, 20);
 
                 //Creates the rectangle where the flag is going to be drawed
-                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 12);
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
 
                 //Creates the Graphics object
-                Graphics graphics = Graphics.FromImage(flagImage);
-
-                //Draws a black rectangle around the flag for better visualization
-                graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(0, 0, 21, 13));
+                Graphics graphics = Graphics.FromImage(cardImage);
 
                 //Draws the flag
-                graphics.DrawImage(Properties.Resources.Flags, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+                graphics.DrawImage(Properties.Resources.cards, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
             } catch (Exception ex) {
                 throw ex;
             }
 
-            return flagImage;
+            return cardImage;
+        }
+
+        /// <summary>
+        /// Gets the injuries image fopr a player
+        /// </summary>
+        /// <param name="leagueId">Players weeks of injury</param>
+        /// <returns>Flag image</returns>
+        public static Image GetInjuriesImage(int injuryWeeks) {
+            int imageOffset = injuryWeeks + 1;
+            Image injuryImage = new Bitmap(20, 20);
+
+            if (imageOffset > 3) {
+                imageOffset = 3;
+            }
+
+            try {
+                //Creates the selected flag's rectangle 20x12
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * imageOffset + 1), 0, 20, 20);
+
+                //Creates the rectangle where the flag is going to be drawed
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
+
+                //Creates the Graphics object
+                Graphics graphics = Graphics.FromImage(injuryImage);
+
+                //Draws the flag
+                graphics.DrawImage(Properties.Resources.injuries, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+
+                if (injuryWeeks > 1) {
+                    String drawString = injuryWeeks.ToString();
+
+                    // Create font and brush.
+                    Font drawFont = new Font("Calibri", 8, FontStyle.Bold);
+                    SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+                    // Create point for upper-left corner of drawing.
+                    PointF drawPoint = new PointF(8, 7);
+
+                    // Draw string to screen.
+                    graphics.DrawString(drawString, drawFont, drawBrush, drawPoint);
+                }
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            return injuryImage;
         }
 
         /// <summary>

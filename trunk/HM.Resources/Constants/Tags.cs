@@ -70,6 +70,7 @@ namespace HM.Resources.Constants {
         public const string CurrentCapacity = "CurrentCapacity";
         public const string CurrentMatchRound = "CurrentMatchRound";
         public const string DataFolder = "DataFolder";
+        public const string Date = "Date";
         public const string Deadline = "Deadline";
         public const string DefenderSkill = "DefenderSkill";
         public const string Doctors = "Doctors";
@@ -165,6 +166,7 @@ namespace HM.Resources.Constants {
         public const string LastIncomeSum = "LastIncomeSum";
         public const string LastIncomeTemporary = "LastIncomeTemporary";
         public const string LastLoginDate = "LastLoginDate";
+        public const string LastMatch = "LastMatch";
         public const string LastName = "LastName";
         public const string LastWeeksTotal = "LastWeeksTotal";
         public const string Leadership = "Leadership";
@@ -185,7 +187,7 @@ namespace HM.Resources.Constants {
         public const string Match = "Match";
         public const string MatchDate = "MatchDate";
         public const string Matches = "Matches";
-        public const string MatchID = "MatchID";
+        public const string MatchId = "MatchId";
         public const string MatchList = "MatchList";
         public const string MatchRound = "MatchRound";
         public const string MatchType = "MatchType";
@@ -242,6 +244,8 @@ namespace HM.Resources.Constants {
         public const string PressSpokesmen = "PressSpokesmen";
         public const string Price = "Price";
         public const string Psychologists = "Psychologists";
+        public const string Rating = "Rating";
+        public const string RatingEndOfGame = "RatingEndOfGame";
         public const string RatingLeftAtt = "RatingLeftAtt";
         public const string RatingLeftDef = "RatingLeftDef";
         public const string RatingMidAtt = "RatingMidAtt";
