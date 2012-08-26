@@ -61,9 +61,6 @@ namespace HM.DataAccess {
                     case FileType.Servers:
                         hattrickData = new Parsers.ServersParser().ParseXmlDocument(xmlDocument);
                         break;
-                    case FileType.Login:
-                        hattrickData = new Parsers.AuthenticationParser().ParseXmlDocument(xmlDocument);
-                        break;
                     case FileType.LeagueDetails:
                         hattrickData = new Parsers.LeagueDetailsParser().ParseXmlDocument(xmlDocument);
                         break;
@@ -134,9 +131,6 @@ namespace HM.DataAccess {
                         break;
                     case FileType.Servers:
                         hattrickData = new Parsers.ServersParser().ParseXmlDocument(xmlDocument);
-                        break;
-                    case FileType.Login:
-                        hattrickData = new Parsers.AuthenticationParser().ParseXmlDocument(xmlDocument);
                         break;
                     case FileType.LeagueDetails:
                         hattrickData = new Parsers.LeagueDetailsParser().ParseXmlDocument(xmlDocument);

@@ -4,14 +4,6 @@ using System.Linq;
 using System.Text;
 
 namespace HM.Resources {
-    public enum LoginResult : int {
-        Unavailable = 1,
-        Successful = 0,
-        LoginFailed = -1,
-        WrongChppCredentials = -2,
-        LockedChppCredentials = -3
-    };
-
     public enum MatchType : int {
         Unavailable = 0,
         LeagueMatch = 1,

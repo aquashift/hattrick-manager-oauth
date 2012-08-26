@@ -24,6 +24,16 @@ namespace HM.Entities.Hattrick.Players {
             playerListField = new List<Player>();
         }
 
+        public Player GetPlayer(int id) {
+            foreach (Player player in playerListField) {
+                if (player.playerIdField == id) {
+                    return (player);
+                }
+            }
+
+            return (null);
+        }
+
         #endregion
     }
 }
