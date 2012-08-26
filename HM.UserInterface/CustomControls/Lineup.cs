@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HM.Core;
 using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.Constants;
 using HM.Entities.HattrickManager.UserProfiles;
@@ -16,6 +17,7 @@ namespace HM.UserInterface.CustomControls {
 
         private HTEntities.Players.Players players;
         private User user;
+        private EntityManager entityManager;
 
         #endregion
 
@@ -25,15 +27,16 @@ namespace HM.UserInterface.CustomControls {
             this.players = players;
             this.user = user;
 
-
+            entityManager = new EntityManager(user);
         }
+
+        #region Methods
 
         private void Lineup_Load(object sender, EventArgs e) {
-
-            LoadControls();
+            PopulatePlayerList();
         }
 
-        private void LoadControls() {
+        private void PopulatePlayerList() {
             HTEntities.Players.Team team = players.teamField;
 
             DataTable lineupDataTable = new DataTable();
@@ -64,16 +67,15 @@ namespace HM.UserInterface.CustomControls {
                 newDataRow[Columns.PlayerID] = player.playerIdField;
                 newDataRow[Columns.PlayerNumber] = player.playerNumberField;
                 newDataRow[Columns.PlayerName] = player.firstNameField + " " + player.lastNameField;
-                newDataRow[Columns.PlayerFlag] = null; //HM.Resources.GenericFunctions.GetFlagByLeagueId(player.countryIdField);
+                newDataRow[Columns.PlayerFlag] = HM.Resources.GenericFunctions.GetFlagByLeagueId(player.countryIdField);
                 newDataRow[Columns.LastPosition] = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
                 newDataRow[Columns.Health] = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
                 newDataRow[Columns.Warnings] = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
                 newDataRow[Columns.Category] = null;
-                newDataRow[Columns.Age] = player.ageField.ToString();
+                newDataRow[Columns.Age] = player.ageField.ToString() + "." + player.ageDaysField.ToString();
                 newDataRow[Columns.TSI] = player.tsiField.ToString();
                 newDataRow[Columns.Form] = player.playerFormField;
                 newDataRow[Columns.Stamina] = player.staminaSkillField;
-
                 newDataRow[Columns.Goalkeeping] = player.keeperSkillField;
                 newDataRow[Columns.Defending] = player.defenderSkillField;
                 newDataRow[Columns.Winger] = player.wingerSkillField;
@@ -86,6 +88,113 @@ namespace HM.UserInterface.CustomControls {
             }
 
             dataGridViewPlayers.DataSource = lineupDataTable;
+
+            dataGridViewPlayers.Columns[Columns.PlayerID].Visible = false;
+            dataGridViewPlayers.Columns[Columns.PlayerName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
+
+        private void PopulatePlayerDetails(int playerID) {
+            HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
+
+            DataTable detailsDataTable = new DataTable();
+
+            detailsDataTable.Columns.Add("Type", typeof(string));
+            detailsDataTable.Columns.Add("Value", typeof(string));
+
+            DataRow newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Speciality";
+            newDataRow["Value"] = selectedPlayer.specialtyField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Experience";
+            newDataRow["Value"] = selectedPlayer.experienceField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Leadership";
+            newDataRow["Value"] = selectedPlayer.leadershipField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Agreeability";
+            newDataRow["Value"] = selectedPlayer.agreeabilityField;
+            detailsDataTable.Rows.Add(newDataRow);
+            newDataRow = detailsDataTable.NewRow();
+
+            newDataRow["Type"] = "Aggressiveness";
+            newDataRow["Value"] = selectedPlayer.aggressivenessField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "TSI";
+            newDataRow["Value"] = selectedPlayer.tsiField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Form";
+            newDataRow["Value"] = selectedPlayer.playerFormField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Stamina";
+            newDataRow["Value"] = selectedPlayer.staminaSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Goalkeeping";
+            newDataRow["Value"] = selectedPlayer.keeperSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Defending";
+            newDataRow["Value"] = selectedPlayer.defenderSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Winger";
+            newDataRow["Value"] = selectedPlayer.wingerSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Playmaking";
+            newDataRow["Value"] = selectedPlayer.playmakerSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Passing";
+            newDataRow["Value"] = selectedPlayer.passingSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Scoring";
+            newDataRow["Value"] = selectedPlayer.scorerSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "Set Pieces";
+            newDataRow["Value"] = selectedPlayer.setPiecesSkillField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            dataGridViewPlayerSkills.DataSource = detailsDataTable;
+
+            dataGridViewPlayerSkills.Columns[0].DefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
+        }
+
+        #endregion
+
+        #region events
+
+        private void dataGridViewPlayers_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (dataGridViewPlayers.SelectedRows[0] != null) {
+                int playerID = Convert.ToInt32(dataGridViewPlayers.SelectedRows[0].Cells[0].Value);
+
+                PopulatePlayerDetails(playerID);
+            }
+        }
+
+        #endregion
+
+
     }
 }

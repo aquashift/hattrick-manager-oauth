@@ -243,7 +243,7 @@ namespace HM.Resources {
         }
 
         /// <summary>
-        /// Gets the cards image fopr a player
+        /// Gets the cards image for a player
         /// </summary>
         /// <param name="leagueId">Players number of cards</param>
         /// <returns>Flag image</returns>
@@ -271,7 +271,7 @@ namespace HM.Resources {
         }
 
         /// <summary>
-        /// Gets the injuries image fopr a player
+        /// Gets the injuries image for a player
         /// </summary>
         /// <param name="leagueId">Players weeks of injury</param>
         /// <returns>Flag image</returns>
@@ -342,13 +342,13 @@ namespace HM.Resources {
                     case Role.RightWinger:
                         offset = 4;
                         break;
+                    case Role.LeftBack:
+                    case Role.RightBack:
+                        offset = 3;
+                        break;
                     case Role.LeftCentralDefender:
                     case Role.RightCentralDefender:
                     case Role.MiddleCentralDefender:
-                        offset = 3;
-                        break;
-                    case Role.LeftBack:
-                    case Role.RightBack:
                         offset = 2;
                         break;
                     case Role.Keeper:

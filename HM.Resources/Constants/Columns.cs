@@ -36,9 +36,9 @@ namespace HM.Resources.Constants {
         public const string AwayTeamID = "AwayTeamID";
         public const string PlayerID = "PlayerID";
         public const string PlayerNumber = "#"; 
-        public const string PlayerName = "PlayerName";
-        public const string PlayerFlag = "PlayerFlag"; 
-        public const string LastPosition = "LastPosition";
+        public const string PlayerName = "Player Name";
+        public const string PlayerFlag = "Nationality"; 
+        public const string LastPosition = "Last Position";
         public const string Age = "Age";
         public const string Health = "Health";
         public const string Warnings = "Warnings";

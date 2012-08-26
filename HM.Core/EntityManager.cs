@@ -104,7 +104,7 @@ namespace HM.Core {
         /// Gets players details.
         /// </summary>
         /// <returns>PlayerList object</returns>
-        public HTEntities.Players.Players GetPlayerDetails() {
+        public HTEntities.Players.Players GetPlayersDetails() {
             try {
                 return (HTEntities.Players.Players)dataManager.ReadFile(FileNames.CurrentPlayers, HM.Resources.FileType.Players);
             } catch (Exception ex) {

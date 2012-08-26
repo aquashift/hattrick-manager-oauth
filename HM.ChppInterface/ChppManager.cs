@@ -88,7 +88,7 @@ namespace HM.ChppInterface {
         #region Private Methods
 
         private void DownloadAll(bool downloadFullMatchesArchive) {
-            totalFilesToDownload += 13;
+            totalFilesToDownload += 12;
 
             DownloadArenaDetails();           
             DownloadAchievements();
@@ -99,11 +99,13 @@ namespace HM.ChppInterface {
             DownloadLeagueFixtures();
             DownloadMatches();
             
+            /*
             if (downloadFullMatchesArchive) {
                 DownloadMatchesArchiveAll();
             } else {
                 DownloadMatchesArchiveCurrent();
             }
+            */
 
             DownloadPlayersData();
             DownloadTeamDetails();
@@ -114,12 +116,14 @@ namespace HM.ChppInterface {
         private void DownloadPlayersData() {
             List<HTEntities.Players.Player> playerList = DownloadPlayers();
 
+            /*
             totalFilesToDownload += Convert.ToInt32(playerList.Count * 2);
 
             foreach (HTEntities.Players.Player currentPlayer in playerList) {
                 DownloadPlayerDetails(currentPlayer.playerIdField.ToString());
                 DownloadTransfersPlayers(currentPlayer.playerIdField.ToString());
             }
+            */
         }
 
         private void DownloadMatchesArchiveAll() {

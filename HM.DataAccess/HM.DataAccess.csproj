@@ -69,7 +69,6 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="Parsers\AchievementsParser.cs" />
     <Compile Include="Parsers\ArenaDetailsParser.cs" />
-    <Compile Include="Parsers\AuthenticationParser.cs" />
     <Compile Include="Parsers\BaseParser.cs" />
     <Compile Include="Parsers\ClubParser.cs" />
     <Compile Include="Parsers\EconomyParser.cs" />

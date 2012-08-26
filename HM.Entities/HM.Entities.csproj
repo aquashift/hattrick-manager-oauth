@@ -77,7 +77,6 @@
     <Compile Include="Hattrick\ArenaDetails\League.cs" />
     <Compile Include="Hattrick\ArenaDetails\Region.cs" />
     <Compile Include="Hattrick\ArenaDetails\Team.cs" />
-    <Compile Include="Hattrick\Authentication\Authentication.cs" />
     <Compile Include="Hattrick\Club\Club.cs" />
     <Compile Include="Hattrick\Club\Team.cs" />
     <Compile Include="Hattrick\Club\Specialists.cs" />

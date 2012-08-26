@@ -88,7 +88,7 @@ namespace HM.UserInterface {
         private void buttonLineup_Click(object sender, EventArgs e) {
             panelMainContent.Controls.Clear();
 
-            CustomControls.Lineup lineup = new CustomControls.Lineup(entityManager.GetPlayerDetails(), currentUser);
+            CustomControls.Lineup lineup = new CustomControls.Lineup(entityManager.GetPlayersDetails(), currentUser);
 
             lineup.Dock = DockStyle.Fill;
 
