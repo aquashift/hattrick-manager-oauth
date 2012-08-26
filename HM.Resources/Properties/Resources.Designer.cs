@@ -144,6 +144,13 @@ namespace HM.Resources.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap positions {
+            get {
+                object obj = ResourceManager.GetObject("positions", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap PositionUp {
             get {
                 object obj = ResourceManager.GetObject("PositionUp", resourceCulture);

@@ -41,8 +41,8 @@ namespace HM.UserInterface.CustomControls {
             lineupDataTable.Columns.Add(Columns.PlayerID, typeof(Int32));
             lineupDataTable.Columns.Add(Columns.PlayerNumber, typeof(byte));
             lineupDataTable.Columns.Add(Columns.PlayerName, typeof(string));
-            lineupDataTable.Columns.Add(Columns.PlayerFlag, typeof(Image)); 
-            lineupDataTable.Columns.Add(Columns.LastPosition, typeof(string));
+            lineupDataTable.Columns.Add(Columns.PlayerFlag, typeof(Image));
+            lineupDataTable.Columns.Add(Columns.LastPosition, typeof(Image));
             lineupDataTable.Columns.Add(Columns.Health, typeof(Image));
             lineupDataTable.Columns.Add(Columns.Warnings, typeof(Image));
             lineupDataTable.Columns.Add(Columns.Category, typeof(Image));
@@ -65,7 +65,7 @@ namespace HM.UserInterface.CustomControls {
                 newDataRow[Columns.PlayerNumber] = player.playerNumberField;
                 newDataRow[Columns.PlayerName] = player.firstNameField + " " + player.lastNameField;
                 newDataRow[Columns.PlayerFlag] = null; //HM.Resources.GenericFunctions.GetFlagByLeagueId(player.countryIdField);
-                newDataRow[Columns.LastPosition] = player.lastMatchField.roleField + " (" + player.lastMatchField.ratingField + ")";
+                newDataRow[Columns.LastPosition] = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
                 newDataRow[Columns.Health] = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
                 newDataRow[Columns.Warnings] = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
                 newDataRow[Columns.Category] = null;

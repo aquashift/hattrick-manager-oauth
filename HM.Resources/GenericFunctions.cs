@@ -317,6 +317,68 @@ namespace HM.Resources {
         }
 
         /// <summary>
+        /// Gets the positions image for a player
+        /// </summary>
+        /// <param name="leagueId">Players position</param>
+        /// <returns>Flag image</returns>
+        public static Image GetPositionImage(Role position) {
+            //Creates a new image 22x14
+            Image positionImage = new Bitmap(20, 20);
+            int offset = 0;
+
+            try {
+                switch (position) {
+                    case Role.LeftForward:
+                    case Role.MiddleForward:
+                    case Role.RightForward:
+                        offset = 6;
+                        break;
+                    case Role.MiddleInnerMidfield:
+                    case Role.LeftInnerMidfield:
+                    case Role.RightInnerMidfield:
+                        offset = 5;
+                        break;
+                    case Role.LeftWinger:
+                    case Role.RightWinger:
+                        offset = 4;
+                        break;
+                    case Role.LeftCentralDefender:
+                    case Role.RightCentralDefender:
+                    case Role.MiddleCentralDefender:
+                        offset = 3;
+                        break;
+                    case Role.LeftBack:
+                    case Role.RightBack:
+                        offset = 2;
+                        break;
+                    case Role.Keeper:
+                        offset = 1;
+                        break;
+                    default:
+                        offset = 0;
+                        break;
+
+                }
+
+                //Creates the selected flag's rectangle 20x12
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * offset), 0, 20, 20);
+
+                //Creates the rectangle where the flag is going to be drawed
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
+
+                //Creates the Graphics object
+                Graphics graphics = Graphics.FromImage(positionImage);
+
+                //Draws the flag
+                graphics.DrawImage(Properties.Resources.positions, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            return positionImage;
+        }
+
+        /// <summary>
         /// Gets the folder name by file type
         /// </summary>
         /// <param name="fileType">Folder's file type</param>
