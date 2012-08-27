@@ -30,10 +30,19 @@ namespace HM.UserInterface.CustomControls {
             entityManager = new EntityManager(user);
         }
 
+        public Lineup() {
+            InitializeComponent();
+
+            this.players = null;
+            this.user = null;
+        }
+
         #region Methods
 
         private void Lineup_Load(object sender, EventArgs e) {
-            PopulatePlayerList();
+            if (players != null) {
+                PopulatePlayerList();
+            }
         }
 
         private void PopulatePlayerList() {
@@ -51,7 +60,7 @@ namespace HM.UserInterface.CustomControls {
             lineupDataTable.Columns.Add(Columns.Warnings, typeof(Image));
             lineupDataTable.Columns.Add(Columns.Category, typeof(Image));
             lineupDataTable.Columns.Add(Columns.Age, typeof(string));
-            lineupDataTable.Columns.Add(Columns.TSI, typeof(Int32)); 
+            lineupDataTable.Columns.Add(Columns.TSI, typeof(Int32));
             lineupDataTable.Columns.Add(Columns.Form, typeof(byte));
             lineupDataTable.Columns.Add(Columns.Stamina, typeof(byte));
             lineupDataTable.Columns.Add(Columns.Goalkeeping, typeof(byte));
@@ -121,10 +130,15 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Type"] = "Agreeability";
             newDataRow["Value"] = selectedPlayer.agreeabilityField;
             detailsDataTable.Rows.Add(newDataRow);
+            
             newDataRow = detailsDataTable.NewRow();
-
             newDataRow["Type"] = "Aggressiveness";
             newDataRow["Value"] = selectedPlayer.aggressivenessField;
+            detailsDataTable.Rows.Add(newDataRow);
+
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "";
+            newDataRow["Value"] = "";
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
@@ -142,6 +156,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = selectedPlayer.staminaSkillField;
             detailsDataTable.Rows.Add(newDataRow);
 
+            newDataRow = detailsDataTable.NewRow();
+            newDataRow["Type"] = "";
+            newDataRow["Value"] = "";
+
+            detailsDataTable.Rows.Add(newDataRow);
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Goalkeeping";
             newDataRow["Value"] = selectedPlayer.keeperSkillField;

@@ -85,7 +85,7 @@ namespace HM.UserInterface {
             }
         }
 
-        private void buttonLineup_Click(object sender, EventArgs e) {
+        private void SetLineupControl() {
             panelMainContent.Controls.Clear();
 
             CustomControls.Lineup lineup = new CustomControls.Lineup(entityManager.GetPlayersDetails(), currentUser);
@@ -93,6 +93,10 @@ namespace HM.UserInterface {
             lineup.Dock = DockStyle.Fill;
 
             panelMainContent.Controls.Add(lineup);
+        }
+
+        private void buttonLineup_Click(object sender, EventArgs e) {
+            SetLineupControl();
         }
 
         private void buttonMatches_Click(object sender, EventArgs e) {
@@ -114,6 +118,7 @@ namespace HM.UserInterface {
             }
 
             SetToolbarButtons();
+            SetLineupControl();
         }
 
         #endregion
