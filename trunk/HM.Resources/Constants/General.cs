@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public static class General
-    {
+namespace HM.Resources.Constants {
+    public static class General {
         public const string EncryptionKey = "32F4DF0E-3F36-48ec-B839-16CFC2903E31";
         public const string Dot = ".";
         public const string Hyphen = "-";
@@ -23,7 +21,7 @@ namespace HM.Resources.Constants
         public const string Money = "{0} {1}";
         public const string Skill = "{0} ({1})";
         public const string Cash = "{0} ({1})";
-        public const string ValueId= "{0} ({1})";
+        public const string ValueId = "{0} ({1})";
         public const string Percentage = "{0} %";
         public const string NoDecimalFormat = "N0";
         public const string OneDecimalFormat = "N1";

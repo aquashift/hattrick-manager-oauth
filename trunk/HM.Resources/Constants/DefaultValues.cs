@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Resources.Constants
-{
-    public static class DefaultValues
-    {
+namespace HM.Resources.Constants {
+    public static class DefaultValues {
         public const decimal ArenaBasicIncome = 65M;
         public const decimal ArenaTerracesIncome = 95M;
         public const decimal ArenaRoofIncome = 180M;
