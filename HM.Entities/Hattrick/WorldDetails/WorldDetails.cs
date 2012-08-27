@@ -20,6 +20,19 @@ namespace HM.Entities.Hattrick.WorldDetails {
             this.leagueListField = new List<League>();
         }
 
+        public uint GetLeagueIDFromCountryID(uint countryID) {
+            uint id = 0;
+
+            foreach (League league in leagueListField) {
+                if (league.countryField.countryIdField == countryID) {
+                    id = league.leagueIdField;
+                    break;
+                }
+            }
+
+            return (id);
+        }
+
         #endregion
     }
 }

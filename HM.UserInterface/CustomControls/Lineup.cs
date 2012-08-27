@@ -37,6 +37,7 @@ namespace HM.UserInterface.CustomControls {
         }
 
         private void PopulatePlayerList() {
+            HTEntities.WorldDetails.WorldDetails world = entityManager.GetWorldDetails();
             HTEntities.Players.Team team = players.teamField;
 
             DataTable lineupDataTable = new DataTable();
@@ -67,7 +68,7 @@ namespace HM.UserInterface.CustomControls {
                 newDataRow[Columns.PlayerID] = player.playerIdField;
                 newDataRow[Columns.PlayerNumber] = player.playerNumberField;
                 newDataRow[Columns.PlayerName] = player.firstNameField + " " + player.lastNameField;
-                newDataRow[Columns.PlayerFlag] = HM.Resources.GenericFunctions.GetFlagByLeagueId(player.countryIdField);
+                newDataRow[Columns.PlayerFlag] = HM.Resources.GenericFunctions.GetFlagByLeagueId(world.GetLeagueIDFromCountryID(player.countryIdField));
                 newDataRow[Columns.LastPosition] = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
                 newDataRow[Columns.Health] = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
                 newDataRow[Columns.Warnings] = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
@@ -113,7 +114,7 @@ namespace HM.UserInterface.CustomControls {
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Leadership";
-            newDataRow["Value"] = selectedPlayer.leadershipField;
+            newDataRow["Value"] =  selectedPlayer.leadershipField;
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
@@ -178,7 +179,8 @@ namespace HM.UserInterface.CustomControls {
 
             dataGridViewPlayerSkills.DataSource = detailsDataTable;
 
-            dataGridViewPlayerSkills.Columns[0].DefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
+            //dataGridViewPlayerSkills.Columns[0].DefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
+            dataGridViewPlayerSkills.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         #endregion
