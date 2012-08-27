@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using HMEntities = HM.Entities.HattrickManager;
 using HM.Resources.Constants;
