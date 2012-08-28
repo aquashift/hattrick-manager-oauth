@@ -82,7 +82,7 @@ namespace HM.UserInterface.CustomControls {
                 newDataRow[Columns.LastPosition] = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
                 newDataRow[Columns.Health] = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
                 newDataRow[Columns.Warnings] = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
-                newDataRow[Columns.Category] = null;
+                newDataRow[Columns.Category] = HM.Resources.GenericFunctions.GetCategoryImage(7);
                 newDataRow[Columns.Age] = player.ageField.ToString() + "." + player.ageDaysField.ToString();
                 newDataRow[Columns.TSI] = player.tsiField.ToString();
                 newDataRow[Columns.Form] = player.playerFormField;

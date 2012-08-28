@@ -271,6 +271,34 @@ namespace HM.Resources {
         }
 
         /// <summary>
+        /// Gets the category image for a player
+        /// </summary>
+        /// <param name="leagueId">Players category number</param>
+        /// <returns>Flag image</returns>
+        public static Image GetCategoryImage(int category) {
+            //Creates a new image 22x14
+            Image categoryImage = new Bitmap(20, 20);
+
+            try {
+                //Creates the selected flag's rectangle 20x12
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * category), 0, 20, 20);
+
+                //Creates the rectangle where the flag is going to be drawed
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
+
+                //Creates the Graphics object
+                Graphics graphics = Graphics.FromImage(categoryImage);
+
+                //Draws the flag
+                graphics.DrawImage(Properties.Resources.categories, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            return categoryImage;
+        }
+
+        /// <summary>
         /// Gets the injuries image for a player
         /// </summary>
         /// <param name="leagueId">Players weeks of injury</param>
@@ -323,7 +351,7 @@ namespace HM.Resources {
         /// <returns>Flag image</returns>
         public static Image GetPositionImage(Role position) {
             //Creates a new image 22x14
-            Image positionImage = new Bitmap(20, 20);
+            Image positionImage = new Bitmap(30, 20);
             int offset = 0;
 
             try {
@@ -361,10 +389,10 @@ namespace HM.Resources {
                 }
 
                 //Creates the selected flag's rectangle 20x12
-                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * offset), 0, 20, 20);
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(30 * offset), 0, 30, 20);
 
                 //Creates the rectangle where the flag is going to be drawed
-                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
+                Rectangle destinationRectangle = new Rectangle(1, 1, 30, 20);
 
                 //Creates the Graphics object
                 Graphics graphics = Graphics.FromImage(positionImage);
