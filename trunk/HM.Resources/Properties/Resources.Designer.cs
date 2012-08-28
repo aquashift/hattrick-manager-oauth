@@ -81,6 +81,13 @@ namespace HM.Resources.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap categories {
+            get {
+                object obj = ResourceManager.GetObject("categories", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap club {
             get {
                 object obj = ResourceManager.GetObject("club", resourceCulture);
