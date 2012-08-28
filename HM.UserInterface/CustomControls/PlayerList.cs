@@ -12,7 +12,7 @@ using HM.Resources.Constants;
 using HM.Entities.HattrickManager.UserProfiles;
 
 namespace HM.UserInterface.CustomControls {
-    public partial class Lineup : UserControl {
+    public partial class PlayerList : UserControl {
         #region Properties
 
         private HTEntities.Players.Players players;
@@ -21,25 +21,26 @@ namespace HM.UserInterface.CustomControls {
 
         #endregion
 
-        public Lineup(HTEntities.Players.Players players, User user) {
+        public PlayerList(User user) {
             InitializeComponent();
 
-            this.players = players;
             this.user = user;
-
-            entityManager = new EntityManager(user);
+            this.entityManager = new EntityManager(user);
+            this.players = entityManager.GetPlayersDetails();
         }
 
-        public Lineup() {
+        public PlayerList() {
             InitializeComponent();
-
-            this.players = null;
-            this.user = null;
         }
 
         #region Methods
 
         private void Lineup_Load(object sender, EventArgs e) {
+
+            buttonPlayerName.BackgroundImage = HM.Resources.GenericFunctions.GetResourceImage("gray_grad");
+            buttonPlayerName.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonPlayerName.ForeColor = Color.White;
+
             if (players != null) {
                 PopulatePlayerList();
             }
@@ -105,6 +106,8 @@ namespace HM.UserInterface.CustomControls {
 
         private void PopulatePlayerDetails(int playerID) {
             HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
+
+            buttonPlayerName.Text = selectedPlayer.firstNameField + " " + selectedPlayer.lastNameField;
 
             DataTable detailsDataTable = new DataTable();
 
@@ -215,7 +218,5 @@ namespace HM.UserInterface.CustomControls {
         }
 
         #endregion
-
-
     }
 }

@@ -184,6 +184,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\Backgrounds\bg_gray_grad.png" />
+    <Content Include="Resources\Icons\league.png" />
     <Content Include="Resources\Injuries\injuries.png" />
     <Content Include="Resources\Positions\positions.png" />
     <Content Include="Resources\Warnings\cards.png" />

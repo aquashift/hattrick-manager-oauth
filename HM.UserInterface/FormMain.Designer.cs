@@ -45,7 +45,9 @@
             this.buttonSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSpace1 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonLineup = new System.Windows.Forms.ToolStripButton();
+            this.buttonEconomy = new System.Windows.Forms.ToolStripButton();
             this.panelMainContent = new System.Windows.Forms.Panel();
+            this.buttonLeague = new System.Windows.Forms.ToolStripButton();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -183,7 +185,9 @@
             this.buttonDownload,
             this.buttonSettings,
             this.toolStripSpace1,
-            this.buttonLineup});
+            this.buttonLineup,
+            this.buttonEconomy,
+            this.buttonLeague});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(1157, 31);
@@ -228,6 +232,17 @@
             this.buttonLineup.ToolTipText = "Lineup";
             this.buttonLineup.Click += new System.EventHandler(this.buttonLineup_Click);
             // 
+            // buttonEconomy
+            // 
+            this.buttonEconomy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonEconomy.Image = ((System.Drawing.Image)(resources.GetObject("buttonEconomy.Image")));
+            this.buttonEconomy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonEconomy.Name = "buttonEconomy";
+            this.buttonEconomy.Size = new System.Drawing.Size(28, 28);
+            this.buttonEconomy.Text = "buttonEconomy";
+            this.buttonEconomy.ToolTipText = "Economy";
+            this.buttonEconomy.Click += new System.EventHandler(this.buttonEconomy_Click);
+            // 
             // panelMainContent
             // 
             this.panelMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -236,6 +251,17 @@
             this.panelMainContent.Padding = new System.Windows.Forms.Padding(3);
             this.panelMainContent.Size = new System.Drawing.Size(1157, 491);
             this.panelMainContent.TabIndex = 4;
+            // 
+            // buttonLeague
+            // 
+            this.buttonLeague.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonLeague.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeague.Image")));
+            this.buttonLeague.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonLeague.Name = "buttonLeague";
+            this.buttonLeague.Size = new System.Drawing.Size(28, 28);
+            this.buttonLeague.Text = "buttonLeague";
+            this.buttonLeague.ToolTipText = "League";
+            this.buttonLeague.Click += new System.EventHandler(this.buttonLeague_Click);
             // 
             // FormMain
             // 
@@ -286,6 +312,8 @@
         private System.Windows.Forms.Panel panelMainContent;
         private System.Windows.Forms.ToolStripSeparator toolStripSpace1;
         private System.Windows.Forms.ToolStripButton buttonLineup;
+        private System.Windows.Forms.ToolStripButton buttonEconomy;
+        private System.Windows.Forms.ToolStripButton buttonLeague;
     }
 }
 
