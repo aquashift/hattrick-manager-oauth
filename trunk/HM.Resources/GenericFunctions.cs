@@ -547,9 +547,31 @@ namespace HM.Resources {
                     case "buttonLineup":
                         toolbarImage = Properties.Resources.lineup;
                         break;
+                    case "buttonEconomy":
+                        toolbarImage = Properties.Resources.finance;
+                        break;
+                    case "buttonLeague":
+                        toolbarImage = Properties.Resources.league;
+                        break;
                 }
 
                 return toolbarImage;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public static Image GetResourceImage(string name) {
+            Image resourceImage = null;
+
+            try {
+                switch (name) {
+                    case "gray_grad":
+                        resourceImage = Properties.Resources.bg_gray_grad;
+                        break;
+                }
+
+                return resourceImage;
             } catch (Exception ex) {
                 throw ex;
             }

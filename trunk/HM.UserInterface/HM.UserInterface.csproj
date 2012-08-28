@@ -88,11 +88,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\Lineup.cs">
+    <Compile Include="CustomControls\PlayerList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomControls\Lineup.Designer.cs">
-      <DependentUpon>Lineup.cs</DependentUpon>
+    <Compile Include="CustomControls\PlayerList.Designer.cs">
+      <DependentUpon>PlayerList.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAchievements.cs">
       <SubType>Form</SubType>
@@ -162,8 +162,8 @@
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CustomControls\Lineup.resx">
-      <DependentUpon>Lineup.cs</DependentUpon>
+    <EmbeddedResource Include="CustomControls\PlayerList.resx">
+      <DependentUpon>PlayerList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAchievements.resx">
       <DependentUpon>FormAchievements.cs</DependentUpon>

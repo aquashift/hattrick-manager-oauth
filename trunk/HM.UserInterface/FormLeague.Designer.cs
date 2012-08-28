@@ -51,6 +51,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.tabControlLeague = new System.Windows.Forms.TabControl();
             this.tabPageLeagueDetails = new System.Windows.Forms.TabPage();
             this.labelLevelValue = new System.Windows.Forms.Label();
@@ -83,7 +84,6 @@
             this.columnAwayTeamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnAwayTeam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnAwayResult = new System.Windows.Forms.DataGridViewImageColumn();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.tabControlLeague.SuspendLayout();
             this.tabPageLeagueDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPositions)).BeginInit();
@@ -91,14 +91,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFixtures)).BeginInit();
             this.SuspendLayout();
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(696, 434);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(99, 28);
+            this.buttonClose.TabIndex = 0;
+            this.buttonClose.Text = "buttonClose";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // tabControlLeague
             // 
             this.tabControlLeague.Controls.Add(this.tabPageLeagueDetails);
             this.tabControlLeague.Controls.Add(this.tabPageLeagueFixtures);
-            this.tabControlLeague.Location = new System.Drawing.Point(12, 12);
+            this.tabControlLeague.Location = new System.Drawing.Point(14, 14);
             this.tabControlLeague.Name = "tabControlLeague";
             this.tabControlLeague.SelectedIndex = 0;
-            this.tabControlLeague.Size = new System.Drawing.Size(670, 358);
+            this.tabControlLeague.Size = new System.Drawing.Size(782, 413);
             this.tabControlLeague.TabIndex = 0;
             // 
             // tabPageLeagueDetails
@@ -110,70 +120,70 @@
             this.tabPageLeagueDetails.Controls.Add(this.labelRound);
             this.tabPageLeagueDetails.Controls.Add(this.labelSeries);
             this.tabPageLeagueDetails.Controls.Add(this.dataGridViewPositions);
-            this.tabPageLeagueDetails.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLeagueDetails.Location = new System.Drawing.Point(4, 24);
             this.tabPageLeagueDetails.Name = "tabPageLeagueDetails";
             this.tabPageLeagueDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLeagueDetails.Size = new System.Drawing.Size(662, 332);
+            this.tabPageLeagueDetails.Size = new System.Drawing.Size(774, 385);
             this.tabPageLeagueDetails.TabIndex = 0;
             this.tabPageLeagueDetails.Text = "tabPageLeagueDetails";
             this.tabPageLeagueDetails.UseVisualStyleBackColor = true;
             // 
             // labelLevelValue
             // 
-            this.labelLevelValue.Location = new System.Drawing.Point(525, 6);
+            this.labelLevelValue.Location = new System.Drawing.Point(612, 7);
             this.labelLevelValue.Margin = new System.Windows.Forms.Padding(3);
             this.labelLevelValue.Name = "labelLevelValue";
-            this.labelLevelValue.Size = new System.Drawing.Size(80, 21);
+            this.labelLevelValue.Size = new System.Drawing.Size(93, 24);
             this.labelLevelValue.TabIndex = 12;
             this.labelLevelValue.Text = "labelLevelValue";
             this.labelLevelValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelRoundValue
             // 
-            this.labelRoundValue.Location = new System.Drawing.Point(95, 33);
+            this.labelRoundValue.Location = new System.Drawing.Point(111, 38);
             this.labelRoundValue.Margin = new System.Windows.Forms.Padding(3);
             this.labelRoundValue.Name = "labelRoundValue";
-            this.labelRoundValue.Size = new System.Drawing.Size(145, 21);
+            this.labelRoundValue.Size = new System.Drawing.Size(169, 24);
             this.labelRoundValue.TabIndex = 11;
             this.labelRoundValue.Text = "labelRoundValue";
             this.labelRoundValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelSeriesValue
             // 
-            this.labelSeriesValue.Location = new System.Drawing.Point(95, 6);
+            this.labelSeriesValue.Location = new System.Drawing.Point(111, 7);
             this.labelSeriesValue.Margin = new System.Windows.Forms.Padding(3);
             this.labelSeriesValue.Name = "labelSeriesValue";
-            this.labelSeriesValue.Size = new System.Drawing.Size(145, 21);
+            this.labelSeriesValue.Size = new System.Drawing.Size(169, 24);
             this.labelSeriesValue.TabIndex = 10;
             this.labelSeriesValue.Text = "labelSeriesValue";
             this.labelSeriesValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelLevel
             // 
-            this.labelLevel.Location = new System.Drawing.Point(419, 6);
+            this.labelLevel.Location = new System.Drawing.Point(489, 7);
             this.labelLevel.Margin = new System.Windows.Forms.Padding(3);
             this.labelLevel.Name = "labelLevel";
-            this.labelLevel.Size = new System.Drawing.Size(100, 21);
+            this.labelLevel.Size = new System.Drawing.Size(117, 24);
             this.labelLevel.TabIndex = 8;
             this.labelLevel.Text = "labelLevel";
             this.labelLevel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelRound
             // 
-            this.labelRound.Location = new System.Drawing.Point(6, 33);
+            this.labelRound.Location = new System.Drawing.Point(7, 38);
             this.labelRound.Margin = new System.Windows.Forms.Padding(3);
             this.labelRound.Name = "labelRound";
-            this.labelRound.Size = new System.Drawing.Size(83, 21);
+            this.labelRound.Size = new System.Drawing.Size(97, 24);
             this.labelRound.TabIndex = 7;
             this.labelRound.Text = "labelRound";
             this.labelRound.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelSeries
             // 
-            this.labelSeries.Location = new System.Drawing.Point(6, 6);
+            this.labelSeries.Location = new System.Drawing.Point(7, 7);
             this.labelSeries.Margin = new System.Windows.Forms.Padding(3);
             this.labelSeries.Name = "labelSeries";
-            this.labelSeries.Size = new System.Drawing.Size(83, 21);
+            this.labelSeries.Size = new System.Drawing.Size(97, 24);
             this.labelSeries.TabIndex = 6;
             this.labelSeries.Text = "labelSeries";
             this.labelSeries.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -184,21 +194,21 @@
             this.dataGridViewPositions.AllowUserToDeleteRows = false;
             this.dataGridViewPositions.AllowUserToResizeColumns = false;
             this.dataGridViewPositions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dataGridViewPositions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewPositions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewPositions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPositions.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewPositions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridViewPositions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewPositions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -219,7 +229,7 @@
             this.columnPoints,
             this.columnTeamID});
             this.dataGridViewPositions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewPositions.Location = new System.Drawing.Point(6, 60);
+            this.dataGridViewPositions.Location = new System.Drawing.Point(7, 69);
             this.dataGridViewPositions.MultiSelect = false;
             this.dataGridViewPositions.Name = "dataGridViewPositions";
             this.dataGridViewPositions.ReadOnly = true;
@@ -230,7 +240,7 @@
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dataGridViewPositions.RowsDefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewPositions.Size = new System.Drawing.Size(650, 201);
+            this.dataGridViewPositions.Size = new System.Drawing.Size(758, 230);
             this.dataGridViewPositions.TabIndex = 1;
             this.dataGridViewPositions.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewPositions_DataBindingComplete);
             this.dataGridViewPositions.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
@@ -246,7 +256,7 @@
             this.columnPosition.Name = "columnPosition";
             this.columnPosition.ReadOnly = true;
             this.columnPosition.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnPosition.Width = 84;
+            this.columnPosition.Width = 95;
             // 
             // columnChange
             // 
@@ -287,7 +297,7 @@
             this.columnMatches.Name = "columnMatches";
             this.columnMatches.ReadOnly = true;
             this.columnMatches.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnMatches.Width = 88;
+            this.columnMatches.Width = 97;
             // 
             // columnWon
             // 
@@ -300,7 +310,7 @@
             this.columnWon.Name = "columnWon";
             this.columnWon.ReadOnly = true;
             this.columnWon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnWon.Width = 70;
+            this.columnWon.Width = 77;
             // 
             // columnDraw
             // 
@@ -313,7 +323,7 @@
             this.columnDraw.Name = "columnDraw";
             this.columnDraw.ReadOnly = true;
             this.columnDraw.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnDraw.Width = 72;
+            this.columnDraw.Width = 80;
             // 
             // columnLost
             // 
@@ -326,7 +336,7 @@
             this.columnLost.Name = "columnLost";
             this.columnLost.ReadOnly = true;
             this.columnLost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnLost.Width = 67;
+            this.columnLost.Width = 74;
             // 
             // columnGoalsFor
             // 
@@ -339,7 +349,7 @@
             this.columnGoalsFor.Name = "columnGoalsFor";
             this.columnGoalsFor.ReadOnly = true;
             this.columnGoalsFor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnGoalsFor.Width = 89;
+            this.columnGoalsFor.Width = 98;
             // 
             // columnGoalsAgainst
             // 
@@ -352,7 +362,7 @@
             this.columnGoalsAgainst.Name = "columnGoalsAgainst";
             this.columnGoalsAgainst.ReadOnly = true;
             this.columnGoalsAgainst.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnGoalsAgainst.Width = 109;
+            this.columnGoalsAgainst.Width = 120;
             // 
             // columnGoalDifference
             // 
@@ -365,7 +375,7 @@
             this.columnGoalDifference.Name = "columnGoalDifference";
             this.columnGoalDifference.ReadOnly = true;
             this.columnGoalDifference.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnGoalDifference.Width = 118;
+            this.columnGoalDifference.Width = 132;
             // 
             // columnPoints
             // 
@@ -378,7 +388,7 @@
             this.columnPoints.Name = "columnPoints";
             this.columnPoints.ReadOnly = true;
             this.columnPoints.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnPoints.Width = 76;
+            this.columnPoints.Width = 85;
             // 
             // columnTeamID
             // 
@@ -392,10 +402,10 @@
             // tabPageLeagueFixtures
             // 
             this.tabPageLeagueFixtures.Controls.Add(this.dataGridViewFixtures);
-            this.tabPageLeagueFixtures.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLeagueFixtures.Location = new System.Drawing.Point(4, 24);
             this.tabPageLeagueFixtures.Name = "tabPageLeagueFixtures";
             this.tabPageLeagueFixtures.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLeagueFixtures.Size = new System.Drawing.Size(662, 332);
+            this.tabPageLeagueFixtures.Size = new System.Drawing.Size(774, 385);
             this.tabPageLeagueFixtures.TabIndex = 1;
             this.tabPageLeagueFixtures.Text = "tabPageLeagueFixtures";
             this.tabPageLeagueFixtures.UseVisualStyleBackColor = true;
@@ -406,21 +416,21 @@
             this.dataGridViewFixtures.AllowUserToDeleteRows = false;
             this.dataGridViewFixtures.AllowUserToResizeColumns = false;
             this.dataGridViewFixtures.AllowUserToResizeRows = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dataGridViewFixtures.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridViewFixtures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewFixtures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewFixtures.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewFixtures.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridViewFixtures.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewFixtures.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -438,7 +448,7 @@
             this.columnAwayTeam,
             this.columnAwayResult});
             this.dataGridViewFixtures.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewFixtures.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewFixtures.Location = new System.Drawing.Point(7, 7);
             this.dataGridViewFixtures.MultiSelect = false;
             this.dataGridViewFixtures.Name = "dataGridViewFixtures";
             this.dataGridViewFixtures.ReadOnly = true;
@@ -449,7 +459,7 @@
             dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dataGridViewFixtures.RowsDefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridViewFixtures.Size = new System.Drawing.Size(650, 320);
+            this.dataGridViewFixtures.Size = new System.Drawing.Size(758, 367);
             this.dataGridViewFixtures.TabIndex = 2;
             this.dataGridViewFixtures.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewFixtures_DataBindingComplete);
             this.dataGridViewFixtures.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
@@ -465,7 +475,7 @@
             this.columnRound.Name = "columnRound";
             this.columnRound.ReadOnly = true;
             this.columnRound.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnRound.Width = 79;
+            this.columnRound.Width = 86;
             // 
             // columnDate
             // 
@@ -479,7 +489,7 @@
             this.columnDate.Name = "columnDate";
             this.columnDate.ReadOnly = true;
             this.columnDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnDate.Width = 70;
+            this.columnDate.Width = 77;
             // 
             // columnHomeResult
             // 
@@ -488,7 +498,7 @@
             this.columnHomeResult.HeaderText = "columnHomeResult";
             this.columnHomeResult.Name = "columnHomeResult";
             this.columnHomeResult.ReadOnly = true;
-            this.columnHomeResult.Width = 105;
+            this.columnHomeResult.Width = 118;
             // 
             // columnHomeTeamID
             // 
@@ -521,7 +531,7 @@
             this.columnScore.Name = "columnScore";
             this.columnScore.ReadOnly = true;
             this.columnScore.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnScore.Width = 75;
+            this.columnScore.Width = 81;
             // 
             // columnAwayTeamID
             // 
@@ -550,25 +560,16 @@
             this.columnAwayResult.HeaderText = "columnAwayResult";
             this.columnAwayResult.Name = "columnAwayResult";
             this.columnAwayResult.ReadOnly = true;
-            this.columnAwayResult.Width = 103;
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Location = new System.Drawing.Point(597, 376);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(85, 24);
-            this.buttonClose.TabIndex = 0;
-            this.buttonClose.Text = "buttonClose";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            this.columnAwayResult.Width = 115;
             // 
             // FormLeague
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 412);
+            this.ClientSize = new System.Drawing.Size(810, 475);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.tabControlLeague);
+            this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

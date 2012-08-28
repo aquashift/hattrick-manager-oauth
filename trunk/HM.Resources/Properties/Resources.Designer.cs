@@ -67,6 +67,13 @@ namespace HM.Resources.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap bg_gray_grad {
+            get {
+                object obj = ResourceManager.GetObject("bg_gray_grad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap cards {
             get {
                 object obj = ResourceManager.GetObject("cards", resourceCulture);
@@ -119,6 +126,13 @@ namespace HM.Resources.Properties {
         public static System.Drawing.Bitmap injuries {
             get {
                 object obj = ResourceManager.GetObject("injuries", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap league {
+            get {
+                object obj = ResourceManager.GetObject("league", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

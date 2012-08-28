@@ -10,10 +10,8 @@ using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.Constants;
 using HM.Entities.HattrickManager.UserProfiles;
 
-namespace HM.UserInterface
-{
-    public partial class FormEconomy : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormEconomy : FormBase {
         #region Properties
 
         private HTEntities.Economy.Economy economy;
@@ -23,16 +21,14 @@ namespace HM.UserInterface
 
         #region Controls events
 
-        public FormEconomy(HTEntities.Economy.Economy economy, HTEntities.WorldDetails.League league, User user)
-        {
+        public FormEconomy(HTEntities.Economy.Economy economy, HTEntities.WorldDetails.League league, User user) {
             InitializeComponent();
             this.economy = economy;
             this.user = user;
             LoadControls();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
+        private void buttonClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
@@ -43,8 +39,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Fills the form's controls with the selected language
         /// </summary>
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.Text = resourceManager.GetString(Localization.ui_economy_FormText);
             this.labelCosts.Text = resourceManager.GetString(Localization.ui_economy_labelCosts);
             this.labelCostsArena.Text = resourceManager.GetString(Localization.ui_economy_labelCostsArena);
@@ -90,8 +85,7 @@ namespace HM.UserInterface
 
         #region Private methods
 
-        private void LoadControls()
-        {
+        private void LoadControls() {
             this.labelCostsArenaValue.Text = Core.CurrencyManager.Convert(user, economy.teamField.costsArenaField);
             this.labelCostsFinancialValue.Text = Core.CurrencyManager.Convert(user, economy.teamField.costsFinancialField);
             this.labelCostsPlayersValue.Text = Core.CurrencyManager.Convert(user, economy.teamField.costsPlayersField);
@@ -118,51 +112,37 @@ namespace HM.UserInterface
             this.labelLastIncomeSumValue.Text = Core.CurrencyManager.Convert(user, economy.teamField.lastIncomeSumField);
             this.labelLastIncomeTemporaryValue.Text = Core.CurrencyManager.Convert(user, economy.teamField.lastIncomeTemporaryField);
             this.labelLastWeeksTotalValue.Text = Core.CurrencyManager.Convert(user, economy.teamField.lastWeeksTotalField);
-            this.labelCashValue.Text = string.Format(General.Cash,Core.CurrencyManager.Convert(user, economy.teamField.cashField),Core.CurrencyManager.Convert(user, economy.teamField.expectedCashField));
+            this.labelCashValue.Text = string.Format(General.Cash, Core.CurrencyManager.Convert(user, economy.teamField.cashField), Core.CurrencyManager.Convert(user, economy.teamField.expectedCashField));
             this.labelFanClubSizeValue.Text = economy.teamField.fanClubSizeField.ToString(General.NoDecimalFormat);
 
-            if (economy.teamField.sponsorsPopularityField.availableField)
-            {
+            if (economy.teamField.sponsorsPopularityField.availableField) {
                 int sponsorsLevel = (Int32)economy.teamField.sponsorsPopularityField.sponsorsPopularityField;
                 string localizationString = string.Format(Localization.ht_sponsors_mood_available, (sponsorsLevel.ToString().PadLeft(2, General.Zero)), sponsorsLevel);
                 this.labelSponsorsMoodValue.Text = string.Format(this.labelSponsorsMoodValue.Text, resourceManager.GetString(localizationString), sponsorsLevel);
-            }
-            else
-            {
+            } else {
                 this.labelSponsorsMoodValue.Text = resourceManager.GetString(Localization.ht_sponsors_mood_unavailable);
             }
 
-            if (economy.teamField.supportersPopularityField.availableField)
-            {
+            if (economy.teamField.supportersPopularityField.availableField) {
                 int supportersLevel = (Int32)economy.teamField.supportersPopularityField.supportersPopularityField;
                 string localizationString = string.Format(Localization.ht_supporters_mood_available, (supportersLevel.ToString().PadLeft(2, General.Zero)), supportersLevel);
                 this.labelSupportersMoodValue.Text = string.Format(this.labelSupportersMoodValue.Text, resourceManager.GetString(localizationString), supportersLevel);
-            }
-            else
-            {
+            } else {
                 this.labelSupportersMoodValue.Text = resourceManager.GetString(Localization.ht_sponsors_mood_unavailable);
             }
 
-            if (economy.teamField.expectedWeeksTotalField != 0)
-            {
-                if (economy.teamField.expectedWeeksTotalField > 0)
-                {
+            if (economy.teamField.expectedWeeksTotalField != 0) {
+                if (economy.teamField.expectedWeeksTotalField > 0) {
                     this.labelExpectedWeeksTotalValue.ForeColor = Color.Green;
-                }
-                else
-                {
+                } else {
                     this.labelExpectedWeeksTotalValue.ForeColor = Color.Red;
                 }
             }
 
-            if (economy.teamField.lastWeeksTotalField != 0)
-            {
-                if (economy.teamField.lastWeeksTotalField > 0)
-                {
+            if (economy.teamField.lastWeeksTotalField != 0) {
+                if (economy.teamField.lastWeeksTotalField > 0) {
                     this.labelLastWeeksTotalValue.ForeColor = Color.Green;
-                }
-                else
-                {
+                } else {
                     this.labelLastWeeksTotalValue.ForeColor = Color.Red;
                 }
             }
