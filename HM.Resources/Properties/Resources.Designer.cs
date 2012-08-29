@@ -60,13 +60,6 @@ namespace HM.Resources.Properties {
             }
         }
         
-        public static System.Drawing.Bitmap arena {
-            get {
-                object obj = ResourceManager.GetObject("arena", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         public static System.Drawing.Bitmap bg_gray_grad {
             get {
                 object obj = ResourceManager.GetObject("bg_gray_grad", resourceCulture);
@@ -84,27 +77,6 @@ namespace HM.Resources.Properties {
         public static System.Drawing.Bitmap categories {
             get {
                 object obj = ResourceManager.GetObject("categories", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap club {
-            get {
-                object obj = ResourceManager.GetObject("club", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap download {
-            get {
-                object obj = ResourceManager.GetObject("download", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap finance {
-            get {
-                object obj = ResourceManager.GetObject("finance", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -130,23 +102,65 @@ namespace HM.Resources.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap icon_arena {
+            get {
+                object obj = ResourceManager.GetObject("icon_arena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_club {
+            get {
+                object obj = ResourceManager.GetObject("icon_club", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_download {
+            get {
+                object obj = ResourceManager.GetObject("icon_download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_finance {
+            get {
+                object obj = ResourceManager.GetObject("icon_finance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_league {
+            get {
+                object obj = ResourceManager.GetObject("icon_league", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_lineup {
+            get {
+                object obj = ResourceManager.GetObject("icon_lineup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_settings {
+            get {
+                object obj = ResourceManager.GetObject("icon_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap icon_training {
+            get {
+                object obj = ResourceManager.GetObject("icon_training", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap injuries {
             get {
                 object obj = ResourceManager.GetObject("injuries", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap league {
-            get {
-                object obj = ResourceManager.GetObject("league", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap lineup {
-            get {
-                object obj = ResourceManager.GetObject("lineup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -182,20 +196,6 @@ namespace HM.Resources.Properties {
         public static System.Drawing.Bitmap Red {
             get {
                 object obj = ResourceManager.GetObject("Red", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap settings {
-            get {
-                object obj = ResourceManager.GetObject("settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap training {
-            get {
-                object obj = ResourceManager.GetObject("training", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

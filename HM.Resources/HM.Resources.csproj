@@ -161,31 +161,31 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\arena.png" />
+    <None Include="Resources\Icons\icon_arena.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\club.png" />
+    <None Include="Resources\Icons\icon_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\download.png" />
+    <None Include="Resources\Icons\icon_download.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\finance.png" />
+    <None Include="Resources\Icons\icon_finance.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\lineup.png" />
+    <None Include="Resources\Icons\icon_lineup.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\settings.png" />
+    <None Include="Resources\Icons\icon_settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\training.png" />
+    <None Include="Resources\Icons\icon_training.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\Backgrounds\bg_gray_grad.png" />
     <Content Include="Resources\Categories\categories.png" />
-    <Content Include="Resources\Icons\league.png" />
+    <Content Include="Resources\Icons\icon_league.png" />
     <Content Include="Resources\Injuries\injuries.png" />
     <Content Include="Resources\Positions\positions.png" />
     <Content Include="Resources\Warnings\cards.png" />
