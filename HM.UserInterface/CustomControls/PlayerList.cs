@@ -223,10 +223,11 @@ namespace HM.UserInterface.CustomControls {
 
         private void checkedListBoxCategories_MouseDown(object sender, MouseEventArgs e) {
             if (e.Button == System.Windows.Forms.MouseButtons.Right) {
-                MenuItem[] menuItems = new MenuItem[]{new MenuItem("Some Button Info"), new MenuItem("Some Other Button Info"), new MenuItem("Exit")};
+                MenuItem[] menuItems = new MenuItem[] { new MenuItem("New Category"), new MenuItem("Delete Category"), new MenuItem("Rename Category"), new MenuItem("Colour")};
 
                 ContextMenu buttonMenu = new ContextMenu(menuItems);
-                buttonMenu.Show(this, e.Location, LeftRightAlignment.Left);
+
+                buttonMenu.Show(this, e.Location, LeftRightAlignment.Right);
             }
         }
 
