@@ -245,8 +245,8 @@ namespace HM.Resources {
         /// <summary>
         /// Gets the cards image for a player
         /// </summary>
-        /// <param name="leagueId">Players number of cards</param>
-        /// <returns>Flag image</returns>
+        /// <param name="numCards">Players number of cards</param>
+        /// <returns>Card image</returns>
         public static Image GetCardImage(int numCards) {
             //Creates a new image 22x14
             Image cardImage = new Bitmap(20, 20);
@@ -273,8 +273,8 @@ namespace HM.Resources {
         /// <summary>
         /// Gets the category image for a player
         /// </summary>
-        /// <param name="leagueId">Players category number</param>
-        /// <returns>Flag image</returns>
+        /// <param name="category">Players category number</param>
+        /// <returns>Category image</returns>
         public static Image GetCategoryImage(int category) {
             //Creates a new image 22x14
             Image categoryImage = new Bitmap(20, 20);
@@ -301,8 +301,8 @@ namespace HM.Resources {
         /// <summary>
         /// Gets the injuries image for a player
         /// </summary>
-        /// <param name="leagueId">Players weeks of injury</param>
-        /// <returns>Flag image</returns>
+        /// <param name="injuryWeeks">Players weeks of injury</param>
+        /// <returns>Injury image</returns>
         public static Image GetInjuriesImage(int injuryWeeks) {
             int imageOffset = injuryWeeks + 1;
             Image injuryImage = new Bitmap(20, 20);
@@ -347,8 +347,8 @@ namespace HM.Resources {
         /// <summary>
         /// Gets the positions image for a player
         /// </summary>
-        /// <param name="leagueId">Players position</param>
-        /// <returns>Flag image</returns>
+        /// <param name="position">Players position</param>
+        /// <returns>Position image</returns>
         public static Image GetPositionImage(Role position) {
             //Creates a new image 22x14
             Image positionImage = new Bitmap(30, 20);
@@ -561,25 +561,33 @@ namespace HM.Resources {
             }
         }
 
+        /// <summary>
+        /// Gets toolbar image by buttonID
+        /// </summary>
+        /// <param name="buttonID">Button ID</param>
+        /// <returns>Image object</returns>
         public static Image GetToolbarImage(string buttonID) {
             Image toolbarImage = null;
 
             try {
                 switch (buttonID) {
                     case "buttonDownload":
-                        toolbarImage = Properties.Resources.download;
+                        toolbarImage = Properties.Resources.icon_download;
                         break;
                     case "buttonSettings":
-                        toolbarImage = Properties.Resources.settings;
+                        toolbarImage = Properties.Resources.icon_settings;
                         break;
                     case "buttonLineup":
-                        toolbarImage = Properties.Resources.lineup;
+                        toolbarImage = Properties.Resources.icon_lineup;
                         break;
                     case "buttonEconomy":
-                        toolbarImage = Properties.Resources.finance;
+                        toolbarImage = Properties.Resources.icon_finance;
                         break;
                     case "buttonLeague":
-                        toolbarImage = Properties.Resources.league;
+                        toolbarImage = Properties.Resources.icon_league;
+                        break;
+                    case "buttonClub":
+                        toolbarImage = Properties.Resources.icon_club;
                         break;
                 }
 
@@ -589,6 +597,11 @@ namespace HM.Resources {
             }
         }
 
+        /// <summary>
+        /// Gets generic Resource Image
+        /// </summary>
+        /// <param name="name">Image Name</param>
+        /// <returns>Image object</returns>
         public static Image GetResourceImage(string name) {
             Image resourceImage = null;
 

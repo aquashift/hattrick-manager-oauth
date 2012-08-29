@@ -36,12 +36,16 @@ namespace HM.UserInterface.CustomControls {
         #region Methods
 
         private void Lineup_Load(object sender, EventArgs e) {
-
             buttonPlayerName.BackgroundImage = HM.Resources.GenericFunctions.GetResourceImage("gray_grad");
             buttonPlayerName.BackgroundImageLayout = ImageLayout.Stretch;
             buttonPlayerName.ForeColor = Color.White;
 
+            buttonCategoryName.BackgroundImage = HM.Resources.GenericFunctions.GetResourceImage("gray_grad");
+            buttonCategoryName.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonCategoryName.ForeColor = Color.White;
+
             if (players != null) {
+
                 PopulatePlayerList();
             }
         }
@@ -214,6 +218,15 @@ namespace HM.UserInterface.CustomControls {
                 int playerID = Convert.ToInt32(dataGridViewPlayers.SelectedRows[0].Cells[0].Value);
 
                 PopulatePlayerDetails(playerID);
+            }
+        }
+
+        private void checkedListBoxCategories_MouseDown(object sender, MouseEventArgs e) {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right) {
+                MenuItem[] menuItems = new MenuItem[]{new MenuItem("Some Button Info"), new MenuItem("Some Other Button Info"), new MenuItem("Exit")};
+
+                ContextMenu buttonMenu = new ContextMenu(menuItems);
+                buttonMenu.Show(this, e.Location, LeftRightAlignment.Left);
             }
         }
 

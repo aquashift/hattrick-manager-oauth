@@ -75,9 +75,9 @@
             // groupBoxInfo
             // 
             this.groupBoxInfo.Controls.Add(this.tableLayoutPanel1);
-            this.groupBoxInfo.Location = new System.Drawing.Point(12, 8);
+            this.groupBoxInfo.Location = new System.Drawing.Point(14, 9);
             this.groupBoxInfo.Name = "groupBoxInfo";
-            this.groupBoxInfo.Size = new System.Drawing.Size(402, 65);
+            this.groupBoxInfo.Size = new System.Drawing.Size(469, 75);
             this.groupBoxInfo.TabIndex = 0;
             this.groupBoxInfo.TabStop = false;
             this.groupBoxInfo.Text = "groupBoxInfo";
@@ -91,12 +91,12 @@
             this.tableLayoutPanel1.Controls.Add(this.labelTeamID, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelTeamNameValue, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelTeamIDValue, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 15);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 40);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(455, 46);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelTeamName
@@ -105,7 +105,7 @@
             this.labelTeamName.Location = new System.Drawing.Point(1, 1);
             this.labelTeamName.Margin = new System.Windows.Forms.Padding(1);
             this.labelTeamName.Name = "labelTeamName";
-            this.labelTeamName.Size = new System.Drawing.Size(193, 18);
+            this.labelTeamName.Size = new System.Drawing.Size(225, 21);
             this.labelTeamName.TabIndex = 1;
             this.labelTeamName.Text = "labelTeamName";
             this.labelTeamName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -113,10 +113,10 @@
             // labelTeamID
             // 
             this.labelTeamID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTeamID.Location = new System.Drawing.Point(1, 21);
+            this.labelTeamID.Location = new System.Drawing.Point(1, 24);
             this.labelTeamID.Margin = new System.Windows.Forms.Padding(1);
             this.labelTeamID.Name = "labelTeamID";
-            this.labelTeamID.Size = new System.Drawing.Size(193, 18);
+            this.labelTeamID.Size = new System.Drawing.Size(225, 21);
             this.labelTeamID.TabIndex = 0;
             this.labelTeamID.Text = "labelTeamID";
             this.labelTeamID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,10 +124,10 @@
             // labelTeamNameValue
             // 
             this.labelTeamNameValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTeamNameValue.Location = new System.Drawing.Point(196, 1);
+            this.labelTeamNameValue.Location = new System.Drawing.Point(228, 1);
             this.labelTeamNameValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelTeamNameValue.Name = "labelTeamNameValue";
-            this.labelTeamNameValue.Size = new System.Drawing.Size(193, 18);
+            this.labelTeamNameValue.Size = new System.Drawing.Size(226, 21);
             this.labelTeamNameValue.TabIndex = 3;
             this.labelTeamNameValue.Text = "labelTeamNameValue";
             this.labelTeamNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -135,10 +135,10 @@
             // labelTeamIDValue
             // 
             this.labelTeamIDValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTeamIDValue.Location = new System.Drawing.Point(196, 21);
+            this.labelTeamIDValue.Location = new System.Drawing.Point(228, 24);
             this.labelTeamIDValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelTeamIDValue.Name = "labelTeamIDValue";
-            this.labelTeamIDValue.Size = new System.Drawing.Size(193, 18);
+            this.labelTeamIDValue.Size = new System.Drawing.Size(226, 21);
             this.labelTeamIDValue.TabIndex = 2;
             this.labelTeamIDValue.Text = "labelTeamIDValue";
             this.labelTeamIDValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -146,9 +146,9 @@
             // groupBoxStaff
             // 
             this.groupBoxStaff.Controls.Add(this.tableLayoutPanel2);
-            this.groupBoxStaff.Location = new System.Drawing.Point(12, 79);
+            this.groupBoxStaff.Location = new System.Drawing.Point(14, 91);
             this.groupBoxStaff.Name = "groupBoxStaff";
-            this.groupBoxStaff.Size = new System.Drawing.Size(402, 144);
+            this.groupBoxStaff.Size = new System.Drawing.Size(469, 166);
             this.groupBoxStaff.TabIndex = 1;
             this.groupBoxStaff.TabStop = false;
             this.groupBoxStaff.Text = "groupBoxStaff";
@@ -156,9 +156,9 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel2.Controls.Add(this.labelTotalCost, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.labelDoctorsCost, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.labelPhysiotherapistsCost, 2, 3);
@@ -177,26 +177,26 @@
             this.tableLayoutPanel2.Controls.Add(this.labelPhysiotherapists, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.labelDoctors, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.labelTotal, 0, 5);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 15);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(7, 17);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 6;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 120);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(455, 138);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // labelTotalCost
             // 
             this.labelTotalCost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalCost.Location = new System.Drawing.Point(241, 101);
+            this.labelTotalCost.Location = new System.Drawing.Point(281, 116);
             this.labelTotalCost.Margin = new System.Windows.Forms.Padding(1);
             this.labelTotalCost.Name = "labelTotalCost";
-            this.labelTotalCost.Size = new System.Drawing.Size(148, 18);
+            this.labelTotalCost.Size = new System.Drawing.Size(173, 21);
             this.labelTotalCost.TabIndex = 4;
             this.labelTotalCost.Text = "labelTotalCost";
             this.labelTotalCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -204,10 +204,10 @@
             // labelDoctorsCost
             // 
             this.labelDoctorsCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDoctorsCost.Location = new System.Drawing.Point(241, 81);
+            this.labelDoctorsCost.Location = new System.Drawing.Point(281, 93);
             this.labelDoctorsCost.Margin = new System.Windows.Forms.Padding(1);
             this.labelDoctorsCost.Name = "labelDoctorsCost";
-            this.labelDoctorsCost.Size = new System.Drawing.Size(148, 18);
+            this.labelDoctorsCost.Size = new System.Drawing.Size(173, 21);
             this.labelDoctorsCost.TabIndex = 4;
             this.labelDoctorsCost.Text = "labelDoctorsCost";
             this.labelDoctorsCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -215,10 +215,10 @@
             // labelPhysiotherapistsCost
             // 
             this.labelPhysiotherapistsCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPhysiotherapistsCost.Location = new System.Drawing.Point(241, 61);
+            this.labelPhysiotherapistsCost.Location = new System.Drawing.Point(281, 70);
             this.labelPhysiotherapistsCost.Margin = new System.Windows.Forms.Padding(1);
             this.labelPhysiotherapistsCost.Name = "labelPhysiotherapistsCost";
-            this.labelPhysiotherapistsCost.Size = new System.Drawing.Size(148, 18);
+            this.labelPhysiotherapistsCost.Size = new System.Drawing.Size(173, 21);
             this.labelPhysiotherapistsCost.TabIndex = 4;
             this.labelPhysiotherapistsCost.Text = "labelPhysiotherapistsCost";
             this.labelPhysiotherapistsCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -226,10 +226,10 @@
             // labelPressSpokesmenCost
             // 
             this.labelPressSpokesmenCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPressSpokesmenCost.Location = new System.Drawing.Point(241, 41);
+            this.labelPressSpokesmenCost.Location = new System.Drawing.Point(281, 47);
             this.labelPressSpokesmenCost.Margin = new System.Windows.Forms.Padding(1);
             this.labelPressSpokesmenCost.Name = "labelPressSpokesmenCost";
-            this.labelPressSpokesmenCost.Size = new System.Drawing.Size(148, 18);
+            this.labelPressSpokesmenCost.Size = new System.Drawing.Size(173, 21);
             this.labelPressSpokesmenCost.TabIndex = 4;
             this.labelPressSpokesmenCost.Text = "labelPressSpokesmenCost";
             this.labelPressSpokesmenCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -237,10 +237,10 @@
             // labelPsychologistsCost
             // 
             this.labelPsychologistsCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPsychologistsCost.Location = new System.Drawing.Point(241, 21);
+            this.labelPsychologistsCost.Location = new System.Drawing.Point(281, 24);
             this.labelPsychologistsCost.Margin = new System.Windows.Forms.Padding(1);
             this.labelPsychologistsCost.Name = "labelPsychologistsCost";
-            this.labelPsychologistsCost.Size = new System.Drawing.Size(148, 18);
+            this.labelPsychologistsCost.Size = new System.Drawing.Size(173, 21);
             this.labelPsychologistsCost.TabIndex = 4;
             this.labelPsychologistsCost.Text = "labelPsychologistsCost";
             this.labelPsychologistsCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -248,10 +248,10 @@
             // labelAssistantTrainersCost
             // 
             this.labelAssistantTrainersCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAssistantTrainersCost.Location = new System.Drawing.Point(241, 1);
+            this.labelAssistantTrainersCost.Location = new System.Drawing.Point(281, 1);
             this.labelAssistantTrainersCost.Margin = new System.Windows.Forms.Padding(1);
             this.labelAssistantTrainersCost.Name = "labelAssistantTrainersCost";
-            this.labelAssistantTrainersCost.Size = new System.Drawing.Size(148, 18);
+            this.labelAssistantTrainersCost.Size = new System.Drawing.Size(173, 21);
             this.labelAssistantTrainersCost.TabIndex = 3;
             this.labelAssistantTrainersCost.Text = "labelAssistantTrainersCost";
             this.labelAssistantTrainersCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -260,10 +260,10 @@
             // 
             this.labelTotalValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotalValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.labelTotalValue.Location = new System.Drawing.Point(121, 101);
+            this.labelTotalValue.Location = new System.Drawing.Point(141, 116);
             this.labelTotalValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelTotalValue.Name = "labelTotalValue";
-            this.labelTotalValue.Size = new System.Drawing.Size(118, 18);
+            this.labelTotalValue.Size = new System.Drawing.Size(138, 21);
             this.labelTotalValue.TabIndex = 11;
             this.labelTotalValue.Text = "labelTotalValue";
             this.labelTotalValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -271,10 +271,10 @@
             // labelDoctorsValue
             // 
             this.labelDoctorsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDoctorsValue.Location = new System.Drawing.Point(121, 81);
+            this.labelDoctorsValue.Location = new System.Drawing.Point(141, 93);
             this.labelDoctorsValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelDoctorsValue.Name = "labelDoctorsValue";
-            this.labelDoctorsValue.Size = new System.Drawing.Size(118, 18);
+            this.labelDoctorsValue.Size = new System.Drawing.Size(138, 21);
             this.labelDoctorsValue.TabIndex = 10;
             this.labelDoctorsValue.Text = "labelDoctorsValue";
             this.labelDoctorsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -282,10 +282,10 @@
             // labelPhysiotherapistsValue
             // 
             this.labelPhysiotherapistsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPhysiotherapistsValue.Location = new System.Drawing.Point(121, 61);
+            this.labelPhysiotherapistsValue.Location = new System.Drawing.Point(141, 70);
             this.labelPhysiotherapistsValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelPhysiotherapistsValue.Name = "labelPhysiotherapistsValue";
-            this.labelPhysiotherapistsValue.Size = new System.Drawing.Size(118, 18);
+            this.labelPhysiotherapistsValue.Size = new System.Drawing.Size(138, 21);
             this.labelPhysiotherapistsValue.TabIndex = 9;
             this.labelPhysiotherapistsValue.Text = "labelPhysiotherapistsValue";
             this.labelPhysiotherapistsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -293,10 +293,10 @@
             // labelSpokespersonsValue
             // 
             this.labelSpokespersonsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpokespersonsValue.Location = new System.Drawing.Point(121, 41);
+            this.labelSpokespersonsValue.Location = new System.Drawing.Point(141, 47);
             this.labelSpokespersonsValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelSpokespersonsValue.Name = "labelSpokespersonsValue";
-            this.labelSpokespersonsValue.Size = new System.Drawing.Size(118, 18);
+            this.labelSpokespersonsValue.Size = new System.Drawing.Size(138, 21);
             this.labelSpokespersonsValue.TabIndex = 8;
             this.labelSpokespersonsValue.Text = "labelSpokespersonsValue";
             this.labelSpokespersonsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -304,10 +304,10 @@
             // labelPsychologistsValue
             // 
             this.labelPsychologistsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPsychologistsValue.Location = new System.Drawing.Point(121, 21);
+            this.labelPsychologistsValue.Location = new System.Drawing.Point(141, 24);
             this.labelPsychologistsValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelPsychologistsValue.Name = "labelPsychologistsValue";
-            this.labelPsychologistsValue.Size = new System.Drawing.Size(118, 18);
+            this.labelPsychologistsValue.Size = new System.Drawing.Size(138, 21);
             this.labelPsychologistsValue.TabIndex = 7;
             this.labelPsychologistsValue.Text = "labelPsychologistsValue";
             this.labelPsychologistsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -315,10 +315,10 @@
             // labelAssistantsValue
             // 
             this.labelAssistantsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAssistantsValue.Location = new System.Drawing.Point(121, 1);
+            this.labelAssistantsValue.Location = new System.Drawing.Point(141, 1);
             this.labelAssistantsValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelAssistantsValue.Name = "labelAssistantsValue";
-            this.labelAssistantsValue.Size = new System.Drawing.Size(118, 18);
+            this.labelAssistantsValue.Size = new System.Drawing.Size(138, 21);
             this.labelAssistantsValue.TabIndex = 6;
             this.labelAssistantsValue.Text = "labelAssistantsValue";
             this.labelAssistantsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -329,7 +329,7 @@
             this.labelAssistants.Location = new System.Drawing.Point(1, 1);
             this.labelAssistants.Margin = new System.Windows.Forms.Padding(1);
             this.labelAssistants.Name = "labelAssistants";
-            this.labelAssistants.Size = new System.Drawing.Size(118, 18);
+            this.labelAssistants.Size = new System.Drawing.Size(138, 21);
             this.labelAssistants.TabIndex = 0;
             this.labelAssistants.Text = "labelAssistants";
             this.labelAssistants.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,10 +337,10 @@
             // labelPsychologists
             // 
             this.labelPsychologists.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPsychologists.Location = new System.Drawing.Point(1, 21);
+            this.labelPsychologists.Location = new System.Drawing.Point(1, 24);
             this.labelPsychologists.Margin = new System.Windows.Forms.Padding(1);
             this.labelPsychologists.Name = "labelPsychologists";
-            this.labelPsychologists.Size = new System.Drawing.Size(118, 18);
+            this.labelPsychologists.Size = new System.Drawing.Size(138, 21);
             this.labelPsychologists.TabIndex = 1;
             this.labelPsychologists.Text = "labelPsychologists";
             this.labelPsychologists.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -348,10 +348,10 @@
             // labelSpokespersons
             // 
             this.labelSpokespersons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpokespersons.Location = new System.Drawing.Point(1, 41);
+            this.labelSpokespersons.Location = new System.Drawing.Point(1, 47);
             this.labelSpokespersons.Margin = new System.Windows.Forms.Padding(1);
             this.labelSpokespersons.Name = "labelSpokespersons";
-            this.labelSpokespersons.Size = new System.Drawing.Size(118, 18);
+            this.labelSpokespersons.Size = new System.Drawing.Size(138, 21);
             this.labelSpokespersons.TabIndex = 2;
             this.labelSpokespersons.Text = "labelSpokespersons";
             this.labelSpokespersons.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -359,10 +359,10 @@
             // labelPhysiotherapists
             // 
             this.labelPhysiotherapists.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPhysiotherapists.Location = new System.Drawing.Point(1, 61);
+            this.labelPhysiotherapists.Location = new System.Drawing.Point(1, 70);
             this.labelPhysiotherapists.Margin = new System.Windows.Forms.Padding(1);
             this.labelPhysiotherapists.Name = "labelPhysiotherapists";
-            this.labelPhysiotherapists.Size = new System.Drawing.Size(118, 18);
+            this.labelPhysiotherapists.Size = new System.Drawing.Size(138, 21);
             this.labelPhysiotherapists.TabIndex = 3;
             this.labelPhysiotherapists.Text = "labelPhysiotherapists";
             this.labelPhysiotherapists.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -370,10 +370,10 @@
             // labelDoctors
             // 
             this.labelDoctors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDoctors.Location = new System.Drawing.Point(1, 81);
+            this.labelDoctors.Location = new System.Drawing.Point(1, 93);
             this.labelDoctors.Margin = new System.Windows.Forms.Padding(1);
             this.labelDoctors.Name = "labelDoctors";
-            this.labelDoctors.Size = new System.Drawing.Size(118, 18);
+            this.labelDoctors.Size = new System.Drawing.Size(138, 21);
             this.labelDoctors.TabIndex = 4;
             this.labelDoctors.Text = "labelDoctors";
             this.labelDoctors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -382,10 +382,10 @@
             // 
             this.labelTotal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.labelTotal.Location = new System.Drawing.Point(1, 101);
+            this.labelTotal.Location = new System.Drawing.Point(1, 116);
             this.labelTotal.Margin = new System.Windows.Forms.Padding(1);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(118, 18);
+            this.labelTotal.Size = new System.Drawing.Size(138, 21);
             this.labelTotal.TabIndex = 5;
             this.labelTotal.Text = "labelTotal";
             this.labelTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -393,9 +393,9 @@
             // groupBoxYouth
             // 
             this.groupBoxYouth.Controls.Add(this.tableLayoutPanel3);
-            this.groupBoxYouth.Location = new System.Drawing.Point(12, 229);
+            this.groupBoxYouth.Location = new System.Drawing.Point(14, 264);
             this.groupBoxYouth.Name = "groupBoxYouth";
-            this.groupBoxYouth.Size = new System.Drawing.Size(402, 85);
+            this.groupBoxYouth.Size = new System.Drawing.Size(469, 98);
             this.groupBoxYouth.TabIndex = 2;
             this.groupBoxYouth.TabStop = false;
             this.groupBoxYouth.Text = "groupBoxYouth";
@@ -411,22 +411,22 @@
             this.tableLayoutPanel3.Controls.Add(this.labelInvestmentsValue, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelYouthLevelValue, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.checkBoxHasPromoted, 1, 2);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 15);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 17);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(390, 60);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(455, 69);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // labelHasPromoted
             // 
             this.labelHasPromoted.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHasPromoted.Location = new System.Drawing.Point(1, 41);
+            this.labelHasPromoted.Location = new System.Drawing.Point(1, 47);
             this.labelHasPromoted.Margin = new System.Windows.Forms.Padding(1);
             this.labelHasPromoted.Name = "labelHasPromoted";
-            this.labelHasPromoted.Size = new System.Drawing.Size(193, 18);
+            this.labelHasPromoted.Size = new System.Drawing.Size(225, 21);
             this.labelHasPromoted.TabIndex = 3;
             this.labelHasPromoted.Text = "labelHasPromoted";
             this.labelHasPromoted.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -437,7 +437,7 @@
             this.labelInvestments.Location = new System.Drawing.Point(1, 1);
             this.labelInvestments.Margin = new System.Windows.Forms.Padding(1);
             this.labelInvestments.Name = "labelInvestments";
-            this.labelInvestments.Size = new System.Drawing.Size(193, 18);
+            this.labelInvestments.Size = new System.Drawing.Size(225, 21);
             this.labelInvestments.TabIndex = 1;
             this.labelInvestments.Text = "labelInvestments";
             this.labelInvestments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -445,10 +445,10 @@
             // labelYouthLevel
             // 
             this.labelYouthLevel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelYouthLevel.Location = new System.Drawing.Point(1, 21);
+            this.labelYouthLevel.Location = new System.Drawing.Point(1, 24);
             this.labelYouthLevel.Margin = new System.Windows.Forms.Padding(1);
             this.labelYouthLevel.Name = "labelYouthLevel";
-            this.labelYouthLevel.Size = new System.Drawing.Size(193, 18);
+            this.labelYouthLevel.Size = new System.Drawing.Size(225, 21);
             this.labelYouthLevel.TabIndex = 2;
             this.labelYouthLevel.Text = "labelYouthLevel";
             this.labelYouthLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -456,10 +456,10 @@
             // labelInvestmentsValue
             // 
             this.labelInvestmentsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelInvestmentsValue.Location = new System.Drawing.Point(196, 1);
+            this.labelInvestmentsValue.Location = new System.Drawing.Point(228, 1);
             this.labelInvestmentsValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelInvestmentsValue.Name = "labelInvestmentsValue";
-            this.labelInvestmentsValue.Size = new System.Drawing.Size(193, 18);
+            this.labelInvestmentsValue.Size = new System.Drawing.Size(226, 21);
             this.labelInvestmentsValue.TabIndex = 7;
             this.labelInvestmentsValue.Text = "labelInvestmentsValue";
             this.labelInvestmentsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -467,10 +467,10 @@
             // labelYouthLevelValue
             // 
             this.labelYouthLevelValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelYouthLevelValue.Location = new System.Drawing.Point(196, 21);
+            this.labelYouthLevelValue.Location = new System.Drawing.Point(228, 24);
             this.labelYouthLevelValue.Margin = new System.Windows.Forms.Padding(1);
             this.labelYouthLevelValue.Name = "labelYouthLevelValue";
-            this.labelYouthLevelValue.Size = new System.Drawing.Size(193, 18);
+            this.labelYouthLevelValue.Size = new System.Drawing.Size(226, 21);
             this.labelYouthLevelValue.TabIndex = 8;
             this.labelYouthLevelValue.Text = "{0} ({1})";
             this.labelYouthLevelValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -481,19 +481,19 @@
             this.checkBoxHasPromoted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxHasPromoted.Enabled = false;
             this.checkBoxHasPromoted.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxHasPromoted.Location = new System.Drawing.Point(196, 41);
+            this.checkBoxHasPromoted.Location = new System.Drawing.Point(228, 47);
             this.checkBoxHasPromoted.Margin = new System.Windows.Forms.Padding(1);
             this.checkBoxHasPromoted.Name = "checkBoxHasPromoted";
-            this.checkBoxHasPromoted.Size = new System.Drawing.Size(193, 18);
+            this.checkBoxHasPromoted.Size = new System.Drawing.Size(226, 21);
             this.checkBoxHasPromoted.TabIndex = 9;
             this.checkBoxHasPromoted.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxHasPromoted.UseVisualStyleBackColor = true;
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(329, 320);
+            this.buttonClose.Location = new System.Drawing.Point(384, 369);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(85, 24);
+            this.buttonClose.Size = new System.Drawing.Size(99, 28);
             this.buttonClose.TabIndex = 3;
             this.buttonClose.Text = "buttonClose";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -501,12 +501,13 @@
             // 
             // FormClub
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(426, 357);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.ClientSize = new System.Drawing.Size(497, 412);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBoxYouth);
             this.Controls.Add(this.groupBoxStaff);
             this.Controls.Add(this.groupBoxInfo);
+            this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
