@@ -23,21 +23,21 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPlayerDetails = new System.Windows.Forms.TabControl();
             this.tabPageSkills = new System.Windows.Forms.TabPage();
             this.dataGridViewPlayerSkills = new System.Windows.Forms.DataGridView();
             this.tabPagePositions = new System.Windows.Forms.TabPage();
             this.dataGridViewPlayers = new System.Windows.Forms.DataGridView();
             this.splitContainerPlayerList = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonPlayerName = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.checkedListBoxCategories = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanelCategories = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCategoryName = new System.Windows.Forms.Button();
+            this.checkedListBoxCategories = new System.Windows.Forms.CheckedListBox();
+            this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonPlayerName = new System.Windows.Forms.Button();
             this.tabControlPlayerDetails.SuspendLayout();
             this.tabPageSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerSkills)).BeginInit();
@@ -45,11 +45,11 @@
             this.splitContainerPlayerList.Panel1.SuspendLayout();
             this.splitContainerPlayerList.Panel2.SuspendLayout();
             this.splitContainerPlayerList.SuspendLayout();
-            this.tableLayoutPanelDetails.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanelCategories.SuspendLayout();
+            this.tableLayoutPanelDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlPlayerDetails
@@ -97,8 +97,8 @@
             this.dataGridViewPlayerSkills.Name = "dataGridViewPlayerSkills";
             this.dataGridViewPlayerSkills.ReadOnly = true;
             this.dataGridViewPlayerSkills.RowHeadersVisible = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewPlayerSkills.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewPlayerSkills.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPlayerSkills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPlayerSkills.Size = new System.Drawing.Size(235, 403);
             this.dataGridViewPlayerSkills.TabIndex = 0;
@@ -109,7 +109,7 @@
             this.tabPagePositions.Location = new System.Drawing.Point(4, 4);
             this.tabPagePositions.Margin = new System.Windows.Forms.Padding(0);
             this.tabPagePositions.Name = "tabPagePositions";
-            this.tabPagePositions.Size = new System.Drawing.Size(220, 363);
+            this.tabPagePositions.Size = new System.Drawing.Size(235, 403);
             this.tabPagePositions.TabIndex = 1;
             this.tabPagePositions.Text = "POSITIONS";
             this.tabPagePositions.UseVisualStyleBackColor = true;
@@ -120,20 +120,20 @@
             this.dataGridViewPlayers.AllowUserToDeleteRows = false;
             this.dataGridViewPlayers.AllowUserToOrderColumns = true;
             this.dataGridViewPlayers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPlayers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPlayers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPlayers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPlayers.Location = new System.Drawing.Point(0, 0);
@@ -168,35 +168,6 @@
             this.splitContainerPlayerList.SplitterDistance = 485;
             this.splitContainerPlayerList.TabIndex = 12;
             // 
-            // tableLayoutPanelDetails
-            // 
-            this.tableLayoutPanelDetails.ColumnCount = 1;
-            this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelDetails.Controls.Add(this.tabControlPlayerDetails, 0, 1);
-            this.tableLayoutPanelDetails.Controls.Add(this.buttonPlayerName, 0, 0);
-            this.tableLayoutPanelDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelDetails.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelDetails.Name = "tableLayoutPanelDetails";
-            this.tableLayoutPanelDetails.RowCount = 2;
-            this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(243, 461);
-            this.tableLayoutPanelDetails.TabIndex = 0;
-            // 
-            // buttonPlayerName
-            // 
-            this.buttonPlayerName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPlayerName.FlatAppearance.BorderSize = 0;
-            this.buttonPlayerName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPlayerName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPlayerName.ForeColor = System.Drawing.Color.Black;
-            this.buttonPlayerName.Location = new System.Drawing.Point(0, 0);
-            this.buttonPlayerName.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonPlayerName.Name = "buttonPlayerName";
-            this.buttonPlayerName.Size = new System.Drawing.Size(243, 30);
-            this.buttonPlayerName.TabIndex = 1;
-            this.buttonPlayerName.UseVisualStyleBackColor = true;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -213,23 +184,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(481, 461);
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // checkedListBoxCategories
-            // 
-            this.checkedListBoxCategories.BackColor = System.Drawing.SystemColors.Control;
-            this.checkedListBoxCategories.CheckOnClick = true;
-            this.checkedListBoxCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedListBoxCategories.FormattingEnabled = true;
-            this.checkedListBoxCategories.Items.AddRange(new object[] {
-            "All",
-            "Squad A",
-            "Squad B",
-            "Uncategorised"});
-            this.checkedListBoxCategories.Location = new System.Drawing.Point(3, 33);
-            this.checkedListBoxCategories.Name = "checkedListBoxCategories";
-            this.checkedListBoxCategories.Size = new System.Drawing.Size(134, 425);
-            this.checkedListBoxCategories.TabIndex = 0;
-            this.checkedListBoxCategories.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkedListBoxCategories_MouseDown);
             // 
             // tableLayoutPanelCategories
             // 
@@ -261,6 +215,52 @@
             this.buttonCategoryName.Text = "Categories";
             this.buttonCategoryName.UseVisualStyleBackColor = true;
             // 
+            // checkedListBoxCategories
+            // 
+            this.checkedListBoxCategories.BackColor = System.Drawing.SystemColors.Control;
+            this.checkedListBoxCategories.CheckOnClick = true;
+            this.checkedListBoxCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxCategories.FormattingEnabled = true;
+            this.checkedListBoxCategories.Items.AddRange(new object[] {
+            "All",
+            "Squad A",
+            "Squad B",
+            "Uncategorised"});
+            this.checkedListBoxCategories.Location = new System.Drawing.Point(3, 33);
+            this.checkedListBoxCategories.Name = "checkedListBoxCategories";
+            this.checkedListBoxCategories.Size = new System.Drawing.Size(134, 425);
+            this.checkedListBoxCategories.TabIndex = 0;
+            this.checkedListBoxCategories.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkedListBoxCategories_MouseDown);
+            // 
+            // tableLayoutPanelDetails
+            // 
+            this.tableLayoutPanelDetails.ColumnCount = 1;
+            this.tableLayoutPanelDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelDetails.Controls.Add(this.tabControlPlayerDetails, 0, 1);
+            this.tableLayoutPanelDetails.Controls.Add(this.buttonPlayerName, 0, 0);
+            this.tableLayoutPanelDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelDetails.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelDetails.Name = "tableLayoutPanelDetails";
+            this.tableLayoutPanelDetails.RowCount = 2;
+            this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(243, 461);
+            this.tableLayoutPanelDetails.TabIndex = 0;
+            // 
+            // buttonPlayerName
+            // 
+            this.buttonPlayerName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonPlayerName.FlatAppearance.BorderSize = 0;
+            this.buttonPlayerName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPlayerName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPlayerName.ForeColor = System.Drawing.Color.Black;
+            this.buttonPlayerName.Location = new System.Drawing.Point(0, 0);
+            this.buttonPlayerName.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonPlayerName.Name = "buttonPlayerName";
+            this.buttonPlayerName.Size = new System.Drawing.Size(243, 30);
+            this.buttonPlayerName.TabIndex = 1;
+            this.buttonPlayerName.UseVisualStyleBackColor = true;
+            // 
             // PlayerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -277,11 +277,11 @@
             this.splitContainerPlayerList.Panel1.ResumeLayout(false);
             this.splitContainerPlayerList.Panel2.ResumeLayout(false);
             this.splitContainerPlayerList.ResumeLayout(false);
-            this.tableLayoutPanelDetails.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanelCategories.ResumeLayout(false);
+            this.tableLayoutPanelDetails.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
