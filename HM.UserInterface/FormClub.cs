@@ -10,10 +10,8 @@ using HM.Resources.Constants;
 using HM.Core;
 using HM.Entities.HattrickManager.UserProfiles;
 
-namespace HM.UserInterface
-{
-    public partial class FormClub : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormClub : FormBase {
         #region Constants
 
         private const int specialistsCost = 18000;
@@ -27,16 +25,14 @@ namespace HM.UserInterface
 
         #endregion
 
-        public FormClub(Club club, User user)
-        {
+        public FormClub(Club club, User user) {
             InitializeComponent();
             this.club = club;
             this.user = user;
             LoadClubData();
         }
 
-        private void LoadClubData()
-        {
+        private void LoadClubData() {
             this.labelTeamIDValue.Text = club.teamField.teamIdField.ToString();
             this.labelTeamNameValue.Text = club.teamField.teamNameField;
             this.labelAssistantsValue.Text = club.teamField.specialistsField.assistantTrainersField.ToString();
@@ -64,8 +60,7 @@ namespace HM.UserInterface
             this.checkBoxHasPromoted.Checked = club.teamField.youthSquadField.hasPromotedField;
         }
 
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.Text = resourceManager.GetString(Localization.ui_club_FormText);
             this.groupBoxInfo.Text = resourceManager.GetString(Localization.ui_club_groupBoxInfo);
             this.labelTeamID.Text = resourceManager.GetString(Localization.ui_club_labelTeamID);
@@ -84,8 +79,7 @@ namespace HM.UserInterface
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_club_buttonClose);
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
+        private void buttonClose_Click(object sender, EventArgs e) {
             this.Close();
         }
     }

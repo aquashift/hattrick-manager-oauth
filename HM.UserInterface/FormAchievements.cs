@@ -10,10 +10,8 @@ using HTEntities = HM.Entities.Hattrick;
 using HM.Resources.Constants;
 using HM.Resources;
 
-namespace HM.UserInterface
-{
-    public partial class FormAchievements : FormBase
-    {
+namespace HM.UserInterface {
+    public partial class FormAchievements : FormBase {
         #region Properties
 
         private HTEntities.Achievements.Achievements achievements;
@@ -35,8 +33,7 @@ namespace HM.UserInterface
 
         #region Controls events
 
-        public FormAchievements(HTEntities.Achievements.Achievements achievements)
-        {
+        public FormAchievements(HTEntities.Achievements.Achievements achievements) {
             InitializeComponent();
 
             achievementsDataTable = new DataTable();
@@ -54,13 +51,11 @@ namespace HM.UserInterface
             LoadControls();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
+        private void buttonClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void comboBoxAchievementsCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxAchievementsCategory_SelectedIndexChanged(object sender, EventArgs e) {
             LoadGrid();
         }
 
@@ -71,8 +66,7 @@ namespace HM.UserInterface
         /// <summary>
         /// Fills the form's controls with the selected language
         /// </summary>
-        protected override void PopulateLanguage()
-        {
+        protected override void PopulateLanguage() {
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_achievements_buttonClose);
             this.dataGridViewAchievements.Columns[columnTextName].HeaderText = resourceManager.GetString(Localization.ui_achievements_columnText);
             this.dataGridViewAchievements.Columns[columnTypeIDName].HeaderText = resourceManager.GetString(Localization.ui_achievements_columnTypeID);
@@ -90,21 +84,18 @@ namespace HM.UserInterface
 
         #region Private methos
 
-        private void LoadControls()
-        {
+        private void LoadControls() {
             LoadCombo();
             LoadGrid();
             labelTotalPoints.Text = string.Format(resourceManager.GetString(Localization.ui_achievements_labelTotalPoints), achievements.userPointsField, achievements.maxPointsField);
         }
 
-        private void LoadCombo()
-        {
+        private void LoadCombo() {
             DataTable categoryIdDataTable = new DataTable();
             categoryIdDataTable.Columns.Add(Columns.Display, typeof(string));
             categoryIdDataTable.Columns.Add(Columns.Value, typeof(AchievementCategory));
 
-            for (int i = 0; i < 5; i++)
-            {
+            for (int i = 0; i < 5; i++) {
                 DataRow newDataRow = categoryIdDataTable.NewRow();
 
                 newDataRow[Columns.Display] = GetAchievementCategoryText((AchievementCategory)i);
@@ -119,16 +110,13 @@ namespace HM.UserInterface
             comboBoxAchievementsCategory.DataSource = categoryIdDataTable;
         }
 
-        private void LoadGrid()
-        {
+        private void LoadGrid() {
             AchievementCategory selectedFilter = (AchievementCategory)comboBoxAchievementsCategory.SelectedValue;
 
             achievementsDataTable.Rows.Clear();
 
-            foreach (HTEntities.Achievements.Achievement currentAchievement in achievements.achievementListField)
-            {
-                if ((currentAchievement.categoryIdField == selectedFilter) || (selectedFilter == AchievementCategory.Unavailable))
-                {
+            foreach (HTEntities.Achievements.Achievement currentAchievement in achievements.achievementListField) {
+                if ((currentAchievement.categoryIdField == selectedFilter) || (selectedFilter == AchievementCategory.Unavailable)) {
                     DataRow newDataRow = achievementsDataTable.NewRow();
 
                     newDataRow[Columns.Text] = GenericFunctions.RemoveTagsFromString(currentAchievement.achievementTextField);
@@ -146,12 +134,10 @@ namespace HM.UserInterface
             dataGridViewAchievements.DataSource = achievementsDataTable;
         }
 
-        private string GetAchievementCategoryText(AchievementCategory category)
-        {
+        private string GetAchievementCategoryText(AchievementCategory category) {
             string resourceId = string.Empty;
 
-            switch (category)
-            {
+            switch (category) {
                 case AchievementCategory.Unavailable:
                     resourceId = Localization.ht_achievementcategory_Undefined;
                     break;

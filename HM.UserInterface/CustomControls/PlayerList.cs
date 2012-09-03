@@ -25,8 +25,11 @@ namespace HM.UserInterface.CustomControls {
             InitializeComponent();
 
             this.user = user;
-            this.entityManager = new EntityManager(user);
-            this.players = entityManager.GetPlayersDetails();
+
+            if (user != null) {
+                this.entityManager = new EntityManager(user);
+                this.players = entityManager.GetPlayersDetails();
+            }
         }
 
         public PlayerList() {
@@ -36,6 +39,14 @@ namespace HM.UserInterface.CustomControls {
         #region Methods
 
         private void Lineup_Load(object sender, EventArgs e) {
+            Setup_Resources();
+
+            if (players != null) {
+                PopulatePlayerList();
+            }
+        }
+
+        private void Setup_Resources() {
             buttonPlayerName.BackgroundImage = HM.Resources.GenericFunctions.GetResourceImage("gray_grad");
             buttonPlayerName.BackgroundImageLayout = ImageLayout.Stretch;
             buttonPlayerName.ForeColor = Color.White;
@@ -43,11 +54,6 @@ namespace HM.UserInterface.CustomControls {
             buttonCategoryName.BackgroundImage = HM.Resources.GenericFunctions.GetResourceImage("gray_grad");
             buttonCategoryName.BackgroundImageLayout = ImageLayout.Stretch;
             buttonCategoryName.ForeColor = Color.White;
-
-            if (players != null) {
-
-                PopulatePlayerList();
-            }
         }
 
         private void PopulatePlayerList() {
@@ -81,13 +87,13 @@ namespace HM.UserInterface.CustomControls {
 
                 newDataRow[Columns.PlayerID] = player.playerIdField;
                 newDataRow[Columns.PlayerNumber] = player.playerNumberField;
-                newDataRow[Columns.PlayerName] = player.firstNameField + " " + player.lastNameField;
+                newDataRow[Columns.PlayerName] = player.getFullName();
                 newDataRow[Columns.PlayerFlag] = HM.Resources.GenericFunctions.GetFlagByLeagueId(world.GetLeagueIDFromCountryID(player.countryIdField));
                 newDataRow[Columns.LastPosition] = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
                 newDataRow[Columns.Health] = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
                 newDataRow[Columns.Warnings] = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
                 newDataRow[Columns.Category] = HM.Resources.GenericFunctions.GetCategoryImage(7);
-                newDataRow[Columns.Age] = player.ageField.ToString() + "." + player.ageDaysField.ToString();
+                newDataRow[Columns.Age] = player.getFullAge();
                 newDataRow[Columns.TSI] = player.tsiField.ToString();
                 newDataRow[Columns.Form] = player.playerFormField;
                 newDataRow[Columns.Stamina] = player.staminaSkillField;
@@ -120,7 +126,7 @@ namespace HM.UserInterface.CustomControls {
 
             DataRow newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Speciality";
-            newDataRow["Value"] = selectedPlayer.specialtyField;
+            newDataRow["Value"] = selectedPlayer.specialtyField != HM.Resources.PlayerSpecialty.NoSpecialty ? HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.specialtyField.ToString()) : "-";
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
@@ -135,7 +141,7 @@ namespace HM.UserInterface.CustomControls {
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Agreeability";
-            newDataRow["Value"] = selectedPlayer.agreeabilityField;
+            newDataRow["Value"] = HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.agreeabilityField.ToString());
             detailsDataTable.Rows.Add(newDataRow);
             
             newDataRow = detailsDataTable.NewRow();
@@ -170,42 +176,42 @@ namespace HM.UserInterface.CustomControls {
             detailsDataTable.Rows.Add(newDataRow);
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Goalkeeping";
-            newDataRow["Value"] = selectedPlayer.keeperSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.keeperSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Defending";
-            newDataRow["Value"] = selectedPlayer.defenderSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.defenderSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Winger";
-            newDataRow["Value"] = selectedPlayer.wingerSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.wingerSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Playmaking";
-            newDataRow["Value"] = selectedPlayer.playmakerSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.playmakerSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Passing";
-            newDataRow["Value"] = selectedPlayer.passingSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.passingSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Scoring";
-            newDataRow["Value"] = selectedPlayer.scorerSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.scorerSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             newDataRow = detailsDataTable.NewRow();
             newDataRow["Type"] = "Set Pieces";
-            newDataRow["Value"] = selectedPlayer.setPiecesSkillField;
+            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.setPiecesSkillField);
             detailsDataTable.Rows.Add(newDataRow);
 
             dataGridViewPlayerSkills.DataSource = detailsDataTable;
 
-            //dataGridViewPlayerSkills.Columns[0].DefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
+            dataGridViewPlayerSkills.Columns[0].DefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
             dataGridViewPlayerSkills.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
@@ -229,6 +235,14 @@ namespace HM.UserInterface.CustomControls {
 
                 buttonMenu.Show(this, e.Location, LeftRightAlignment.Right);
             }
+        }
+
+        private void splitContainerPlayerList_Resize(object sender, EventArgs e) {
+            splitContainerPlayerList.SplitterDistance = splitContainerPlayerList.Width - 275;
+        }
+
+        private void splitContainerLeft_Resize(object sender, EventArgs e) {
+            splitContainerLeft.SplitterDistance = 150;
         }
 
         #endregion

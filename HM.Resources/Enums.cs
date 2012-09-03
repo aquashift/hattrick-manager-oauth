@@ -29,6 +29,7 @@ namespace HM.Resources {
     };
 
     public enum FileType : int {
+        Undefined = -1,
         Servers = 0,
         CheckSecurityCode = 1,
         Login = 2,
@@ -49,7 +50,21 @@ namespace HM.Resources {
         Training = 17,
         TransfersPlayer = 18,
         TransfersTeam = 19,
-        WorldDetails = 20
+        WorldDetails = 20,
+        UserSettings = 21
+    };
+
+    public enum ColumnAlignment : int {
+        Left = 0,
+        Center = 1,
+        Right = 2
+    };
+
+    public enum ColumnDisplayType : int {
+        Value = 0,
+        Name = 1,
+        NameValue = 2,
+        Graphical = 3
     };
 
     public enum AchievementCategory : int {
@@ -503,5 +518,20 @@ namespace HM.Resources {
         ExtraForward = 5,
         ExtraInnerMidfield = 6,
         ExtraDefender = 7
+    };
+
+    public enum PlayerSkillTypes : int {
+        Form = 0,
+        Stamina = 1,
+        Experience = 2,
+        Leadership = 3,
+        Loyalty = 4,
+        Keeper = 5,
+        Defending = 6,
+        Playmaking = 7,
+        Winger = 8,
+        Passing = 9,
+        Scoring = 10,
+        SetPieces = 11
     };
 }

@@ -52,16 +52,39 @@ namespace HM.Core {
             }
         }
 
+        public HTEntities.Club.Club GetClub() {
+            HTEntities.Club.Club club = new HTEntities.Club.Club();
+
+            string filename = user.applicationSettingsField.GetLastFileName(HM.Resources.FileType.Club);
+
+            if (filename != string.Empty) {
+                try {
+                    club = (HTEntities.Club.Club)dataManager.ReadFile(filename, HM.Resources.FileType.Club);
+                } catch (Exception ex) {
+                    throw ex;
+                }
+            }
+
+            return (club);
+        }
+
         /// <summary>
         /// Gets economy.
         /// </summary>
         /// <returns>Economy object</returns>
         public HTEntities.Economy.Economy GetEconomy() {
-            try {
-                return (HTEntities.Economy.Economy)dataManager.ReadFile(FileNames.Economy, HM.Resources.FileType.Economy);
-            } catch (Exception ex) {
-                throw ex;
+            HTEntities.Economy.Economy economy = new HTEntities.Economy.Economy();
+            string filename = user.applicationSettingsField.GetLastFileName(HM.Resources.FileType.Economy);
+
+            if (filename != string.Empty) {
+                try {
+                    return (HTEntities.Economy.Economy)dataManager.ReadFile(filename, HM.Resources.FileType.Economy);
+                } catch (Exception ex) {
+                    throw ex;
+                }
             }
+
+            return (economy);
         }
 
         /// <summary>
@@ -101,15 +124,22 @@ namespace HM.Core {
         }
 
         /// <summary>
-        /// Gets players details.
+        /// Gets current player details.
         /// </summary>
         /// <returns>PlayerList object</returns>
         public HTEntities.Players.Players GetPlayersDetails() {
-            try {
-                return (HTEntities.Players.Players)dataManager.ReadFile(FileNames.CurrentPlayers, HM.Resources.FileType.Players);
-            } catch (Exception ex) {
-                throw ex;
+            HTEntities.Players.Players players = new HTEntities.Players.Players();
+            string filename = user.applicationSettingsField.GetLastFileName(HM.Resources.FileType.Players);
+
+            if (filename != string.Empty) {
+                try {
+                    players = (HTEntities.Players.Players)dataManager.ReadFile(filename, HM.Resources.FileType.Players);
+                } catch (Exception ex) {
+                    throw ex;
+                }
             }
+
+            return (players);
         }
 
         /// <summary>
@@ -154,12 +184,6 @@ namespace HM.Core {
             }
 
             dataManager.SaveUserProfiles(userProfiles);
-        }
-
-        public HTEntities.Club.Club GetClub() {
-            HMDal.DataManager dataManager = new HMDal.DataManager();
-            HTEntities.Club.Club club = dataManager.LoadClub(user);
-            return club;
         }
     }
 }

@@ -81,12 +81,21 @@ namespace HM.Core {
         }
 
         /// <summary>
-        /// Writes UserProfiles to disk
+        /// Reads the UserSettings file and return it's content
         /// </summary>
-        /// <param name="userProfiles">UserProfiles to write</param>
-        public void WriteUserProfilesFile(HMEntities.UserProfiles.UserProfiles userProfiles) {
+        /// <returns>HattrickSettings for the selected user</returns>
+        public HMEntities.Settings.HattrickSettings ReadUserSettingsFile(HM.Entities.HattrickManager.UserProfiles.User selectedUser) {
             try {
-                this.dataManager.WriteUserProfilesFile(userProfiles);
+                string path = System.IO.Path.Combine(selectedUser.dataFolderField, selectedUser.teamIdField.ToString());
+                path = System.IO.Path.Combine(path, FolderNames.UserSettings);
+
+                string fileName = Path.Combine(path, FileNames.UserSettings);
+
+                if (File.Exists(fileName)) {
+                    return dataManager.ReadUserSettingsFile(GetFileStream(fileName));
+                } else {
+                    return new HMEntities.Settings.HattrickSettings();
+                }
             } catch (Exception ex) {
                 throw ex;
             }

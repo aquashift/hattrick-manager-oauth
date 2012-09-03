@@ -19,17 +19,9 @@ namespace HM.Resources {
         /// <param name="centralDefence">Central defence rating</param>
         /// <param name="leftDefence">Left defence rating</param>
         /// <returns>Hatstats value</returns>
-        public static int CalculateHatstats(SectorRating midfield, SectorRating rightAttack, SectorRating centralAttack,
-                                            SectorRating leftAttack, SectorRating rightDefence, SectorRating centralDefence,
-                                            SectorRating leftDefence) {
+        public static int CalculateHatstats(SectorRating midfield, SectorRating rightAttack, SectorRating centralAttack, SectorRating leftAttack, SectorRating rightDefence, SectorRating centralDefence, SectorRating leftDefence) {
             try {
-                return Convert.ToInt32((Int32)midfield * 3 +
-                                       (Int32)rightAttack +
-                                       (Int32)centralAttack +
-                                       (Int32)leftAttack +
-                                       (Int32)rightDefence +
-                                       (Int32)centralDefence +
-                                       (Int32)leftDefence);
+                return Convert.ToInt32((Int32)midfield * 3 + (Int32)rightAttack + (Int32)centralAttack + (Int32)leftAttack + (Int32)rightDefence + (Int32)centralDefence + (Int32)leftDefence);
             } catch (Exception ex) {
                 throw ex;
             }
@@ -460,6 +452,9 @@ namespace HM.Resources {
                 case FileType.TransfersPlayer:
                     folderName = FolderNames.TransfersPlayer;
                     break;
+                case FileType.UserSettings:
+                    folderName = FolderNames.UserSettings;
+                    break;
                 case FileType.WorldDetails:
                     folderName = FolderNames.CommonDataFolder;
                     break;
@@ -627,6 +622,10 @@ namespace HM.Resources {
             return System.Text.RegularExpressions.Regex.Replace(text, @"<(.|\n)*?>", string.Empty);
         }
 
+        public static string SplitStringOnCaps(string text) {
+            return (System.Text.RegularExpressions.Regex.Replace(text, "(\\B[A-Z])", " $1"));
+        }
+
         /// <summary>
         /// Gets the first and last date of each month between the specified dates
         /// </summary>
@@ -717,6 +716,6 @@ namespace HM.Resources {
             } catch (Exception ex) {
                 throw ex;
             }
-        }
+        } 
     }
 }

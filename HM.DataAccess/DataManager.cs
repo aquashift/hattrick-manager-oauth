@@ -249,26 +249,6 @@ namespace HM.DataAccess {
         /// <summary>
         /// Writes the content to the specified path and file name
         /// </summary>
-        /// <param name="xmlStream">Content to write</param>
-        /// <param name="path">Path to write the file in</param>
-        /// <param name="fileName">Name of the file to write</param>
-        public void WriteFile(Stream xmlStream, string path, string fileName) {
-            try {
-                //Creates the directory if it doesn't exists
-                Directory.CreateDirectory(path);
-
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(xmlStream);
-
-                xmlDocument.Save(Path.Combine(path, fileName));
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Writes the content to the specified path and file name
-        /// </summary>
         /// <param name="xmlData">Content to write</param>
         /// <param name="path">Path to write the file in</param>
         /// <param name="fileName">Name of the file to write</param>
@@ -281,25 +261,6 @@ namespace HM.DataAccess {
                 xmlDocument.LoadXml(xmlData);
 
                 xmlDocument.Save(Path.Combine(path, fileName));
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Writes a file with the specified name in the common data folder
-        /// </summary>
-        /// <param name="xmlStream">Content to write</param>
-        /// <param name="fileName">Name of the file to write</param>
-        public void WriteFile(Stream xmlStream, string fileName) {
-            try {
-                //Creates the directory if it doesn't exists
-                Directory.CreateDirectory(this.commonFolder);
-
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(xmlStream);
-
-                xmlDocument.Save(Path.Combine(this.commonFolder, fileName));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -325,10 +286,112 @@ namespace HM.DataAccess {
         }
 
         /// <summary>
+        /// Saves Matches XML from stream to disk.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="xmlData"></param>
+        public void SaveMatches(User user, string xmlData) {
+            string folderPath = System.IO.Path.Combine(System.IO.Path.Combine(user.dataFolderField, user.teamIdField.ToString()), FolderNames.Matches);
+            string fileName = FileNames.Matches;
+
+            SaveXml(xmlData, folderPath, fileName);
+        }
+
+        public UserProfiles LoadUserProfiles() {
+            string fileName = Path.Combine(commonFolder, FileNames.UserProfiles);
+            if (File.Exists(fileName)) {
+                return ReadUserProfilesFile(GetFileStream(fileName));
+            } else {
+                return new UserProfiles();
+            }
+        }
+
+        public void SaveUserProfiles(UserProfiles userProfiles) {
+            WriteUserProfilesFile(userProfiles);
+        }
+
+        public void SaveUserSettings(User currentUser) {
+            WriteUserSettingsFile(currentUser);
+        }
+
+        /// <summary>
+        /// Reads UserSettings xml file
+        /// </summary>
+        /// <param name="xmlStream">Xml file content</param>
+        /// <returns>UserProfiles object loaded with readed data</returns>
+        public HMEntities.Settings.HattrickSettings ReadUserSettingsFile(Stream xmlStream) {
+            try {
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(xmlStream);
+
+                HMEntities.Settings.HattrickSettings settings = new HMEntities.Settings.HattrickSettings();
+
+                if (xmlDocument.DocumentElement.ChildNodes != null) {
+                    foreach (XmlNode xmlNodeRoot in xmlDocument.DocumentElement.ChildNodes) {
+                        switch (xmlNodeRoot.Name) {
+                            case Tags.CategoryList:
+                                break;
+                            case Tags.PositionList:
+                                break;
+                            case Tags.ColumnList:
+                                break;
+                            case Tags.LastFileList:
+                                if (xmlNodeRoot.ChildNodes != null) {
+                                    settings.lastFileListField = ParseSettingLastFilesNode(xmlNodeRoot);
+                                }
+                                break;
+                        }
+                    }
+                }
+
+                return (settings);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private List<HMEntities.Settings.LastFiles> ParseSettingLastFilesNode(XmlNode node) {
+            try {
+                List<HMEntities.Settings.LastFiles> lastFiles = new List<HMEntities.Settings.LastFiles>();
+
+                foreach (XmlNode xmlFileNodes in node.ChildNodes) {
+                    if (xmlFileNodes.ChildNodes != null) {
+                        HMEntities.Settings.LastFiles file = new HMEntities.Settings.LastFiles();
+
+                        foreach (XmlNode xmlFileNode in xmlFileNodes.ChildNodes) {
+                            switch (xmlFileNode.Name) {
+                                case Tags.LastFileName:
+                                    file.fileNameField = xmlFileNode.InnerText;
+                                    break;
+                                case Tags.LastFileType:
+                                    file.fileTypeField = (FileType)Convert.ToInt32(xmlFileNode.InnerText);
+                                    break;
+                                case Tags.LastFileDate:
+                                    file.dateField = xmlFileNode.InnerText;
+                                    break;
+                            }
+                        }
+
+                        lastFiles.Add(file);                    
+                    }
+
+                }
+
+                return lastFiles;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Writes the UserProfiles to disk
         /// </summary>
         /// <param name="hattrickManagerData">UserProfiles to write</param>
-        public void WriteUserProfilesFile(HMEntities.UserProfiles.UserProfiles hattrickManagerData) {
+        private void WriteUserProfilesFile(HMEntities.UserProfiles.UserProfiles hattrickManagerData) {
             try {
                 XmlDocument xmlDocument = new XmlDocument();
 
@@ -389,29 +452,132 @@ namespace HM.DataAccess {
             }
         }
 
-        /// <summary>
-        /// Saves Matches XML from stream to disk.
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="xmlData"></param>
-        public void SaveMatches(User user, string xmlData) {
-            string folderPath = System.IO.Path.Combine(System.IO.Path.Combine(user.dataFolderField, user.teamIdField.ToString()), FolderNames.Matches);
-            string fileName = FileNames.Matches;
+        private void WriteUserSettingsFile(HMEntities.UserProfiles.User hattrickUser) {
+            try {
+                HMEntities.Settings.HattrickSettings hattrickManagerSettings = hattrickUser.applicationSettingsField;
+                XmlDocument xmlDocument = new XmlDocument();
 
-            SaveXml(xmlData, folderPath, fileName);
+                XmlElement xmlElementRoot = xmlDocument.CreateElement(Tags.HattrickManagerSettings);
+
+                hattrickManagerSettings.savedDateField = DateTime.Now;
+
+                xmlElementRoot.AppendChild(xmlDocument.CreateElement(Tags.SavedDate)).InnerText = hattrickManagerSettings.savedDateField.ToString(General.DateTimeFormat);
+
+                // Categories
+                XmlElement xmlElementCategoryList = xmlDocument.CreateElement(Tags.CategoryList);
+
+                foreach (HMEntities.Settings.Category currentCategory in hattrickManagerSettings.playerCategoryListField) {
+                    XmlElement xmlElementCategoryName = xmlDocument.CreateElement(Tags.CategoryName);
+                    XmlElement xmlElementCategoryColour = xmlDocument.CreateElement(Tags.CategoryColour);
+                    XmlElement xmlElementCategoryChecked = xmlDocument.CreateElement(Tags.CategoryChecked);
+
+                    xmlElementCategoryName.InnerText = currentCategory.categoryNameField;
+                    xmlElementCategoryColour.InnerText = currentCategory.categoryColourField.ToString();
+                    xmlElementCategoryChecked.InnerText = currentCategory.categoryCheckedField.ToString();
+
+                    XmlElement xmlCategory = xmlDocument.CreateElement(Tags.Category);
+
+                    xmlCategory.SetAttribute(Tags.CategoryID, currentCategory.categoryIdField.ToString());
+
+                    xmlCategory.AppendChild(xmlElementCategoryName);
+                    xmlCategory.AppendChild(xmlElementCategoryColour);
+                    xmlCategory.AppendChild(xmlElementCategoryChecked);
+
+                    xmlElementCategoryList.AppendChild(xmlCategory);
+                }
+
+                xmlElementRoot.AppendChild(xmlElementCategoryList);
+
+                // Positions
+                XmlElement xmlElementPositionList = xmlDocument.CreateElement(Tags.PositionList);
+
+                foreach (HMEntities.Settings.Position currentPosition in hattrickManagerSettings.playerPositionsListField) {
+                    XmlElement xmlElementPositionWeights = xmlDocument.CreateElement(Tags.PositionWeightList);
+
+                    xmlElementPositionWeights.SetAttribute(Tags.PositionName, currentPosition.positionNameField);
+
+                    foreach (HM.Resources.PlayerSkillTypes skill in currentPosition.positionWeights.Keys) {
+                        XmlElement xmlElementWeight = xmlDocument.CreateElement(Tags.PositionWeight);
+
+                        xmlElementWeight.SetAttribute(Tags.PositionWeightName, ((int)skill).ToString());
+                        xmlElementWeight.InnerText = currentPosition.positionWeights[skill].ToString();
+
+                        xmlElementPositionWeights.AppendChild(xmlElementWeight);
+                    }
+
+                    xmlElementPositionList.AppendChild(xmlElementPositionWeights);
+                }
+
+                xmlElementRoot.AppendChild(xmlElementPositionList);
+
+                // Columns
+                XmlElement xmlElementColumnList = xmlDocument.CreateElement(Tags.ColumnList);
+
+                foreach (HMEntities.Settings.Column currentColumn in hattrickManagerSettings.tableColumsListField) {
+                    XmlElement xmlElementColumnName = xmlDocument.CreateElement(Tags.ColumnName);
+                    XmlElement xmlElementColumnTitle = xmlDocument.CreateElement(Tags.ColumnTitle);
+                    XmlElement xmlElementColumnWidth = xmlDocument.CreateElement(Tags.ColumnWidth);
+                    XmlElement xmlElementColumnType = xmlDocument.CreateElement(Tags.ColumnDisplayType);
+                    XmlElement xmlElementColumnAlignment = xmlDocument.CreateElement(Tags.ColumnAlignment);
+
+                    xmlElementColumnName.InnerText = currentColumn.columnNameField;
+                    xmlElementColumnTitle.InnerText = currentColumn.titleField;
+                    xmlElementColumnWidth.InnerText = currentColumn.widthField.ToString();
+                    xmlElementColumnType.InnerText = ((int)currentColumn.displayTypeField).ToString();
+                    xmlElementColumnType.InnerText = ((int)currentColumn.alignmentField).ToString();
+
+                    XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);
+
+                    xmlColumn.AppendChild(xmlElementColumnName);
+                    xmlColumn.AppendChild(xmlElementColumnTitle);
+                    xmlColumn.AppendChild(xmlElementColumnWidth);
+                    xmlColumn.AppendChild(xmlElementColumnType);
+                    xmlColumn.AppendChild(xmlElementColumnAlignment);
+
+                    xmlElementColumnList.AppendChild(xmlColumn);
+                }
+
+                xmlElementRoot.AppendChild(xmlElementColumnList);
+
+                // Last Files
+                XmlElement xmlElementLastFilesList = xmlDocument.CreateElement(Tags.LastFileList);
+
+                foreach (HMEntities.Settings.LastFiles currentFile in hattrickManagerSettings.lastFileListField) {
+                    XmlElement xmlElementFileName = xmlDocument.CreateElement(Tags.LastFileName);
+                    XmlElement xmlElementFileType = xmlDocument.CreateElement(Tags.LastFileType);
+                    XmlElement xmlElementFileDate = xmlDocument.CreateElement(Tags.LastFileDate);
+
+                    xmlElementFileName.InnerText = currentFile.fileNameField;
+                    xmlElementFileType.InnerText = ((int)currentFile.fileTypeField).ToString();
+                    xmlElementFileDate.InnerText = currentFile.dateField;
+
+                    XmlElement xmlFile = xmlDocument.CreateElement(Tags.File);
+
+                    xmlFile.AppendChild(xmlElementFileName);
+                    xmlFile.AppendChild(xmlElementFileType);
+                    xmlFile.AppendChild(xmlElementFileDate);
+
+                    xmlElementLastFilesList.AppendChild(xmlFile);
+                }
+
+                xmlElementRoot.AppendChild(xmlElementLastFilesList);
+
+                xmlDocument.AppendChild(xmlElementRoot);
+
+                string path = System.IO.Path.Combine(hattrickUser.dataFolderField, hattrickUser.teamIdField.ToString());
+                path = System.IO.Path.Combine(path, FolderNames.UserSettings);
+
+                string fileName = Path.Combine(path, FileNames.UserSettings);
+
+                if (!System.IO.Directory.Exists(path)) {
+                    System.IO.Directory.CreateDirectory(path);
+                }
+
+                xmlDocument.Save(fileName);
+            } catch (Exception ex) {
+                throw ex;
+            }
         }
-
-        //public void SaveMatches(User user, Stream xmlStream)
-        //{
-        //    string folderPath = System.IO.Path.Combine(user.dataFolderField, FolderNames.Matches);
-        //    string fileName = FileNames.Matches;
-
-        //    SaveXml(xmlStream, folderPath, fileName);
-        //}
-
-        #endregion
-
-        #region Private Methods
 
         /// <summary>
         /// Gets the specified file's Stream object
@@ -421,26 +587,6 @@ namespace HM.DataAccess {
         private Stream GetFileStream(string path) {
             try {
                 return new FileStream(path, FileMode.Open, FileAccess.Read);
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Saves given XML stream to disk.
-        /// </summary>
-        /// <param name="xmlStream">XML stream</param>
-        /// <param name="folderPath">Folder to save file to</param>
-        /// <param name="fileName">File name</param>
-        private void SaveXml(Stream xmlStream, string folderPath, string fileName) {
-            try {
-                //Creates the directory if it doesn't exists
-                Directory.CreateDirectory(folderPath);
-
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(xmlStream);
-
-                xmlDocument.Save(Path.Combine(folderPath, fileName));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -467,49 +613,5 @@ namespace HM.DataAccess {
         }
 
         #endregion
-
-        public void SaveAchievements(User user, Stream xmlStream) {
-            string folderPath = System.IO.Path.Combine(user.dataFolderField, FolderNames.Achievements);
-            string fileName = FileNames.Achievements;
-
-            SaveXml(xmlStream, folderPath, fileName);
-        }
-
-        public void SaveHattrickXml(User user, Stream xmlStream, FileType fileType) {
-            // TODO. This should be a generic method to save any Hattrick XML to disk.
-            // Algorithm:
-            // 1. Calculate folder path from user and fileType
-            // 2. Calculate file name from fileType and xmlStream
-            // 3. Call SaveXml
-        }
-
-        public UserProfiles LoadUserProfiles() {
-            string fileName = Path.Combine(commonFolder, FileNames.UserProfiles);
-            if (File.Exists(fileName)) {
-                return ReadUserProfilesFile(GetFileStream(fileName));
-            } else {
-                return new UserProfiles();
-            }
-        }
-
-        public void SaveUserProfiles(UserProfiles userProfiles) {
-            WriteUserProfilesFile(userProfiles);
-        }
-
-        public HTEntities.Club.Club LoadClub(User user) {
-            string userDataFolder = Path.Combine(user.dataFolderField, user.teamIdField.ToString());
-
-            FileType fileType = FileType.Club;
-            string folderName = GenericFunctions.GetFolderNameByFileType(fileType);
-            string clubFolder = Path.Combine(userDataFolder, folderName);
-
-            string fileName = FileNames.Club;
-            string filePath = Path.Combine(clubFolder, fileName);
-
-            Stream fileStream = GetFileStream(filePath);
-            HTEntities.Club.Club club = (HTEntities.Club.Club)ReadFile(fileStream, fileType);
-
-            return club;
-        }
     }
 }
