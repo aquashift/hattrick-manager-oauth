@@ -14,6 +14,7 @@ namespace HM.Entities.HattrickManager.UserProfiles {
         public DateTime activationDateField { get; set; }
         public string dataFolderField { get; set; }
         public string username { get; set; }
+        public Settings.HattrickSettings applicationSettingsField  { get; set; }
 
         #endregion
 
@@ -29,6 +30,7 @@ namespace HM.Entities.HattrickManager.UserProfiles {
             accessTokenSecret = string.Empty;
             dataFolderField = string.Empty;
             username = string.Empty;
+            this.applicationSettingsField = new Settings.HattrickSettings();
         }
 
         public void CopyData(User source) {
@@ -37,6 +39,7 @@ namespace HM.Entities.HattrickManager.UserProfiles {
             this.dataFolderField = source.dataFolderField;
             this.youthTeamIdField = source.youthTeamIdField;
             this.username = source.username;
+            this.applicationSettingsField = source.applicationSettingsField;
         }
 
         #endregion

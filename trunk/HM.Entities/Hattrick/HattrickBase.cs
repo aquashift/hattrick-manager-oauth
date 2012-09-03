@@ -62,6 +62,7 @@ namespace HM.Entities.Hattrick {
                                 break;
                             }
                     }
+
                     if (!generalNode) {
                         // Not one of the general nodes, 
                         // try reading it as a specific node
@@ -70,12 +71,6 @@ namespace HM.Entities.Hattrick {
                 }
             }
         }
-
-        ///// <summary>
-        ///// Checks if node is specific to that document and reads it.
-        ///// </summary>
-        ///// <param name="xmlNode">Node to read</param>
-        //public abstract void ReadSpecificNode(XmlNode xmlNode);
 
         #endregion
     }

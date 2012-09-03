@@ -111,6 +111,8 @@ namespace HM.ChppInterface {
             DownloadTeamDetails();
             DownloadTraining();            
             DownloadWorldDetails();
+
+            dataManager.SaveUserSettings(currentUser);
         }
 
         private void DownloadPlayersData() {
@@ -118,12 +120,12 @@ namespace HM.ChppInterface {
 
             /*
             totalFilesToDownload += Convert.ToInt32(playerList.Count * 2);
+            */
 
             foreach (HTEntities.Players.Player currentPlayer in playerList) {
                 DownloadPlayerDetails(currentPlayer.playerIdField.ToString());
                 DownloadTransfersPlayers(currentPlayer.playerIdField.ToString());
             }
-            */
         }
 
         private void DownloadMatchesArchiveAll() {
@@ -220,9 +222,12 @@ namespace HM.ChppInterface {
                 String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Club);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Club);
-                string fileName = FileNames.Club;
+                string fileName = String.Format(FileNames.Club, currentDate);
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
+
+                //Update LatestFileField
+                currentUser.applicationSettingsField.UpdateLastFile(FileType.Club, fileName);
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_club));
             } catch (Exception ex) {
@@ -238,9 +243,12 @@ namespace HM.ChppInterface {
                 String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.Economy);
 
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.Economy);
-                string fileName = FileNames.Economy;
+                string fileName = String.Format(FileNames.Economy, currentDate);
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
+
+                //Update LatestFileField
+                currentUser.applicationSettingsField.UpdateLastFile(FileType.Economy, fileName);
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_economy));
             } catch (Exception ex) {
@@ -408,8 +416,8 @@ namespace HM.ChppInterface {
                 //Writes the file
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                //Writes again for current players
-                dataManager.WriteFile(xmlData, currentFilePath, FileNames.CurrentPlayers);
+                //Update LatestFileField
+                currentUser.applicationSettingsField.UpdateLastFile(FileType.Players, fileName);
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_players));
 
@@ -433,7 +441,7 @@ namespace HM.ChppInterface {
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_playerdetails));
+                //OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_playerdetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -469,6 +477,9 @@ namespace HM.ChppInterface {
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
+                //Update LatestFileField
+                currentUser.applicationSettingsField.UpdateLastFile(FileType.Training, fileName);
+
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_training));
             } catch (Exception ex) {
                 throw ex;
@@ -488,7 +499,7 @@ namespace HM.ChppInterface {
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_transfersplayer));
+                //OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_transfersplayer));
             } catch (Exception ex) {
                 throw ex;
             }

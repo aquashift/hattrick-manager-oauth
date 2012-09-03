@@ -23,5 +23,6 @@ namespace HM.Resources.Constants {
         public const string Training = "Training";
         public const string TransfersPlayer = "TransfersPlayer";
         public const string TransfersTeam = "TransfersTeam";
+        public const string UserSettings = "hmSettings";
     }
 }

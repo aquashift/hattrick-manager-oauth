@@ -101,6 +101,14 @@ namespace HM.Entities.Hattrick.Players {
             lastMatchField = new LastMatchData();
         }
 
+        public string getFullName() {
+            return (this.firstNameField + " " + this.lastNameField);
+        }
+
+        public string getFullAge() {
+            return (this.ageField + "." + this.ageDaysField);
+        }
+
         #endregion
     }
 }

@@ -30,7 +30,6 @@ namespace HM.UserInterface {
             if (listBoxUserProfiles.Items.Count > 0) {
                 listBoxUserProfiles.SelectedIndex = 0;
             }
-
         }
 
         private void listBoxUserProfiles_SelectedIndexChanged(object sender, EventArgs e) {
@@ -74,8 +73,6 @@ namespace HM.UserInterface {
 
         private void buttonOk_Click(object sender, EventArgs e) {
             string selectedLoginname = listBoxUserProfiles.SelectedItem.ToString();
-
-            //new Core.DataManager().WriteUserProfilesFile(this.userProfiles);
 
             foreach (HMEntities.UserProfiles.User currentUser in userProfiles.userListField) {
                 if (currentUser.username == selectedLoginname) {

@@ -32,10 +32,12 @@
             this.tabPagePositions = new System.Windows.Forms.TabPage();
             this.dataGridViewPlayers = new System.Windows.Forms.DataGridView();
             this.splitContainerPlayerList = new System.Windows.Forms.SplitContainer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerLeft = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelCategories = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCategoryName = new System.Windows.Forms.Button();
-            this.checkedListBoxCategories = new System.Windows.Forms.CheckedListBox();
+            this.tableLayoutPanelCategoriesList = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBoxSquadB = new System.Windows.Forms.CheckBox();
+            this.checkBoxSquadA = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
             this.buttonPlayerName = new System.Windows.Forms.Button();
             this.tabControlPlayerDetails.SuspendLayout();
@@ -45,10 +47,11 @@
             this.splitContainerPlayerList.Panel1.SuspendLayout();
             this.splitContainerPlayerList.Panel2.SuspendLayout();
             this.splitContainerPlayerList.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.splitContainerLeft.Panel1.SuspendLayout();
+            this.splitContainerLeft.Panel2.SuspendLayout();
+            this.splitContainerLeft.SuspendLayout();
             this.tableLayoutPanelCategories.SuspendLayout();
+            this.tableLayoutPanelCategoriesList.SuspendLayout();
             this.tableLayoutPanelDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +67,7 @@
             this.tabControlPlayerDetails.Multiline = true;
             this.tabControlPlayerDetails.Name = "tabControlPlayerDetails";
             this.tabControlPlayerDetails.SelectedIndex = 0;
-            this.tabControlPlayerDetails.Size = new System.Drawing.Size(243, 431);
+            this.tabControlPlayerDetails.Size = new System.Drawing.Size(128, 431);
             this.tabControlPlayerDetails.TabIndex = 0;
             // 
             // tabPageSkills
@@ -74,7 +77,7 @@
             this.tabPageSkills.Location = new System.Drawing.Point(4, 4);
             this.tabPageSkills.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageSkills.Name = "tabPageSkills";
-            this.tabPageSkills.Size = new System.Drawing.Size(235, 403);
+            this.tabPageSkills.Size = new System.Drawing.Size(120, 383);
             this.tabPageSkills.TabIndex = 0;
             this.tabPageSkills.Text = "SKILLS";
             // 
@@ -100,7 +103,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewPlayerSkills.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPlayerSkills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPlayerSkills.Size = new System.Drawing.Size(235, 403);
+            this.dataGridViewPlayerSkills.Size = new System.Drawing.Size(120, 383);
             this.dataGridViewPlayerSkills.TabIndex = 0;
             // 
             // tabPagePositions
@@ -109,7 +112,7 @@
             this.tabPagePositions.Location = new System.Drawing.Point(4, 4);
             this.tabPagePositions.Margin = new System.Windows.Forms.Padding(0);
             this.tabPagePositions.Name = "tabPagePositions";
-            this.tabPagePositions.Size = new System.Drawing.Size(235, 403);
+            this.tabPagePositions.Size = new System.Drawing.Size(120, 383);
             this.tabPagePositions.TabIndex = 1;
             this.tabPagePositions.Text = "POSITIONS";
             this.tabPagePositions.UseVisualStyleBackColor = true;
@@ -146,7 +149,7 @@
             this.dataGridViewPlayers.ShowCellErrors = false;
             this.dataGridViewPlayers.ShowEditingIcon = false;
             this.dataGridViewPlayers.ShowRowErrors = false;
-            this.dataGridViewPlayers.Size = new System.Drawing.Size(337, 461);
+            this.dataGridViewPlayers.Size = new System.Drawing.Size(418, 461);
             this.dataGridViewPlayers.TabIndex = 11;
             this.dataGridViewPlayers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlayers_CellClick);
             // 
@@ -159,45 +162,48 @@
             // 
             // splitContainerPlayerList.Panel1
             // 
-            this.splitContainerPlayerList.Panel1.Controls.Add(this.splitContainer1);
+            this.splitContainerPlayerList.Panel1.Controls.Add(this.splitContainerLeft);
             // 
             // splitContainerPlayerList.Panel2
             // 
             this.splitContainerPlayerList.Panel2.Controls.Add(this.tableLayoutPanelDetails);
             this.splitContainerPlayerList.Size = new System.Drawing.Size(736, 465);
-            this.splitContainerPlayerList.SplitterDistance = 485;
+            this.splitContainerPlayerList.SplitterDistance = 600;
             this.splitContainerPlayerList.TabIndex = 12;
+            this.splitContainerPlayerList.Resize += new System.EventHandler(this.splitContainerPlayerList_Resize);
             // 
-            // splitContainer1
+            // splitContainerLeft
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainerLeft.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainerLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerLeft.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerLeft.Name = "splitContainerLeft";
             // 
-            // splitContainer1.Panel1
+            // splitContainerLeft.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanelCategories);
+            this.splitContainerLeft.Panel1.Controls.Add(this.tableLayoutPanelCategories);
             // 
-            // splitContainer1.Panel2
+            // splitContainerLeft.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewPlayers);
-            this.splitContainer1.Size = new System.Drawing.Size(481, 461);
-            this.splitContainer1.SplitterDistance = 140;
-            this.splitContainer1.TabIndex = 0;
+            this.splitContainerLeft.Panel2.Controls.Add(this.dataGridViewPlayers);
+            this.splitContainerLeft.Size = new System.Drawing.Size(600, 465);
+            this.splitContainerLeft.SplitterDistance = 174;
+            this.splitContainerLeft.TabIndex = 0;
+            this.splitContainerLeft.Resize += new System.EventHandler(this.splitContainerLeft_Resize);
             // 
             // tableLayoutPanelCategories
             // 
             this.tableLayoutPanelCategories.ColumnCount = 1;
             this.tableLayoutPanelCategories.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelCategories.Controls.Add(this.buttonCategoryName, 0, 0);
-            this.tableLayoutPanelCategories.Controls.Add(this.checkedListBoxCategories, 0, 1);
+            this.tableLayoutPanelCategories.Controls.Add(this.tableLayoutPanelCategoriesList, 0, 1);
             this.tableLayoutPanelCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelCategories.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelCategories.Name = "tableLayoutPanelCategories";
             this.tableLayoutPanelCategories.RowCount = 2;
             this.tableLayoutPanelCategories.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelCategories.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCategories.Size = new System.Drawing.Size(140, 461);
+            this.tableLayoutPanelCategories.Size = new System.Drawing.Size(170, 461);
             this.tableLayoutPanelCategories.TabIndex = 1;
             // 
             // buttonCategoryName
@@ -210,27 +216,58 @@
             this.buttonCategoryName.Location = new System.Drawing.Point(0, 0);
             this.buttonCategoryName.Margin = new System.Windows.Forms.Padding(0);
             this.buttonCategoryName.Name = "buttonCategoryName";
-            this.buttonCategoryName.Size = new System.Drawing.Size(140, 30);
+            this.buttonCategoryName.Size = new System.Drawing.Size(170, 30);
             this.buttonCategoryName.TabIndex = 2;
             this.buttonCategoryName.Text = "Categories";
             this.buttonCategoryName.UseVisualStyleBackColor = true;
             // 
-            // checkedListBoxCategories
+            // tableLayoutPanelCategoriesList
             // 
-            this.checkedListBoxCategories.BackColor = System.Drawing.SystemColors.Control;
-            this.checkedListBoxCategories.CheckOnClick = true;
-            this.checkedListBoxCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedListBoxCategories.FormattingEnabled = true;
-            this.checkedListBoxCategories.Items.AddRange(new object[] {
-            "All",
-            "Squad A",
-            "Squad B",
-            "Uncategorised"});
-            this.checkedListBoxCategories.Location = new System.Drawing.Point(3, 33);
-            this.checkedListBoxCategories.Name = "checkedListBoxCategories";
-            this.checkedListBoxCategories.Size = new System.Drawing.Size(134, 425);
-            this.checkedListBoxCategories.TabIndex = 0;
-            this.checkedListBoxCategories.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkedListBoxCategories_MouseDown);
+            this.tableLayoutPanelCategoriesList.ColumnCount = 1;
+            this.tableLayoutPanelCategoriesList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCategoriesList.Controls.Add(this.checkBoxSquadB, 0, 1);
+            this.tableLayoutPanelCategoriesList.Controls.Add(this.checkBoxSquadA, 0, 0);
+            this.tableLayoutPanelCategoriesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCategoriesList.Location = new System.Drawing.Point(3, 33);
+            this.tableLayoutPanelCategoriesList.Name = "tableLayoutPanelCategoriesList";
+            this.tableLayoutPanelCategoriesList.RowCount = 3;
+            this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCategoriesList.Size = new System.Drawing.Size(164, 425);
+            this.tableLayoutPanelCategoriesList.TabIndex = 3;
+            // 
+            // checkBoxSquadB
+            // 
+            this.checkBoxSquadB.AllowDrop = true;
+            this.checkBoxSquadB.AutoSize = true;
+            this.checkBoxSquadB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxSquadB.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSquadB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxSquadB.Location = new System.Drawing.Point(0, 30);
+            this.checkBoxSquadB.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxSquadB.Name = "checkBoxSquadB";
+            this.checkBoxSquadB.Size = new System.Drawing.Size(164, 30);
+            this.checkBoxSquadB.TabIndex = 1;
+            this.checkBoxSquadB.Text = "SQUAD B";
+            this.checkBoxSquadB.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.checkBoxSquadB.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSquadA
+            // 
+            this.checkBoxSquadA.AllowDrop = true;
+            this.checkBoxSquadA.AutoSize = true;
+            this.checkBoxSquadA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxSquadA.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSquadA.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxSquadA.Location = new System.Drawing.Point(0, 0);
+            this.checkBoxSquadA.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxSquadA.Name = "checkBoxSquadA";
+            this.checkBoxSquadA.Size = new System.Drawing.Size(164, 30);
+            this.checkBoxSquadA.TabIndex = 0;
+            this.checkBoxSquadA.Text = "SQUAD A";
+            this.checkBoxSquadA.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.checkBoxSquadA.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelDetails
             // 
@@ -244,7 +281,7 @@
             this.tableLayoutPanelDetails.RowCount = 2;
             this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(243, 461);
+            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(128, 461);
             this.tableLayoutPanelDetails.TabIndex = 0;
             // 
             // buttonPlayerName
@@ -257,7 +294,7 @@
             this.buttonPlayerName.Location = new System.Drawing.Point(0, 0);
             this.buttonPlayerName.Margin = new System.Windows.Forms.Padding(0);
             this.buttonPlayerName.Name = "buttonPlayerName";
-            this.buttonPlayerName.Size = new System.Drawing.Size(243, 30);
+            this.buttonPlayerName.Size = new System.Drawing.Size(128, 30);
             this.buttonPlayerName.TabIndex = 1;
             this.buttonPlayerName.UseVisualStyleBackColor = true;
             // 
@@ -277,10 +314,12 @@
             this.splitContainerPlayerList.Panel1.ResumeLayout(false);
             this.splitContainerPlayerList.Panel2.ResumeLayout(false);
             this.splitContainerPlayerList.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainerLeft.Panel1.ResumeLayout(false);
+            this.splitContainerLeft.Panel2.ResumeLayout(false);
+            this.splitContainerLeft.ResumeLayout(false);
             this.tableLayoutPanelCategories.ResumeLayout(false);
+            this.tableLayoutPanelCategoriesList.ResumeLayout(false);
+            this.tableLayoutPanelCategoriesList.PerformLayout();
             this.tableLayoutPanelDetails.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -296,10 +335,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelDetails;
         private System.Windows.Forms.Button buttonPlayerName;
         private System.Windows.Forms.DataGridView dataGridViewPlayerSkills;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.CheckedListBox checkedListBoxCategories;
+        private System.Windows.Forms.SplitContainer splitContainerLeft;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCategories;
         private System.Windows.Forms.Button buttonCategoryName;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCategoriesList;
+        private System.Windows.Forms.CheckBox checkBoxSquadB;
+        private System.Windows.Forms.CheckBox checkBoxSquadA;
 
 
 

@@ -5,9 +5,6 @@ using System.Windows.Forms;
 
 namespace HM.UserInterface {
     static class HattrickManager {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
         [STAThread]
         static void Main(string[] args) {
             if ((args != null) && (args.Length > 0)) {
