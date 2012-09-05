@@ -70,6 +70,18 @@ namespace HM.Entities.HattrickManager.Settings {
             return (filename);
         }
 
+        public Dictionary<HM.Resources.PlayerSkillTypes, double> GetPositionWeights(HM.Resources.FieldPositionCode selectedPosition) {
+            for (int i = 0; i < playerPositionsListField.Count; i++) {
+                Position position = playerPositionsListField[i];
+
+                if (position.positionID == selectedPosition) {
+                    return (position.positionWeights);
+                }
+            }
+
+            return (new Dictionary<HM.Resources.PlayerSkillTypes, double>());
+        }
+
         #endregion
     }
 }
