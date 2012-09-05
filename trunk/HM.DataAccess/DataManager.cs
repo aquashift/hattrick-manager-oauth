@@ -318,12 +318,50 @@ namespace HM.DataAccess {
         /// Reads UserSettings xml file
         /// </summary>
         /// <param name="xmlStream">Xml file content</param>
-        /// <returns>UserProfiles object loaded with readed data</returns>
+        /// <returns>UserSettings object from file</returns>
         public HMEntities.Settings.HattrickSettings ReadUserSettingsFile(Stream xmlStream) {
+            HMEntities.Settings.HattrickSettings settings = new HMEntities.Settings.HattrickSettings();
+
             try {
                 XmlDocument xmlDocument = new XmlDocument();
                 xmlDocument.Load(xmlStream);
 
+                settings = ProcessUserSettingsFile(xmlDocument);
+                settings.DefaultsRestored = false;
+
+                return (settings);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Reads UserSettings xml file
+        /// </summary>
+        /// <param name="xmlContent">Xml content as a string</param>
+        /// <returns>UserSettings object from file</returns>
+        public HMEntities.Settings.HattrickSettings ReadUserSettingsFile(String xmlContent) {
+            HMEntities.Settings.HattrickSettings settings = new HMEntities.Settings.HattrickSettings();
+
+            try {
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(xmlContent);
+
+                settings = ProcessUserSettingsFile(xmlDocument);
+                settings.DefaultsRestored = true;
+
+                return (settings);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private HMEntities.Settings.HattrickSettings ProcessUserSettingsFile(XmlDocument xmlDocument) {
+            try {
                 HMEntities.Settings.HattrickSettings settings = new HMEntities.Settings.HattrickSettings();
 
                 if (xmlDocument.DocumentElement.ChildNodes != null) {
@@ -333,7 +371,8 @@ namespace HM.DataAccess {
                                 break;
                             case Tags.PositionList:
                                 break;
-                            case Tags.ColumnList:
+                            case Tags.ColumnTables:
+                                settings.tableColumsListField = ParseSettingColumnListNode(xmlNodeRoot);
                                 break;
                             case Tags.LastFileList:
                                 if (xmlNodeRoot.ChildNodes != null) {
@@ -350,9 +389,53 @@ namespace HM.DataAccess {
             }
         }
 
-        #endregion
+        private Dictionary<ColumnTables, List<HMEntities.Settings.Column>> ParseSettingColumnListNode(XmlNode node) {
+            try {
+                Dictionary<ColumnTables, List<HMEntities.Settings.Column>> tableColumns = new Dictionary<ColumnTables, List<HMEntities.Settings.Column>>();
 
-        #region Private Methods
+                foreach (XmlNode xmlColumnListNodes in node.ChildNodes) {
+                    if (xmlColumnListNodes.ChildNodes != null) {
+                        ColumnTables key = (ColumnTables)Convert.ToInt32(xmlColumnListNodes.Attributes[Tags.ColumnTableID].InnerText);
+                        List<HMEntities.Settings.Column> columnList = new List<HMEntities.Settings.Column>();
+
+                        foreach (XmlNode xmlColumnNode in xmlColumnListNodes.ChildNodes) {
+                            HMEntities.Settings.Column column = new HMEntities.Settings.Column();
+
+                            foreach (XmlNode xmlColumnChildNode in xmlColumnNode.ChildNodes) {
+                                switch (xmlColumnChildNode.Name) {
+                                    case Tags.ColumnID:
+                                        column.columnIDField = Convert.ToUInt16(xmlColumnChildNode.InnerText);
+                                        break;
+                                    case Tags.ColumnTitle:
+                                        column.titleField = xmlColumnChildNode.InnerText;
+                                        break;
+                                    case Tags.ColumnWidth:
+                                        column.widthField = Convert.ToUInt16(xmlColumnChildNode.InnerText);
+                                        break;
+                                    case Tags.ColumnDisplayType:
+                                        column.displayTypeField = (ColumnDisplayType)Convert.ToInt32(xmlColumnChildNode.InnerText);
+                                        break;
+                                    case Tags.ColumnAlignment:
+                                        column.alignmentField = (ColumnAlignment)Convert.ToInt32(xmlColumnChildNode.InnerText);
+                                        break;
+                                    case Tags.ColumnDisplay:
+                                        column.displayColumn = Convert.ToBoolean(xmlColumnChildNode.InnerText);
+                                        break;
+                                }
+                            }
+
+                            columnList.Add(column);
+                        }
+
+                        tableColumns.Add(key, columnList);
+                    }
+                }
+
+                return (tableColumns);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
 
         private List<HMEntities.Settings.LastFiles> ParseSettingLastFilesNode(XmlNode node) {
             try {
@@ -534,7 +617,7 @@ namespace HM.DataAccess {
                         xmlElementColumnTitle.InnerText = currentColumn.titleField;
                         xmlElementColumnWidth.InnerText = currentColumn.widthField.ToString();
                         xmlElementColumnType.InnerText = ((int)currentColumn.displayTypeField).ToString();
-                        xmlElementColumnType.InnerText = ((int)currentColumn.alignmentField).ToString();
+                        xmlElementColumnAlignment.InnerText = ((int)currentColumn.alignmentField).ToString();
                         xmlElementColumnDisplay.InnerText = currentColumn.displayColumn.ToString();
 
                         XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);

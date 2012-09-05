@@ -39,6 +39,10 @@ namespace HM.Core {
             dataManager = new HM.DataAccess.DataManager(commonFolder);
         }
 
+        public void SaveUserSettings() {
+            dataManager.SaveUserSettings(currentUser);
+        }
+
         /// <summary>
         /// Reads the specified file and return it's content in a HattrickBase entity
         /// </summary>
@@ -86,16 +90,19 @@ namespace HM.Core {
         /// <returns>HattrickSettings for the selected user</returns>
         public HMEntities.Settings.HattrickSettings ReadUserSettingsFile(HM.Entities.HattrickManager.UserProfiles.User selectedUser) {
             try {
+                HMEntities.Settings.HattrickSettings settings = new HMEntities.Settings.HattrickSettings();
                 string path = System.IO.Path.Combine(selectedUser.dataFolderField, selectedUser.teamIdField.ToString());
                 path = System.IO.Path.Combine(path, FolderNames.UserSettings);
 
                 string fileName = Path.Combine(path, FileNames.UserSettings);
 
                 if (File.Exists(fileName)) {
-                    return dataManager.ReadUserSettingsFile(GetFileStream(fileName));
+                    settings = dataManager.ReadUserSettingsFile(GetFileStream(fileName));
                 } else {
-                    return new HMEntities.Settings.HattrickSettings();
+                    settings = dataManager.ReadUserSettingsFile(HM.Resources.GenericFunctions.GetDefaultSettings(HM.Resources.SettingTypes.All));
                 }
+
+                return (settings);
             } catch (Exception ex) {
                 throw ex;
             }
