@@ -188,6 +188,7 @@
     <Content Include="Resources\Icons\icon_league.png" />
     <Content Include="Resources\Injuries\injuries.png" />
     <Content Include="Resources\Positions\positions.png" />
+    <Content Include="Resources\Settings\defaultSettings.xml" />
     <Content Include="Resources\Warnings\cards.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

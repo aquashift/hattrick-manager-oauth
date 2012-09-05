@@ -1,0 +1,250 @@
+<HattrickManagerSettings>
+  <SavedDate />
+  <CategoryList />
+  <PositionList>
+    <PositionWeightList ID="1">
+      <PositionWeight ID="5">7.8</PositionWeight>
+      <PositionWeight ID="6">1.1</PositionWeight>
+      <PositionWeight ID="11">1.1</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="2">
+      <PositionWeight ID="6">7.7</PositionWeight>
+      <PositionWeight ID="7">2.3</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="3">
+      <PositionWeight ID="6">6.4</PositionWeight>
+      <PositionWeight ID="7">3.6</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="4">
+      <PositionWeight ID="6">7.1</PositionWeight>
+      <PositionWeight ID="7">1.1</PositionWeight>
+      <PositionWeight ID="8">1.8</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="5">
+      <PositionWeight ID="6">6.8</PositionWeight>
+      <PositionWeight ID="7">1.1</PositionWeight>
+      <PositionWeight ID="8">2.1</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="6">
+      <PositionWeight ID="6">7.4</PositionWeight>
+      <PositionWeight ID="7">1.0</PositionWeight>
+      <PositionWeight ID="8">1.6</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="7">
+      <PositionWeight ID="6">6.2</PositionWeight>
+      <PositionWeight ID="7">1.1</PositionWeight>
+      <PositionWeight ID="8">2.7</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="8">
+      <PositionWeight ID="6">0.8</PositionWeight>
+      <PositionWeight ID="7">2.9</PositionWeight>
+      <PositionWeight ID="8">5.2</PositionWeight>
+      <PositionWeight ID="9">1.1</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="9">
+      <PositionWeight ID="6">1.8</PositionWeight>
+      <PositionWeight ID="7">2.2</PositionWeight>
+      <PositionWeight ID="8">5.2</PositionWeight>
+      <PositionWeight ID="9">0.8</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="10">
+      <PositionWeight ID="6">0.4</PositionWeight>
+      <PositionWeight ID="7">3.8</PositionWeight>
+      <PositionWeight ID="8">4.7</PositionWeight>
+      <PositionWeight ID="9">1.1</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="11">
+      <PositionWeight ID="6">1.4</PositionWeight>
+      <PositionWeight ID="7">7.2</PositionWeight>
+      <PositionWeight ID="9">1.4</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="12">
+      <PositionWeight ID="6">2.0</PositionWeight>
+      <PositionWeight ID="7">7.2</PositionWeight>
+      <PositionWeight ID="9">0.8</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="13">
+      <PositionWeight ID="6">1.0</PositionWeight>
+      <PositionWeight ID="7">5.4</PositionWeight>
+      <PositionWeight ID="8">2.2</PositionWeight>
+      <PositionWeight ID="9">1.4</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="14">
+      <PositionWeight ID="6">0.8</PositionWeight>
+      <PositionWeight ID="7">5.8</PositionWeight>
+      <PositionWeight ID="9">3.4</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="15">
+      <PositionWeight ID="8">0.8</PositionWeight>
+      <PositionWeight ID="9">2.1</PositionWeight>
+      <PositionWeight ID="10">7.1</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="16">
+      <PositionWeight ID="7">2.8</PositionWeight>
+      <PositionWeight ID="9">1.1</PositionWeight>
+      <PositionWeight ID="10">6.1</PositionWeight>
+    </PositionWeightList>
+    <PositionWeightList ID="17">
+      <PositionWeight ID="8">2.8</PositionWeight>
+      <PositionWeight ID="9">1.1</PositionWeight>
+      <PositionWeight ID="10">6.1</PositionWeight>
+    </PositionWeightList>
+  </PositionList>
+  <TableColumns>
+    <ColumnList TableID="0">
+      <Column>
+        <ColumnID>0</ColumnID>
+        <ColumnTitle>Player ID</ColumnTitle>
+        <ColumnWidth>0</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>false</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>1</ColumnID>
+        <ColumnTitle>#</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>2</ColumnID>
+        <ColumnTitle>Name</ColumnTitle>
+        <ColumnWidth>150</ColumnWidth>
+        <ColumnDisplayType>1</ColumnDisplayType>
+        <ColumnAlignment>0</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>3</ColumnID>
+        <ColumnTitle>Nationality</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>3</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>4</ColumnID>
+        <ColumnTitle>LastPosition</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>3</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>5</ColumnID>
+        <ColumnTitle>Health</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>3</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>6</ColumnID>
+        <ColumnTitle>Cards</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>3</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>7</ColumnID>
+        <ColumnTitle>Category</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>3</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>8</ColumnID>
+        <ColumnTitle>Age</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>9</ColumnID>
+        <ColumnTitle>TSI</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>10</ColumnID>
+        <ColumnTitle>Form</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>11</ColumnID>
+        <ColumnTitle>Stamina</ColumnTitle>
+        <ColumnWidth>40</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>21</ColumnID>
+        <ColumnTitle>Goalkeeping</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>22</ColumnID>
+        <ColumnTitle>Defending</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>23</ColumnID>
+        <ColumnTitle>Winger</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>24</ColumnID>
+        <ColumnTitle>Playmaking</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>25</ColumnID>
+        <ColumnTitle>Passing</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>26</ColumnID>
+        <ColumnTitle>Scoring</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>
+      <Column>
+        <ColumnID>27</ColumnID>
+        <ColumnTitle>SetPieces</ColumnTitle>
+        <ColumnWidth>30</ColumnWidth>
+        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnAlignment>1</ColumnAlignment>
+        <ColumnDisplay>true</ColumnDisplay>
+      </Column>   
+    </ColumnList>
+  </TableColumns>
+  <LastFileList />
+</HattrickManagerSettings>

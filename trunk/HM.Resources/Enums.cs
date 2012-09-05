@@ -508,6 +508,27 @@ namespace HM.Resources {
         Forward2 = 11
     };
 
+    public enum FieldPositionCode : int {
+        Unavailable = -1,
+        Keeper = 1,
+        Defender = 2,
+        DefenderOffensive = 3,
+        DefenderTowardsWing = 4,
+        WingBack = 5,
+        WingBackTowardsMiddle = 6,
+        WingBackOffensive = 7,
+        Winger = 8,
+        WingerDefensive = 9,
+        WingerTowardsMiddle = 10,
+        InnerMidfield = 11,
+        InnerMidfieldDefensive = 12,
+        InnerMidfieldTowardsWing = 13,
+        InnerMidfieldOffensive = 14,
+        Forward = 15,
+        ForwardDefensive = 16,
+        ForwardTowardsWing = 17
+    };
+
     public enum Behaviour : int {
         Unavailable = -1,
         Normal = 0,
@@ -533,5 +554,11 @@ namespace HM.Resources {
         Passing = 9,
         Scoring = 10,
         SetPieces = 11
+    };
+
+    public enum ColumnTables : int {
+        Players = 0,
+        LeagueDetails = 1,
+        LeagueFixtures = 2
     };
 }
