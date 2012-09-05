@@ -8,29 +8,23 @@ using HM.Resources.Constants;
 using HM.Entities.Hattrick;
 using HM.Entities.Hattrick.Matches;
 
-namespace HM.DataAccess.Parsers
-{
-    public class MatchesParser : BaseParser
-    {
+namespace HM.DataAccess.Parsers {
+    public class MatchesParser : BaseParser {
         #region Implementations of abstract methods
 
-        protected override HattrickBase CreateEntity()
-        {
+        protected override HattrickBase CreateEntity() {
             return new Matches();
         }
 
-        protected override void ParseSpecificNode(XmlNode xmlNode, HattrickBase entity)
-        {
+        protected override void ParseSpecificNode(XmlNode xmlNode, HattrickBase entity) {
             Matches matches = (Matches)entity;
 
-            switch (xmlNode.Name)
-            {
+            switch (xmlNode.Name) {
                 case Tags.IsYouth:
                     matches.isYouth = GenericFunctions.ConvertStringToBool(xmlNode.InnerText);
                     break;
                 case Tags.Team:
-                    if (xmlNode.ChildNodes != null)
-                    {
+                    if (xmlNode.ChildNodes != null) {
                         matches.team = ParseTeamNode(xmlNode);
                     }
                     break;
@@ -43,13 +37,10 @@ namespace HM.DataAccess.Parsers
 
         #region Private methods
 
-        private Team ParseTeamNode(XmlNode teamNode)
-        {
+        private Team ParseTeamNode(XmlNode teamNode) {
             Team team = new Team();
-            foreach (XmlNode xmlNode in teamNode.ChildNodes)
-            {
-                switch (xmlNode.Name)
-                {
+            foreach (XmlNode xmlNode in teamNode.ChildNodes) {
+                switch (xmlNode.Name) {
                     case Tags.TeamID:
                         team.teamIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                         break;
@@ -66,8 +57,7 @@ namespace HM.DataAccess.Parsers
                         team.leagueLevelUnitField = ParseLeagueLevelUnitNode(xmlNode);
                         break;
                     case Tags.MatchList:
-                        if (xmlNode.ChildNodes != null)
-                        {
+                        if (xmlNode.ChildNodes != null) {
                             team.matchListField = ParseMatchListNode(xmlNode);
                         }
                         break;
@@ -76,40 +66,32 @@ namespace HM.DataAccess.Parsers
             return team;
         }
 
-        private List<Match> ParseMatchListNode(XmlNode matchListNode)
-        {
+        private List<Match> ParseMatchListNode(XmlNode matchListNode) {
             List<Match> matchList = new List<Match>();
 
-            foreach (XmlNode matchNode in matchListNode.ChildNodes)
-            {
-                if (matchNode.Name == Tags.Match && matchNode.ChildNodes != null)
-                {
+            foreach (XmlNode matchNode in matchListNode.ChildNodes) {
+                if (matchNode.Name == Tags.Match && matchNode.ChildNodes != null) {
                     matchList.Add(ParseMatchNode(matchNode));
                 }
             }
             return matchList;
         }
 
-        private Match ParseMatchNode(XmlNode matchNode)
-        {
+        private Match ParseMatchNode(XmlNode matchNode) {
             Match match = new Match();
 
-            foreach (XmlNode xmlNode in matchNode.ChildNodes)
-            {
-                switch (xmlNode.Name)
-                {
+            foreach (XmlNode xmlNode in matchNode.ChildNodes) {
+                switch (xmlNode.Name) {
                     case Tags.MatchId:
                         match.matchIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                         break;
                     case Tags.HomeTeam:
-                        if (xmlNode.ChildNodes != null)
-                        {
+                        if (xmlNode.ChildNodes != null) {
                             match.homeTeamField = ParseHomeTeamNode(xmlNode);
                         }
                         break;
                     case Tags.AwayTeam:
-                        if (xmlNode.ChildNodes != null)
-                        {
+                        if (xmlNode.ChildNodes != null) {
                             match.awayTeamField = ParseAwayTeamNode(xmlNode);
                         }
                         break;
@@ -128,8 +110,7 @@ namespace HM.DataAccess.Parsers
                     case Tags.Status:
                         string statusString = xmlNode.InnerText;
                         MatchStatus status = MatchStatus.Finished;
-                        switch (statusString)
-                        {
+                        switch (statusString) {
                             case General.StatusFinished:
                                 status = MatchStatus.Finished;
                                 break;
@@ -148,16 +129,12 @@ namespace HM.DataAccess.Parsers
             return match;
         }
 
-        private League ParseLeagueNode(XmlNode leagueNode)
-        {
-            try
-            {
+        private League ParseLeagueNode(XmlNode leagueNode) {
+            try {
                 League league = new League();
 
-                foreach (XmlNode xmlNode in leagueNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in leagueNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.LeagueID:
                             league.leagueIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -168,23 +145,17 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return league;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private LeagueLevelUnit ParseLeagueLevelUnitNode(XmlNode leagueLevelUnitNode)
-        {
-            try
-            {
+        private LeagueLevelUnit ParseLeagueLevelUnitNode(XmlNode leagueLevelUnitNode) {
+            try {
                 LeagueLevelUnit leagueLevelUnit = new LeagueLevelUnit();
 
-                foreach (XmlNode xmlNode in leagueLevelUnitNode.ChildNodes)
-                {
-                    switch (xmlNode.Name)
-                    {
+                foreach (XmlNode xmlNode in leagueLevelUnitNode.ChildNodes) {
+                    switch (xmlNode.Name) {
                         case Tags.LeagueLevelUnitID:
                             leagueLevelUnit.leagueLevelUnitIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                             break;
@@ -198,21 +169,16 @@ namespace HM.DataAccess.Parsers
                 }
 
                 return leagueLevelUnit;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
             }
         }
 
-        private HomeTeam ParseHomeTeamNode(XmlNode homeTeamNode)
-        {
+        private HomeTeam ParseHomeTeamNode(XmlNode homeTeamNode) {
             HomeTeam homeTeam = new HomeTeam();
 
-            foreach (XmlNode xmlNode in homeTeamNode.ChildNodes)
-            {
-                switch (xmlNode.Name)
-                {
+            foreach (XmlNode xmlNode in homeTeamNode.ChildNodes) {
+                switch (xmlNode.Name) {
                     case Tags.HomeTeamID:
                         homeTeam.homeTeamIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
                         break;
@@ -225,14 +191,11 @@ namespace HM.DataAccess.Parsers
             return homeTeam;
         }
 
-        private AwayTeam ParseAwayTeamNode(XmlNode awayTeamNode)
-        {
+        private AwayTeam ParseAwayTeamNode(XmlNode awayTeamNode) {
             AwayTeam awayTeam = new AwayTeam();
 
-            foreach (XmlNode xmlNodeAwayTeam in awayTeamNode.ChildNodes)
-            {
-                switch (xmlNodeAwayTeam.Name)
-                {
+            foreach (XmlNode xmlNodeAwayTeam in awayTeamNode.ChildNodes) {
+                switch (xmlNodeAwayTeam.Name) {
                     case Tags.AwayTeamID:
                         awayTeam.awayTeamIdField = GenericFunctions.ConvertStringToUInt(xmlNodeAwayTeam.InnerText);
                         break;

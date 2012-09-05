@@ -9,7 +9,7 @@ namespace HM.Entities.HattrickManager.Settings {
 
         public List<Category> playerCategoryListField { get; set; }
         public List<Position> playerPositionsListField { get; set; }
-        public List<Column> tableColumsListField { get; set; }
+        public Dictionary<HM.Resources.ColumnTables, List<Column>> tableColumsListField { get; set; }
         public List<LastFiles> lastFileListField { get; set; }
 
         #endregion
@@ -21,7 +21,7 @@ namespace HM.Entities.HattrickManager.Settings {
         public HattrickSettings() {
             this.playerCategoryListField = new List<Category>();
             this.playerPositionsListField = new List<Position>();
-            this.tableColumsListField = new List<Column>();
+            this.tableColumsListField = new Dictionary<Resources.ColumnTables,List<Column>>();
             this.lastFileListField = new List<LastFiles>();
         }
 

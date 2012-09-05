@@ -7,11 +7,12 @@ namespace HM.Entities.HattrickManager.Settings {
     public class Column {
         #region Properties
 
-        public string columnNameField { get; set; }
+        public uint columnIDField { get; set; }
         public string titleField { get; set; }
         public uint widthField { get; set; }
         public HM.Resources.ColumnDisplayType displayTypeField { get; set; }
         public HM.Resources.ColumnAlignment alignmentField { get; set; }
+        public bool displayColumn { get; set; }
 
         #endregion
 
@@ -21,11 +22,12 @@ namespace HM.Entities.HattrickManager.Settings {
         /// Constructor
         /// </summary>
         public Column() {
-            this.columnNameField = string.Empty;
+            this.columnIDField = 0;
             this.titleField = string.Empty;
             this.widthField = 100;
             this.displayTypeField = HM.Resources.ColumnDisplayType.Value;
             this.alignmentField = HM.Resources.ColumnAlignment.Left;
+            this.displayColumn = false;
         }
 
         #endregion

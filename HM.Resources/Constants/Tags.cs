@@ -56,9 +56,12 @@ namespace HM.Resources.Constants {
         public const string Continent = "Continent";
         public const string Column = "Column";
         public const string ColumnAlignment = "ColumnAlignment";
+        public const string ColumnDisplay = "ColumnDisplay";
         public const string ColumnDisplayType = "ColumnDisplayType";
+        public const string ColumnTables = "TableColumns";
+        public const string ColumnTableID = "TableID"; 
         public const string ColumnList = "ColumnList";
-        public const string ColumnName = "ColumnName";
+        public const string ColumnID = "ColumnID";
         public const string ColumnTitle = "ColumnTitle";
         public const string ColumnWidth = "ColumnWidth";
         public const string CostsArena = "CostsArena";
@@ -253,10 +256,10 @@ namespace HM.Resources.Constants {
         public const string Points = "Points";
         public const string Position = "Position";
         public const string PositionList = "PositionList";
-        public const string PositionName = "Name";
+        public const string PositionID = "ID";
         public const string PositionWeightList = "PositionWeightList";
         public const string PositionWeight = "PositionWeight";
-        public const string PositionWeightName = "Name"; 
+        public const string PositionWeightName = "ID"; 
         public const string PositionChange = "PositionChange";
         public const string PositionCode = "PositionCode";
         public const string PossessionFirstHalfAway = "PossessionFirstHalfAway";

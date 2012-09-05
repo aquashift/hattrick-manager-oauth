@@ -107,7 +107,7 @@ namespace HM.DataAccess {
         /// <summary>
         /// Reads a HT xml file and returns a HattrickBase object
         /// </summary>
-        /// <param name="xmlStream">Xml file content</param>
+        /// <param name="xmlString">Xml file content</param>
         /// <param name="fileType">HT file type to read</param>
         /// <returns>HattrickBase object loaded with readed data</returns>
         public HTEntities.HattrickBase ReadXMLString(String xmlString, FileType fileType) {
@@ -463,6 +463,7 @@ namespace HM.DataAccess {
 
                 xmlElementRoot.AppendChild(xmlDocument.CreateElement(Tags.SavedDate)).InnerText = hattrickManagerSettings.savedDateField.ToString(General.DateTimeFormat);
 
+
                 // Categories
                 XmlElement xmlElementCategoryList = xmlDocument.CreateElement(Tags.CategoryList);
 
@@ -488,13 +489,14 @@ namespace HM.DataAccess {
 
                 xmlElementRoot.AppendChild(xmlElementCategoryList);
 
+
                 // Positions
                 XmlElement xmlElementPositionList = xmlDocument.CreateElement(Tags.PositionList);
 
                 foreach (HMEntities.Settings.Position currentPosition in hattrickManagerSettings.playerPositionsListField) {
                     XmlElement xmlElementPositionWeights = xmlDocument.CreateElement(Tags.PositionWeightList);
 
-                    xmlElementPositionWeights.SetAttribute(Tags.PositionName, currentPosition.positionNameField);
+                    xmlElementPositionWeights.SetAttribute(Tags.PositionID, ((int)currentPosition.positionID).ToString());
 
                     foreach (HM.Resources.PlayerSkillTypes skill in currentPosition.positionWeights.Keys) {
                         XmlElement xmlElementWeight = xmlDocument.CreateElement(Tags.PositionWeight);
@@ -510,34 +512,48 @@ namespace HM.DataAccess {
 
                 xmlElementRoot.AppendChild(xmlElementPositionList);
 
+
                 // Columns
-                XmlElement xmlElementColumnList = xmlDocument.CreateElement(Tags.ColumnList);
+                XmlElement xmlElementColumnTables = xmlDocument.CreateElement(Tags.ColumnTables);
 
-                foreach (HMEntities.Settings.Column currentColumn in hattrickManagerSettings.tableColumsListField) {
-                    XmlElement xmlElementColumnName = xmlDocument.CreateElement(Tags.ColumnName);
-                    XmlElement xmlElementColumnTitle = xmlDocument.CreateElement(Tags.ColumnTitle);
-                    XmlElement xmlElementColumnWidth = xmlDocument.CreateElement(Tags.ColumnWidth);
-                    XmlElement xmlElementColumnType = xmlDocument.CreateElement(Tags.ColumnDisplayType);
-                    XmlElement xmlElementColumnAlignment = xmlDocument.CreateElement(Tags.ColumnAlignment);
+                foreach (HM.Resources.ColumnTables tblKey in hattrickManagerSettings.tableColumsListField.Keys) {
+                    List<HM.Entities.HattrickManager.Settings.Column> tablesColumns = hattrickManagerSettings.tableColumsListField[tblKey];
+                    XmlElement xmlElementColumnList = xmlDocument.CreateElement(Tags.ColumnList);
 
-                    xmlElementColumnName.InnerText = currentColumn.columnNameField;
-                    xmlElementColumnTitle.InnerText = currentColumn.titleField;
-                    xmlElementColumnWidth.InnerText = currentColumn.widthField.ToString();
-                    xmlElementColumnType.InnerText = ((int)currentColumn.displayTypeField).ToString();
-                    xmlElementColumnType.InnerText = ((int)currentColumn.alignmentField).ToString();
+                    xmlElementColumnList.SetAttribute(Tags.ColumnTableID, ((int)tblKey).ToString());
 
-                    XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);
+                    foreach (HMEntities.Settings.Column currentColumn in tablesColumns) {
+                        XmlElement xmlElementColumnID = xmlDocument.CreateElement(Tags.ColumnID);
+                        XmlElement xmlElementColumnTitle = xmlDocument.CreateElement(Tags.ColumnTitle);
+                        XmlElement xmlElementColumnWidth = xmlDocument.CreateElement(Tags.ColumnWidth);
+                        XmlElement xmlElementColumnType = xmlDocument.CreateElement(Tags.ColumnDisplayType);
+                        XmlElement xmlElementColumnAlignment = xmlDocument.CreateElement(Tags.ColumnAlignment);
+                        XmlElement xmlElementColumnDisplay = xmlDocument.CreateElement(Tags.ColumnDisplay);
 
-                    xmlColumn.AppendChild(xmlElementColumnName);
-                    xmlColumn.AppendChild(xmlElementColumnTitle);
-                    xmlColumn.AppendChild(xmlElementColumnWidth);
-                    xmlColumn.AppendChild(xmlElementColumnType);
-                    xmlColumn.AppendChild(xmlElementColumnAlignment);
+                        xmlElementColumnID.InnerText = currentColumn.columnIDField.ToString();
+                        xmlElementColumnTitle.InnerText = currentColumn.titleField;
+                        xmlElementColumnWidth.InnerText = currentColumn.widthField.ToString();
+                        xmlElementColumnType.InnerText = ((int)currentColumn.displayTypeField).ToString();
+                        xmlElementColumnType.InnerText = ((int)currentColumn.alignmentField).ToString();
+                        xmlElementColumnDisplay.InnerText = currentColumn.displayColumn.ToString();
 
-                    xmlElementColumnList.AppendChild(xmlColumn);
+                        XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);
+
+                        xmlColumn.AppendChild(xmlElementColumnID);
+                        xmlColumn.AppendChild(xmlElementColumnTitle);
+                        xmlColumn.AppendChild(xmlElementColumnWidth);
+                        xmlColumn.AppendChild(xmlElementColumnType);
+                        xmlColumn.AppendChild(xmlElementColumnAlignment);
+                        xmlColumn.AppendChild(xmlElementColumnDisplay);
+
+                        xmlElementColumnList.AppendChild(xmlColumn);
+                    }
+
+                    xmlElementColumnTables.AppendChild(xmlElementColumnList);
                 }
 
-                xmlElementRoot.AppendChild(xmlElementColumnList);
+                xmlElementRoot.AppendChild(xmlElementColumnTables);
+
 
                 // Last Files
                 XmlElement xmlElementLastFilesList = xmlDocument.CreateElement(Tags.LastFileList);
