@@ -368,8 +368,10 @@ namespace HM.DataAccess {
                     foreach (XmlNode xmlNodeRoot in xmlDocument.DocumentElement.ChildNodes) {
                         switch (xmlNodeRoot.Name) {
                             case Tags.CategoryList:
+                                settings.playerCategoryListField = ParseSettingCategoryListNode(xmlNodeRoot);
                                 break;
                             case Tags.PositionList:
+                                settings.playerPositionsListField = ParseSettingPositionsListNode(xmlNodeRoot);
                                 break;
                             case Tags.ColumnTables:
                                 settings.tableColumsListField = ParseSettingColumnListNode(xmlNodeRoot);
@@ -384,6 +386,66 @@ namespace HM.DataAccess {
                 }
 
                 return (settings);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        private List<HMEntities.Settings.Category> ParseSettingCategoryListNode(XmlNode node) {
+            try {
+                List<HMEntities.Settings.Category> categories = new List<HMEntities.Settings.Category>();
+
+                foreach (XmlNode xmlCategoryListNodes in node.ChildNodes) {
+                    if (xmlCategoryListNodes.ChildNodes != null) {
+                        HMEntities.Settings.Category category = new HMEntities.Settings.Category();
+
+                        category.categoryIdField = Convert.ToUInt16(xmlCategoryListNodes.Attributes[Tags.CategoryID].InnerText);
+
+                        foreach (XmlNode xmlCategoryNode in xmlCategoryListNodes.ChildNodes) {
+                            switch (xmlCategoryNode.Name) {
+                                case Tags.CategoryName:
+                                    category.categoryNameField = xmlCategoryNode.InnerText;
+                                    break;
+                                case Tags.CategoryColour:
+                                    category.categoryColourField = Convert.ToUInt16(xmlCategoryNode.InnerText);
+                                    break;
+                                case Tags.CategoryChecked:
+                                    category.categoryCheckedField = Convert.ToBoolean(xmlCategoryNode.InnerText);
+                                    break;
+                            }
+                        }
+
+                        categories.Add(category);
+                    }
+                }
+
+                return (categories);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        private List<HMEntities.Settings.Position> ParseSettingPositionsListNode(XmlNode node) {
+            try {
+                List<HMEntities.Settings.Position> positions = new List<HMEntities.Settings.Position>();
+
+                foreach (XmlNode xmlPositionListNodes in node.ChildNodes) {
+                    if (xmlPositionListNodes.ChildNodes != null) {
+                        HMEntities.Settings.Position position = new HMEntities.Settings.Position();
+
+                        position.positionID = (FieldPositionCode)Convert.ToUInt16(xmlPositionListNodes.Attributes[Tags.PositionID].InnerText);
+
+                        foreach (XmlNode xmlPositionNode in xmlPositionListNodes.ChildNodes) {
+                            PlayerSkillTypes key = (PlayerSkillTypes)Convert.ToUInt16(xmlPositionNode.Attributes[Tags.PositionWeightName].InnerText);
+
+                            position.positionWeights.Add(key, Convert.ToDouble(xmlPositionNode.InnerText));
+                        }
+
+                        positions.Add(position);
+                    }
+                }
+
+                return (positions);
             } catch (Exception ex) {
                 throw ex;
             }
