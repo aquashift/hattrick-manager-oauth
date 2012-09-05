@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Xml;
 using System.Security.Cryptography;
 using HM.Resources.Constants;
 
@@ -201,6 +202,29 @@ namespace HM.Resources {
 
             // Step 6. Return the encrypted string as a base64 encoded string
             return Convert.ToBase64String(Results);
+        }
+
+        public static string GetDefaultSettings(SettingTypes type) {
+            string xmlData = string.Empty;
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(Properties.Resources.defaultSettings);
+
+            switch (type) {
+                case SettingTypes.All:
+                    xmlData = xmlDocument.OuterXml;
+                    break;
+                case SettingTypes.Categories:
+                    xmlData = xmlDocument.SelectSingleNode("//CategoryList").OuterXml;
+                    break;
+                case SettingTypes.Columns:
+                    xmlData = xmlDocument.SelectSingleNode("//TableColumns").OuterXml;
+                    break;
+                case SettingTypes.Positions:
+                    xmlData = xmlDocument.SelectSingleNode("//PositionList").OuterXml;
+                    break;
+            }
+
+            return (xmlData);
         }
 
         /// <summary>
@@ -716,6 +740,6 @@ namespace HM.Resources {
             } catch (Exception ex) {
                 throw ex;
             }
-        } 
+        }
     }
 }

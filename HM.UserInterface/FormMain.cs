@@ -37,6 +37,12 @@ namespace HM.UserInterface {
                     this.entityManager = new EntityManager(currentUser);
 
                     this.currentUser.applicationSettingsField = dataManager.ReadUserSettingsFile(this.currentUser);
+
+                    if (this.currentUser.applicationSettingsField.DefaultsRestored) {
+                        dataManager.SaveUserSettings();
+
+                        this.currentUser.applicationSettingsField.DefaultsRestored = false;
+                    }
                 }
             }
         }

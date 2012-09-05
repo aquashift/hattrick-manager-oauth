@@ -54,6 +54,13 @@ namespace HM.Resources {
         UserSettings = 21
     };
 
+    public enum SettingTypes : int {
+        All = 0,
+        Categories = 1,
+        Positions = 2,
+        Columns = 3
+    };
+
     public enum ColumnAlignment : int {
         Left = 0,
         Center = 1,
