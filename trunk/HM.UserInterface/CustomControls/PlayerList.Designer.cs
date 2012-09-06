@@ -24,8 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPlayerDetails = new System.Windows.Forms.TabControl();
             this.tabPageSkills = new System.Windows.Forms.TabPage();
             this.dataGridViewPlayerSkills = new System.Windows.Forms.DataGridView();
@@ -40,9 +41,11 @@
             this.checkBoxSquadA = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
             this.buttonPlayerName = new System.Windows.Forms.Button();
+            this.dataGridViewPlayerPositions = new System.Windows.Forms.DataGridView();
             this.tabControlPlayerDetails.SuspendLayout();
             this.tabPageSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerSkills)).BeginInit();
+            this.tabPagePositions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).BeginInit();
             this.splitContainerPlayerList.Panel1.SuspendLayout();
             this.splitContainerPlayerList.Panel2.SuspendLayout();
@@ -53,6 +56,7 @@
             this.tableLayoutPanelCategories.SuspendLayout();
             this.tableLayoutPanelCategoriesList.SuspendLayout();
             this.tableLayoutPanelDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerPositions)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPlayerDetails
@@ -108,6 +112,7 @@
             // 
             // tabPagePositions
             // 
+            this.tabPagePositions.Controls.Add(this.dataGridViewPlayerPositions);
             this.tabPagePositions.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPagePositions.Location = new System.Drawing.Point(4, 4);
             this.tabPagePositions.Margin = new System.Windows.Forms.Padding(0);
@@ -123,20 +128,20 @@
             this.dataGridViewPlayers.AllowUserToDeleteRows = false;
             this.dataGridViewPlayers.AllowUserToOrderColumns = true;
             this.dataGridViewPlayers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPlayers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPlayers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPlayers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPlayers.Location = new System.Drawing.Point(0, 0);
@@ -298,6 +303,31 @@
             this.buttonPlayerName.TabIndex = 1;
             this.buttonPlayerName.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewPlayerPositions
+            // 
+            this.dataGridViewPlayerPositions.AllowUserToAddRows = false;
+            this.dataGridViewPlayerPositions.AllowUserToDeleteRows = false;
+            this.dataGridViewPlayerPositions.AllowUserToResizeRows = false;
+            this.dataGridViewPlayerPositions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPlayerPositions.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewPlayerPositions.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewPlayerPositions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewPlayerPositions.ColumnHeadersVisible = false;
+            this.dataGridViewPlayerPositions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewPlayerPositions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewPlayerPositions.GridColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewPlayerPositions.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewPlayerPositions.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewPlayerPositions.MultiSelect = false;
+            this.dataGridViewPlayerPositions.Name = "dataGridViewPlayerPositions";
+            this.dataGridViewPlayerPositions.ReadOnly = true;
+            this.dataGridViewPlayerPositions.RowHeadersVisible = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewPlayerPositions.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewPlayerPositions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPlayerPositions.Size = new System.Drawing.Size(120, 383);
+            this.dataGridViewPlayerPositions.TabIndex = 1;
+            // 
             // PlayerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -310,6 +340,7 @@
             this.tabControlPlayerDetails.ResumeLayout(false);
             this.tabPageSkills.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerSkills)).EndInit();
+            this.tabPagePositions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).EndInit();
             this.splitContainerPlayerList.Panel1.ResumeLayout(false);
             this.splitContainerPlayerList.Panel2.ResumeLayout(false);
@@ -321,6 +352,7 @@
             this.tableLayoutPanelCategoriesList.ResumeLayout(false);
             this.tableLayoutPanelCategoriesList.PerformLayout();
             this.tableLayoutPanelDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerPositions)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,6 +373,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCategoriesList;
         private System.Windows.Forms.CheckBox checkBoxSquadB;
         private System.Windows.Forms.CheckBox checkBoxSquadA;
+        private System.Windows.Forms.DataGridView dataGridViewPlayerPositions;
 
 
 
