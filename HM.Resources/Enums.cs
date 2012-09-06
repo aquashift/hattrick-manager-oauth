@@ -527,13 +527,14 @@ namespace HM.Resources {
         Winger = 8,
         WingerDefensive = 9,
         WingerTowardsMiddle = 10,
-        InnerMidfield = 11,
-        InnerMidfieldDefensive = 12,
-        InnerMidfieldTowardsWing = 13,
-        InnerMidfieldOffensive = 14,
-        Forward = 15,
-        ForwardDefensive = 16,
-        ForwardTowardsWing = 17
+        WingerOffensive = 11,
+        InnerMidfield = 12,
+        InnerMidfieldDefensive = 13,
+        InnerMidfieldTowardsWing = 14,
+        InnerMidfieldOffensive = 15,
+        Forward = 16,
+        ForwardDefensive = 17,
+        ForwardTowardsWing = 18
     };
 
     public enum Behaviour : int {
