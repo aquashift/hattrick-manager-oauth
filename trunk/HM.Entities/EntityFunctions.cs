@@ -7,7 +7,7 @@ using HM.Resources;
 namespace HM.Entities {
     public static class EntityFunctions {
         public static string GetPlayerSkillName(PlayerSkill skill) {
-            return (HM.Resources.Constants.DefaultValues.PlayerSkillNames[(int)skill]);
+            return (HM.Resources.Constants.EnumNames.PlayerSkillNames[(int)skill]);
         }
 
         public static double GetPlayerPositionRating(Dictionary<PlayerSkillTypes, double> weights, Dictionary<PlayerSkillTypes, uint> skills) {

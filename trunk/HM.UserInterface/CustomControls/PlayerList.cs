@@ -117,8 +117,6 @@ namespace HM.UserInterface.CustomControls {
         private void PopulatePlayerPositions(int playerID) {
             HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
             double positionValue = 0;
-            double highestValue = 0;
-            int highestRow = 0;
 
             DataTable detailsDataTable = new DataTable();
 
@@ -131,21 +129,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Defender), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Defender";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -153,21 +141,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Offensive Defender";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBack), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -175,21 +153,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Wingback Towards Middle";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -197,21 +165,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Winger), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Winger";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -219,21 +177,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Winger Towards Middle";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -241,21 +189,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfield), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Inner Midfield";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -263,21 +201,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Inner Midfield Towards Wing";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -285,21 +213,11 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Forward), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Forward";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
-
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
 
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.ForwardDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
@@ -307,21 +225,13 @@ namespace HM.UserInterface.CustomControls {
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
-
             newDataRow = detailsDataTable.NewRow();
             positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.ForwardTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
             newDataRow["Type"] = "Forward Towards Wing";
             newDataRow["Value"] = positionValue;
             detailsDataTable.Rows.Add(newDataRow);
 
-            if (positionValue > highestValue) {
-                highestValue = positionValue;
-                highestRow = detailsDataTable.Rows.Count - 1;
-            }
+            detailsDataTable.DefaultView.Sort = "Value DESC";
 
             dataGridViewPlayerPositions.DataSource = detailsDataTable;
 
@@ -331,7 +241,7 @@ namespace HM.UserInterface.CustomControls {
             }
 
             dataGridViewPlayerPositions.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewPlayerPositions.Rows[highestRow].DefaultCellStyle.Font = new Font("Calibri", 11, FontStyle.Bold);
+            dataGridViewPlayerPositions.Rows[0].DefaultCellStyle.Font = new Font("Calibri", 11, FontStyle.Bold);
             dataGridViewPlayerPositions.ClearSelection();
         }
 
