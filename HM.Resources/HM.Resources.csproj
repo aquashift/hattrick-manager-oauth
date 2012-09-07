@@ -71,6 +71,7 @@
     <Compile Include="Constants\Chpp.cs" />
     <Compile Include="Constants\Columns.cs" />
     <Compile Include="Constants\DefaultValues.cs" />
+    <Compile Include="Constants\EnumNames.cs" />
     <Compile Include="Constants\FileNames.cs" />
     <Compile Include="Constants\FolderNames.cs" />
     <Compile Include="Constants\General.cs" />
