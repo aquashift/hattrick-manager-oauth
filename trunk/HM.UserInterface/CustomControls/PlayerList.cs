@@ -249,21 +249,29 @@ namespace HM.UserInterface.CustomControls {
 
         private void PopulatePlayerDetails(int playerID) {
             HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
+            double skillBonus = ((Convert.ToDouble(selectedPlayer.loyaltyField) / Convert.ToDouble(HM.Resources.PlayerSkill.Divine)) + Convert.ToInt32(selectedPlayer.motherClubField));
+            int addBonus = 0;
+
+            if (checkBoxApplyBonus.Checked) {
+                addBonus = Convert.ToInt32(skillBonus);
+            }
 
             labelFormValue.Text = HM.Entities.EntityFunctions.GetPlayerFormName(selectedPlayer.playerFormField);
             labelStaminaValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.staminaSkillField);
-            labelGoalKeepingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.keeperSkillField);
-            labelDefendingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.defenderSkillField);
-            labelPlaymakingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.playmakerSkillField);
-            labelWingerValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.wingerSkillField);
-            labelPassingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.passingSkillField);
-            labelScoringValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.scorerSkillField);
-            labelSetPiecesValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.setPiecesSkillField);
+            labelGoalKeepingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.keeperSkillField, Convert.ToInt32(addBonus));
+            labelDefendingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.defenderSkillField, Convert.ToInt32(addBonus));
+            labelPlaymakingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.playmakerSkillField, Convert.ToInt32(addBonus));
+            labelWingerValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.wingerSkillField, Convert.ToInt32(addBonus));
+            labelPassingValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.passingSkillField, Convert.ToInt32(addBonus));
+            labelScoringValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.scorerSkillField, Convert.ToInt32(addBonus));
+            labelSetPiecesValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.setPiecesSkillField, Convert.ToInt32(addBonus));
             labelExperienceValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.experienceField);
             labelLeadershipValue.Text = HM.Entities.EntityFunctions.GetPlayerLeadershipName(selectedPlayer.leadershipField);
             labelLoyaltyValue.Text = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.loyaltyField);
-            labelSpecialityValue.Text = selectedPlayer.specialtyField != HM.Resources.PlayerSpecialty.NoSpecialty ? HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.specialtyField.ToString()) : "-";
+            pictureBoxMotherclub.Image = HM.Resources.GenericFunctions.GetMotherClubImage(selectedPlayer.motherClubField);
+            labelSkillBonusValue.Text = skillBonus.ToString("F1");
 
+            labelSpecialityValue.Text = selectedPlayer.specialtyField != HM.Resources.PlayerSpecialty.NoSpecialty ? HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.specialtyField.ToString()) : "-";
             labelWarningsValue.Text = selectedPlayer.cardsField.ToString();
             labelHealthValue.Text = HM.Entities.EntityFunctions.GetPlayerHealthString(selectedPlayer.injuryLevelField);
             labelTSIValue.Text = selectedPlayer.tsiField.ToString();
@@ -272,107 +280,20 @@ namespace HM.UserInterface.CustomControls {
             labelAgreeabilityValue.Text = HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.agreeabilityField.ToString());
             labelHonestyValue.Text = HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.honestyField.ToString());
             labelAgressivenessValue.Text = HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.aggressivenessField.ToString());
+        }
 
-            /*
-            
+        private void NewPlayerSelected() {
+            if (dataGridViewPlayers != null && dataGridViewPlayers.SelectedRows.Count > 0) {
+                if (dataGridViewPlayers.SelectedRows[0] != null) {
+                    int playerID = Convert.ToInt32(dataGridViewPlayers.SelectedRows[0].Cells[0].Value);
 
-            buttonPlayerName.Text = selectedPlayer.firstNameField + " " + selectedPlayer.lastNameField;
+                    HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
+                    buttonPlayerName.Text = selectedPlayer.firstNameField + " " + selectedPlayer.lastNameField;
 
-            DataTable detailsDataTable = new DataTable();
-
-            detailsDataTable.Columns.Add("Type", typeof(string));
-            detailsDataTable.Columns.Add("Value", typeof(string));
-
-            DataRow newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Speciality";
-            newDataRow["Value"] = selectedPlayer.specialtyField != HM.Resources.PlayerSpecialty.NoSpecialty ? HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.specialtyField.ToString()) : "-";
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Experience";
-            newDataRow["Value"] = selectedPlayer.experienceField;
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Leadership";
-            newDataRow["Value"] =  selectedPlayer.leadershipField;
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Agreeability";
-            newDataRow["Value"] = HM.Resources.GenericFunctions.SplitStringOnCaps(selectedPlayer.agreeabilityField.ToString());
-            detailsDataTable.Rows.Add(newDataRow);
-            
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Aggressiveness";
-            newDataRow["Value"] = selectedPlayer.aggressivenessField;
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "";
-            newDataRow["Value"] = "";
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "TSI";
-            newDataRow["Value"] = selectedPlayer.tsiField;
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Form";
-            newDataRow["Value"] = selectedPlayer.playerFormField;
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Stamina";
-            newDataRow["Value"] = selectedPlayer.staminaSkillField;
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "";
-            newDataRow["Value"] = "";
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Goalkeeping";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.keeperSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Defending";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.defenderSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Winger";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.wingerSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Playmaking";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.playmakerSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Passing";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.passingSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Scoring";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.scorerSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            newDataRow["Type"] = "Set Pieces";
-            newDataRow["Value"] = HM.Entities.EntityFunctions.GetPlayerSkillName(selectedPlayer.setPiecesSkillField);
-            detailsDataTable.Rows.Add(newDataRow);
-
-            dataGridViewPlayerSkills.DataSource = detailsDataTable;
-
-            dataGridViewPlayerSkills.Columns[0].DefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
-            dataGridViewPlayerSkills.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            */
+                    PopulatePlayerDetails(playerID);
+                    PopulatePlayerPositions(playerID);
+                }
+            }
         }
 
         #endregion
@@ -380,15 +301,11 @@ namespace HM.UserInterface.CustomControls {
         #region events
 
         private void dataGridViewPlayers_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (dataGridViewPlayers.SelectedRows[0] != null) {
-                int playerID = Convert.ToInt32(dataGridViewPlayers.SelectedRows[0].Cells[0].Value);
+            NewPlayerSelected();
+        }
 
-                HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
-                buttonPlayerName.Text = selectedPlayer.firstNameField + " " + selectedPlayer.lastNameField;
-
-                PopulatePlayerDetails(playerID);
-                PopulatePlayerPositions(playerID);
-            }
+        private void dataGridViewPlayers_SelectionChanged(object sender, EventArgs e) {
+            NewPlayerSelected();
         }
 
         private void checkedListBoxCategories_MouseDown(object sender, MouseEventArgs e) {
@@ -407,6 +324,10 @@ namespace HM.UserInterface.CustomControls {
 
         private void splitContainerLeft_Resize(object sender, EventArgs e) {
             splitContainerLeft.SplitterDistance = 150;
+        }
+
+        private void checkBoxApplyBonus_CheckedChanged(object sender, EventArgs e) {
+            NewPlayerSelected();
         }
 
         #endregion
