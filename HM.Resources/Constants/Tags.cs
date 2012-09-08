@@ -205,6 +205,7 @@ namespace HM.Resources.Constants {
         public const string Loginname = "Loginname";
         public const string LoginResult = "LoginResult";
         public const string LogoURL = "LogoURL";
+        public const string Loyalty = "Loyalty";
         public const string Match = "Match";
         public const string MatchDate = "MatchDate";
         public const string Matches = "Matches";
@@ -217,6 +218,7 @@ namespace HM.Resources.Constants {
         public const string Members = "Members";
         public const string Minute = "Minute";
         public const string Morale = "Morale";
+        public const string MotherClubBonus = "MotherClubBonus";
         public const string MultiLevel = "MultiLevel";
         public const string Name = "Name";
         public const string NationalTeam = "NationalTeam";

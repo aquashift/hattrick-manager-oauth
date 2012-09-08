@@ -561,7 +561,8 @@ namespace HM.Resources {
         Winger = 8,
         Passing = 9,
         Scoring = 10,
-        SetPieces = 11
+        SetPieces = 11,
+        MotherClubMonus = 12
     };
 
     public enum ColumnTables : int {

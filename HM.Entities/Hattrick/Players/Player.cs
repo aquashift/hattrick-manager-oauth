@@ -38,6 +38,8 @@ namespace HM.Entities.Hattrick.Players {
         public int capsU20Field { get; set; }
         public int cardsField { get; set; }
         public int injuryLevelField { get; set; }
+        public bool motherClubField { get; set; }
+        public PlayerSkill loyaltyField { get; set; }
         public PlayerSkill staminaSkillField { get; set; }
         public PlayerSkill keeperSkillField { get; set; }
         public PlayerSkill playmakerSkillField { get; set; }
@@ -88,6 +90,8 @@ namespace HM.Entities.Hattrick.Players {
             capsU20Field = 0;
             cardsField = 0;
             injuryLevelField = 0;
+            motherClubField = false;
+            loyaltyField = PlayerSkill.Unavailable;
             staminaSkillField = PlayerSkill.Unavailable;
             keeperSkillField = PlayerSkill.Unavailable;
             playmakerSkillField = PlayerSkill.Unavailable;

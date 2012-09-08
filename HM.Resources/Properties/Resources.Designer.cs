@@ -84,22 +84,21 @@ namespace HM.Resources.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;HattrickManagerSettings&gt;
         ///  &lt;SavedDate /&gt;
-        ///  &lt;CategoryList /&gt;
-        ///  &lt;PositionList /&gt;
-        ///  &lt;TableColumns&gt;
-        ///    &lt;ColumnList TableID=&quot;0&quot;&gt;
-        ///      &lt;Column&gt;
-        ///        &lt;ColumnID&gt;0&lt;/ColumnID&gt;
-        ///        &lt;ColumnTitle&gt;Player ID&lt;/ColumnTitle&gt;
-        ///        &lt;ColumnWidth&gt;0&lt;/ColumnWidth&gt;
-        ///        &lt;ColumnDisplayType&gt;0&lt;/ColumnDisplayType&gt;
-        ///        &lt;ColumnAlignment&gt;1&lt;/ColumnAlignment&gt;
-        ///        &lt;ColumnDisplay&gt;false&lt;/ColumnDisplay&gt;
-        ///      &lt;/Column&gt;
-        ///      &lt;Column&gt;
-        ///        &lt;ColumnID&gt;1&lt;/ColumnID&gt;
-        ///        &lt;ColumnTitle&gt;#&lt;/ColumnTitle&gt;
-        ///    [rest of string was truncated]&quot;;.
+        ///  &lt;CategoryList&gt;
+        ///    &lt;Category CategoryID=&quot;0&quot;&gt;
+        ///      &lt;CategoryName&gt;Squad A&lt;/CategoryName&gt;
+        ///      &lt;CategoryColour&gt;1&lt;/CategoryColour&gt;
+        ///      &lt;CategoryChecked&gt;false&lt;/CategoryChecked&gt;
+        ///    &lt;/Category&gt;
+        ///    &lt;Category CategoryID=&quot;1&quot;&gt;
+        ///      &lt;CategoryName&gt;Squad B&lt;/CategoryName&gt;
+        ///      &lt;CategoryColour&gt;2&lt;/CategoryColour&gt;
+        ///      &lt;CategoryChecked&gt;false&lt;/CategoryChecked&gt;
+        ///    &lt;/Category&gt;
+        ///  &lt;/CategoryList&gt;
+        ///  &lt;PositionList&gt;
+        ///    &lt;PositionWeightList ID=&quot;1&quot;&gt;
+        ///      &lt;PositionW [rest of string was truncated]&quot;;.
         /// </summary>
         public static string defaultSettings {
             get {

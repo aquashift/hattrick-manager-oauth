@@ -10,12 +10,39 @@ namespace HM.Entities {
             return (HM.Resources.Constants.EnumNames.PlayerSkillNames[(int)skill]);
         }
 
+        public static string GetPlayerFormName(PlayerForm form) {
+            return (HM.Resources.Constants.EnumNames.PlayerFormNames[(int)form]);
+        }
+
+        public static string GetPlayerLeadershipName(Leadership leadership) {
+            return (HM.Resources.Constants.EnumNames.PlayerLeadershipNames[(int)leadership]);
+        }
+
+        public static string GetPlayerHealthString(int health) {
+            string healthString = "";
+
+            if (health == -1) {
+                healthString = "Healthy";
+            } else if (health == 0) {
+                healthString = "Bruised";
+            } else {
+                healthString = "Injured (" + health + "w)";
+            }
+
+            return (healthString);
+        }
+
         public static double GetPlayerPositionRating(Dictionary<PlayerSkillTypes, double> weights, Dictionary<PlayerSkillTypes, uint> skills) {
             double rating = 0.0;
 
             foreach (PlayerSkillTypes key in weights.Keys) {
                 if (skills.ContainsKey(key)) {
-                    rating += (skills[key] * weights[key]);
+                    double skillLevel = skills[key];
+                    skillLevel += (Convert.ToDouble(skills[PlayerSkillTypes.Loyalty]) / Convert.ToDouble(PlayerSkill.Divine));
+                    skillLevel += (uint)skills[PlayerSkillTypes.MotherClubMonus];
+                    skillLevel *= (Convert.ToDouble(skills[PlayerSkillTypes.Form]) / Convert.ToDouble(PlayerForm.Weak));
+
+                    rating += (skillLevel * weights[key]);
                 }
             }
 
@@ -30,13 +57,14 @@ namespace HM.Entities {
             skills[PlayerSkillTypes.Form] = (uint)player.playerFormField;
             skills[PlayerSkillTypes.Keeper] = (uint)player.keeperSkillField;
             skills[PlayerSkillTypes.Leadership] = (uint)player.leadershipField;
-            skills[PlayerSkillTypes.Loyalty] = 0;
+            skills[PlayerSkillTypes.Loyalty] = (uint)player.loyaltyField;
             skills[PlayerSkillTypes.Passing] = (uint)player.passingSkillField;
             skills[PlayerSkillTypes.Playmaking] = (uint)player.playmakerSkillField;
             skills[PlayerSkillTypes.Scoring] = (uint)player.scorerSkillField;
             skills[PlayerSkillTypes.SetPieces] = (uint)player.setPiecesSkillField;
             skills[PlayerSkillTypes.Stamina] = (uint)player.staminaSkillField;
             skills[PlayerSkillTypes.Winger] = (uint)player.wingerSkillField;
+            skills[PlayerSkillTypes.MotherClubMonus] = (uint)(player.motherClubField ? 1 : 0);
 
             return (skills);
         }

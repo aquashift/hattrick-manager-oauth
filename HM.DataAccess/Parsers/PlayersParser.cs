@@ -174,6 +174,12 @@ namespace HM.DataAccess.Parsers {
                                 case Tags.InjuryLevel:
                                     player.injuryLevelField = Convert.ToInt32(xmlNode.InnerText);
                                     break;
+                                case Tags.MotherClubBonus:
+                                    player.motherClubField = Convert.ToBoolean(xmlNode.InnerText);
+                                    break;
+                                case Tags.Loyalty:
+                                    player.loyaltyField = (PlayerSkill)Convert.ToInt32(xmlNode.InnerText);
+                                    break;
                                 case Tags.StaminaSkill:
                                     player.staminaSkillField = (PlayerSkill)Convert.ToInt32(xmlNode.InnerText);
                                     break;

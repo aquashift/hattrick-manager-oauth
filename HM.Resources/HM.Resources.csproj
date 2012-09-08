@@ -109,40 +109,40 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flags.png" />
+    <None Include="Resources\Icons\Flags.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PositionDown.png" />
+    <None Include="Resources\SeriesTable\PositionDown.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PositionEqual.png" />
+    <None Include="Resources\SeriesTable\PositionEqual.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PositionUp.png" />
+    <None Include="Resources\SeriesTable\PositionUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Green.png" />
+    <None Include="Resources\SeriesTable\Green.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Red.png" />
+    <None Include="Resources\SeriesTable\Red.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Yellow.png" />
+    <None Include="Resources\SeriesTable\Yellow.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Grey.png" />
+    <None Include="Resources\SeriesTable\Grey.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WheatherOvercast.png" />
+    <None Include="Resources\Weather\WheatherOvercast.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WheatherPartiallyCloudy.png" />
+    <None Include="Resources\Weather\WheatherPartiallyCloudy.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WheatherRain.png" />
+    <None Include="Resources\Weather\WheatherRain.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WheatherSunny.png" />
+    <None Include="Resources\Weather\WheatherSunny.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -162,35 +162,40 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_arena.png" />
+    <None Include="Resources\ToolbarIcons\icon_arena.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_club.png" />
+    <None Include="Resources\ToolbarIcons\icon_club.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_download.png" />
+    <None Include="Resources\ToolbarIcons\icon_download.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_finance.png" />
+    <None Include="Resources\ToolbarIcons\icon_finance.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_lineup.png" />
+    <None Include="Resources\ToolbarIcons\icon_lineup.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_settings.png" />
+    <None Include="Resources\ToolbarIcons\icon_settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\icon_training.png" />
+    <None Include="Resources\ToolbarIcons\icon_training.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Categories\" />
+    <Folder Include="Resources\Injuries\" />
+    <Folder Include="Resources\Positions\" />
+    <Folder Include="Resources\Warnings\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Backgrounds\bg_gray_grad.png" />
-    <Content Include="Resources\Categories\categories.png" />
-    <Content Include="Resources\Icons\icon_league.png" />
-    <Content Include="Resources\Injuries\injuries.png" />
-    <Content Include="Resources\Positions\positions.png" />
+    <Content Include="Resources\Icons\categories.png" />
+    <Content Include="Resources\ToolbarIcons\icon_league.png" />
+    <Content Include="Resources\Icons\injuries.png" />
+    <Content Include="Resources\Icons\positions.png" />
     <Content Include="Resources\Settings\defaultSettings.xml" />
-    <Content Include="Resources\Warnings\cards.png" />
+    <Content Include="Resources\Icons\cards.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
