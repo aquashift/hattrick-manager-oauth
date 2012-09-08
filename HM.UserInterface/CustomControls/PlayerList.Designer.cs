@@ -81,6 +81,13 @@
             this.labelAgressivenessValue = new System.Windows.Forms.Label();
             this.labelSpeciality = new System.Windows.Forms.Label();
             this.labelSpecialityValue = new System.Windows.Forms.Label();
+            this.labelMotherclub = new System.Windows.Forms.Label();
+            this.pictureBoxMotherclub = new System.Windows.Forms.PictureBox();
+            this.labelSkillBonus = new System.Windows.Forms.Label();
+            this.labelSkillBonusValue = new System.Windows.Forms.Label();
+            this.labelDivide3 = new System.Windows.Forms.Label();
+            this.labelApplyBonus = new System.Windows.Forms.Label();
+            this.checkBoxApplyBonus = new System.Windows.Forms.CheckBox();
             this.tabControlPlayerDetails.SuspendLayout();
             this.tabPageSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).BeginInit();
@@ -94,6 +101,7 @@
             this.tableLayoutPanelCategoriesList.SuspendLayout();
             this.tableLayoutPanelDetails.SuspendLayout();
             this.tableLayoutPanelPlayerSkills.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMotherclub)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPlayerDetails
@@ -108,7 +116,7 @@
             this.tabControlPlayerDetails.Multiline = true;
             this.tabControlPlayerDetails.Name = "tabControlPlayerDetails";
             this.tabControlPlayerDetails.SelectedIndex = 0;
-            this.tabControlPlayerDetails.Size = new System.Drawing.Size(238, 509);
+            this.tabControlPlayerDetails.Size = new System.Drawing.Size(245, 599);
             this.tabControlPlayerDetails.TabIndex = 0;
             // 
             // tabPageSkills
@@ -118,7 +126,7 @@
             this.tabPageSkills.Location = new System.Drawing.Point(4, 4);
             this.tabPageSkills.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageSkills.Name = "tabPageSkills";
-            this.tabPageSkills.Size = new System.Drawing.Size(230, 481);
+            this.tabPageSkills.Size = new System.Drawing.Size(237, 571);
             this.tabPageSkills.TabIndex = 0;
             this.tabPageSkills.Text = "SKILLS";
             // 
@@ -165,9 +173,10 @@
             this.dataGridViewPlayers.ShowCellErrors = false;
             this.dataGridViewPlayers.ShowEditingIcon = false;
             this.dataGridViewPlayers.ShowRowErrors = false;
-            this.dataGridViewPlayers.Size = new System.Drawing.Size(534, 539);
+            this.dataGridViewPlayers.Size = new System.Drawing.Size(548, 629);
             this.dataGridViewPlayers.TabIndex = 11;
             this.dataGridViewPlayers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlayers_CellClick);
+            this.dataGridViewPlayers.SelectionChanged += new System.EventHandler(this.dataGridViewPlayers_SelectionChanged);
             // 
             // splitContainerPlayerList
             // 
@@ -183,8 +192,8 @@
             // splitContainerPlayerList.Panel2
             // 
             this.splitContainerPlayerList.Panel2.Controls.Add(this.tableLayoutPanelDetails);
-            this.splitContainerPlayerList.Size = new System.Drawing.Size(1008, 543);
-            this.splitContainerPlayerList.SplitterDistance = 762;
+            this.splitContainerPlayerList.Size = new System.Drawing.Size(1036, 633);
+            this.splitContainerPlayerList.SplitterDistance = 783;
             this.splitContainerPlayerList.TabIndex = 12;
             this.splitContainerPlayerList.Resize += new System.EventHandler(this.splitContainerPlayerList_Resize);
             // 
@@ -202,8 +211,8 @@
             // splitContainerLeft.Panel2
             // 
             this.splitContainerLeft.Panel2.Controls.Add(this.dataGridViewPlayers);
-            this.splitContainerLeft.Size = new System.Drawing.Size(762, 543);
-            this.splitContainerLeft.SplitterDistance = 220;
+            this.splitContainerLeft.Size = new System.Drawing.Size(783, 633);
+            this.splitContainerLeft.SplitterDistance = 227;
             this.splitContainerLeft.TabIndex = 0;
             this.splitContainerLeft.Resize += new System.EventHandler(this.splitContainerLeft_Resize);
             // 
@@ -219,7 +228,7 @@
             this.tableLayoutPanelCategories.RowCount = 2;
             this.tableLayoutPanelCategories.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelCategories.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCategories.Size = new System.Drawing.Size(216, 539);
+            this.tableLayoutPanelCategories.Size = new System.Drawing.Size(223, 629);
             this.tableLayoutPanelCategories.TabIndex = 1;
             // 
             // buttonCategoryName
@@ -232,7 +241,7 @@
             this.buttonCategoryName.Location = new System.Drawing.Point(0, 0);
             this.buttonCategoryName.Margin = new System.Windows.Forms.Padding(0);
             this.buttonCategoryName.Name = "buttonCategoryName";
-            this.buttonCategoryName.Size = new System.Drawing.Size(216, 30);
+            this.buttonCategoryName.Size = new System.Drawing.Size(223, 30);
             this.buttonCategoryName.TabIndex = 2;
             this.buttonCategoryName.Text = "Categories";
             this.buttonCategoryName.UseVisualStyleBackColor = true;
@@ -250,7 +259,7 @@
             this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCategoriesList.Size = new System.Drawing.Size(210, 503);
+            this.tableLayoutPanelCategoriesList.Size = new System.Drawing.Size(217, 593);
             this.tableLayoutPanelCategoriesList.TabIndex = 3;
             // 
             // checkBoxSquadB
@@ -263,7 +272,7 @@
             this.checkBoxSquadB.Location = new System.Drawing.Point(0, 30);
             this.checkBoxSquadB.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxSquadB.Name = "checkBoxSquadB";
-            this.checkBoxSquadB.Size = new System.Drawing.Size(210, 30);
+            this.checkBoxSquadB.Size = new System.Drawing.Size(217, 30);
             this.checkBoxSquadB.TabIndex = 1;
             this.checkBoxSquadB.Text = "SQUAD B";
             this.checkBoxSquadB.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -279,7 +288,7 @@
             this.checkBoxSquadA.Location = new System.Drawing.Point(0, 0);
             this.checkBoxSquadA.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxSquadA.Name = "checkBoxSquadA";
-            this.checkBoxSquadA.Size = new System.Drawing.Size(210, 30);
+            this.checkBoxSquadA.Size = new System.Drawing.Size(217, 30);
             this.checkBoxSquadA.TabIndex = 0;
             this.checkBoxSquadA.Text = "SQUAD A";
             this.checkBoxSquadA.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -297,7 +306,7 @@
             this.tableLayoutPanelDetails.RowCount = 2;
             this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(238, 539);
+            this.tableLayoutPanelDetails.Size = new System.Drawing.Size(245, 629);
             this.tableLayoutPanelDetails.TabIndex = 0;
             // 
             // buttonPlayerName
@@ -310,7 +319,7 @@
             this.buttonPlayerName.Location = new System.Drawing.Point(0, 0);
             this.buttonPlayerName.Margin = new System.Windows.Forms.Padding(0);
             this.buttonPlayerName.Name = "buttonPlayerName";
-            this.buttonPlayerName.Size = new System.Drawing.Size(238, 30);
+            this.buttonPlayerName.Size = new System.Drawing.Size(245, 30);
             this.buttonPlayerName.TabIndex = 1;
             this.buttonPlayerName.UseVisualStyleBackColor = true;
             // 
@@ -319,22 +328,26 @@
             this.tableLayoutPanelPlayerSkills.ColumnCount = 2;
             this.tableLayoutPanelPlayerSkills.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelPlayerSkills.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSpecialityValue, 1, 12);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSpeciality, 0, 12);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgressivenessValue, 1, 21);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgressiveness, 0, 21);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHonestyValue, 1, 20);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHonesty, 0, 20);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgreeabilityValue, 1, 19);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgreeability, 0, 19);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSalaryValue, 1, 17);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSalary, 0, 17);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelTSIValue, 1, 16);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelTSI, 0, 16);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHealthValue, 1, 15);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHealth, 0, 15);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelWarningsValue, 1, 14);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelWarnings, 0, 14);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelApplyBonus, 0, 25);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSkillBonusValue, 1, 13);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSkillBonus, 0, 13);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelMotherclub, 0, 12);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSpecialityValue, 1, 15);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSpeciality, 0, 15);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgressivenessValue, 1, 23);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgressiveness, 0, 23);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHonestyValue, 1, 22);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHonesty, 0, 22);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgreeabilityValue, 1, 21);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelAgreeability, 0, 21);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSalaryValue, 1, 19);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelSalary, 0, 19);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelTSIValue, 1, 18);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelTSI, 0, 18);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHealthValue, 1, 17);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelHealth, 0, 17);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelWarningsValue, 1, 16);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelWarnings, 0, 16);
             this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelLoyaltyValue, 1, 11);
             this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelLeadershipValue, 1, 10);
             this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelExperienceValue, 1, 9);
@@ -359,13 +372,17 @@
             this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelStamina, 0, 1);
             this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelFormValue, 1, 0);
             this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelForm, 0, 0);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelDivider, 0, 13);
-            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelDivider2, 0, 18);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelDivider, 0, 14);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelDivider2, 0, 20);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.pictureBoxMotherclub, 1, 12);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.labelDivide3, 0, 24);
+            this.tableLayoutPanelPlayerSkills.Controls.Add(this.checkBoxApplyBonus, 1, 25);
             this.tableLayoutPanelPlayerSkills.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPlayerSkills.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelPlayerSkills.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPlayerSkills.Name = "tableLayoutPanelPlayerSkills";
-            this.tableLayoutPanelPlayerSkills.RowCount = 23;
+            this.tableLayoutPanelPlayerSkills.RowCount = 27;
+            this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -380,6 +397,7 @@
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -388,8 +406,10 @@
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPlayerSkills.Size = new System.Drawing.Size(230, 481);
+            this.tableLayoutPanelPlayerSkills.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelPlayerSkills.Size = new System.Drawing.Size(237, 571);
             this.tableLayoutPanelPlayerSkills.TabIndex = 0;
             // 
             // labelForm
@@ -398,7 +418,7 @@
             this.labelForm.Location = new System.Drawing.Point(0, 0);
             this.labelForm.Margin = new System.Windows.Forms.Padding(0);
             this.labelForm.Name = "labelForm";
-            this.labelForm.Size = new System.Drawing.Size(115, 20);
+            this.labelForm.Size = new System.Drawing.Size(118, 20);
             this.labelForm.TabIndex = 0;
             this.labelForm.Text = "Form";
             this.labelForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -406,10 +426,10 @@
             // labelFormValue
             // 
             this.labelFormValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelFormValue.Location = new System.Drawing.Point(115, 0);
+            this.labelFormValue.Location = new System.Drawing.Point(118, 0);
             this.labelFormValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelFormValue.Name = "labelFormValue";
-            this.labelFormValue.Size = new System.Drawing.Size(115, 20);
+            this.labelFormValue.Size = new System.Drawing.Size(119, 20);
             this.labelFormValue.TabIndex = 1;
             this.labelFormValue.Text = "-";
             this.labelFormValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -420,7 +440,7 @@
             this.labelStamina.Location = new System.Drawing.Point(0, 20);
             this.labelStamina.Margin = new System.Windows.Forms.Padding(0);
             this.labelStamina.Name = "labelStamina";
-            this.labelStamina.Size = new System.Drawing.Size(115, 20);
+            this.labelStamina.Size = new System.Drawing.Size(118, 20);
             this.labelStamina.TabIndex = 2;
             this.labelStamina.Text = "Stamina";
             this.labelStamina.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -428,10 +448,10 @@
             // labelStaminaValue
             // 
             this.labelStaminaValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelStaminaValue.Location = new System.Drawing.Point(115, 20);
+            this.labelStaminaValue.Location = new System.Drawing.Point(118, 20);
             this.labelStaminaValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelStaminaValue.Name = "labelStaminaValue";
-            this.labelStaminaValue.Size = new System.Drawing.Size(115, 20);
+            this.labelStaminaValue.Size = new System.Drawing.Size(119, 20);
             this.labelStaminaValue.TabIndex = 3;
             this.labelStaminaValue.Text = "-";
             this.labelStaminaValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -442,7 +462,7 @@
             this.labelGoalkeeping.Location = new System.Drawing.Point(0, 40);
             this.labelGoalkeeping.Margin = new System.Windows.Forms.Padding(0);
             this.labelGoalkeeping.Name = "labelGoalkeeping";
-            this.labelGoalkeeping.Size = new System.Drawing.Size(115, 20);
+            this.labelGoalkeeping.Size = new System.Drawing.Size(118, 20);
             this.labelGoalkeeping.TabIndex = 4;
             this.labelGoalkeeping.Text = "Goalkeeping";
             this.labelGoalkeeping.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -450,10 +470,10 @@
             // labelGoalKeepingValue
             // 
             this.labelGoalKeepingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelGoalKeepingValue.Location = new System.Drawing.Point(115, 40);
+            this.labelGoalKeepingValue.Location = new System.Drawing.Point(118, 40);
             this.labelGoalKeepingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelGoalKeepingValue.Name = "labelGoalKeepingValue";
-            this.labelGoalKeepingValue.Size = new System.Drawing.Size(115, 20);
+            this.labelGoalKeepingValue.Size = new System.Drawing.Size(119, 20);
             this.labelGoalKeepingValue.TabIndex = 5;
             this.labelGoalKeepingValue.Text = "-";
             this.labelGoalKeepingValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -463,9 +483,9 @@
             this.labelDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tableLayoutPanelPlayerSkills.SetColumnSpan(this.labelDivider, 2);
             this.labelDivider.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelDivider.Location = new System.Drawing.Point(3, 262);
+            this.labelDivider.Location = new System.Drawing.Point(3, 282);
             this.labelDivider.Name = "labelDivider";
-            this.labelDivider.Size = new System.Drawing.Size(224, 2);
+            this.labelDivider.Size = new System.Drawing.Size(231, 2);
             this.labelDivider.TabIndex = 6;
             this.labelDivider.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -475,7 +495,7 @@
             this.labelDefending.Location = new System.Drawing.Point(0, 60);
             this.labelDefending.Margin = new System.Windows.Forms.Padding(0);
             this.labelDefending.Name = "labelDefending";
-            this.labelDefending.Size = new System.Drawing.Size(115, 20);
+            this.labelDefending.Size = new System.Drawing.Size(118, 20);
             this.labelDefending.TabIndex = 7;
             this.labelDefending.Text = "Defending";
             this.labelDefending.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -486,7 +506,7 @@
             this.labelPlaymaking.Location = new System.Drawing.Point(0, 80);
             this.labelPlaymaking.Margin = new System.Windows.Forms.Padding(0);
             this.labelPlaymaking.Name = "labelPlaymaking";
-            this.labelPlaymaking.Size = new System.Drawing.Size(115, 20);
+            this.labelPlaymaking.Size = new System.Drawing.Size(118, 20);
             this.labelPlaymaking.TabIndex = 8;
             this.labelPlaymaking.Text = "Playmaking";
             this.labelPlaymaking.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -497,7 +517,7 @@
             this.labelWinger.Location = new System.Drawing.Point(0, 100);
             this.labelWinger.Margin = new System.Windows.Forms.Padding(0);
             this.labelWinger.Name = "labelWinger";
-            this.labelWinger.Size = new System.Drawing.Size(115, 20);
+            this.labelWinger.Size = new System.Drawing.Size(118, 20);
             this.labelWinger.TabIndex = 9;
             this.labelWinger.Text = "Winger";
             this.labelWinger.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -508,7 +528,7 @@
             this.labelPassing.Location = new System.Drawing.Point(0, 120);
             this.labelPassing.Margin = new System.Windows.Forms.Padding(0);
             this.labelPassing.Name = "labelPassing";
-            this.labelPassing.Size = new System.Drawing.Size(115, 20);
+            this.labelPassing.Size = new System.Drawing.Size(118, 20);
             this.labelPassing.TabIndex = 10;
             this.labelPassing.Text = "Passing";
             this.labelPassing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -519,7 +539,7 @@
             this.labelScoring.Location = new System.Drawing.Point(0, 140);
             this.labelScoring.Margin = new System.Windows.Forms.Padding(0);
             this.labelScoring.Name = "labelScoring";
-            this.labelScoring.Size = new System.Drawing.Size(115, 20);
+            this.labelScoring.Size = new System.Drawing.Size(118, 20);
             this.labelScoring.TabIndex = 11;
             this.labelScoring.Text = "Scoring";
             this.labelScoring.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -530,7 +550,7 @@
             this.labelExperience.Location = new System.Drawing.Point(0, 180);
             this.labelExperience.Margin = new System.Windows.Forms.Padding(0);
             this.labelExperience.Name = "labelExperience";
-            this.labelExperience.Size = new System.Drawing.Size(115, 20);
+            this.labelExperience.Size = new System.Drawing.Size(118, 20);
             this.labelExperience.TabIndex = 12;
             this.labelExperience.Text = "Experience";
             this.labelExperience.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -541,7 +561,7 @@
             this.labelSetPieces.Location = new System.Drawing.Point(0, 160);
             this.labelSetPieces.Margin = new System.Windows.Forms.Padding(0);
             this.labelSetPieces.Name = "labelSetPieces";
-            this.labelSetPieces.Size = new System.Drawing.Size(115, 20);
+            this.labelSetPieces.Size = new System.Drawing.Size(118, 20);
             this.labelSetPieces.TabIndex = 13;
             this.labelSetPieces.Text = "Set Pieces";
             this.labelSetPieces.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -552,7 +572,7 @@
             this.labelLeadership.Location = new System.Drawing.Point(0, 200);
             this.labelLeadership.Margin = new System.Windows.Forms.Padding(0);
             this.labelLeadership.Name = "labelLeadership";
-            this.labelLeadership.Size = new System.Drawing.Size(115, 20);
+            this.labelLeadership.Size = new System.Drawing.Size(118, 20);
             this.labelLeadership.TabIndex = 14;
             this.labelLeadership.Text = "Leadership";
             this.labelLeadership.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -563,7 +583,7 @@
             this.labeLoyalty.Location = new System.Drawing.Point(0, 220);
             this.labeLoyalty.Margin = new System.Windows.Forms.Padding(0);
             this.labeLoyalty.Name = "labeLoyalty";
-            this.labeLoyalty.Size = new System.Drawing.Size(115, 20);
+            this.labeLoyalty.Size = new System.Drawing.Size(118, 20);
             this.labeLoyalty.TabIndex = 15;
             this.labeLoyalty.Text = "Loyalty";
             this.labeLoyalty.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -571,10 +591,10 @@
             // labelDefendingValue
             // 
             this.labelDefendingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDefendingValue.Location = new System.Drawing.Point(115, 60);
+            this.labelDefendingValue.Location = new System.Drawing.Point(118, 60);
             this.labelDefendingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelDefendingValue.Name = "labelDefendingValue";
-            this.labelDefendingValue.Size = new System.Drawing.Size(115, 20);
+            this.labelDefendingValue.Size = new System.Drawing.Size(119, 20);
             this.labelDefendingValue.TabIndex = 16;
             this.labelDefendingValue.Text = "-";
             this.labelDefendingValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -582,10 +602,10 @@
             // labelPlaymakingValue
             // 
             this.labelPlaymakingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPlaymakingValue.Location = new System.Drawing.Point(115, 80);
+            this.labelPlaymakingValue.Location = new System.Drawing.Point(118, 80);
             this.labelPlaymakingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelPlaymakingValue.Name = "labelPlaymakingValue";
-            this.labelPlaymakingValue.Size = new System.Drawing.Size(115, 20);
+            this.labelPlaymakingValue.Size = new System.Drawing.Size(119, 20);
             this.labelPlaymakingValue.TabIndex = 17;
             this.labelPlaymakingValue.Text = "-";
             this.labelPlaymakingValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -593,10 +613,10 @@
             // labelWingerValue
             // 
             this.labelWingerValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWingerValue.Location = new System.Drawing.Point(115, 100);
+            this.labelWingerValue.Location = new System.Drawing.Point(118, 100);
             this.labelWingerValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingerValue.Name = "labelWingerValue";
-            this.labelWingerValue.Size = new System.Drawing.Size(115, 20);
+            this.labelWingerValue.Size = new System.Drawing.Size(119, 20);
             this.labelWingerValue.TabIndex = 18;
             this.labelWingerValue.Text = "-";
             this.labelWingerValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -604,10 +624,10 @@
             // labelPassingValue
             // 
             this.labelPassingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPassingValue.Location = new System.Drawing.Point(115, 120);
+            this.labelPassingValue.Location = new System.Drawing.Point(118, 120);
             this.labelPassingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelPassingValue.Name = "labelPassingValue";
-            this.labelPassingValue.Size = new System.Drawing.Size(115, 20);
+            this.labelPassingValue.Size = new System.Drawing.Size(119, 20);
             this.labelPassingValue.TabIndex = 19;
             this.labelPassingValue.Text = "-";
             this.labelPassingValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -615,10 +635,10 @@
             // labelScoringValue
             // 
             this.labelScoringValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelScoringValue.Location = new System.Drawing.Point(115, 140);
+            this.labelScoringValue.Location = new System.Drawing.Point(118, 140);
             this.labelScoringValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelScoringValue.Name = "labelScoringValue";
-            this.labelScoringValue.Size = new System.Drawing.Size(115, 20);
+            this.labelScoringValue.Size = new System.Drawing.Size(119, 20);
             this.labelScoringValue.TabIndex = 20;
             this.labelScoringValue.Text = "-";
             this.labelScoringValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -626,10 +646,10 @@
             // labelSetPiecesValue
             // 
             this.labelSetPiecesValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSetPiecesValue.Location = new System.Drawing.Point(115, 160);
+            this.labelSetPiecesValue.Location = new System.Drawing.Point(118, 160);
             this.labelSetPiecesValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelSetPiecesValue.Name = "labelSetPiecesValue";
-            this.labelSetPiecesValue.Size = new System.Drawing.Size(115, 20);
+            this.labelSetPiecesValue.Size = new System.Drawing.Size(119, 20);
             this.labelSetPiecesValue.TabIndex = 21;
             this.labelSetPiecesValue.Text = "-";
             this.labelSetPiecesValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -637,10 +657,10 @@
             // labelExperienceValue
             // 
             this.labelExperienceValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelExperienceValue.Location = new System.Drawing.Point(115, 180);
+            this.labelExperienceValue.Location = new System.Drawing.Point(118, 180);
             this.labelExperienceValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelExperienceValue.Name = "labelExperienceValue";
-            this.labelExperienceValue.Size = new System.Drawing.Size(115, 20);
+            this.labelExperienceValue.Size = new System.Drawing.Size(119, 20);
             this.labelExperienceValue.TabIndex = 22;
             this.labelExperienceValue.Text = "-";
             this.labelExperienceValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -648,10 +668,10 @@
             // labelLeadershipValue
             // 
             this.labelLeadershipValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLeadershipValue.Location = new System.Drawing.Point(115, 200);
+            this.labelLeadershipValue.Location = new System.Drawing.Point(118, 200);
             this.labelLeadershipValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelLeadershipValue.Name = "labelLeadershipValue";
-            this.labelLeadershipValue.Size = new System.Drawing.Size(115, 20);
+            this.labelLeadershipValue.Size = new System.Drawing.Size(119, 20);
             this.labelLeadershipValue.TabIndex = 23;
             this.labelLeadershipValue.Text = "-";
             this.labelLeadershipValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -659,10 +679,10 @@
             // labelLoyaltyValue
             // 
             this.labelLoyaltyValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLoyaltyValue.Location = new System.Drawing.Point(115, 220);
+            this.labelLoyaltyValue.Location = new System.Drawing.Point(118, 220);
             this.labelLoyaltyValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelLoyaltyValue.Name = "labelLoyaltyValue";
-            this.labelLoyaltyValue.Size = new System.Drawing.Size(115, 20);
+            this.labelLoyaltyValue.Size = new System.Drawing.Size(119, 20);
             this.labelLoyaltyValue.TabIndex = 24;
             this.labelLoyaltyValue.Text = "-";
             this.labelLoyaltyValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -670,10 +690,10 @@
             // labelTSI
             // 
             this.labelTSI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTSI.Location = new System.Drawing.Point(0, 304);
+            this.labelTSI.Location = new System.Drawing.Point(0, 344);
             this.labelTSI.Margin = new System.Windows.Forms.Padding(0);
             this.labelTSI.Name = "labelTSI";
-            this.labelTSI.Size = new System.Drawing.Size(115, 20);
+            this.labelTSI.Size = new System.Drawing.Size(118, 20);
             this.labelTSI.TabIndex = 29;
             this.labelTSI.Text = "TSI";
             this.labelTSI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -681,10 +701,10 @@
             // labelHealth
             // 
             this.labelHealth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHealth.Location = new System.Drawing.Point(0, 284);
+            this.labelHealth.Location = new System.Drawing.Point(0, 324);
             this.labelHealth.Margin = new System.Windows.Forms.Padding(0);
             this.labelHealth.Name = "labelHealth";
-            this.labelHealth.Size = new System.Drawing.Size(115, 20);
+            this.labelHealth.Size = new System.Drawing.Size(118, 20);
             this.labelHealth.TabIndex = 27;
             this.labelHealth.Text = "Health";
             this.labelHealth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -692,10 +712,10 @@
             // labelHealthValue
             // 
             this.labelHealthValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHealthValue.Location = new System.Drawing.Point(115, 284);
+            this.labelHealthValue.Location = new System.Drawing.Point(118, 324);
             this.labelHealthValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelHealthValue.Name = "labelHealthValue";
-            this.labelHealthValue.Size = new System.Drawing.Size(115, 20);
+            this.labelHealthValue.Size = new System.Drawing.Size(119, 20);
             this.labelHealthValue.TabIndex = 28;
             this.labelHealthValue.Text = "-";
             this.labelHealthValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -703,10 +723,10 @@
             // labelWarnings
             // 
             this.labelWarnings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWarnings.Location = new System.Drawing.Point(0, 264);
+            this.labelWarnings.Location = new System.Drawing.Point(0, 304);
             this.labelWarnings.Margin = new System.Windows.Forms.Padding(0);
             this.labelWarnings.Name = "labelWarnings";
-            this.labelWarnings.Size = new System.Drawing.Size(115, 20);
+            this.labelWarnings.Size = new System.Drawing.Size(118, 20);
             this.labelWarnings.TabIndex = 25;
             this.labelWarnings.Text = "Warnings";
             this.labelWarnings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -714,10 +734,10 @@
             // labelWarningsValue
             // 
             this.labelWarningsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWarningsValue.Location = new System.Drawing.Point(115, 264);
+            this.labelWarningsValue.Location = new System.Drawing.Point(118, 304);
             this.labelWarningsValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWarningsValue.Name = "labelWarningsValue";
-            this.labelWarningsValue.Size = new System.Drawing.Size(115, 20);
+            this.labelWarningsValue.Size = new System.Drawing.Size(119, 20);
             this.labelWarningsValue.TabIndex = 26;
             this.labelWarningsValue.Text = "-";
             this.labelWarningsValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -725,10 +745,10 @@
             // labelTSIValue
             // 
             this.labelTSIValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTSIValue.Location = new System.Drawing.Point(115, 304);
+            this.labelTSIValue.Location = new System.Drawing.Point(118, 344);
             this.labelTSIValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelTSIValue.Name = "labelTSIValue";
-            this.labelTSIValue.Size = new System.Drawing.Size(115, 20);
+            this.labelTSIValue.Size = new System.Drawing.Size(119, 20);
             this.labelTSIValue.TabIndex = 30;
             this.labelTSIValue.Text = "-";
             this.labelTSIValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -736,10 +756,10 @@
             // labelSalary
             // 
             this.labelSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSalary.Location = new System.Drawing.Point(0, 324);
+            this.labelSalary.Location = new System.Drawing.Point(0, 364);
             this.labelSalary.Margin = new System.Windows.Forms.Padding(0);
             this.labelSalary.Name = "labelSalary";
-            this.labelSalary.Size = new System.Drawing.Size(115, 20);
+            this.labelSalary.Size = new System.Drawing.Size(118, 20);
             this.labelSalary.TabIndex = 31;
             this.labelSalary.Text = "Salary";
             this.labelSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -747,10 +767,10 @@
             // labelSalaryValue
             // 
             this.labelSalaryValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSalaryValue.Location = new System.Drawing.Point(115, 324);
+            this.labelSalaryValue.Location = new System.Drawing.Point(118, 364);
             this.labelSalaryValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelSalaryValue.Name = "labelSalaryValue";
-            this.labelSalaryValue.Size = new System.Drawing.Size(115, 20);
+            this.labelSalaryValue.Size = new System.Drawing.Size(119, 20);
             this.labelSalaryValue.TabIndex = 32;
             this.labelSalaryValue.Text = "-";
             this.labelSalaryValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -760,18 +780,18 @@
             this.labelDivider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tableLayoutPanelPlayerSkills.SetColumnSpan(this.labelDivider2, 2);
             this.labelDivider2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelDivider2.Location = new System.Drawing.Point(3, 346);
+            this.labelDivider2.Location = new System.Drawing.Point(3, 386);
             this.labelDivider2.Name = "labelDivider2";
-            this.labelDivider2.Size = new System.Drawing.Size(224, 2);
+            this.labelDivider2.Size = new System.Drawing.Size(231, 2);
             this.labelDivider2.TabIndex = 33;
             // 
             // labelAgreeability
             // 
             this.labelAgreeability.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAgreeability.Location = new System.Drawing.Point(0, 348);
+            this.labelAgreeability.Location = new System.Drawing.Point(0, 388);
             this.labelAgreeability.Margin = new System.Windows.Forms.Padding(0);
             this.labelAgreeability.Name = "labelAgreeability";
-            this.labelAgreeability.Size = new System.Drawing.Size(115, 20);
+            this.labelAgreeability.Size = new System.Drawing.Size(118, 20);
             this.labelAgreeability.TabIndex = 34;
             this.labelAgreeability.Text = "Agreeability";
             this.labelAgreeability.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -779,10 +799,10 @@
             // labelAgreeabilityValue
             // 
             this.labelAgreeabilityValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAgreeabilityValue.Location = new System.Drawing.Point(115, 348);
+            this.labelAgreeabilityValue.Location = new System.Drawing.Point(118, 388);
             this.labelAgreeabilityValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelAgreeabilityValue.Name = "labelAgreeabilityValue";
-            this.labelAgreeabilityValue.Size = new System.Drawing.Size(115, 20);
+            this.labelAgreeabilityValue.Size = new System.Drawing.Size(119, 20);
             this.labelAgreeabilityValue.TabIndex = 35;
             this.labelAgreeabilityValue.Text = "-";
             this.labelAgreeabilityValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -790,10 +810,10 @@
             // labelHonesty
             // 
             this.labelHonesty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHonesty.Location = new System.Drawing.Point(0, 368);
+            this.labelHonesty.Location = new System.Drawing.Point(0, 408);
             this.labelHonesty.Margin = new System.Windows.Forms.Padding(0);
             this.labelHonesty.Name = "labelHonesty";
-            this.labelHonesty.Size = new System.Drawing.Size(115, 20);
+            this.labelHonesty.Size = new System.Drawing.Size(118, 20);
             this.labelHonesty.TabIndex = 36;
             this.labelHonesty.Text = "Honesty";
             this.labelHonesty.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -801,10 +821,10 @@
             // labelHonestyValue
             // 
             this.labelHonestyValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHonestyValue.Location = new System.Drawing.Point(115, 368);
+            this.labelHonestyValue.Location = new System.Drawing.Point(118, 408);
             this.labelHonestyValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelHonestyValue.Name = "labelHonestyValue";
-            this.labelHonestyValue.Size = new System.Drawing.Size(115, 20);
+            this.labelHonestyValue.Size = new System.Drawing.Size(119, 20);
             this.labelHonestyValue.TabIndex = 37;
             this.labelHonestyValue.Text = "-";
             this.labelHonestyValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -812,10 +832,10 @@
             // labelAgressiveness
             // 
             this.labelAgressiveness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAgressiveness.Location = new System.Drawing.Point(0, 388);
+            this.labelAgressiveness.Location = new System.Drawing.Point(0, 428);
             this.labelAgressiveness.Margin = new System.Windows.Forms.Padding(0);
             this.labelAgressiveness.Name = "labelAgressiveness";
-            this.labelAgressiveness.Size = new System.Drawing.Size(115, 20);
+            this.labelAgressiveness.Size = new System.Drawing.Size(118, 20);
             this.labelAgressiveness.TabIndex = 38;
             this.labelAgressiveness.Text = "Agressiveness";
             this.labelAgressiveness.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -823,10 +843,10 @@
             // labelAgressivenessValue
             // 
             this.labelAgressivenessValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelAgressivenessValue.Location = new System.Drawing.Point(115, 388);
+            this.labelAgressivenessValue.Location = new System.Drawing.Point(118, 428);
             this.labelAgressivenessValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelAgressivenessValue.Name = "labelAgressivenessValue";
-            this.labelAgressivenessValue.Size = new System.Drawing.Size(115, 20);
+            this.labelAgressivenessValue.Size = new System.Drawing.Size(119, 20);
             this.labelAgressivenessValue.TabIndex = 39;
             this.labelAgressivenessValue.Text = "-";
             this.labelAgressivenessValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -834,10 +854,10 @@
             // labelSpeciality
             // 
             this.labelSpeciality.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpeciality.Location = new System.Drawing.Point(0, 240);
+            this.labelSpeciality.Location = new System.Drawing.Point(0, 284);
             this.labelSpeciality.Margin = new System.Windows.Forms.Padding(0);
             this.labelSpeciality.Name = "labelSpeciality";
-            this.labelSpeciality.Size = new System.Drawing.Size(115, 20);
+            this.labelSpeciality.Size = new System.Drawing.Size(118, 20);
             this.labelSpeciality.TabIndex = 40;
             this.labelSpeciality.Text = "Speciality";
             this.labelSpeciality.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -845,13 +865,92 @@
             // labelSpecialityValue
             // 
             this.labelSpecialityValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpecialityValue.Location = new System.Drawing.Point(115, 240);
+            this.labelSpecialityValue.Location = new System.Drawing.Point(118, 284);
             this.labelSpecialityValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelSpecialityValue.Name = "labelSpecialityValue";
-            this.labelSpecialityValue.Size = new System.Drawing.Size(115, 20);
+            this.labelSpecialityValue.Size = new System.Drawing.Size(119, 20);
             this.labelSpecialityValue.TabIndex = 41;
             this.labelSpecialityValue.Text = "-";
             this.labelSpecialityValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelMotherclub
+            // 
+            this.labelMotherclub.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelMotherclub.Location = new System.Drawing.Point(0, 240);
+            this.labelMotherclub.Margin = new System.Windows.Forms.Padding(0);
+            this.labelMotherclub.Name = "labelMotherclub";
+            this.labelMotherclub.Size = new System.Drawing.Size(118, 20);
+            this.labelMotherclub.TabIndex = 42;
+            this.labelMotherclub.Text = "Motherclub";
+            this.labelMotherclub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBoxMotherclub
+            // 
+            this.pictureBoxMotherclub.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxMotherclub.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxMotherclub.Location = new System.Drawing.Point(212, 240);
+            this.pictureBoxMotherclub.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pictureBoxMotherclub.Name = "pictureBoxMotherclub";
+            this.pictureBoxMotherclub.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMotherclub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxMotherclub.TabIndex = 43;
+            this.pictureBoxMotherclub.TabStop = false;
+            // 
+            // labelSkillBonus
+            // 
+            this.labelSkillBonus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSkillBonus.Location = new System.Drawing.Point(0, 260);
+            this.labelSkillBonus.Margin = new System.Windows.Forms.Padding(0);
+            this.labelSkillBonus.Name = "labelSkillBonus";
+            this.labelSkillBonus.Size = new System.Drawing.Size(118, 20);
+            this.labelSkillBonus.TabIndex = 44;
+            this.labelSkillBonus.Text = "Skill Bonus";
+            this.labelSkillBonus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelSkillBonusValue
+            // 
+            this.labelSkillBonusValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSkillBonusValue.Location = new System.Drawing.Point(118, 260);
+            this.labelSkillBonusValue.Margin = new System.Windows.Forms.Padding(0);
+            this.labelSkillBonusValue.Name = "labelSkillBonusValue";
+            this.labelSkillBonusValue.Size = new System.Drawing.Size(119, 20);
+            this.labelSkillBonusValue.TabIndex = 45;
+            this.labelSkillBonusValue.Text = "-";
+            this.labelSkillBonusValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelDivide3
+            // 
+            this.labelDivide3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tableLayoutPanelPlayerSkills.SetColumnSpan(this.labelDivide3, 2);
+            this.labelDivide3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelDivide3.Location = new System.Drawing.Point(3, 450);
+            this.labelDivide3.Name = "labelDivide3";
+            this.labelDivide3.Size = new System.Drawing.Size(231, 2);
+            this.labelDivide3.TabIndex = 46;
+            // 
+            // labelApplyBonus
+            // 
+            this.labelApplyBonus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelApplyBonus.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelApplyBonus.Location = new System.Drawing.Point(0, 452);
+            this.labelApplyBonus.Margin = new System.Windows.Forms.Padding(0);
+            this.labelApplyBonus.Name = "labelApplyBonus";
+            this.labelApplyBonus.Size = new System.Drawing.Size(118, 20);
+            this.labelApplyBonus.TabIndex = 47;
+            this.labelApplyBonus.Text = "Apply Bonus";
+            this.labelApplyBonus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // checkBoxApplyBonus
+            // 
+            this.checkBoxApplyBonus.AutoSize = true;
+            this.checkBoxApplyBonus.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkBoxApplyBonus.Location = new System.Drawing.Point(217, 455);
+            this.checkBoxApplyBonus.Margin = new System.Windows.Forms.Padding(0, 3, 5, 0);
+            this.checkBoxApplyBonus.Name = "checkBoxApplyBonus";
+            this.checkBoxApplyBonus.Size = new System.Drawing.Size(15, 17);
+            this.checkBoxApplyBonus.TabIndex = 48;
+            this.checkBoxApplyBonus.UseVisualStyleBackColor = true;
+            this.checkBoxApplyBonus.CheckedChanged += new System.EventHandler(this.checkBoxApplyBonus_CheckedChanged);
             // 
             // PlayerList
             // 
@@ -860,7 +959,7 @@
             this.Controls.Add(this.splitContainerPlayerList);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PlayerList";
-            this.Size = new System.Drawing.Size(1008, 543);
+            this.Size = new System.Drawing.Size(1036, 633);
             this.Load += new System.EventHandler(this.Lineup_Load);
             this.tabControlPlayerDetails.ResumeLayout(false);
             this.tabPageSkills.ResumeLayout(false);
@@ -876,6 +975,8 @@
             this.tableLayoutPanelCategoriesList.PerformLayout();
             this.tableLayoutPanelDetails.ResumeLayout(false);
             this.tableLayoutPanelPlayerSkills.ResumeLayout(false);
+            this.tableLayoutPanelPlayerSkills.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMotherclub)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -938,6 +1039,13 @@
         private System.Windows.Forms.Label labelAgreeability;
         private System.Windows.Forms.Label labelSpecialityValue;
         private System.Windows.Forms.Label labelSpeciality;
+        private System.Windows.Forms.Label labelMotherclub;
+        private System.Windows.Forms.PictureBox pictureBoxMotherclub;
+        private System.Windows.Forms.Label labelSkillBonusValue;
+        private System.Windows.Forms.Label labelSkillBonus;
+        private System.Windows.Forms.Label labelApplyBonus;
+        private System.Windows.Forms.Label labelDivide3;
+        private System.Windows.Forms.CheckBox checkBoxApplyBonus;
 
 
 

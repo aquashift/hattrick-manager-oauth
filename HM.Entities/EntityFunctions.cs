@@ -10,6 +10,16 @@ namespace HM.Entities {
             return (HM.Resources.Constants.EnumNames.PlayerSkillNames[(int)skill]);
         }
 
+        public static string GetPlayerSkillName(PlayerSkill skill, int bonus) {
+            int index = (int)skill + bonus;
+
+            if (index > 20) {
+                index = 20;
+            }
+
+            return (HM.Resources.Constants.EnumNames.PlayerSkillNames[index]);
+        }
+
         public static string GetPlayerFormName(PlayerForm form) {
             return (HM.Resources.Constants.EnumNames.PlayerFormNames[(int)form]);
         }

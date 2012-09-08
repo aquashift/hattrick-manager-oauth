@@ -190,6 +190,13 @@ namespace HM.Resources.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap motherclub {
+            get {
+                object obj = ResourceManager.GetObject("motherclub", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap PositionDown {
             get {
                 object obj = ResourceManager.GetObject("PositionDown", resourceCulture);

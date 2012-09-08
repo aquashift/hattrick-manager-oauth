@@ -287,6 +287,35 @@ namespace HM.Resources {
         }
 
         /// <summary>
+        /// Gets the motherclub image for a player
+        /// </summary>
+        /// <param name="motherclub">If player is from Motherclub</param>
+        /// <returns>Category image</returns>
+        public static Image GetMotherClubImage(bool motherclub) {
+            //Creates a new image 22x14
+            Image motherclubImage = new Bitmap(20, 20);
+            int offset = Convert.ToInt32(motherclub);
+
+            try {
+                //Creates the selected flag's rectangle 20x12
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * offset), 0, 20, 20);
+
+                //Creates the rectangle where the flag is going to be drawed
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
+
+                //Creates the Graphics object
+                Graphics graphics = Graphics.FromImage(motherclubImage);
+
+                //Draws the flag
+                graphics.DrawImage(Properties.Resources.motherclub, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            return motherclubImage;
+        }
+
+        /// <summary>
         /// Gets the category image for a player
         /// </summary>
         /// <param name="category">Players category number</param>

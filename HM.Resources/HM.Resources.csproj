@@ -191,6 +191,7 @@
   <ItemGroup>
     <Content Include="Resources\Backgrounds\bg_gray_grad.png" />
     <Content Include="Resources\Icons\categories.png" />
+    <Content Include="Resources\Icons\motherclub.png" />
     <Content Include="Resources\ToolbarIcons\icon_league.png" />
     <Content Include="Resources\Icons\injuries.png" />
     <Content Include="Resources\Icons\positions.png" />
