@@ -48,9 +48,15 @@ namespace HM.Entities {
             foreach (PlayerSkillTypes key in weights.Keys) {
                 if (skills.ContainsKey(key)) {
                     double skillLevel = skills[key];
+
+                    // Add Loyalty Bonus
                     skillLevel += (Convert.ToDouble(skills[PlayerSkillTypes.Loyalty]) / Convert.ToDouble(PlayerSkill.Divine));
-                    skillLevel += (uint)skills[PlayerSkillTypes.MotherClubMonus];
-                    skillLevel *= (Convert.ToDouble(skills[PlayerSkillTypes.Form]) / Convert.ToDouble(PlayerForm.Weak));
+
+                    // Add Motherclub Bonus
+                    skillLevel += (Convert.ToDouble(skills[PlayerSkillTypes.MotherClubMonus]) / 2.0);
+
+                    // Apply Form Modifier
+                    skillLevel *= (Convert.ToDouble(skills[PlayerSkillTypes.Form]) / Convert.ToDouble(PlayerForm.Excellent));
 
                     rating += (skillLevel * weights[key]);
                 }

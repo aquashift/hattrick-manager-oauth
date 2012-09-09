@@ -254,136 +254,45 @@ namespace HM.UserInterface.CustomControls {
         }
 
         private void PopulatePlayerPositions(int playerID) {
-            /*
             HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
-            double positionValue = 0;
 
-            DataTable detailsDataTable = new DataTable();
+            labelForwardValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Forward), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelForwardDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.ForwardDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelForwardWingValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.ForwardTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            detailsDataTable.Columns.Add("Type", typeof(string));
-            detailsDataTable.Columns.Add("Value", typeof(double));
+            labelInnerMidValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfield), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelInnerMidOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelInnerMidDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelInnerMidWingValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            DataRow newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Keeper), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Goalkeeper";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
+            labelWingValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Winger), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingMiddleValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Defender), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Defender";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
+            labelWingDefValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBack), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefMiddleValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Defender Towards Wing";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
+            labelCentralDefValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Defender), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelCentralDefOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelCentralDefWingValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Offensive Defender";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
+            labelKeeperValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Keeper), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBack), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Wingback";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
+            int highestPosition = 0;
+            double highestValue = 0.0;
 
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Wingback Towards Middle";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Offensive Wingback";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Winger), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Winger";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Defensive Winger";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Winger Towards Middle";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Offensive Winger";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfield), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Inner Midfield";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Defensive Midfield";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Inner Midfield Towards Wing";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.InnerMidfieldOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Offensive Inner Midfield";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Forward), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Forward";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.ForwardDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Defensive Forward";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            newDataRow = detailsDataTable.NewRow();
-            positionValue = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.ForwardTowardsWing), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer));
-            newDataRow["Type"] = "Forward Towards Wing";
-            newDataRow["Value"] = positionValue.ToString("F1");
-            detailsDataTable.Rows.Add(newDataRow);
-
-            detailsDataTable.DefaultView.Sort = "Value DESC";
-
-            dataGridViewPlayerPositions.DataSource = detailsDataTable;
-
-            try {
-                dataGridViewPlayerPositions.Columns[0].MinimumWidth = 200;
-            } catch (Exception e) {
+            for (int i = 2; i < tableLayoutPanelPositions.RowCount - 1; i++) {
+                if (Convert.ToDouble(tableLayoutPanelPositions.GetControlFromPosition(1, i).Text) > highestValue) {
+                    highestPosition = i;
+                    highestValue = Convert.ToDouble(tableLayoutPanelPositions.GetControlFromPosition(1, i).Text);
+                }
             }
 
-            dataGridViewPlayerPositions.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewPlayerPositions.Rows[0].DefaultCellStyle.Font = new Font("Calibri", 11, FontStyle.Bold);
-            dataGridViewPlayerPositions.ClearSelection();
-            */
+            labelBestPosition.Text = tableLayoutPanelPositions.GetControlFromPosition(0, highestPosition).Text;
+            labelBestValue.Text = highestValue.ToString("F2");
         }
 
         private void PopulatePlayerDetails(int playerID) {
