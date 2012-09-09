@@ -516,6 +516,24 @@ namespace HM.Resources {
             return folderName;
         }
 
+        public static Image GetDownloadStatusImage(DownloadStatus status) {
+            Image statusImage = null;
+
+            switch (status) {
+                case DownloadStatus.Downloading:
+                    statusImage = Properties.Resources.Grey;
+                    break;
+                case DownloadStatus.Complete:
+                    statusImage = Properties.Resources.Green;
+                    break;
+                case DownloadStatus.Failed:
+                    statusImage = Properties.Resources.Red;
+                    break;
+            }
+
+            return (statusImage);
+        }
+
         /// <summary>
         /// Gets position change image
         /// </summary>
@@ -677,6 +695,24 @@ namespace HM.Resources {
 
         public static string SplitStringOnCaps(string text) {
             return (System.Text.RegularExpressions.Regex.Replace(text, "(\\B[A-Z])", " $1"));
+        }
+
+        public static string GetLastWeekPlayerFile(string path) {
+            string filename = "";
+            string[] files = System.IO.Directory.GetFiles(path);
+
+            Array.Sort(files, new Comparison<string>((i1, i2) => i2.CompareTo(i1)));
+
+            foreach (string file in files) {
+                System.IO.FileInfo fi = new System.IO.FileInfo(file);
+
+                if (fi.CreationTime < DateTime.Now.AddDays(-7) && fi.CreationTime > DateTime.Now.AddDays(-14)) {
+                    filename = fi.Name;
+                    break;
+                }
+            }
+
+            return (filename);
         }
 
         /// <summary>

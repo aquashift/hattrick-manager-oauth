@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 
 namespace HM.Resources {
+    public enum DownloadStatus : int {
+        Downloading = 0,
+        Complete = 1,
+        Failed = 2
+    };
+
     public enum MatchType : int {
         Unavailable = 0,
         LeagueMatch = 1,
@@ -51,7 +57,8 @@ namespace HM.Resources {
         TransfersPlayer = 18,
         TransfersTeam = 19,
         WorldDetails = 20,
-        UserSettings = 21
+        UserSettings = 21,
+        LastPlayers = 22
     };
 
     public enum SettingTypes : int {
