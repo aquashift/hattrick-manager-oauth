@@ -99,13 +99,11 @@ namespace HM.ChppInterface {
             DownloadLeagueFixtures();
             DownloadMatches();
             
-            /*
             if (downloadFullMatchesArchive) {
                 DownloadMatchesArchiveAll();
             } else {
                 DownloadMatchesArchiveCurrent();
             }
-            */
 
             DownloadPlayersData();
             DownloadTeamDetails();
@@ -117,10 +115,6 @@ namespace HM.ChppInterface {
 
         private void DownloadPlayersData() {
             List<HTEntities.Players.Player> playerList = DownloadPlayers();
-
-            /*
-            totalFilesToDownload += Convert.ToInt32(playerList.Count * 2);
-            */
 
             foreach (HTEntities.Players.Player currentPlayer in playerList) {
                 DownloadPlayerDetails(currentPlayer.playerIdField.ToString());
@@ -144,10 +138,6 @@ namespace HM.ChppInterface {
                 matchList.AddRange(matches);
             }
 
-            OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchesarchive));
-
-            totalFilesToDownload += Convert.ToInt32(matchList.Count * 3);
-
             foreach (HTEntities.MatchesArchive.Match match in matchList) {
                 string path = System.IO.Path.Combine(currentUser.dataFolderField, FolderNames.MatchDetails);
                 string fileName = String.Format(FileNames.MatchDetails, match.matchIdField.ToString());
@@ -163,10 +153,6 @@ namespace HM.ChppInterface {
 
             List<HM.Entities.Hattrick.MatchesArchive.Match> matches = DownloadMatchesArchive(false);
             matchList.AddRange(matches);
-
-            OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchesarchive));
-
-            totalFilesToDownload += Convert.ToInt32(matchList.Count * 3);
 
             foreach (HTEntities.MatchesArchive.Match match in matchList) {
                 string path = System.IO.Path.Combine(currentUser.dataFolderField, FolderNames.MatchDetails);
@@ -357,8 +343,6 @@ namespace HM.ChppInterface {
                 string fileName = String.Format(FileNames.MatchDetails, matchId);
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
-
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchdetails));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -396,8 +380,6 @@ namespace HM.ChppInterface {
                 string fileName = String.Format(FileNames.MatchLineup, matchId, teamId);
 
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
-
-                OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matchlineup));
             } catch (Exception ex) {
                 throw ex;
             }
@@ -416,8 +398,11 @@ namespace HM.ChppInterface {
                 //Writes the file
                 dataManager.WriteFile(xmlData, currentFilePath, fileName);
 
-                //Update LatestFileField
+                //Update LatestPlayerFileField
                 currentUser.applicationSettingsField.UpdateLastFile(FileType.Players, fileName);
+
+                //Update LatestLastWeekPlayerFileField
+                currentUser.applicationSettingsField.UpdateLastFile(FileType.LastPlayers, HM.Resources.GenericFunctions.GetLastWeekPlayerFile(currentFilePath));
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_players));
 
@@ -554,6 +539,7 @@ namespace HM.ChppInterface {
             } else {
                 finishedDownloading = false;
             }
+
             return new ChppDownloadProgressChangedEventArgs(fileName, true, this.filesDownloaded, this.totalFilesToDownload, finishedDownloading);
         }
 

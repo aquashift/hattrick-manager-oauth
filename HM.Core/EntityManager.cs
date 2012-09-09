@@ -143,6 +143,25 @@ namespace HM.Core {
         }
 
         /// <summary>
+        /// Gets last week player details.
+        /// </summary>
+        /// <returns>PlayerList object</returns>
+        public HTEntities.Players.Players GetLastWeekPlayersDetails() {
+            HTEntities.Players.Players players = new HTEntities.Players.Players();
+            string filename = user.applicationSettingsField.GetLastFileName(HM.Resources.FileType.LastPlayers);
+
+            if (filename != string.Empty) {
+                try {
+                    players = (HTEntities.Players.Players)dataManager.ReadFile(filename, HM.Resources.FileType.Players);
+                } catch (Exception ex) {
+                    throw ex;
+                }
+            }
+
+            return (players);
+        }
+
+        /// <summary>
         /// Gets team's details.
         /// </summary>
         /// <returns>TeamDetails object</returns>

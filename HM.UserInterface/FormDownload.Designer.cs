@@ -31,11 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDownload));
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBoxDownload = new System.Windows.Forms.GroupBox();
+            this.dataGridViewDownload = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProgress = new System.Windows.Forms.DataGridViewImageColumn();
             this.checkBoxDownloadFullMatchesArchive = new System.Windows.Forms.CheckBox();
-            this.listBoxDownload = new System.Windows.Forms.ListBox();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.buttonDownload = new System.Windows.Forms.Button();
             this.groupBoxDownload.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDownload)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -50,8 +53,8 @@
             // 
             // groupBoxDownload
             // 
+            this.groupBoxDownload.Controls.Add(this.dataGridViewDownload);
             this.groupBoxDownload.Controls.Add(this.checkBoxDownloadFullMatchesArchive);
-            this.groupBoxDownload.Controls.Add(this.listBoxDownload);
             this.groupBoxDownload.Controls.Add(this.progressBarDownload);
             this.groupBoxDownload.Controls.Add(this.buttonDownload);
             this.groupBoxDownload.Location = new System.Drawing.Point(14, 14);
@@ -61,6 +64,40 @@
             this.groupBoxDownload.TabStop = false;
             this.groupBoxDownload.Text = "groupBoxDownload";
             // 
+            // dataGridViewDownload
+            // 
+            this.dataGridViewDownload.AllowUserToAddRows = false;
+            this.dataGridViewDownload.AllowUserToDeleteRows = false;
+            this.dataGridViewDownload.AllowUserToResizeColumns = false;
+            this.dataGridViewDownload.AllowUserToResizeRows = false;
+            this.dataGridViewDownload.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDownload.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnName,
+            this.ColumnProgress});
+            this.dataGridViewDownload.Location = new System.Drawing.Point(7, 22);
+            this.dataGridViewDownload.Name = "dataGridViewDownload";
+            this.dataGridViewDownload.ReadOnly = true;
+            this.dataGridViewDownload.RowHeadersVisible = false;
+            this.dataGridViewDownload.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewDownload.Size = new System.Drawing.Size(363, 215);
+            this.dataGridViewDownload.TabIndex = 22;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnName.HeaderText = "Download";
+            this.ColumnName.MinimumWidth = 20;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnProgress
+            // 
+            this.ColumnProgress.HeaderText = "Progress";
+            this.ColumnProgress.MinimumWidth = 60;
+            this.ColumnProgress.Name = "ColumnProgress";
+            this.ColumnProgress.ReadOnly = true;
+            this.ColumnProgress.Width = 60;
+            // 
             // checkBoxDownloadFullMatchesArchive
             // 
             this.checkBoxDownloadFullMatchesArchive.Location = new System.Drawing.Point(7, 275);
@@ -69,15 +106,6 @@
             this.checkBoxDownloadFullMatchesArchive.TabIndex = 21;
             this.checkBoxDownloadFullMatchesArchive.Text = "checkBoxDownloadFullMatchesArchive";
             this.checkBoxDownloadFullMatchesArchive.UseVisualStyleBackColor = true;
-            // 
-            // listBoxDownload
-            // 
-            this.listBoxDownload.FormattingEnabled = true;
-            this.listBoxDownload.ItemHeight = 15;
-            this.listBoxDownload.Location = new System.Drawing.Point(7, 22);
-            this.listBoxDownload.Name = "listBoxDownload";
-            this.listBoxDownload.Size = new System.Drawing.Size(362, 214);
-            this.listBoxDownload.TabIndex = 20;
             // 
             // progressBarDownload
             // 
@@ -113,6 +141,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormDownload";
             this.groupBoxDownload.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDownload)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,9 +150,11 @@
 
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.GroupBox groupBoxDownload;
-        private System.Windows.Forms.ListBox listBoxDownload;
         private System.Windows.Forms.ProgressBar progressBarDownload;
         private System.Windows.Forms.Button buttonDownload;
         private System.Windows.Forms.CheckBox checkBoxDownloadFullMatchesArchive;
+        private System.Windows.Forms.DataGridView dataGridViewDownload;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewImageColumn ColumnProgress;
     }
 }

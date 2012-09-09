@@ -68,6 +68,26 @@ namespace HM.UserInterface {
             downloadManager.Download(checkBoxDownloadFullMatchesArchive.Checked);
         }
 
+        private void AddDownloadItem(string downloadName, bool complete) {
+            dataGridViewDownload.RowCount++;
+
+            dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[0].Value = downloadName;
+
+            if (complete) {
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Complete);
+            } else {
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Downloading);
+            }
+
+            if (dataGridViewDownload.RowCount > 1) {
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 2].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Complete);
+            }
+
+            dataGridViewDownload.FirstDisplayedScrollingRowIndex = dataGridViewDownload.RowCount - 1;
+
+            dataGridViewDownload.ClearSelection();
+        }
+
         private void UpdateDownloadStatus(ChppDownloadProgressChangedEventArgs eventArgs) {
             try {
                 if (this.InvokeRequired) {
@@ -75,8 +95,7 @@ namespace HM.UserInterface {
                 } else {
                     progressBarDownload.Maximum = eventArgs.TotalFilesToDownload;
                     progressBarDownload.Value = eventArgs.FilesDownloaded;
-                    listBoxDownload.Items.Add(resourceManager.GetString(eventArgs.FileName));
-                    listBoxDownload.SelectedIndex = (listBoxDownload.Items.Count - 1);
+                    AddDownloadItem(resourceManager.GetString(eventArgs.FileName), eventArgs.DownloadFinished);
                 }
 
                 if (eventArgs.DownloadFinished) {

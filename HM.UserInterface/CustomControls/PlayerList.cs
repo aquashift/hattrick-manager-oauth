@@ -16,6 +16,7 @@ namespace HM.UserInterface.CustomControls {
         #region Properties
 
         private HTEntities.Players.Players players;
+        private HTEntities.Players.Players lastPlayers;
         private User user;
         private EntityManager entityManager;
 
@@ -29,6 +30,7 @@ namespace HM.UserInterface.CustomControls {
             if (user != null) {
                 this.entityManager = new EntityManager(user);
                 this.players = entityManager.GetPlayersDetails();
+                this.lastPlayers = entityManager.GetLastWeekPlayersDetails();
             }
         }
 
@@ -60,58 +62,195 @@ namespace HM.UserInterface.CustomControls {
             HTEntities.WorldDetails.WorldDetails world = entityManager.GetWorldDetails();
             HTEntities.Players.Team team = players.teamField;
 
-            DataTable lineupDataTable = new DataTable();
+            dataGridViewPlayers.RowCount = 0;
+            dataGridViewPlayers.ColumnCount = 0;
+            dataGridViewPlayers.ColumnHeadersVisible = true;
+            dataGridViewPlayers.ColumnHeadersDefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
 
-            lineupDataTable.Columns.Add(Columns.PlayerID, typeof(Int32));
-            lineupDataTable.Columns.Add(Columns.PlayerNumber, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.PlayerName, typeof(string));
-            lineupDataTable.Columns.Add(Columns.PlayerFlag, typeof(Image));
-            lineupDataTable.Columns.Add(Columns.LastPosition, typeof(Image));
-            lineupDataTable.Columns.Add(Columns.Health, typeof(Image));
-            lineupDataTable.Columns.Add(Columns.Warnings, typeof(Image));
-            lineupDataTable.Columns.Add(Columns.Category, typeof(Image));
-            lineupDataTable.Columns.Add(Columns.Age, typeof(string));
-            lineupDataTable.Columns.Add(Columns.TSI, typeof(Int32));
-            lineupDataTable.Columns.Add(Columns.Form, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Stamina, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Goalkeeping, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Defending, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Winger, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Playmaking, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Passing, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.Scoring, typeof(byte));
-            lineupDataTable.Columns.Add(Columns.SetPieces, typeof(byte));
+            dataGridViewPlayers.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerID;
+            dataGridViewPlayers.Columns[Columns.PlayerID].ValueType = typeof(Int32);
+            dataGridViewPlayers.Columns[Columns.PlayerID].Visible = false;
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerNumber;
+            dataGridViewPlayers.Columns[Columns.PlayerNumber].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerName;
+            dataGridViewPlayers.Columns[Columns.PlayerName].ValueType = typeof(string);
+            dataGridViewPlayers.Columns[Columns.PlayerName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerFlag;
+            dataGridViewPlayers.Columns[Columns.PlayerFlag].ValueType = typeof(Image);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.LastPosition;
+            dataGridViewPlayers.Columns[Columns.LastPosition].ValueType = typeof(Image);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Health;
+            dataGridViewPlayers.Columns[Columns.Health].ValueType = typeof(Image);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Warnings;
+            dataGridViewPlayers.Columns[Columns.Warnings].ValueType = typeof(Image);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Category;
+            dataGridViewPlayers.Columns[Columns.Category].ValueType = typeof(Image);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Age;
+            dataGridViewPlayers.Columns[Columns.Age].ValueType = typeof(string);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.TSI;
+            dataGridViewPlayers.Columns[Columns.TSI].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Form;
+            dataGridViewPlayers.Columns[Columns.Form].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Stamina;
+            dataGridViewPlayers.Columns[Columns.Stamina].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Goalkeeping;
+            dataGridViewPlayers.Columns[Columns.Goalkeeping].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Defending;
+            dataGridViewPlayers.Columns[Columns.Defending].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Winger;
+            dataGridViewPlayers.Columns[Columns.Winger].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Playmaking;
+            dataGridViewPlayers.Columns[Columns.Playmaking].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Passing;
+            dataGridViewPlayers.Columns[Columns.Passing].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Scoring;
+            dataGridViewPlayers.Columns[Columns.Scoring].ValueType = typeof(Int32);
+
+            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.SetPieces;
+            dataGridViewPlayers.Columns[Columns.SetPieces].ValueType = typeof(Int32);
 
             foreach (HTEntities.Players.Player player in team.playerListField) {
-                DataRow newDataRow = lineupDataTable.NewRow();
+                HTEntities.Players.Player lastPlayer = new HTEntities.Players.Player();
 
-                newDataRow[Columns.PlayerID] = player.playerIdField;
-                newDataRow[Columns.PlayerNumber] = player.playerNumberField;
-                newDataRow[Columns.PlayerName] = player.getFullName();
-                newDataRow[Columns.PlayerFlag] = HM.Resources.GenericFunctions.GetFlagByLeagueId(world.GetLeagueIDFromCountryID(player.countryIdField));
-                newDataRow[Columns.LastPosition] = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
-                newDataRow[Columns.Health] = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
-                newDataRow[Columns.Warnings] = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
-                newDataRow[Columns.Category] = HM.Resources.GenericFunctions.GetCategoryImage(7);
-                newDataRow[Columns.Age] = player.getFullAge();
-                newDataRow[Columns.TSI] = player.tsiField.ToString();
-                newDataRow[Columns.Form] = player.playerFormField;
-                newDataRow[Columns.Stamina] = player.staminaSkillField;
-                newDataRow[Columns.Goalkeeping] = player.keeperSkillField;
-                newDataRow[Columns.Defending] = player.defenderSkillField;
-                newDataRow[Columns.Winger] = player.wingerSkillField;
-                newDataRow[Columns.Playmaking] = player.playmakerSkillField;
-                newDataRow[Columns.Passing] = player.passingSkillField;
-                newDataRow[Columns.Scoring] = player.scorerSkillField;
-                newDataRow[Columns.SetPieces] = player.setPiecesSkillField;
+                foreach (HTEntities.Players.Player p in lastPlayers.teamField.playerListField) {
+                    if (p.playerIdField == player.playerIdField) {
+                        lastPlayer = p;
+                        break;
+                    }
+                }
+                int rowNum = (dataGridViewPlayers.RowCount);
+                dataGridViewPlayers.RowCount++;
 
-                lineupDataTable.Rows.Add(newDataRow);
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.PlayerID].Value = player.playerIdField;
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.PlayerNumber].Value = player.playerNumberField;
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.PlayerName].Value = player.getFullName();
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.PlayerFlag].Value = HM.Resources.GenericFunctions.GetFlagByLeagueId(world.GetLeagueIDFromCountryID(player.countryIdField));
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.LastPosition].Value = HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField);
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Health].Value = HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField);
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Warnings].Value = HM.Resources.GenericFunctions.GetCardImage(player.cardsField);
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Category].Value = HM.Resources.GenericFunctions.GetCategoryImage(1);
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Age].Value = player.getFullAge();
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.TSI].Value = player.tsiField;
+
+                if (player.tsiField < lastPlayer.tsiField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.TSI].Style.BackColor = Color.LightPink;
+                } else if (player.tsiField > lastPlayer.tsiField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.TSI].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Form].Value = (int)player.playerFormField;
+
+                if (player.playerFormField < lastPlayer.playerFormField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Form].Style.BackColor = Color.LightPink;
+                } else if (player.playerFormField > lastPlayer.playerFormField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Form].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Stamina].Value = (int)player.staminaSkillField;
+
+                if (player.staminaSkillField < lastPlayer.staminaSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Stamina].Style.BackColor = Color.LightPink;
+                } else if (player.staminaSkillField > lastPlayer.staminaSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Stamina].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Goalkeeping].Value = (int)player.keeperSkillField;
+
+                if (player.keeperSkillField < lastPlayer.keeperSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Goalkeeping].Style.BackColor = Color.LightPink;
+                } else if (player.keeperSkillField > lastPlayer.keeperSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Goalkeeping].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Defending].Value = (int)player.defenderSkillField;
+
+                if (player.defenderSkillField < lastPlayer.defenderSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Defending].Style.BackColor = Color.LightPink;
+                } else if (player.defenderSkillField > lastPlayer.defenderSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Defending].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Winger].Value = (int)player.wingerSkillField;
+
+                if (player.wingerSkillField < lastPlayer.wingerSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Winger].Style.BackColor = Color.LightPink;
+                } else if (player.wingerSkillField > lastPlayer.wingerSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Winger].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Playmaking].Value = (int)player.playmakerSkillField;
+
+                if (player.playmakerSkillField < lastPlayer.playmakerSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Playmaking].Style.BackColor = Color.LightPink;
+                } else if (player.playmakerSkillField > lastPlayer.playmakerSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Playmaking].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Passing].Value = (int)player.passingSkillField;
+
+                if (player.passingSkillField < lastPlayer.passingSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Passing].Style.BackColor = Color.LightPink;
+                } else if (player.passingSkillField > lastPlayer.passingSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Passing].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.Scoring].Value = (int)player.scorerSkillField;
+
+                if (player.scorerSkillField < lastPlayer.scorerSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Scoring].Style.BackColor = Color.LightPink;
+                } else if (player.scorerSkillField > lastPlayer.scorerSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.Scoring].Style.BackColor = Color.PaleGreen;
+                }
+
+                dataGridViewPlayers.Rows[rowNum].Cells[Columns.SetPieces].Value = (int)player.setPiecesSkillField;
+
+                if (player.setPiecesSkillField < lastPlayer.setPiecesSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.SetPieces].Style.BackColor = Color.LightPink;
+                } else if (player.setPiecesSkillField > lastPlayer.setPiecesSkillField) {
+                    dataGridViewPlayers.Rows[rowNum].Cells[Columns.SetPieces].Style.BackColor = Color.PaleGreen;
+                }
             }
-
-            dataGridViewPlayers.DataSource = lineupDataTable;
-
-            dataGridViewPlayers.Columns[Columns.PlayerID].Visible = false;
-            dataGridViewPlayers.Columns[Columns.PlayerName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
 
         private void PopulatePlayerPositions(int playerID) {
@@ -249,8 +388,12 @@ namespace HM.UserInterface.CustomControls {
 
         private void PopulatePlayerDetails(int playerID) {
             HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
-            double skillBonus = ((Convert.ToDouble(selectedPlayer.loyaltyField) / Convert.ToDouble(HM.Resources.PlayerSkill.Divine)) + Convert.ToInt32(selectedPlayer.motherClubField));
+            double skillBonus = Convert.ToDouble(selectedPlayer.loyaltyField) / Convert.ToDouble(HM.Resources.PlayerSkill.Divine);
             int addBonus = 0;
+
+            if (selectedPlayer.motherClubField) {
+                skillBonus += 0.5;
+            }
 
             if (checkBoxApplyBonus.Checked) {
                 addBonus = Convert.ToInt32(skillBonus);
@@ -287,11 +430,14 @@ namespace HM.UserInterface.CustomControls {
                 if (dataGridViewPlayers.SelectedRows[0] != null) {
                     int playerID = Convert.ToInt32(dataGridViewPlayers.SelectedRows[0].Cells[0].Value);
 
-                    HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
-                    buttonPlayerName.Text = selectedPlayer.firstNameField + " " + selectedPlayer.lastNameField;
+                    if (playerID != 0) {
+                        HTEntities.Players.Player selectedPlayer = players.teamField.GetPlayer(playerID);
 
-                    PopulatePlayerDetails(playerID);
-                    PopulatePlayerPositions(playerID);
+                        buttonPlayerName.Text = selectedPlayer.firstNameField + " " + selectedPlayer.lastNameField;
+
+                        PopulatePlayerDetails(playerID);
+                        PopulatePlayerPositions(playerID);
+                    }
                 }
             }
         }
@@ -319,7 +465,9 @@ namespace HM.UserInterface.CustomControls {
         }
 
         private void splitContainerPlayerList_Resize(object sender, EventArgs e) {
-            splitContainerPlayerList.SplitterDistance = splitContainerPlayerList.Width - 275;
+            if (splitContainerPlayerList.Width > 275) {
+                splitContainerPlayerList.SplitterDistance = splitContainerPlayerList.Width - 275;
+            }
         }
 
         private void splitContainerLeft_Resize(object sender, EventArgs e) {
