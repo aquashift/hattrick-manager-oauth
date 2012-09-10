@@ -419,6 +419,14 @@ namespace HM.DataAccess {
                     }
                 }
 
+                HMEntities.Settings.Category all = new HMEntities.Settings.Category();
+
+                all.categoryCheckedField = false;
+                all.categoryColourField = 0;
+                all.categoryNameField = "All"
+
+                categories.Add(new HMEntities.Settings.Category(
+
                 return (categories);
             } catch (Exception ex) {
                 throw ex;

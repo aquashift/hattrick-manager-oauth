@@ -45,7 +45,38 @@ namespace HM.UserInterface.CustomControls {
 
             if (players != null) {
                 PopulatePlayerList();
+                PopulateCategoryList();
             }
+        }
+
+        private void PopulateCategoryList() {
+            int i = 0;
+
+            tableLayoutPanelCategoriesList.RowCount = user.applicationSettingsField.playerCategoryListField.Count + 1;
+            tableLayoutPanelCategoriesList.RowStyles.Clear();
+
+            foreach (HM.Entities.HattrickManager.Settings.Category category in user.applicationSettingsField.playerCategoryListField) {
+                CheckBox box = new CheckBox();
+
+                box.Text = " " + category.categoryNameField;
+                box.Image = HM.Resources.GenericFunctions.GetCategoryImage((int)category.categoryColourField);
+                box.ImageAlign = ContentAlignment.MiddleLeft;
+                box.TextImageRelation = TextImageRelation.ImageBeforeText;
+                box.TextAlign = ContentAlignment.MiddleLeft;
+                box.Font = new Font("Calibri", 10, FontStyle.Bold);
+                box.AllowDrop = true;
+                box.Name = category.categoryIdField.ToString();
+                box.Dock = DockStyle.Fill;
+                box.Checked = category.categoryCheckedField;
+                box.MouseDown += new MouseEventHandler(CategoryCheckItem_MouseDown);
+                box.Margin = new System.Windows.Forms.Padding(0);
+                box.Padding = new System.Windows.Forms.Padding(0);
+
+                tableLayoutPanelCategoriesList.Controls.Add(box, 0, i++);
+                tableLayoutPanelCategoriesList.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
+            }
+
+            tableLayoutPanelCategoriesList.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         }
 
         private void Setup_Resources() {
@@ -353,6 +384,12 @@ namespace HM.UserInterface.CustomControls {
             }
         }
 
+        private ContextMenuStrip BuildCategoryMenu() {
+            ContextMenuStrip menu = new ContextMenuStrip();
+
+            return (menu);
+        }
+
         #endregion
 
         #region events
@@ -365,8 +402,10 @@ namespace HM.UserInterface.CustomControls {
             NewPlayerSelected();
         }
 
-        private void checkedListBoxCategories_MouseDown(object sender, MouseEventArgs e) {
+        private void CategoryCheckItem_MouseDown(object sender, MouseEventArgs e) {
             if (e.Button == System.Windows.Forms.MouseButtons.Right) {
+                ContextMenuStrip menu = BuildCategoryMenu();
+
                 MenuItem[] menuItems = new MenuItem[] { new MenuItem("New Category"), new MenuItem("Delete Category"), new MenuItem("Rename Category"), new MenuItem("Colour")};
 
                 ContextMenu buttonMenu = new ContextMenu(menuItems);
