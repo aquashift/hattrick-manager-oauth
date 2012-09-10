@@ -1,12 +1,12 @@
 <HattrickManagerSettings>
   <SavedDate />
   <CategoryList>
-    <Category CategoryID="0">
+    <Category CategoryID="10">
       <CategoryName>Squad A</CategoryName>
       <CategoryColour>1</CategoryColour>
       <CategoryChecked>false</CategoryChecked>
     </Category>
-    <Category CategoryID="1">
+    <Category CategoryID="11">
       <CategoryName>Squad B</CategoryName>
       <CategoryColour>2</CategoryColour>
       <CategoryChecked>false</CategoryChecked>
