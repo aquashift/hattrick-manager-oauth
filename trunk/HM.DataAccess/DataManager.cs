@@ -369,12 +369,24 @@ namespace HM.DataAccess {
                         switch (xmlNodeRoot.Name) {
                             case Tags.CategoryList:
                                 settings.playerCategoryListField = ParseSettingCategoryListNode(xmlNodeRoot);
+
+                                if (xmlNodeRoot.Attributes[Tags.Version] != null) {
+                                    settings.categoryVersionIDField = Convert.ToInt32(xmlNodeRoot.Attributes[Tags.Version].InnerText);
+                                }
                                 break;
                             case Tags.PositionList:
                                 settings.playerPositionsListField = ParseSettingPositionsListNode(xmlNodeRoot);
+
+                                if (xmlNodeRoot.Attributes[Tags.Version] != null) {
+                                    settings.positionsVersionIDField = Convert.ToInt32(xmlNodeRoot.Attributes[Tags.Version].InnerText);
+                                }
                                 break;
                             case Tags.ColumnTables:
                                 settings.tableColumsListField = ParseSettingColumnListNode(xmlNodeRoot);
+
+                                if (xmlNodeRoot.Attributes[Tags.Version] != null) {
+                                    settings.tableColumsVersionIDField = Convert.ToInt32(xmlNodeRoot.Attributes[Tags.Version].InnerText);
+                                }
                                 break;
                             case Tags.LastFileList:
                                 if (xmlNodeRoot.ChildNodes != null) {
@@ -418,14 +430,6 @@ namespace HM.DataAccess {
                         categories.Add(category);
                     }
                 }
-
-                HMEntities.Settings.Category all = new HMEntities.Settings.Category();
-
-                all.categoryCheckedField = false;
-                all.categoryColourField = 0;
-                all.categoryNameField = "All"
-
-                categories.Add(new HMEntities.Settings.Category(
 
                 return (categories);
             } catch (Exception ex) {
@@ -489,7 +493,7 @@ namespace HM.DataAccess {
                                         column.alignmentField = (ColumnAlignment)Convert.ToInt32(xmlColumnChildNode.InnerText);
                                         break;
                                     case Tags.ColumnDisplay:
-                                        column.displayColumn = Convert.ToBoolean(xmlColumnChildNode.InnerText);
+                                        column.displayColumnField = Convert.ToBoolean(xmlColumnChildNode.InnerText);
                                         break;
                                 }
                             }
@@ -619,6 +623,7 @@ namespace HM.DataAccess {
 
                 // Categories
                 XmlElement xmlElementCategoryList = xmlDocument.CreateElement(Tags.CategoryList);
+                xmlElementCategoryList.SetAttribute(Tags.Version, hattrickManagerSettings.categoryVersionIDField.ToString());
 
                 foreach (HMEntities.Settings.Category currentCategory in hattrickManagerSettings.playerCategoryListField) {
                     XmlElement xmlElementCategoryName = xmlDocument.CreateElement(Tags.CategoryName);
@@ -645,6 +650,7 @@ namespace HM.DataAccess {
 
                 // Positions
                 XmlElement xmlElementPositionList = xmlDocument.CreateElement(Tags.PositionList);
+                xmlElementPositionList.SetAttribute(Tags.Version, hattrickManagerSettings.positionsVersionIDField.ToString());
 
                 foreach (HMEntities.Settings.Position currentPosition in hattrickManagerSettings.playerPositionsListField) {
                     XmlElement xmlElementPositionWeights = xmlDocument.CreateElement(Tags.PositionWeightList);
@@ -668,6 +674,7 @@ namespace HM.DataAccess {
 
                 // Columns
                 XmlElement xmlElementColumnTables = xmlDocument.CreateElement(Tags.ColumnTables);
+                xmlElementColumnTables.SetAttribute(Tags.Version, hattrickManagerSettings.tableColumsVersionIDField.ToString());
 
                 foreach (HM.Resources.ColumnTables tblKey in hattrickManagerSettings.tableColumsListField.Keys) {
                     List<HM.Entities.HattrickManager.Settings.Column> tablesColumns = hattrickManagerSettings.tableColumsListField[tblKey];
@@ -688,7 +695,7 @@ namespace HM.DataAccess {
                         xmlElementColumnWidth.InnerText = currentColumn.widthField.ToString();
                         xmlElementColumnType.InnerText = ((int)currentColumn.displayTypeField).ToString();
                         xmlElementColumnAlignment.InnerText = ((int)currentColumn.alignmentField).ToString();
-                        xmlElementColumnDisplay.InnerText = currentColumn.displayColumn.ToString();
+                        xmlElementColumnDisplay.InnerText = currentColumn.displayColumnField.ToString();
 
                         XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);
 

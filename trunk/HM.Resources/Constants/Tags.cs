@@ -53,6 +53,7 @@ namespace HM.Resources.Constants {
         public const string CategoryID = "CategoryID";
         public const string CategoryList = "CategoryList";
         public const string CategoryName = "CategoryName";
+        public const string CategoryProtected = "CategoryProtected";
         public const string Continent = "Continent";
         public const string Column = "Column";
         public const string ColumnAlignment = "ColumnAlignment";

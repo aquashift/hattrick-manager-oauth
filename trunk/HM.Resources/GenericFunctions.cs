@@ -322,14 +322,14 @@ namespace HM.Resources {
         /// <returns>Category image</returns>
         public static Image GetCategoryImage(int category) {
             //Creates a new image 22x14
-            Image categoryImage = new Bitmap(20, 20);
+            Image categoryImage = new Bitmap(20, 15);
 
             try {
                 //Creates the selected flag's rectangle 20x12
-                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * category), 0, 20, 20);
+                Rectangle sourceRectangle = new Rectangle(Convert.ToInt32(20 * category), 0, 20, 15);
 
                 //Creates the rectangle where the flag is going to be drawed
-                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 20);
+                Rectangle destinationRectangle = new Rectangle(1, 1, 20, 15);
 
                 //Creates the Graphics object
                 Graphics graphics = Graphics.FromImage(categoryImage);

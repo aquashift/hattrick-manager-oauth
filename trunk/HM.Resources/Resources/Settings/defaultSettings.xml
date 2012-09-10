@@ -1,18 +1,32 @@
 <HattrickManagerSettings>
   <SavedDate />
-  <CategoryList>
-    <Category CategoryID="10">
-      <CategoryName>Squad A</CategoryName>
+  <CategoryList Version="11092012">
+    <Category CategoryID="1">
+      <CategoryName>All</CategoryName>
       <CategoryColour>1</CategoryColour>
       <CategoryChecked>false</CategoryChecked>
+      <CategoryProtected>true</CategoryProtected>
     </Category>
-    <Category CategoryID="11">
-      <CategoryName>Squad B</CategoryName>
+    <Category CategoryID="2">
+      <CategoryName>Squad A</CategoryName>
       <CategoryColour>2</CategoryColour>
       <CategoryChecked>false</CategoryChecked>
+      <CategoryProtected>false</CategoryProtected>
+    </Category>
+    <Category CategoryID="3">
+      <CategoryName>Squad B</CategoryName>
+      <CategoryColour>3</CategoryColour>
+      <CategoryChecked>false</CategoryChecked>
+      <CategoryProtected>false</CategoryProtected>
+    </Category>
+    <Category CategoryID="99">
+      <CategoryName>Unassigned</CategoryName>
+      <CategoryColour>14</CategoryColour>
+      <CategoryChecked>false</CategoryChecked>
+      <CategoryProtected>true</CategoryProtected>
     </Category>
   </CategoryList>
-  <PositionList>
+  <PositionList Version="11092012">
     <!-- Keeper -->
     <PositionWeightList ID="1">
       <PositionWeight ID="5">7.8</PositionWeight>
@@ -131,7 +145,7 @@
       <PositionWeight ID="10">6.1</PositionWeight>
     </PositionWeightList>
   </PositionList>
-  <TableColumns>
+  <TableColumns Version="11092012">
     <ColumnList TableID="0">
       <Column>
         <ColumnID>0</ColumnID>
@@ -142,7 +156,7 @@
         <ColumnDisplay>false</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>1</ColumnID>
+        <ColumnID>4</ColumnID>
         <ColumnTitle>#</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -150,7 +164,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>2</ColumnID>
+        <ColumnID>3</ColumnID>
         <ColumnTitle>Name</ColumnTitle>
         <ColumnWidth>150</ColumnWidth>
         <ColumnDisplayType>1</ColumnDisplayType>
@@ -158,7 +172,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>3</ColumnID>
+        <ColumnID>5</ColumnID>
         <ColumnTitle>Nationality</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>3</ColumnDisplayType>
@@ -166,7 +180,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>4</ColumnID>
+        <ColumnID>6</ColumnID>
         <ColumnTitle>LastPosition</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>3</ColumnDisplayType>
@@ -174,7 +188,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>5</ColumnID>
+        <ColumnID>7</ColumnID>
         <ColumnTitle>Health</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>3</ColumnDisplayType>
@@ -182,7 +196,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>6</ColumnID>
+        <ColumnID>8</ColumnID>
         <ColumnTitle>Cards</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>3</ColumnDisplayType>
@@ -190,7 +204,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>7</ColumnID>
+        <ColumnID>9</ColumnID>
         <ColumnTitle>Category</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>3</ColumnDisplayType>
@@ -198,7 +212,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>8</ColumnID>
+        <ColumnID>12</ColumnID>
         <ColumnTitle>Age</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -206,7 +220,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>9</ColumnID>
+        <ColumnID>13</ColumnID>
         <ColumnTitle>TSI</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -214,7 +228,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>10</ColumnID>
+        <ColumnID>14</ColumnID>
         <ColumnTitle>Form</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -222,7 +236,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>11</ColumnID>
+        <ColumnID>15</ColumnID>
         <ColumnTitle>Stamina</ColumnTitle>
         <ColumnWidth>40</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -230,7 +244,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>21</ColumnID>
+        <ColumnID>16</ColumnID>
         <ColumnTitle>Goalkeeping</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -238,7 +252,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>22</ColumnID>
+        <ColumnID>17</ColumnID>
         <ColumnTitle>Defending</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -246,7 +260,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>23</ColumnID>
+        <ColumnID>18</ColumnID>
         <ColumnTitle>Winger</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -254,7 +268,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>24</ColumnID>
+        <ColumnID>19</ColumnID>
         <ColumnTitle>Playmaking</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -262,7 +276,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>25</ColumnID>
+        <ColumnID>20</ColumnID>
         <ColumnTitle>Passing</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -270,7 +284,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>26</ColumnID>
+        <ColumnID>21</ColumnID>
         <ColumnTitle>Scoring</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>
@@ -278,7 +292,7 @@
         <ColumnDisplay>true</ColumnDisplay>
       </Column>
       <Column>
-        <ColumnID>27</ColumnID>
+        <ColumnID>22</ColumnID>
         <ColumnTitle>SetPieces</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
         <ColumnDisplayType>0</ColumnDisplayType>

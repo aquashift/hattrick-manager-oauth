@@ -13,8 +13,7 @@ namespace HM.Entities.HattrickManager.Settings {
         public uint widthField { get; set; }
         public HM.Resources.ColumnDisplayType displayTypeField { get; set; }
         public HM.Resources.ColumnAlignment alignmentField { get; set; }
-        public bool displayColumn { get; set; }
-        public bool graphicalOption { get; set; }
+        public bool displayColumnField { get; set; }
 
         #endregion
 
@@ -30,8 +29,7 @@ namespace HM.Entities.HattrickManager.Settings {
             this.widthField = 100;
             this.displayTypeField = HM.Resources.ColumnDisplayType.Value;
             this.alignmentField = HM.Resources.ColumnAlignment.Left;
-            this.displayColumn = false;
-            this.graphicalOption = false;
+            this.displayColumnField = false;
         }
 
         #endregion

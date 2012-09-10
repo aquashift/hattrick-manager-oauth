@@ -12,6 +12,9 @@ namespace HM.Entities.HattrickManager.Settings {
         public Dictionary<HM.Resources.ColumnTables, List<Column>> tableColumsListField { get; set; }
         public List<LastFiles> lastFileListField { get; set; }
         public bool DefaultsRestored { get; set; }
+        public int categoryVersionIDField { get; set; }
+        public int positionsVersionIDField { get; set; }
+        public int tableColumsVersionIDField { get; set; }
 
         #endregion
 
@@ -25,6 +28,9 @@ namespace HM.Entities.HattrickManager.Settings {
             this.tableColumsListField = new Dictionary<Resources.ColumnTables,List<Column>>();
             this.lastFileListField = new List<LastFiles>();
             this.DefaultsRestored = false;
+            this.categoryVersionIDField = 0;
+            this.positionsVersionIDField = 0;
+            this.tableColumsVersionIDField = 0;
         }
 
         public void UpdateLastFile(HM.Resources.FileType fileType, string fileName) {
