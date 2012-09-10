@@ -4,7 +4,69 @@ using System.Linq;
 using System.Text;
 
 namespace HM.Resources.Constants {
+    public class TableColumn {
+        public TableColumns columnIDfield { get; set; }
+        public string columnNamefield { get; set; }
+        public ColumnDisplayType defaultDisplayTypefield { get; set; }
+        public bool graphicalOptionfield { get; set; }
+        public bool displayColumnfield { get; set; }
+        public uint defaultWidthfield { get; set; }
+
+        public TableColumn() {
+            this.columnIDfield = TableColumns.Undefined;
+            this.columnNamefield = string.Empty;
+            this.defaultDisplayTypefield = ColumnDisplayType.Name;
+            this.graphicalOptionfield = false;
+            this.displayColumnfield = true;
+            this.defaultWidthfield = 100;
+        }
+
+        /// <summary>
+        /// Default Values for a Table Column
+        /// </summary>
+        /// <param name="id">The statistical ID associated with the column</param>
+        /// <param name="name">The Name to put on the column heading</param>
+        /// <param name="defaultDisplay">The default display type</param>
+        /// <param name="graphical">Whether the value can be displayed graphically</param>
+        /// <param name="display">Whether to display the column by default</param>
+        /// <param name="width">The default with of the column</param>
+        public TableColumn(TableColumns id, string name, ColumnDisplayType defaultDisplay, bool graphical, bool display, uint width) {
+            this.columnIDfield = id;
+            this.columnNamefield = name;
+            this.defaultDisplayTypefield = defaultDisplay;
+            this.graphicalOptionfield = graphical;
+            this.displayColumnfield = display;
+            this.defaultWidthfield = width;
+        }
+    }
+
     public class Columns {
+        public static List<TableColumn> PlayerTableColumns = new List<TableColumn>() {
+            new TableColumn(TableColumns.Player_AgeDays, "Days", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_AgeFull, "Age", ColumnDisplayType.Name, false, true, 80),
+            new TableColumn(TableColumns.Player_AgeYears, "Years", ColumnDisplayType.Value, false, true, 20),
+            new TableColumn(TableColumns.Player_Category, "Category", ColumnDisplayType.Graphical, true, true, 80),
+            new TableColumn(TableColumns.Player_Defending, "Defending", ColumnDisplayType.Value, false, false, 30),
+            new TableColumn(TableColumns.Player_FirstName, "Fistname", ColumnDisplayType.Name, false, true, 80),
+            new TableColumn(TableColumns.Player_Form, "Form", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_FullName, "Name", ColumnDisplayType.Name, false, true, 150),
+            new TableColumn(TableColumns.Player_Health, "Health", ColumnDisplayType.Graphical, true, true, 80),
+            new TableColumn(TableColumns.Player_ID, "ID", ColumnDisplayType.Value, false, false, 10),
+            new TableColumn(TableColumns.Player_Keeping, "Keeper", ColumnDisplayType.Value, false, true, 80),
+            new TableColumn(TableColumns.Player_LastName, "Lastname", ColumnDisplayType.Name, false, true, 80),
+            new TableColumn(TableColumns.Player_LastPosition, "LastPosition", ColumnDisplayType.Graphical, true, true, 80),
+            new TableColumn(TableColumns.Player_Nationality, "Nationality", ColumnDisplayType.Graphical, true, true, 80),
+            new TableColumn(TableColumns.Player_Number, "#", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_Passing, "Passing", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_Playmaking, "Playmaking", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_Scoring, "Scoring", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_SetPieces, "SetPieces", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_Stamina, "Stamina", ColumnDisplayType.Value, false, true, 30),
+            new TableColumn(TableColumns.Player_TSI, "TSI", ColumnDisplayType.Value, false, true, 40),
+            new TableColumn(TableColumns.Player_Warnings, "Cards", ColumnDisplayType.Graphical, true, true, 40),
+            new TableColumn(TableColumns.Player_Wing, "Winger", ColumnDisplayType.Value, false, true, 40)
+        };
+
         public const string Display = "Display";
         public const string Value = "Value";
         public const string Position = "Position";
@@ -34,27 +96,5 @@ namespace HM.Resources.Constants {
         public const string TeamID = "TeamID";
         public const string HomeTeamID = "HomeTeamID";
         public const string AwayTeamID = "AwayTeamID";
-
-        /* Player Table */
-        public const string PlayerID = "ID";
-        public const string PlayerNumber = "#";
-        public const string PlayerName = "Name";
-        public const string PlayerFlag = "Nationality"; 
-        public const string LastPosition = "Last Position";
-        public const string Age = "Age";
-        public const string Health = "Health";
-        public const string Warnings = "Warnings";
-        public const string Category = "Category";
-        public const string TSI = "TSI"; 
-        public const string Form = "Form";
-        public const string Stamina = "Stamina";
-        public const string Goalkeeping = "Goalkeeping";
-        public const string Defending = "Defending";
-        public const string Winger = "Winger";
-        public const string Playmaking = "Playmaking";
-        public const string Passing = "Passing";
-        public const string Scoring = "Scoring";
-        public const string SetPieces = "Set Pieces";
-        public const string Loyality = "Loyality";
     }
 }

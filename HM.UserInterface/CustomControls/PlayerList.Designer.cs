@@ -23,8 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPlayerDetails = new System.Windows.Forms.TabControl();
             this.tabPageSkills = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelPlayerSkills = new System.Windows.Forms.TableLayoutPanel();
@@ -74,6 +74,7 @@
             this.labelForm = new System.Windows.Forms.Label();
             this.labelDivider = new System.Windows.Forms.Label();
             this.labelDivider2 = new System.Windows.Forms.Label();
+            this.pictureBoxMotherclub = new System.Windows.Forms.PictureBox();
             this.labelDivide3 = new System.Windows.Forms.Label();
             this.checkBoxApplyBonus = new System.Windows.Forms.CheckBox();
             this.tabPagePositions = new System.Windows.Forms.TabPage();
@@ -120,22 +121,23 @@
             this.labelDivide4 = new System.Windows.Forms.Label();
             this.tableLayoutPanelBestPosition = new System.Windows.Forms.TableLayoutPanel();
             this.labelBestPosition = new System.Windows.Forms.Label();
+            this.pictureBoxBestLogo = new System.Windows.Forms.PictureBox();
             this.dataGridViewPlayers = new System.Windows.Forms.DataGridView();
             this.splitContainerPlayerList = new System.Windows.Forms.SplitContainer();
             this.splitContainerLeft = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelCategories = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCategoryName = new System.Windows.Forms.Button();
+            this.tableLayoutPanelCategoriesList = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
             this.buttonPlayerName = new System.Windows.Forms.Button();
-            this.pictureBoxMotherclub = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBestLogo = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanelCategoriesList = new System.Windows.Forms.TableLayoutPanel();
             this.tabControlPlayerDetails.SuspendLayout();
             this.tabPageSkills.SuspendLayout();
             this.tableLayoutPanelPlayerSkills.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMotherclub)).BeginInit();
             this.tabPagePositions.SuspendLayout();
             this.tableLayoutPanelPositions.SuspendLayout();
             this.tableLayoutPanelBestPosition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBestLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).BeginInit();
             this.splitContainerPlayerList.Panel1.SuspendLayout();
             this.splitContainerPlayerList.Panel2.SuspendLayout();
@@ -145,8 +147,6 @@
             this.splitContainerLeft.SuspendLayout();
             this.tableLayoutPanelCategories.SuspendLayout();
             this.tableLayoutPanelDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMotherclub)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBestLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPlayerDetails
@@ -770,6 +770,18 @@
             this.labelDivider2.Size = new System.Drawing.Size(277, 2);
             this.labelDivider2.TabIndex = 33;
             // 
+            // pictureBoxMotherclub
+            // 
+            this.pictureBoxMotherclub.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxMotherclub.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxMotherclub.Location = new System.Drawing.Point(258, 240);
+            this.pictureBoxMotherclub.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.pictureBoxMotherclub.Name = "pictureBoxMotherclub";
+            this.pictureBoxMotherclub.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMotherclub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxMotherclub.TabIndex = 43;
+            this.pictureBoxMotherclub.TabStop = false;
+            // 
             // labelDivide3
             // 
             this.labelDivide3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -783,6 +795,7 @@
             // checkBoxApplyBonus
             // 
             this.checkBoxApplyBonus.AutoSize = true;
+            this.checkBoxApplyBonus.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBoxApplyBonus.Dock = System.Windows.Forms.DockStyle.Right;
             this.checkBoxApplyBonus.Location = new System.Drawing.Point(263, 455);
             this.checkBoxApplyBonus.Margin = new System.Windows.Forms.Padding(0, 3, 5, 0);
@@ -1388,26 +1401,37 @@
             this.labelBestPosition.Text = "Best";
             this.labelBestPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pictureBoxBestLogo
+            // 
+            this.pictureBoxBestLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxBestLogo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBestLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxBestLogo.Name = "pictureBoxBestLogo";
+            this.pictureBoxBestLogo.Size = new System.Drawing.Size(30, 25);
+            this.pictureBoxBestLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxBestLogo.TabIndex = 4;
+            this.pictureBoxBestLogo.TabStop = false;
+            // 
             // dataGridViewPlayers
             // 
             this.dataGridViewPlayers.AllowUserToAddRows = false;
             this.dataGridViewPlayers.AllowUserToDeleteRows = false;
             this.dataGridViewPlayers.AllowUserToOrderColumns = true;
             this.dataGridViewPlayers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPlayers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPlayers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPlayers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPlayers.Location = new System.Drawing.Point(0, 0);
@@ -1493,6 +1517,18 @@
             this.buttonCategoryName.Text = "Categories";
             this.buttonCategoryName.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanelCategoriesList
+            // 
+            this.tableLayoutPanelCategoriesList.ColumnCount = 1;
+            this.tableLayoutPanelCategoriesList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCategoriesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelCategoriesList.Location = new System.Drawing.Point(3, 33);
+            this.tableLayoutPanelCategoriesList.Name = "tableLayoutPanelCategoriesList";
+            this.tableLayoutPanelCategoriesList.RowCount = 1;
+            this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelCategoriesList.Size = new System.Drawing.Size(201, 593);
+            this.tableLayoutPanelCategoriesList.TabIndex = 3;
+            // 
             // tableLayoutPanelDetails
             // 
             this.tableLayoutPanelDetails.ColumnCount = 1;
@@ -1522,41 +1558,6 @@
             this.buttonPlayerName.TabIndex = 1;
             this.buttonPlayerName.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxMotherclub
-            // 
-            this.pictureBoxMotherclub.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxMotherclub.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBoxMotherclub.Location = new System.Drawing.Point(258, 240);
-            this.pictureBoxMotherclub.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.pictureBoxMotherclub.Name = "pictureBoxMotherclub";
-            this.pictureBoxMotherclub.Size = new System.Drawing.Size(20, 20);
-            this.pictureBoxMotherclub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxMotherclub.TabIndex = 43;
-            this.pictureBoxMotherclub.TabStop = false;
-            // 
-            // pictureBoxBestLogo
-            // 
-            this.pictureBoxBestLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxBestLogo.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxBestLogo.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxBestLogo.Name = "pictureBoxBestLogo";
-            this.pictureBoxBestLogo.Size = new System.Drawing.Size(30, 25);
-            this.pictureBoxBestLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxBestLogo.TabIndex = 4;
-            this.pictureBoxBestLogo.TabStop = false;
-            // 
-            // tableLayoutPanelCategoriesList
-            // 
-            this.tableLayoutPanelCategoriesList.ColumnCount = 1;
-            this.tableLayoutPanelCategoriesList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCategoriesList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelCategoriesList.Location = new System.Drawing.Point(3, 33);
-            this.tableLayoutPanelCategoriesList.Name = "tableLayoutPanelCategoriesList";
-            this.tableLayoutPanelCategoriesList.RowCount = 1;
-            this.tableLayoutPanelCategoriesList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCategoriesList.Size = new System.Drawing.Size(201, 593);
-            this.tableLayoutPanelCategoriesList.TabIndex = 3;
-            // 
             // PlayerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1570,9 +1571,11 @@
             this.tabPageSkills.ResumeLayout(false);
             this.tableLayoutPanelPlayerSkills.ResumeLayout(false);
             this.tableLayoutPanelPlayerSkills.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMotherclub)).EndInit();
             this.tabPagePositions.ResumeLayout(false);
             this.tableLayoutPanelPositions.ResumeLayout(false);
             this.tableLayoutPanelBestPosition.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBestLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayers)).EndInit();
             this.splitContainerPlayerList.Panel1.ResumeLayout(false);
             this.splitContainerPlayerList.Panel2.ResumeLayout(false);
@@ -1582,8 +1585,6 @@
             this.splitContainerLeft.ResumeLayout(false);
             this.tableLayoutPanelCategories.ResumeLayout(false);
             this.tableLayoutPanelDetails.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMotherclub)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBestLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

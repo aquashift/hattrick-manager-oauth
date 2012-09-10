@@ -60,20 +60,19 @@ namespace HM.UserInterface.CustomControls {
 
                 box.Text = " " + category.categoryNameField;
                 box.Image = HM.Resources.GenericFunctions.GetCategoryImage((int)category.categoryColourField);
-                box.ImageAlign = ContentAlignment.MiddleLeft;
+                box.ImageAlign = ContentAlignment.TopLeft;
                 box.TextImageRelation = TextImageRelation.ImageBeforeText;
                 box.TextAlign = ContentAlignment.MiddleLeft;
-                box.Font = new Font("Calibri", 10, FontStyle.Bold);
                 box.AllowDrop = true;
                 box.Name = category.categoryIdField.ToString();
                 box.Dock = DockStyle.Fill;
                 box.Checked = category.categoryCheckedField;
                 box.MouseDown += new MouseEventHandler(CategoryCheckItem_MouseDown);
-                box.Margin = new System.Windows.Forms.Padding(0);
+                box.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
                 box.Padding = new System.Windows.Forms.Padding(0);
 
                 tableLayoutPanelCategoriesList.Controls.Add(box, 0, i++);
-                tableLayoutPanelCategoriesList.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
+                tableLayoutPanelCategoriesList.RowStyles.Add(new RowStyle(SizeType.Absolute, 22));
             }
 
             tableLayoutPanelCategoriesList.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -92,13 +91,47 @@ namespace HM.UserInterface.CustomControls {
         private void PopulatePlayerList() {
             HTEntities.WorldDetails.WorldDetails world = entityManager.GetWorldDetails();
             HTEntities.Players.Team team = players.teamField;
-
+            List<HM.Entities.HattrickManager.Settings.Column> playerColumns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
             dataGridViewPlayers.RowCount = 0;
             dataGridViewPlayers.ColumnCount = 0;
             dataGridViewPlayers.ColumnHeadersVisible = true;
             dataGridViewPlayers.ColumnHeadersDefaultCellStyle.Font = new Font("Calibri", 10, FontStyle.Bold);
 
             dataGridViewPlayers.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (HM.Entities.HattrickManager.Settings.Column playerColumn in playerColumns) {
+                int colID = dataGridViewPlayers.ColumnCount;
+ 
+                if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
+                    dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
+                    dataGridViewPlayers.Columns[colID].ValueType = typeof(Image);
+                } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
+                    dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+                    dataGridViewPlayers.Columns[colID].ValueType = typeof(Int32);
+                } else {
+                    dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
+                    dataGridViewPlayers.Columns[colID].ValueType = typeof(string);
+                }
+
+                dataGridViewPlayers.Columns[colID].Name = playerColumn.titleField;
+                dataGridViewPlayers.Columns[colID].Visible = playerColumn.displayColumnField;
+                dataGridViewPlayers.Columns[colID].Width = Convert.ToInt32(playerColumn.widthField);
+                dataGridViewPlayers.Columns[colID].Tag = playerColumn.columnIDField.ToString();
+
+                switch (playerColumn.alignmentField) {
+                    case Resources.ColumnAlignment.Center:
+                        dataGridViewPlayers.Columns[colID].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        break;
+                    case Resources.ColumnAlignment.Left:
+                        dataGridViewPlayers.Columns[colID].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        break;
+                    case Resources.ColumnAlignment.Right:
+                        dataGridViewPlayers.Columns[colID].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        break;
+                }
+            }
+
+            /*
 
             dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
             dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerID;
@@ -282,6 +315,7 @@ namespace HM.UserInterface.CustomControls {
                     dataGridViewPlayers.Rows[rowNum].Cells[Columns.SetPieces].Style.BackColor = Color.PaleGreen;
                 }
             }
+            */
         }
 
         private void PopulatePlayerPositions(int playerID) {

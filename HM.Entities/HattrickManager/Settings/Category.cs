@@ -11,6 +11,7 @@ namespace HM.Entities.HattrickManager.Settings {
         public string categoryNameField { get; set; }
         public uint categoryColourField { get; set; }
         public bool categoryCheckedField { get; set; }
+        public bool categoryProtectedField { get; set; }
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace HM.Entities.HattrickManager.Settings {
             this.categoryNameField = string.Empty;
             this.categoryColourField = 0;
             this.categoryCheckedField = false;
+            this.categoryProtectedField = false;
         }
 
         #endregion

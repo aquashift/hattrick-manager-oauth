@@ -578,4 +578,31 @@ namespace HM.Resources {
         LeagueDetails = 1,
         LeagueFixtures = 2
     };
+
+    public enum TableColumns : int {
+        Undefined = -1,
+        Player_ID = 0,
+        Player_FirstName = 1,
+        Player_LastName = 2,
+        Player_FullName = 3,
+        Player_Number = 4,
+        Player_Nationality = 5,
+        Player_LastPosition = 6,
+        Player_Health = 7,
+        Player_Warnings = 8,
+        Player_Category = 9,
+        Player_AgeYears = 10,
+        Player_AgeDays = 11,
+        Player_AgeFull = 12,
+        Player_TSI = 13,
+        Player_Form = 14,
+        Player_Stamina = 15,
+        Player_Keeping = 16,
+        Player_Defending = 17,
+        Player_Wing = 18,
+        Player_Playmaking = 19,
+        Player_Passing = 20,
+        Player_Scoring = 21,
+        Player_SetPieces = 22
+    };
 }
