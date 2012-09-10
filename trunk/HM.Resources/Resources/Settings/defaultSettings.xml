@@ -13,103 +13,122 @@
     </Category>
   </CategoryList>
   <PositionList>
+    <!-- Keeper -->
     <PositionWeightList ID="1">
       <PositionWeight ID="5">7.8</PositionWeight>
       <PositionWeight ID="6">1.1</PositionWeight>
       <PositionWeight ID="11">1.1</PositionWeight>
     </PositionWeightList>
+    <!-- Defender -->
     <PositionWeightList ID="2">
       <PositionWeight ID="6">7.7</PositionWeight>
       <PositionWeight ID="7">2.3</PositionWeight>
     </PositionWeightList>
+    <!-- Defender Offensive -->
     <PositionWeightList ID="3">
       <PositionWeight ID="6">6.4</PositionWeight>
       <PositionWeight ID="7">3.6</PositionWeight>
     </PositionWeightList>
+    <!-- Defender Towards Wing -->
     <PositionWeightList ID="4">
       <PositionWeight ID="6">7.1</PositionWeight>
       <PositionWeight ID="7">1.1</PositionWeight>
       <PositionWeight ID="8">1.8</PositionWeight>
     </PositionWeightList>
+    <!-- Wingback -->
     <PositionWeightList ID="5">
       <PositionWeight ID="6">6.8</PositionWeight>
       <PositionWeight ID="7">1.1</PositionWeight>
       <PositionWeight ID="8">2.1</PositionWeight>
     </PositionWeightList>
+    <!-- Wingback Defensive -->
     <PositionWeightList ID="6">
+      <PositionWeight ID="6">7.8</PositionWeight>
+      <PositionWeight ID="7">0.4</PositionWeight>
+      <PositionWeight ID="8">1.8</PositionWeight>
+    </PositionWeightList>
+    <!-- Wingback Towards Middle -->
+    <PositionWeightList ID="7">
       <PositionWeight ID="6">7.4</PositionWeight>
       <PositionWeight ID="7">1.0</PositionWeight>
       <PositionWeight ID="8">1.6</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="7">
+    <!-- Wingback Offensive -->
+    <PositionWeightList ID="8">
       <PositionWeight ID="6">6.2</PositionWeight>
       <PositionWeight ID="7">1.1</PositionWeight>
       <PositionWeight ID="8">2.7</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="8">
+    <!-- Winger -->
+    <PositionWeightList ID="9">
       <PositionWeight ID="6">0.8</PositionWeight>
       <PositionWeight ID="7">2.9</PositionWeight>
       <PositionWeight ID="8">5.2</PositionWeight>
       <PositionWeight ID="9">1.1</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="9">
+    <!-- Winger Defensive -->
+    <PositionWeightList ID="10">
       <PositionWeight ID="6">1.8</PositionWeight>
       <PositionWeight ID="7">2.2</PositionWeight>
       <PositionWeight ID="8">5.2</PositionWeight>
       <PositionWeight ID="9">0.8</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="10">
+    <!-- Winger Towards Middle -->
+    <PositionWeightList ID="11">
       <PositionWeight ID="6">0.4</PositionWeight>
       <PositionWeight ID="7">3.8</PositionWeight>
       <PositionWeight ID="8">4.7</PositionWeight>
       <PositionWeight ID="9">1.1</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="11">
+    <!-- Winger Offensive -->
+    <PositionWeightList ID="12">
       <PositionWeight ID="6">0.2</PositionWeight>
       <PositionWeight ID="7">2.2</PositionWeight>
       <PositionWeight ID="8">5.2</PositionWeight>
       <PositionWeight ID="9">2.4</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="12">
+    <!-- Inner Midfield -->
+    <PositionWeightList ID="13">
       <PositionWeight ID="6">1.4</PositionWeight>
       <PositionWeight ID="7">7.2</PositionWeight>
       <PositionWeight ID="9">1.4</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="13">
+    <!-- Inner Midfield Defensive -->
+    <PositionWeightList ID="14">
       <PositionWeight ID="6">2.0</PositionWeight>
       <PositionWeight ID="7">7.2</PositionWeight>
       <PositionWeight ID="9">0.8</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="14">
+    <!-- Inner Midfield Towards Wing -->
+    <PositionWeightList ID="15">
       <PositionWeight ID="6">1.0</PositionWeight>
       <PositionWeight ID="7">5.4</PositionWeight>
       <PositionWeight ID="8">2.2</PositionWeight>
       <PositionWeight ID="9">1.4</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="15">
+    <!-- Inner Midfield Offensive -->
+    <PositionWeightList ID="16">
       <PositionWeight ID="6">0.8</PositionWeight>
       <PositionWeight ID="7">5.8</PositionWeight>
       <PositionWeight ID="9">3.4</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="16">
+    <!-- Forward -->
+    <PositionWeightList ID="17">
       <PositionWeight ID="8">0.8</PositionWeight>
       <PositionWeight ID="9">2.1</PositionWeight>
       <PositionWeight ID="10">7.1</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="17">
+    <!-- Forward Defensive -->
+    <PositionWeightList ID="18">
       <PositionWeight ID="7">2.8</PositionWeight>
       <PositionWeight ID="9">1.1</PositionWeight>
       <PositionWeight ID="10">6.1</PositionWeight>
     </PositionWeightList>
-    <PositionWeightList ID="18">
+    <!-- Forward Towards Wing -->
+    <PositionWeightList ID="19">
       <PositionWeight ID="8">2.8</PositionWeight>
       <PositionWeight ID="9">1.1</PositionWeight>
       <PositionWeight ID="10">6.1</PositionWeight>
-    </PositionWeightList>
-    <PositionWeightList ID="19">
-      <PositionWeight ID="6">7.8</PositionWeight>
-      <PositionWeight ID="7">0.4</PositionWeight>
-      <PositionWeight ID="8">1.8</PositionWeight>
     </PositionWeightList>
   </PositionList>
   <TableColumns>

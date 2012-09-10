@@ -23,8 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPlayerDetails = new System.Windows.Forms.TabControl();
             this.tabPageSkills = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelPlayerSkills = new System.Windows.Forms.TableLayoutPanel();
@@ -79,6 +79,7 @@
             this.checkBoxApplyBonus = new System.Windows.Forms.CheckBox();
             this.tabPagePositions = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelPositions = new System.Windows.Forms.TableLayoutPanel();
+            this.labelBestValue = new System.Windows.Forms.Label();
             this.labelKeeperValue = new System.Windows.Forms.Label();
             this.labelCentralDefWingValue = new System.Windows.Forms.Label();
             this.labelCentralDefOffensiveValue = new System.Windows.Forms.Label();
@@ -117,7 +118,6 @@
             this.labelForwardWing = new System.Windows.Forms.Label();
             this.labelForwardDefensive = new System.Windows.Forms.Label();
             this.labelForward = new System.Windows.Forms.Label();
-            this.labelBestPosition = new System.Windows.Forms.Label();
             this.labelDivide4 = new System.Windows.Forms.Label();
             this.dataGridViewPlayers = new System.Windows.Forms.DataGridView();
             this.splitContainerPlayerList = new System.Windows.Forms.SplitContainer();
@@ -129,7 +129,9 @@
             this.checkBoxSquadA = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelDetails = new System.Windows.Forms.TableLayoutPanel();
             this.buttonPlayerName = new System.Windows.Forms.Button();
-            this.labelBestValue = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelBestPosition = new System.Windows.Forms.Label();
+            this.pictureBoxBestLogo = new System.Windows.Forms.PictureBox();
             this.tabControlPlayerDetails.SuspendLayout();
             this.tabPageSkills.SuspendLayout();
             this.tableLayoutPanelPlayerSkills.SuspendLayout();
@@ -146,6 +148,8 @@
             this.tableLayoutPanelCategories.SuspendLayout();
             this.tableLayoutPanelCategoriesList.SuspendLayout();
             this.tableLayoutPanelDetails.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBestLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPlayerDetails
@@ -859,14 +863,14 @@
             this.tableLayoutPanelPositions.Controls.Add(this.labelForwardWing, 0, 4);
             this.tableLayoutPanelPositions.Controls.Add(this.labelForwardDefensive, 0, 3);
             this.tableLayoutPanelPositions.Controls.Add(this.labelForward, 0, 2);
-            this.tableLayoutPanelPositions.Controls.Add(this.labelBestPosition, 0, 0);
             this.tableLayoutPanelPositions.Controls.Add(this.labelDivide4, 0, 1);
+            this.tableLayoutPanelPositions.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanelPositions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPositions.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelPositions.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPositions.Name = "tableLayoutPanelPositions";
             this.tableLayoutPanelPositions.RowCount = 22;
-            this.tableLayoutPanelPositions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelPositions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanelPositions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanelPositions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPositions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -891,11 +895,24 @@
             this.tableLayoutPanelPositions.Size = new System.Drawing.Size(283, 571);
             this.tableLayoutPanelPositions.TabIndex = 0;
             // 
+            // labelBestValue
+            // 
+            this.labelBestValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBestValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBestValue.ForeColor = System.Drawing.Color.DarkBlue;
+            this.labelBestValue.Location = new System.Drawing.Point(229, 0);
+            this.labelBestValue.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.labelBestValue.Name = "labelBestValue";
+            this.labelBestValue.Size = new System.Drawing.Size(54, 25);
+            this.labelBestValue.TabIndex = 41;
+            this.labelBestValue.Text = "-";
+            this.labelBestValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // labelKeeperValue
             // 
             this.labelKeeperValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelKeeperValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKeeperValue.Location = new System.Drawing.Point(226, 384);
+            this.labelKeeperValue.Location = new System.Drawing.Point(226, 389);
             this.labelKeeperValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelKeeperValue.Name = "labelKeeperValue";
             this.labelKeeperValue.Size = new System.Drawing.Size(57, 20);
@@ -907,7 +924,7 @@
             // 
             this.labelCentralDefWingValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCentralDefWingValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCentralDefWingValue.Location = new System.Drawing.Point(226, 364);
+            this.labelCentralDefWingValue.Location = new System.Drawing.Point(226, 369);
             this.labelCentralDefWingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelCentralDefWingValue.Name = "labelCentralDefWingValue";
             this.labelCentralDefWingValue.Size = new System.Drawing.Size(57, 20);
@@ -919,7 +936,7 @@
             // 
             this.labelCentralDefOffensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCentralDefOffensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCentralDefOffensiveValue.Location = new System.Drawing.Point(226, 344);
+            this.labelCentralDefOffensiveValue.Location = new System.Drawing.Point(226, 349);
             this.labelCentralDefOffensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelCentralDefOffensiveValue.Name = "labelCentralDefOffensiveValue";
             this.labelCentralDefOffensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -931,7 +948,7 @@
             // 
             this.labelCentralDefValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCentralDefValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCentralDefValue.Location = new System.Drawing.Point(226, 324);
+            this.labelCentralDefValue.Location = new System.Drawing.Point(226, 329);
             this.labelCentralDefValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelCentralDefValue.Name = "labelCentralDefValue";
             this.labelCentralDefValue.Size = new System.Drawing.Size(57, 20);
@@ -943,7 +960,7 @@
             // 
             this.labelWingDefMiddleValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefMiddleValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefMiddleValue.Location = new System.Drawing.Point(226, 304);
+            this.labelWingDefMiddleValue.Location = new System.Drawing.Point(226, 309);
             this.labelWingDefMiddleValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefMiddleValue.Name = "labelWingDefMiddleValue";
             this.labelWingDefMiddleValue.Size = new System.Drawing.Size(57, 20);
@@ -955,7 +972,7 @@
             // 
             this.labelWingDefDefensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefDefensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefDefensiveValue.Location = new System.Drawing.Point(226, 284);
+            this.labelWingDefDefensiveValue.Location = new System.Drawing.Point(226, 289);
             this.labelWingDefDefensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefDefensiveValue.Name = "labelWingDefDefensiveValue";
             this.labelWingDefDefensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -967,7 +984,7 @@
             // 
             this.labelWingDefOffensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefOffensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefOffensiveValue.Location = new System.Drawing.Point(226, 264);
+            this.labelWingDefOffensiveValue.Location = new System.Drawing.Point(226, 269);
             this.labelWingDefOffensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefOffensiveValue.Name = "labelWingDefOffensiveValue";
             this.labelWingDefOffensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -979,7 +996,7 @@
             // 
             this.labelWingDefValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefValue.Location = new System.Drawing.Point(226, 244);
+            this.labelWingDefValue.Location = new System.Drawing.Point(226, 249);
             this.labelWingDefValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefValue.Name = "labelWingDefValue";
             this.labelWingDefValue.Size = new System.Drawing.Size(57, 20);
@@ -991,7 +1008,7 @@
             // 
             this.labelWingMiddleValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingMiddleValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingMiddleValue.Location = new System.Drawing.Point(226, 224);
+            this.labelWingMiddleValue.Location = new System.Drawing.Point(226, 229);
             this.labelWingMiddleValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingMiddleValue.Name = "labelWingMiddleValue";
             this.labelWingMiddleValue.Size = new System.Drawing.Size(57, 20);
@@ -1003,7 +1020,7 @@
             // 
             this.labelWingDefensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefensiveValue.Location = new System.Drawing.Point(226, 204);
+            this.labelWingDefensiveValue.Location = new System.Drawing.Point(226, 209);
             this.labelWingDefensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefensiveValue.Name = "labelWingDefensiveValue";
             this.labelWingDefensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -1015,7 +1032,7 @@
             // 
             this.labelWingOffensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingOffensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingOffensiveValue.Location = new System.Drawing.Point(226, 184);
+            this.labelWingOffensiveValue.Location = new System.Drawing.Point(226, 189);
             this.labelWingOffensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingOffensiveValue.Name = "labelWingOffensiveValue";
             this.labelWingOffensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -1027,7 +1044,7 @@
             // 
             this.labelWingValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingValue.Location = new System.Drawing.Point(226, 164);
+            this.labelWingValue.Location = new System.Drawing.Point(226, 169);
             this.labelWingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingValue.Name = "labelWingValue";
             this.labelWingValue.Size = new System.Drawing.Size(57, 20);
@@ -1039,7 +1056,7 @@
             // 
             this.labelInnerMidWingValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidWingValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidWingValue.Location = new System.Drawing.Point(226, 144);
+            this.labelInnerMidWingValue.Location = new System.Drawing.Point(226, 149);
             this.labelInnerMidWingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidWingValue.Name = "labelInnerMidWingValue";
             this.labelInnerMidWingValue.Size = new System.Drawing.Size(57, 20);
@@ -1051,7 +1068,7 @@
             // 
             this.labelInnerMidDefensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidDefensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidDefensiveValue.Location = new System.Drawing.Point(226, 124);
+            this.labelInnerMidDefensiveValue.Location = new System.Drawing.Point(226, 129);
             this.labelInnerMidDefensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidDefensiveValue.Name = "labelInnerMidDefensiveValue";
             this.labelInnerMidDefensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -1063,7 +1080,7 @@
             // 
             this.labelInnerMidOffensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidOffensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidOffensiveValue.Location = new System.Drawing.Point(226, 104);
+            this.labelInnerMidOffensiveValue.Location = new System.Drawing.Point(226, 109);
             this.labelInnerMidOffensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidOffensiveValue.Name = "labelInnerMidOffensiveValue";
             this.labelInnerMidOffensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -1075,7 +1092,7 @@
             // 
             this.labelInnerMidValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidValue.Location = new System.Drawing.Point(226, 84);
+            this.labelInnerMidValue.Location = new System.Drawing.Point(226, 89);
             this.labelInnerMidValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidValue.Name = "labelInnerMidValue";
             this.labelInnerMidValue.Size = new System.Drawing.Size(57, 20);
@@ -1087,7 +1104,7 @@
             // 
             this.labelForwardWingValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelForwardWingValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForwardWingValue.Location = new System.Drawing.Point(226, 64);
+            this.labelForwardWingValue.Location = new System.Drawing.Point(226, 69);
             this.labelForwardWingValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelForwardWingValue.Name = "labelForwardWingValue";
             this.labelForwardWingValue.Size = new System.Drawing.Size(57, 20);
@@ -1099,7 +1116,7 @@
             // 
             this.labelForwardDefensiveValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelForwardDefensiveValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForwardDefensiveValue.Location = new System.Drawing.Point(226, 44);
+            this.labelForwardDefensiveValue.Location = new System.Drawing.Point(226, 49);
             this.labelForwardDefensiveValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelForwardDefensiveValue.Name = "labelForwardDefensiveValue";
             this.labelForwardDefensiveValue.Size = new System.Drawing.Size(57, 20);
@@ -1111,7 +1128,7 @@
             // 
             this.labelForwardValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelForwardValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForwardValue.Location = new System.Drawing.Point(226, 24);
+            this.labelForwardValue.Location = new System.Drawing.Point(226, 29);
             this.labelForwardValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelForwardValue.Name = "labelForwardValue";
             this.labelForwardValue.Size = new System.Drawing.Size(57, 20);
@@ -1123,7 +1140,7 @@
             // 
             this.labelKeeper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelKeeper.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKeeper.Location = new System.Drawing.Point(0, 384);
+            this.labelKeeper.Location = new System.Drawing.Point(0, 389);
             this.labelKeeper.Margin = new System.Windows.Forms.Padding(0);
             this.labelKeeper.Name = "labelKeeper";
             this.labelKeeper.Size = new System.Drawing.Size(226, 20);
@@ -1135,7 +1152,7 @@
             // 
             this.labelCentralDefWing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCentralDefWing.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCentralDefWing.Location = new System.Drawing.Point(0, 364);
+            this.labelCentralDefWing.Location = new System.Drawing.Point(0, 369);
             this.labelCentralDefWing.Margin = new System.Windows.Forms.Padding(0);
             this.labelCentralDefWing.Name = "labelCentralDefWing";
             this.labelCentralDefWing.Size = new System.Drawing.Size(226, 20);
@@ -1147,7 +1164,7 @@
             // 
             this.labelCentralDefOffensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCentralDefOffensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCentralDefOffensive.Location = new System.Drawing.Point(0, 344);
+            this.labelCentralDefOffensive.Location = new System.Drawing.Point(0, 349);
             this.labelCentralDefOffensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelCentralDefOffensive.Name = "labelCentralDefOffensive";
             this.labelCentralDefOffensive.Size = new System.Drawing.Size(226, 20);
@@ -1159,7 +1176,7 @@
             // 
             this.labelCentralDef.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCentralDef.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCentralDef.Location = new System.Drawing.Point(0, 324);
+            this.labelCentralDef.Location = new System.Drawing.Point(0, 329);
             this.labelCentralDef.Margin = new System.Windows.Forms.Padding(0);
             this.labelCentralDef.Name = "labelCentralDef";
             this.labelCentralDef.Size = new System.Drawing.Size(226, 20);
@@ -1171,7 +1188,7 @@
             // 
             this.labelWingDefMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefMiddle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefMiddle.Location = new System.Drawing.Point(0, 304);
+            this.labelWingDefMiddle.Location = new System.Drawing.Point(0, 309);
             this.labelWingDefMiddle.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefMiddle.Name = "labelWingDefMiddle";
             this.labelWingDefMiddle.Size = new System.Drawing.Size(226, 20);
@@ -1183,7 +1200,7 @@
             // 
             this.labelWingDefDefensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefDefensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefDefensive.Location = new System.Drawing.Point(0, 284);
+            this.labelWingDefDefensive.Location = new System.Drawing.Point(0, 289);
             this.labelWingDefDefensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefDefensive.Name = "labelWingDefDefensive";
             this.labelWingDefDefensive.Size = new System.Drawing.Size(226, 20);
@@ -1195,7 +1212,7 @@
             // 
             this.labelWingDefOffensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefOffensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefOffensive.Location = new System.Drawing.Point(0, 264);
+            this.labelWingDefOffensive.Location = new System.Drawing.Point(0, 269);
             this.labelWingDefOffensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefOffensive.Name = "labelWingDefOffensive";
             this.labelWingDefOffensive.Size = new System.Drawing.Size(226, 20);
@@ -1207,7 +1224,7 @@
             // 
             this.labelWingDef.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDef.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDef.Location = new System.Drawing.Point(0, 244);
+            this.labelWingDef.Location = new System.Drawing.Point(0, 249);
             this.labelWingDef.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDef.Name = "labelWingDef";
             this.labelWingDef.Size = new System.Drawing.Size(226, 20);
@@ -1219,7 +1236,7 @@
             // 
             this.labelWingMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingMiddle.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingMiddle.Location = new System.Drawing.Point(0, 224);
+            this.labelWingMiddle.Location = new System.Drawing.Point(0, 229);
             this.labelWingMiddle.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingMiddle.Name = "labelWingMiddle";
             this.labelWingMiddle.Size = new System.Drawing.Size(226, 20);
@@ -1231,7 +1248,7 @@
             // 
             this.labelWingDefensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingDefensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingDefensive.Location = new System.Drawing.Point(0, 204);
+            this.labelWingDefensive.Location = new System.Drawing.Point(0, 209);
             this.labelWingDefensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingDefensive.Name = "labelWingDefensive";
             this.labelWingDefensive.Size = new System.Drawing.Size(226, 20);
@@ -1243,7 +1260,7 @@
             // 
             this.labelWingOffensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWingOffensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWingOffensive.Location = new System.Drawing.Point(0, 184);
+            this.labelWingOffensive.Location = new System.Drawing.Point(0, 189);
             this.labelWingOffensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelWingOffensive.Name = "labelWingOffensive";
             this.labelWingOffensive.Size = new System.Drawing.Size(226, 20);
@@ -1255,7 +1272,7 @@
             // 
             this.labelWing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWing.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWing.Location = new System.Drawing.Point(0, 164);
+            this.labelWing.Location = new System.Drawing.Point(0, 169);
             this.labelWing.Margin = new System.Windows.Forms.Padding(0);
             this.labelWing.Name = "labelWing";
             this.labelWing.Size = new System.Drawing.Size(226, 20);
@@ -1267,7 +1284,7 @@
             // 
             this.labelInnerMidWing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidWing.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidWing.Location = new System.Drawing.Point(0, 144);
+            this.labelInnerMidWing.Location = new System.Drawing.Point(0, 149);
             this.labelInnerMidWing.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidWing.Name = "labelInnerMidWing";
             this.labelInnerMidWing.Size = new System.Drawing.Size(226, 20);
@@ -1279,7 +1296,7 @@
             // 
             this.labelInnerMidDefensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidDefensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidDefensive.Location = new System.Drawing.Point(0, 124);
+            this.labelInnerMidDefensive.Location = new System.Drawing.Point(0, 129);
             this.labelInnerMidDefensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidDefensive.Name = "labelInnerMidDefensive";
             this.labelInnerMidDefensive.Size = new System.Drawing.Size(226, 20);
@@ -1291,7 +1308,7 @@
             // 
             this.labelInnerMidOffensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMidOffensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMidOffensive.Location = new System.Drawing.Point(0, 104);
+            this.labelInnerMidOffensive.Location = new System.Drawing.Point(0, 109);
             this.labelInnerMidOffensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMidOffensive.Name = "labelInnerMidOffensive";
             this.labelInnerMidOffensive.Size = new System.Drawing.Size(226, 20);
@@ -1303,7 +1320,7 @@
             // 
             this.labelInnerMid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelInnerMid.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInnerMid.Location = new System.Drawing.Point(0, 84);
+            this.labelInnerMid.Location = new System.Drawing.Point(0, 89);
             this.labelInnerMid.Margin = new System.Windows.Forms.Padding(0);
             this.labelInnerMid.Name = "labelInnerMid";
             this.labelInnerMid.Size = new System.Drawing.Size(226, 20);
@@ -1315,7 +1332,7 @@
             // 
             this.labelForwardWing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelForwardWing.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForwardWing.Location = new System.Drawing.Point(0, 64);
+            this.labelForwardWing.Location = new System.Drawing.Point(0, 69);
             this.labelForwardWing.Margin = new System.Windows.Forms.Padding(0);
             this.labelForwardWing.Name = "labelForwardWing";
             this.labelForwardWing.Size = new System.Drawing.Size(226, 20);
@@ -1327,7 +1344,7 @@
             // 
             this.labelForwardDefensive.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelForwardDefensive.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForwardDefensive.Location = new System.Drawing.Point(0, 44);
+            this.labelForwardDefensive.Location = new System.Drawing.Point(0, 49);
             this.labelForwardDefensive.Margin = new System.Windows.Forms.Padding(0);
             this.labelForwardDefensive.Name = "labelForwardDefensive";
             this.labelForwardDefensive.Size = new System.Drawing.Size(226, 20);
@@ -1339,7 +1356,7 @@
             // 
             this.labelForward.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelForward.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelForward.Location = new System.Drawing.Point(0, 24);
+            this.labelForward.Location = new System.Drawing.Point(0, 29);
             this.labelForward.Margin = new System.Windows.Forms.Padding(0);
             this.labelForward.Name = "labelForward";
             this.labelForward.Size = new System.Drawing.Size(226, 20);
@@ -1347,25 +1364,12 @@
             this.labelForward.Text = "Forward";
             this.labelForward.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelBestPosition
-            // 
-            this.labelBestPosition.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBestPosition.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBestPosition.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelBestPosition.Location = new System.Drawing.Point(0, 0);
-            this.labelBestPosition.Margin = new System.Windows.Forms.Padding(0);
-            this.labelBestPosition.Name = "labelBestPosition";
-            this.labelBestPosition.Size = new System.Drawing.Size(226, 20);
-            this.labelBestPosition.TabIndex = 0;
-            this.labelBestPosition.Text = "Best";
-            this.labelBestPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // labelDivide4
             // 
             this.labelDivide4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tableLayoutPanelPositions.SetColumnSpan(this.labelDivide4, 2);
             this.labelDivide4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelDivide4.Location = new System.Drawing.Point(3, 22);
+            this.labelDivide4.Location = new System.Drawing.Point(3, 27);
             this.labelDivide4.Name = "labelDivide4";
             this.labelDivide4.Size = new System.Drawing.Size(277, 2);
             this.labelDivide4.TabIndex = 2;
@@ -1376,20 +1380,20 @@
             this.dataGridViewPlayers.AllowUserToDeleteRows = false;
             this.dataGridViewPlayers.AllowUserToOrderColumns = true;
             this.dataGridViewPlayers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewPlayers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPlayers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPlayers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlayers.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPlayers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPlayers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPlayers.Location = new System.Drawing.Point(0, 0);
@@ -1553,18 +1557,45 @@
             this.buttonPlayerName.TabIndex = 1;
             this.buttonPlayerName.UseVisualStyleBackColor = true;
             // 
-            // labelBestValue
+            // tableLayoutPanel1
             // 
-            this.labelBestValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBestValue.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBestValue.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelBestValue.Location = new System.Drawing.Point(226, 0);
-            this.labelBestValue.Margin = new System.Windows.Forms.Padding(0);
-            this.labelBestValue.Name = "labelBestValue";
-            this.labelBestValue.Size = new System.Drawing.Size(57, 20);
-            this.labelBestValue.TabIndex = 41;
-            this.labelBestValue.Text = "-";
-            this.labelBestValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.labelBestPosition, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxBestLogo, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(226, 25);
+            this.tableLayoutPanel1.TabIndex = 42;
+            // 
+            // labelBestPosition
+            // 
+            this.labelBestPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBestPosition.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBestPosition.ForeColor = System.Drawing.Color.DarkBlue;
+            this.labelBestPosition.Location = new System.Drawing.Point(33, 0);
+            this.labelBestPosition.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.labelBestPosition.Name = "labelBestPosition";
+            this.labelBestPosition.Size = new System.Drawing.Size(193, 25);
+            this.labelBestPosition.TabIndex = 3;
+            this.labelBestPosition.Text = "Best";
+            this.labelBestPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBoxBestLogo
+            // 
+            this.pictureBoxBestLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxBestLogo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBestLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxBestLogo.Name = "pictureBoxBestLogo";
+            this.pictureBoxBestLogo.Size = new System.Drawing.Size(30, 25);
+            this.pictureBoxBestLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxBestLogo.TabIndex = 4;
+            this.pictureBoxBestLogo.TabStop = false;
             // 
             // PlayerList
             // 
@@ -1593,6 +1624,8 @@
             this.tableLayoutPanelCategoriesList.ResumeLayout(false);
             this.tableLayoutPanelCategoriesList.PerformLayout();
             this.tableLayoutPanelDetails.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBestLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1663,7 +1696,6 @@
         private System.Windows.Forms.Label labelDivide3;
         private System.Windows.Forms.CheckBox checkBoxApplyBonus;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPositions;
-        private System.Windows.Forms.Label labelBestPosition;
         private System.Windows.Forms.Label labelInnerMidWing;
         private System.Windows.Forms.Label labelInnerMidDefensive;
         private System.Windows.Forms.Label labelInnerMidOffensive;
@@ -1704,6 +1736,9 @@
         private System.Windows.Forms.Label labelForwardValue;
         private System.Windows.Forms.Label labelCentralDefWingValue;
         private System.Windows.Forms.Label labelBestValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label labelBestPosition;
+        private System.Windows.Forms.PictureBox pictureBoxBestLogo;
 
 
 

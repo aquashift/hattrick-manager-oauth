@@ -396,7 +396,7 @@ namespace HM.DataAccess {
                 List<HMEntities.Settings.Category> categories = new List<HMEntities.Settings.Category>();
 
                 foreach (XmlNode xmlCategoryListNodes in node.ChildNodes) {
-                    if (xmlCategoryListNodes.ChildNodes != null) {
+                    if (xmlCategoryListNodes.NodeType != XmlNodeType.Comment && xmlCategoryListNodes.ChildNodes != null) {
                         HMEntities.Settings.Category category = new HMEntities.Settings.Category();
 
                         category.categoryIdField = Convert.ToUInt16(xmlCategoryListNodes.Attributes[Tags.CategoryID].InnerText);
@@ -430,7 +430,7 @@ namespace HM.DataAccess {
                 List<HMEntities.Settings.Position> positions = new List<HMEntities.Settings.Position>();
 
                 foreach (XmlNode xmlPositionListNodes in node.ChildNodes) {
-                    if (xmlPositionListNodes.ChildNodes != null) {
+                    if (xmlPositionListNodes.NodeType != XmlNodeType.Comment && xmlPositionListNodes.ChildNodes != null) {
                         HMEntities.Settings.Position position = new HMEntities.Settings.Position();
 
                         position.positionID = (FieldPositionCode)Convert.ToUInt16(xmlPositionListNodes.Attributes[Tags.PositionID].InnerText);
@@ -456,7 +456,7 @@ namespace HM.DataAccess {
                 Dictionary<ColumnTables, List<HMEntities.Settings.Column>> tableColumns = new Dictionary<ColumnTables, List<HMEntities.Settings.Column>>();
 
                 foreach (XmlNode xmlColumnListNodes in node.ChildNodes) {
-                    if (xmlColumnListNodes.ChildNodes != null) {
+                    if (xmlColumnListNodes.NodeType != XmlNodeType.Comment && xmlColumnListNodes.ChildNodes != null) {
                         ColumnTables key = (ColumnTables)Convert.ToInt32(xmlColumnListNodes.Attributes[Tags.ColumnTableID].InnerText);
                         List<HMEntities.Settings.Column> columnList = new List<HMEntities.Settings.Column>();
 
@@ -504,7 +504,7 @@ namespace HM.DataAccess {
                 List<HMEntities.Settings.LastFiles> lastFiles = new List<HMEntities.Settings.LastFiles>();
 
                 foreach (XmlNode xmlFileNodes in node.ChildNodes) {
-                    if (xmlFileNodes.ChildNodes != null) {
+                    if (xmlFileNodes.NodeType != XmlNodeType.Comment && xmlFileNodes.ChildNodes != null) {
                         HMEntities.Settings.LastFiles file = new HMEntities.Settings.LastFiles();
 
                         foreach (XmlNode xmlFileNode in xmlFileNodes.ChildNodes) {
