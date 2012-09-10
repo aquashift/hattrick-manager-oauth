@@ -270,10 +270,10 @@ namespace HM.UserInterface.CustomControls {
             labelWingDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
             labelWingMiddleValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingerTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
-            labelWingDefValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBack), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
-            labelWingDefOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
-            labelWingDefDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
-            labelWingDefMiddleValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingBackTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Wingback), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingbackOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefDefensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingbackDefensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
+            labelWingDefMiddleValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.WingbackTowardsMiddle), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
 
             labelCentralDefValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.Defender), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
             labelCentralDefOffensiveValue.Text = HM.Entities.EntityFunctions.GetPlayerPositionRating(user.applicationSettingsField.GetPositionWeights(Resources.FieldPositionCode.DefenderOffensive), HM.Entities.EntityFunctions.GetPlayerSkills(selectedPlayer)).ToString("F2");
@@ -293,6 +293,8 @@ namespace HM.UserInterface.CustomControls {
 
             labelBestPosition.Text = tableLayoutPanelPositions.GetControlFromPosition(0, highestPosition).Text;
             labelBestValue.Text = highestValue.ToString("F2");
+
+            pictureBoxBestLogo.Image = HM.Resources.GenericFunctions.GetPositionImage(labelBestPosition.Text);
         }
 
         private void PopulatePlayerDetails(int playerID) {

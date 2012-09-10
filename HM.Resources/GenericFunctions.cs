@@ -452,6 +452,33 @@ namespace HM.Resources {
         }
 
         /// <summary>
+        /// Gets the positions image for a player
+        /// </summary>
+        /// <param name="position">Players position</param>
+        /// <returns>Position image</returns>
+        public static Image GetPositionImage(string positionName) {
+            Role bestRole = Role.Unavailable;
+
+            positionName = positionName.ToLower();
+
+            if (positionName.Contains("keeper")) {
+                bestRole = Role.Keeper;
+            } else if (positionName.Contains("central")) {
+                bestRole = Role.MiddleCentralDefender;
+            } else if (positionName.Contains("wing defense")) {
+                bestRole = Role.LeftBack;
+            } else if (positionName.Contains("winger")) {
+                bestRole = Role.LeftWinger;
+            } else if (positionName.Contains("inner")) {
+                bestRole = Role.MiddleInnerMidfield;
+            } else if (positionName.Contains("forward")) {
+                bestRole = Role.MiddleForward;
+            }
+
+            return (GetPositionImage(bestRole));
+        }
+
+        /// <summary>
         /// Gets the folder name by file type
         /// </summary>
         /// <param name="fileType">Folder's file type</param>
