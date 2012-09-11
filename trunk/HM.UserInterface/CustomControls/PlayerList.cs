@@ -131,85 +131,37 @@ namespace HM.UserInterface.CustomControls {
                 }
             }
 
+            foreach (HTEntities.Players.Player player in team.playerListField) {
+                HTEntities.Players.Player lastPlayer = new HTEntities.Players.Player();
+
+                foreach (HTEntities.Players.Player p in lastPlayers.teamField.playerListField) {
+                    if (p.playerIdField == player.playerIdField) {
+                        lastPlayer = p;
+                        break;
+                    }
+                }
+
+                int colNum = 0;
+                int rowNum = (dataGridViewPlayers.RowCount);
+                dataGridViewPlayers.RowCount++;
+
+                foreach (HM.Entities.HattrickManager.Settings.Column playerColumn in playerColumns) {
+                    HM.Resources.TableColumns columnID = (HM.Resources.TableColumns)playerColumn.columnIDField;
+
+                    if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID);
+                    } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Name) {
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(player, columnID);
+                    } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(world, player, columnID);
+                    }
+
+                    colNum++;
+                }
+            }
+
+
             /*
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerID;
-            dataGridViewPlayers.Columns[Columns.PlayerID].ValueType = typeof(Int32);
-            dataGridViewPlayers.Columns[Columns.PlayerID].Visible = false;
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerNumber;
-            dataGridViewPlayers.Columns[Columns.PlayerNumber].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerName;
-            dataGridViewPlayers.Columns[Columns.PlayerName].ValueType = typeof(string);
-            dataGridViewPlayers.Columns[Columns.PlayerName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.PlayerFlag;
-            dataGridViewPlayers.Columns[Columns.PlayerFlag].ValueType = typeof(Image);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.LastPosition;
-            dataGridViewPlayers.Columns[Columns.LastPosition].ValueType = typeof(Image);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Health;
-            dataGridViewPlayers.Columns[Columns.Health].ValueType = typeof(Image);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Warnings;
-            dataGridViewPlayers.Columns[Columns.Warnings].ValueType = typeof(Image);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Category;
-            dataGridViewPlayers.Columns[Columns.Category].ValueType = typeof(Image);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Age;
-            dataGridViewPlayers.Columns[Columns.Age].ValueType = typeof(string);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.TSI;
-            dataGridViewPlayers.Columns[Columns.TSI].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Form;
-            dataGridViewPlayers.Columns[Columns.Form].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Stamina;
-            dataGridViewPlayers.Columns[Columns.Stamina].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Goalkeeping;
-            dataGridViewPlayers.Columns[Columns.Goalkeeping].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Defending;
-            dataGridViewPlayers.Columns[Columns.Defending].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Winger;
-            dataGridViewPlayers.Columns[Columns.Winger].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Playmaking;
-            dataGridViewPlayers.Columns[Columns.Playmaking].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Passing;
-            dataGridViewPlayers.Columns[Columns.Passing].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.Scoring;
-            dataGridViewPlayers.Columns[Columns.Scoring].ValueType = typeof(Int32);
-
-            dataGridViewPlayers.Columns.Add(new DataGridViewTextBoxColumn());
-            dataGridViewPlayers.Columns[dataGridViewPlayers.ColumnCount - 1].Name = Columns.SetPieces;
-            dataGridViewPlayers.Columns[Columns.SetPieces].ValueType = typeof(Int32);
 
             foreach (HTEntities.Players.Player player in team.playerListField) {
                 HTEntities.Players.Player lastPlayer = new HTEntities.Players.Player();
