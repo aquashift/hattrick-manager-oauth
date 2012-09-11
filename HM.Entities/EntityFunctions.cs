@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using HM.Resources;
 
 namespace HM.Entities {
@@ -83,6 +84,82 @@ namespace HM.Entities {
             skills[PlayerSkillTypes.MotherClubMonus] = (uint)(player.motherClubField ? 1 : 0);
 
             return (skills);
+        }
+
+        public static Image GetPlayerValueImage(HM.Entities.Hattrick.WorldDetails.WorldDetails world, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+            switch (columnID) {
+                case TableColumns.Player_Category:
+                    return (HM.Resources.GenericFunctions.GetCategoryImage(4));
+                case TableColumns.Player_Health:
+                    return (HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField));
+                case TableColumns.Player_LastPosition:
+                    return (HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField));
+                case TableColumns.Player_Nationality:
+                    uint leagueID = world.GetLeagueIDFromCountryID(player.countryIdField);
+                    return (HM.Resources.GenericFunctions.GetFlagByLeagueId(leagueID));
+                case TableColumns.Player_Warnings:
+                    return (HM.Resources.GenericFunctions.GetCardImage(player.cardsField));
+            }
+
+            return (null);
+        }
+
+        public static string GetPlayerValueName(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+            switch (columnID) {
+                case TableColumns.Player_AgeFull:
+                    return (player.getFullAge());
+                case TableColumns.Player_FirstName:
+                    return (player.firstNameField);
+                case TableColumns.Player_FullName:
+                    return (player.getFullName());
+                case TableColumns.Player_LastName:
+                    return (player.lastNameField);
+            }
+
+            return (string.Empty);
+        }
+
+        public static int GetPlayerValueNumber(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+            switch (columnID) {
+                case TableColumns.Player_AgeDays:
+                    return (Convert.ToInt32(player.ageDaysField));
+                case TableColumns.Player_AgeYears:
+                    return (Convert.ToInt32(player.ageField));
+                case TableColumns.Player_Defending:
+                    return (Convert.ToInt32(player.defenderSkillField));
+                case TableColumns.Player_Form:
+                    return (Convert.ToInt32(player.playerFormField));
+                case TableColumns.Player_Health:
+                    return (Convert.ToInt32(player.injuryLevelField));
+                case TableColumns.Player_ID:
+                    return (Convert.ToInt32(player.playerIdField));
+                case TableColumns.Player_Keeping:
+                    return (Convert.ToInt32(player.keeperSkillField));
+                case TableColumns.Player_LastPosition:
+                    return (Convert.ToInt32(player.lastMatchField.roleField));
+                case TableColumns.Player_Nationality:
+                    return (Convert.ToInt32(player.countryIdField));
+                case TableColumns.Player_Number:
+                    return (Convert.ToInt32(player.playerNumberField));
+                case TableColumns.Player_Passing:
+                    return (Convert.ToInt32(player.passingSkillField));
+                case TableColumns.Player_Playmaking:
+                    return (Convert.ToInt32(player.playmakerSkillField));
+                case TableColumns.Player_Scoring:
+                    return (Convert.ToInt32(player.scorerSkillField));
+                case TableColumns.Player_SetPieces:
+                    return (Convert.ToInt32(player.setPiecesSkillField));
+                case TableColumns.Player_Stamina:
+                    return (Convert.ToInt32(player.staminaSkillField));
+                case TableColumns.Player_TSI:
+                    return (Convert.ToInt32(player.tsiField));
+                case TableColumns.Player_Warnings:
+                    return (Convert.ToInt32(player.cardsField));
+                case TableColumns.Player_Wing:
+                    return (Convert.ToInt32(player.wingerSkillField));
+            }
+
+            return (0);
         }
     }
 }
