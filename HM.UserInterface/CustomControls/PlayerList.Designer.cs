@@ -1447,6 +1447,7 @@
             this.dataGridViewPlayers.Size = new System.Drawing.Size(518, 629);
             this.dataGridViewPlayers.TabIndex = 11;
             this.dataGridViewPlayers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlayers_CellClick);
+            this.dataGridViewPlayers.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewPlayers_ColumnWidthChanged);
             this.dataGridViewPlayers.SelectionChanged += new System.EventHandler(this.dataGridViewPlayers_SelectionChanged);
             // 
             // splitContainerPlayerList

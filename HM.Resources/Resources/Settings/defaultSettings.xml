@@ -215,7 +215,7 @@
         <ColumnID>12</ColumnID>
         <ColumnTitle>Age</ColumnTitle>
         <ColumnWidth>30</ColumnWidth>
-        <ColumnDisplayType>0</ColumnDisplayType>
+        <ColumnDisplayType>1</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
       </Column>

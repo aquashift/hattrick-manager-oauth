@@ -30,9 +30,9 @@
             this.buttonSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSpace1 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonLineup = new System.Windows.Forms.ToolStripButton();
+            this.buttonClub = new System.Windows.Forms.ToolStripButton();
             this.buttonEconomy = new System.Windows.Forms.ToolStripButton();
             this.buttonLeague = new System.Windows.Forms.ToolStripButton();
-            this.buttonClub = new System.Windows.Forms.ToolStripButton();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDownload = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,6 +117,17 @@
             this.buttonLineup.ToolTipText = "Lineup";
             this.buttonLineup.Click += new System.EventHandler(this.buttonLineup_Click);
             // 
+            // buttonClub
+            // 
+            this.buttonClub.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonClub.Image = ((System.Drawing.Image)(resources.GetObject("buttonClub.Image")));
+            this.buttonClub.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonClub.Name = "buttonClub";
+            this.buttonClub.Size = new System.Drawing.Size(28, 28);
+            this.buttonClub.Text = "buttonClub";
+            this.buttonClub.ToolTipText = "Club";
+            this.buttonClub.Click += new System.EventHandler(this.buttonClub_Click);
+            // 
             // buttonEconomy
             // 
             this.buttonEconomy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -138,17 +149,6 @@
             this.buttonLeague.Text = "buttonLeague";
             this.buttonLeague.ToolTipText = "League";
             this.buttonLeague.Click += new System.EventHandler(this.buttonLeague_Click);
-            // 
-            // buttonClub
-            // 
-            this.buttonClub.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.buttonClub.Image = ((System.Drawing.Image)(resources.GetObject("buttonClub.Image")));
-            this.buttonClub.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.buttonClub.Name = "buttonClub";
-            this.buttonClub.Size = new System.Drawing.Size(28, 28);
-            this.buttonClub.Text = "buttonClub";
-            this.buttonClub.ToolTipText = "Club";
-            this.buttonClub.Click += new System.EventHandler(this.buttonClub_Click);
             // 
             // menuStripMain
             // 
@@ -291,6 +291,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();

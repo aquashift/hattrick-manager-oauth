@@ -34,6 +34,7 @@ namespace HM.Entities.Hattrick.Players {
         public bool transferlistedField { get; set; }
         public uint nationalTeamIdField { get; set; }
         public uint countryIdField { get; set; }
+        public uint leagueIdField { get; set; }
         public int capsField { get; set; }
         public int capsU20Field { get; set; }
         public int cardsField { get; set; }
@@ -86,6 +87,7 @@ namespace HM.Entities.Hattrick.Players {
             transferlistedField = false;
             nationalTeamIdField = 0;
             countryIdField = 0;
+            leagueIdField = 0;
             capsField = 0;
             capsU20Field = 0;
             cardsField = 0;

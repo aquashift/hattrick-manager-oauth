@@ -161,6 +161,7 @@ namespace HM.DataAccess.Parsers {
                                     break;
                                 case Tags.CountryID:
                                     player.countryIdField = GenericFunctions.ConvertStringToUInt(xmlNode.InnerText);
+                                    player.leagueIdField = HM.Resources.Constants.EnumNames.CountryToLeagueID[player.countryIdField];
                                     break;
                                 case Tags.Caps:
                                     player.capsField = Convert.ToInt32(xmlNode.InnerText);
