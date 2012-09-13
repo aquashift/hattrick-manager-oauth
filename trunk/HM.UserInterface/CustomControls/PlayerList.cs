@@ -89,7 +89,6 @@ namespace HM.UserInterface.CustomControls {
         }
 
         private void PopulatePlayerList() {
-            HTEntities.WorldDetails.WorldDetails world = entityManager.GetWorldDetails();
             HTEntities.Players.Team team = players.teamField;
             List<HM.Entities.HattrickManager.Settings.Column> playerColumns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
             dataGridViewPlayers.RowCount = 0;
@@ -116,7 +115,7 @@ namespace HM.UserInterface.CustomControls {
                 dataGridViewPlayers.Columns[colID].Name = playerColumn.titleField;
                 dataGridViewPlayers.Columns[colID].Visible = playerColumn.displayColumnField;
                 dataGridViewPlayers.Columns[colID].Width = Convert.ToInt32(playerColumn.widthField);
-                dataGridViewPlayers.Columns[colID].Tag = playerColumn.columnIDField.ToString();
+                dataGridViewPlayers.Columns[colID].Tag = playerColumn.columnIDField;
 
                 switch (playerColumn.alignmentField) {
                     case Resources.ColumnAlignment.Center:
@@ -153,7 +152,7 @@ namespace HM.UserInterface.CustomControls {
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Name) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(player, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(world, player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(player, columnID);
                     }
 
                     colNum++;
@@ -415,5 +414,18 @@ namespace HM.UserInterface.CustomControls {
         }
 
         #endregion
+
+        private void dataGridViewPlayers_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
+            if (e.Column.Tag != null) {
+                List<HM.Entities.HattrickManager.Settings.Column> columns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
+
+                for (int i = 0; i < columns.Count; i++) {
+                    if (columns[i].columnIDField == Convert.ToUInt16(e.Column.Tag)) {
+                        columns[i].widthField = Convert.ToUInt16(e.Column.Width);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

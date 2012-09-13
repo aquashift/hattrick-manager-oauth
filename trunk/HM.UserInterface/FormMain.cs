@@ -128,6 +128,11 @@ namespace HM.UserInterface {
             SetLineupControl();
         }
 
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e) {
+            dataManager.SaveUserSettings();
+        }
+
         #endregion
 
         #region Methods

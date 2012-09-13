@@ -86,7 +86,7 @@ namespace HM.Entities {
             return (skills);
         }
 
-        public static Image GetPlayerValueImage(HM.Entities.Hattrick.WorldDetails.WorldDetails world, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static Image GetPlayerValueImage(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_Category:
                     return (HM.Resources.GenericFunctions.GetCategoryImage(4));
@@ -95,8 +95,7 @@ namespace HM.Entities {
                 case TableColumns.Player_LastPosition:
                     return (HM.Resources.GenericFunctions.GetPositionImage(player.lastMatchField.roleField));
                 case TableColumns.Player_Nationality:
-                    uint leagueID = world.GetLeagueIDFromCountryID(player.countryIdField);
-                    return (HM.Resources.GenericFunctions.GetFlagByLeagueId(leagueID));
+                    return (HM.Resources.GenericFunctions.GetFlagByLeagueId(player.leagueIdField));
                 case TableColumns.Player_Warnings:
                     return (HM.Resources.GenericFunctions.GetCardImage(player.cardsField));
             }
