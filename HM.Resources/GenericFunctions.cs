@@ -733,7 +733,7 @@ namespace HM.Resources {
             foreach (string file in files) {
                 System.IO.FileInfo fi = new System.IO.FileInfo(file);
 
-                if (fi.CreationTime < DateTime.Now.AddDays(-7) && fi.CreationTime > DateTime.Now.AddDays(-14)) {
+                if (fi.CreationTime < DateTime.Now.AddDays(-7)) {
                     filename = fi.Name;
                     break;
                 }

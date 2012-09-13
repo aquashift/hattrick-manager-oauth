@@ -19,6 +19,7 @@ namespace HM.UserInterface.CustomControls {
         private HTEntities.Players.Players lastPlayers;
         private User user;
         private EntityManager entityManager;
+        private bool buildingUI;
 
         #endregion
 
@@ -44,8 +45,10 @@ namespace HM.UserInterface.CustomControls {
             Setup_Resources();
 
             if (players != null) {
+                buildingUI = true;
                 PopulatePlayerList();
                 PopulateCategoryList();
+                buildingUI = false;
             }
         }
 
@@ -130,6 +133,10 @@ namespace HM.UserInterface.CustomControls {
                 }
             }
 
+            for (int i = 0; i < playerColumns.Count; i++) {
+                dataGridViewPlayers.Columns[i].DisplayIndex = playerColumns[i].displayIndex;
+            }
+
             foreach (HTEntities.Players.Player player in team.playerListField) {
                 HTEntities.Players.Player lastPlayer = new HTEntities.Players.Player();
 
@@ -149,6 +156,7 @@ namespace HM.UserInterface.CustomControls {
 
                     if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID);
+                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(lastPlayer, columnID));
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Name) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(player, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
@@ -369,6 +377,14 @@ namespace HM.UserInterface.CustomControls {
             }
         }
 
+        private void CompareLastWeek(DataGridViewCell cell, int thisWeek, int lastWeek) {
+            if (thisWeek > lastWeek) {
+                cell.Style.BackColor = Color.PaleGreen;
+            } else if (thisWeek < lastWeek) {
+                cell.Style.BackColor = Color.LightPink;
+            }
+        }
+
         private ContextMenuStrip BuildCategoryMenu() {
             ContextMenuStrip menu = new ContextMenuStrip();
 
@@ -413,10 +429,8 @@ namespace HM.UserInterface.CustomControls {
             NewPlayerSelected();
         }
 
-        #endregion
-
         private void dataGridViewPlayers_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
-            if (e.Column.Tag != null) {
+            if (e.Column.Tag != null && !buildingUI) {
                 List<HM.Entities.HattrickManager.Settings.Column> columns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
 
                 for (int i = 0; i < columns.Count; i++) {
@@ -427,5 +441,20 @@ namespace HM.UserInterface.CustomControls {
                 }
             }
         }
+
+        private void dataGridViewPlayers_ColumnDisplayIndexChanged(object sender, DataGridViewColumnEventArgs e) {
+            if (e.Column.Tag != null && !buildingUI) {
+                List<HM.Entities.HattrickManager.Settings.Column> columns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
+
+                for (int i = 0; i < columns.Count; i++) {
+                    if (columns[i].columnIDField == Convert.ToUInt16(e.Column.Tag)) {
+                        columns[i].displayIndex = Convert.ToInt32(e.Column.DisplayIndex);
+                        break;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

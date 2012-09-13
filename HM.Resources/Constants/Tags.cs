@@ -59,6 +59,7 @@ namespace HM.Resources.Constants {
         public const string ColumnAlignment = "ColumnAlignment";
         public const string ColumnDisplay = "ColumnDisplay";
         public const string ColumnDisplayType = "ColumnDisplayType";
+        public const string ColumnDisplayIndex = "ColumnDisplayIndex"; 
         public const string ColumnTables = "TableColumns";
         public const string ColumnTableID = "TableID"; 
         public const string ColumnList = "ColumnList";

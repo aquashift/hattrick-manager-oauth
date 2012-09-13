@@ -154,6 +154,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>false</ColumnDisplay>
+        <ColumnDisplayIndex>0</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>4</ColumnID>
@@ -162,6 +163,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>1</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>3</ColumnID>
@@ -170,6 +172,7 @@
         <ColumnDisplayType>1</ColumnDisplayType>
         <ColumnAlignment>0</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>2</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>5</ColumnID>
@@ -178,6 +181,7 @@
         <ColumnDisplayType>3</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>3</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>6</ColumnID>
@@ -186,6 +190,7 @@
         <ColumnDisplayType>3</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>4</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>7</ColumnID>
@@ -194,6 +199,7 @@
         <ColumnDisplayType>3</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>5</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>8</ColumnID>
@@ -202,6 +208,7 @@
         <ColumnDisplayType>3</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>6</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>9</ColumnID>
@@ -210,6 +217,7 @@
         <ColumnDisplayType>3</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>7</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>12</ColumnID>
@@ -218,6 +226,7 @@
         <ColumnDisplayType>1</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>8</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>13</ColumnID>
@@ -226,6 +235,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>9</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>14</ColumnID>
@@ -234,6 +244,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>10</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>15</ColumnID>
@@ -242,6 +253,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>11</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>16</ColumnID>
@@ -250,6 +262,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>12</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>17</ColumnID>
@@ -258,6 +271,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>13</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>18</ColumnID>
@@ -266,6 +280,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>14</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>19</ColumnID>
@@ -274,6 +289,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>15</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>20</ColumnID>
@@ -282,6 +298,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>16</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>21</ColumnID>
@@ -290,6 +307,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>17</ColumnDisplayIndex>
       </Column>
       <Column>
         <ColumnID>22</ColumnID>
@@ -298,6 +316,7 @@
         <ColumnDisplayType>0</ColumnDisplayType>
         <ColumnAlignment>1</ColumnAlignment>
         <ColumnDisplay>true</ColumnDisplay>
+        <ColumnDisplayIndex>18</ColumnDisplayIndex>
       </Column>   
     </ColumnList>
   </TableColumns>

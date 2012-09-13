@@ -14,6 +14,7 @@ namespace HM.Entities.HattrickManager.Settings {
         public HM.Resources.ColumnDisplayType displayTypeField { get; set; }
         public HM.Resources.ColumnAlignment alignmentField { get; set; }
         public bool displayColumnField { get; set; }
+        public int displayIndex { get; set; }
 
         #endregion
 
@@ -30,6 +31,7 @@ namespace HM.Entities.HattrickManager.Settings {
             this.displayTypeField = HM.Resources.ColumnDisplayType.Value;
             this.alignmentField = HM.Resources.ColumnAlignment.Left;
             this.displayColumnField = false;
+            this.displayIndex = 0;
         }
 
         #endregion

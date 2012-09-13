@@ -495,6 +495,9 @@ namespace HM.DataAccess {
                                     case Tags.ColumnDisplay:
                                         column.displayColumnField = Convert.ToBoolean(xmlColumnChildNode.InnerText);
                                         break;
+                                    case Tags.ColumnDisplayIndex:
+                                        column.displayIndex = Convert.ToInt32(xmlColumnChildNode.InnerText);
+                                        break;
                                 }
                             }
 
@@ -689,6 +692,7 @@ namespace HM.DataAccess {
                         XmlElement xmlElementColumnType = xmlDocument.CreateElement(Tags.ColumnDisplayType);
                         XmlElement xmlElementColumnAlignment = xmlDocument.CreateElement(Tags.ColumnAlignment);
                         XmlElement xmlElementColumnDisplay = xmlDocument.CreateElement(Tags.ColumnDisplay);
+                        XmlElement xmlElementColumnDisplayIndex = xmlDocument.CreateElement(Tags.ColumnDisplayIndex);
 
                         xmlElementColumnID.InnerText = currentColumn.columnIDField.ToString();
                         xmlElementColumnTitle.InnerText = currentColumn.titleField;
@@ -696,6 +700,7 @@ namespace HM.DataAccess {
                         xmlElementColumnType.InnerText = ((int)currentColumn.displayTypeField).ToString();
                         xmlElementColumnAlignment.InnerText = ((int)currentColumn.alignmentField).ToString();
                         xmlElementColumnDisplay.InnerText = currentColumn.displayColumnField.ToString();
+                        xmlElementColumnDisplayIndex.InnerText = currentColumn.displayIndex.ToString();
 
                         XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);
 
@@ -705,6 +710,7 @@ namespace HM.DataAccess {
                         xmlColumn.AppendChild(xmlElementColumnType);
                         xmlColumn.AppendChild(xmlElementColumnAlignment);
                         xmlColumn.AppendChild(xmlElementColumnDisplay);
+                        xmlColumn.AppendChild(xmlElementColumnDisplayIndex);
 
                         xmlElementColumnList.AppendChild(xmlColumn);
                     }
