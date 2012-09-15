@@ -187,6 +187,13 @@ namespace HM.Resources.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap icon_world {
+            get {
+                object obj = ResourceManager.GetObject("icon_world", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap injuries {
             get {
                 object obj = ResourceManager.GetObject("injuries", resourceCulture);

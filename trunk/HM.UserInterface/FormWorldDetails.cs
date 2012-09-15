@@ -31,11 +31,8 @@ namespace HM.UserInterface {
             LoadControls();
         }
 
-        public FormWorldDetails(HM.Entities.Hattrick.WorldDetails.WorldDetails worldDetails,
-            uint initialLeagueId)
-            : this(worldDetails) {
-            comboBoxLeague.SelectedIndex =
-                worldDetails.leagueListField.FindIndex(l => l.leagueIdField == initialLeagueId);
+        public FormWorldDetails(HM.Entities.Hattrick.WorldDetails.WorldDetails worldDetails, uint initialLeagueId) : this(worldDetails) {
+            comboBoxLeague.SelectedIndex = worldDetails.leagueListField.FindIndex(l => l.leagueIdField == initialLeagueId);
         }
 
         /// <summary>

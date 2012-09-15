@@ -49,6 +49,7 @@
             this.menuItemTraining = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemTopScorers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemWorldDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonWorld = new System.Windows.Forms.ToolStripButton();
             this.toolStripMain.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +73,8 @@
             this.buttonLineup,
             this.buttonClub,
             this.buttonEconomy,
-            this.buttonLeague});
+            this.buttonLeague,
+            this.buttonWorld});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(1157, 31);
@@ -276,6 +278,17 @@
             this.menuItemWorldDetails.Text = "menuItemWorldDetails";
             this.menuItemWorldDetails.Click += new System.EventHandler(this.buttonWorldDetails_Click);
             // 
+            // buttonWorld
+            // 
+            this.buttonWorld.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonWorld.Image = ((System.Drawing.Image)(resources.GetObject("buttonWorld.Image")));
+            this.buttonWorld.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonWorld.Name = "buttonWorld";
+            this.buttonWorld.Size = new System.Drawing.Size(28, 28);
+            this.buttonWorld.Text = "buttonWorld";
+            this.buttonWorld.ToolTipText = "World Details";
+            this.buttonWorld.Click += new System.EventHandler(this.buttonWorldDetails_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -329,6 +342,7 @@
         private System.Windows.Forms.ToolStripButton buttonEconomy;
         private System.Windows.Forms.ToolStripButton buttonLeague;
         private System.Windows.Forms.ToolStripButton buttonClub;
+        private System.Windows.Forms.ToolStripButton buttonWorld;
     }
 }
 

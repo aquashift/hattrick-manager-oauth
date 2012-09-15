@@ -193,12 +193,14 @@
     <Content Include="Resources\Backgrounds\bg_gray_grad.png" />
     <Content Include="Resources\Icons\categories.png" />
     <Content Include="Resources\Icons\files_downloading.gif" />
+    <Content Include="Resources\Icons\icon_world.png" />
     <Content Include="Resources\Icons\motherclub.png" />
     <Content Include="Resources\ToolbarIcons\icon_league.png" />
     <Content Include="Resources\Icons\injuries.png" />
     <Content Include="Resources\Icons\positions.png" />
     <Content Include="Resources\Settings\defaultSettings.xml" />
     <Content Include="Resources\Icons\cards.png" />
+    <None Include="Resources\ToolbarIcons\icon_world.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

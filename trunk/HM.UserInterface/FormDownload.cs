@@ -24,6 +24,8 @@ namespace HM.UserInterface {
 
         HMEntities.UserProfiles.User currentUser;
         private DownloadManager downloadManager;
+        private EntityManager entityManager;
+        private DataManager dataManager;
 
         #endregion
 
@@ -33,6 +35,8 @@ namespace HM.UserInterface {
             InitializeComponent();
             this.currentUser = currentUser;
             this.downloadManager = new DownloadManager(currentUser);
+            this.entityManager = new EntityManager(currentUser);
+            this.dataManager = new DataManager(currentUser);
             downloadManager.ChppDownloadProgressChanged += new ChppDownloadProgressChangedEventHandler(OnChppDownloadProgressChanged);
         }
 
@@ -45,7 +49,7 @@ namespace HM.UserInterface {
             this.buttonClose.Enabled = false;
             this.buttonDownload.Enabled = false;
             this.checkBoxDownloadExistingFiles.Enabled = false;
-            this.FormClosing += FormDownload_FormClosing;
+            this.FormClosing += PreventFormClosing;
 
             Thread downloadThread = new Thread(StartDownload);
 
@@ -56,13 +60,31 @@ namespace HM.UserInterface {
             this.Close();
         }
 
-        private void FormDownload_FormClosing(object sender, FormClosingEventArgs e) {
+        private void PreventFormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = true;
+        }
+
+        private void FormDownload_FormClosing(object sender, FormClosingEventArgs e) {
+            UpdateLastPlayerFile();
         }
 
         #endregion
 
         #region Methods
+
+        private void UpdateLastPlayerFile() {
+            string path = System.IO.Path.Combine(currentUser.dataFolderField, currentUser.teamIdField.ToString());
+            string currentFilePath = System.IO.Path.Combine(path, FolderNames.Players);
+            HM.Entities.Hattrick.WorldDetails.WorldDetails world = this.entityManager.GetWorldDetails();
+            uint userLeague = entityManager.GetTeamDetails().teamField.leagueField.leagueIdField;
+
+            DateTime nextLocalTraingDate = HM.Resources.GenericFunctions.ConvertHTDateToLocalDate(((HM.Entities.Hattrick.WorldDetails.League)world.leagueListField.Find(l => l.leagueIdField == userLeague)).trainingDateField);
+
+            //Update LatestLastWeekPlayerFileField
+            currentUser.applicationSettingsField.UpdateLastFile(HM.Resources.FileType.LastPlayers, HM.Resources.GenericFunctions.GetLastWeekPlayerFile(currentFilePath, nextLocalTraingDate));
+
+            dataManager.SaveUserSettings();
+        }
 
         private void StartDownload() {
             downloadManager.Download(checkBoxDownloadExistingFiles.Checked);
@@ -74,13 +96,13 @@ namespace HM.UserInterface {
             dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[0].Value = downloadName;
 
             if (complete) {
-                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = 100;
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Complete);
             } else {
-                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = 0;
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Downloading);
             }
 
             if (dataGridViewDownload.RowCount > 1) {
-                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 2].Cells[1].Value = 100;
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 2].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Complete);
             }
 
             dataGridViewDownload.FirstDisplayedScrollingRowIndex = dataGridViewDownload.RowCount - 1;
@@ -103,7 +125,7 @@ namespace HM.UserInterface {
                     this.buttonClose.Enabled = true;
                     this.buttonDownload.Enabled = true;
                     this.checkBoxDownloadExistingFiles.Enabled = true;
-                    this.FormClosing -= FormDownload_FormClosing;
+                    this.FormClosing -= PreventFormClosing;
                 }
             } catch (Exception ex) {
                 throw ex;
