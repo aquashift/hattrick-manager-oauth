@@ -34,6 +34,7 @@ namespace HM.ChppInterface {
         private int totalFilesToDownload;
         private string path;
         private OAuthInterface oAuth;
+        private bool downloadExistingFiles;
 
         #endregion
 
@@ -52,14 +53,15 @@ namespace HM.ChppInterface {
             this.filesDownloaded = 0;
             this.totalFilesToDownload = 0;
             this.path = System.IO.Path.Combine(currentUser.dataFolderField, currentUser.teamIdField.ToString());
+            this.downloadExistingFiles = false;
         }
 
         /// <summary>
         /// Performs file download process
         /// </summary>
-        public void Download(bool downloadFullMatchesArchive) {
+        public void Download(bool downloadExisting) {
             try {
-                DownloadAll(downloadFullMatchesArchive);
+                DownloadAll(downloadExisting);
             } catch (Exception ex) {
                 throw ex;
             }
@@ -87,27 +89,21 @@ namespace HM.ChppInterface {
 
         #region Private Methods
 
-        private void DownloadAll(bool downloadFullMatchesArchive) {
+        private void DownloadAll(bool downloadExisting) {
+            this.downloadExistingFiles = downloadExisting;
             totalFilesToDownload += 12;
 
-            DownloadArenaDetails();           
+            DownloadArenaDetails();
             DownloadAchievements();
             DownloadClub();
             DownloadEconomy();
             DownloadFans();
-            DownloadLeagueDetails();            
+            DownloadLeagueDetails();
             DownloadLeagueFixtures();
             DownloadMatches();
-            
-            if (downloadFullMatchesArchive) {
-                DownloadMatchesArchiveAll();
-            } else {
-                DownloadMatchesArchiveCurrent();
-            }
-
             DownloadPlayersData();
             DownloadTeamDetails();
-            DownloadTraining();            
+            DownloadTraining();
             DownloadWorldDetails();
 
             dataManager.SaveUserSettings(currentUser);
@@ -337,12 +333,14 @@ namespace HM.ChppInterface {
         /// <param name="matchId">Match id</param>
         private void DownloadMatchDetails(string matchId) {
             try {
-                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchDetails, matchId));
-
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.MatchDetails);
                 string fileName = String.Format(FileNames.MatchDetails, matchId);
+                bool fileExists = File.Exists(Path.Combine(currentFilePath, fileName));
 
-                dataManager.WriteFile(xmlData, currentFilePath, fileName);
+                if (this.downloadExistingFiles || !fileExists) {
+                    String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchDetails, matchId));
+                    dataManager.WriteFile(xmlData, currentFilePath, fileName);
+                }
             } catch (Exception ex) {
                 throw ex;
             }
@@ -358,6 +356,9 @@ namespace HM.ChppInterface {
                 dataManager.SaveMatches(currentUser, xmlData);
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_matches));
+
+                //DownloadMatchesArchiveAll();
+                DownloadMatchesArchiveCurrent();
             } catch (Exception ex) {
                 throw ex;
             }
@@ -374,12 +375,14 @@ namespace HM.ChppInterface {
         /// <param name="teamId">Team id</param>
         private void DownloadMatchLineup(string matchId, string teamId) {
             try {
-                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchLineup, teamId, matchId));
-
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.MatchLineup);
                 string fileName = String.Format(FileNames.MatchLineup, matchId, teamId);
+                bool fileExists = File.Exists(Path.Combine(currentFilePath, fileName));
 
-                dataManager.WriteFile(xmlData, currentFilePath, fileName);
+                if (this.downloadExistingFiles || !fileExists) {
+                    String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.MatchLineup, teamId, matchId));
+                    dataManager.WriteFile(xmlData, currentFilePath, fileName);
+                }
             } catch (Exception ex) {
                 throw ex;
             }
@@ -419,14 +422,14 @@ namespace HM.ChppInterface {
         /// <param name="playerId">Player id</param>
         private void DownloadPlayerDetails(string playerId) {
             try {
-                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.PlayerDetails, playerId));
-
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.PlayerDetails);
                 string fileName = String.Format(FileNames.PlayerDetails, playerId);
+                bool fileExists = File.Exists(Path.Combine(currentFilePath, fileName));
 
-                dataManager.WriteFile(xmlData, currentFilePath, fileName);
-
-                //OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_playerdetails));
+                if (this.downloadExistingFiles || !fileExists) {
+                    String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.PlayerDetails, playerId));
+                    dataManager.WriteFile(xmlData, currentFilePath, fileName);
+                }
             } catch (Exception ex) {
                 throw ex;
             }
@@ -477,14 +480,14 @@ namespace HM.ChppInterface {
         /// <param name="playerId">Player id</param>
         private void DownloadTransfersPlayers(string playerId) {
             try {
-                String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.TransfersPlayer, playerId));
-
                 string currentFilePath = System.IO.Path.Combine(path, FolderNames.TransfersPlayer);
                 string fileName = String.Format(FileNames.TransfersPlayer, playerId);
+                bool fileExists = File.Exists(Path.Combine(currentFilePath, fileName));
 
-                dataManager.WriteFile(xmlData, currentFilePath, fileName);
-
-                //OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_transfersplayer));
+                if (this.downloadExistingFiles || !fileExists) {
+                    String xmlData = oAuth.AccessProtectedResource(currentUser, CreateParameterURL(QueryString.TransfersPlayer, playerId));
+                    dataManager.WriteFile(xmlData, currentFilePath, fileName);
+                }
             } catch (Exception ex) {
                 throw ex;
             }
@@ -513,9 +516,14 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadWorldDetails() {
             try {
-                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.WorldDetails);
+                string commonFolder = Path.Combine(Directory.GetCurrentDirectory(), FolderNames.CommonDataFolder);
 
-                dataManager.WriteFile(xmlData, FileNames.WorldDetails);
+                bool fileExists = File.Exists(Path.Combine(commonFolder, FileNames.WorldDetails));
+
+                if (this.downloadExistingFiles || !fileExists) {
+                    String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.WorldDetails);
+                    dataManager.WriteFile(xmlData, FileNames.WorldDetails);
+                }
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_worlddetails));
             } catch (Exception ex) {

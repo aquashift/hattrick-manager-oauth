@@ -211,7 +211,7 @@ namespace HM.Resources.Constants {
         public const string Match = "Match";
         public const string MatchDate = "MatchDate";
         public const string Matches = "Matches";
-        public const string MatchId = "MatchId";
+        public const string MatchId = "MatchID";
         public const string MatchList = "MatchList";
         public const string MatchRound = "MatchRound";
         public const string MatchType = "MatchType";

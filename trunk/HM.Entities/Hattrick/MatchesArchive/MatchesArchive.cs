@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HM.Entities.Hattrick.MatchesArchive
-{
-    public class MatchesArchive : HattrickBase
-    {
+namespace HM.Entities.Hattrick.MatchesArchive {
+    public class MatchesArchive : HattrickBase {
         #region Properties
 
         public bool isYouthField { get; set; }
@@ -19,8 +17,7 @@ namespace HM.Entities.Hattrick.MatchesArchive
         /// <summary>
         /// Constructor
         /// </summary>
-        public MatchesArchive()
-        {
+        public MatchesArchive() {
             isYouthField = false;
             teamField = new Team();
         }

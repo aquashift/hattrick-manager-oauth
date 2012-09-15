@@ -858,8 +858,8 @@
   <data name="ui_download_buttonDownload" xml:space="preserve">
     <value>Download</value>
   </data>
-  <data name="ui_download_checkBoxDownloadFullMatchesArchive" xml:space="preserve">
-    <value>Download full matches archive.</value>
+  <data name="ui_download_checkBoxDownloadExistingFiles" xml:space="preserve">
+    <value>Download full files?</value>
   </data>
   <data name="ui_download_FormText" xml:space="preserve">
     <value>Download</value>

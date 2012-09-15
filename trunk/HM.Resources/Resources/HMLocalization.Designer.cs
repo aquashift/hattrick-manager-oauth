@@ -2284,11 +2284,11 @@ namespace HM.Resources.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download full matches archive..
+        ///   Looks up a localized string similar to Download full files?.
         /// </summary>
-        internal static string ui_download_checkBoxDownloadFullMatchesArchive {
+        internal static string ui_download_checkBoxDownloadExistingFiles {
             get {
-                return ResourceManager.GetString("ui_download_checkBoxDownloadFullMatchesArchive", resourceCulture);
+                return ResourceManager.GetString("ui_download_checkBoxDownloadExistingFiles", resourceCulture);
             }
         }
         

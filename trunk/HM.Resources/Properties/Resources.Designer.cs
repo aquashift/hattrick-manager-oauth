@@ -84,25 +84,29 @@ namespace HM.Resources.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;HattrickManagerSettings&gt;
         ///  &lt;SavedDate /&gt;
-        ///  &lt;CategoryList&gt;
-        ///    &lt;Category CategoryID=&quot;0&quot;&gt;
-        ///      &lt;CategoryName&gt;Squad A&lt;/CategoryName&gt;
+        ///  &lt;CategoryList Version=&quot;11092012&quot;&gt;
+        ///    &lt;Category CategoryID=&quot;1&quot;&gt;
+        ///      &lt;CategoryName&gt;All&lt;/CategoryName&gt;
         ///      &lt;CategoryColour&gt;1&lt;/CategoryColour&gt;
         ///      &lt;CategoryChecked&gt;false&lt;/CategoryChecked&gt;
+        ///      &lt;CategoryProtected&gt;true&lt;/CategoryProtected&gt;
         ///    &lt;/Category&gt;
-        ///    &lt;Category CategoryID=&quot;1&quot;&gt;
-        ///      &lt;CategoryName&gt;Squad B&lt;/CategoryName&gt;
+        ///    &lt;Category CategoryID=&quot;2&quot;&gt;
+        ///      &lt;CategoryName&gt;Squad A&lt;/CategoryName&gt;
         ///      &lt;CategoryColour&gt;2&lt;/CategoryColour&gt;
         ///      &lt;CategoryChecked&gt;false&lt;/CategoryChecked&gt;
-        ///    &lt;/Category&gt;
-        ///  &lt;/CategoryList&gt;
-        ///  &lt;PositionList&gt;
-        ///    &lt;PositionWeightList ID=&quot;1&quot;&gt;
-        ///      &lt;PositionW [rest of string was truncated]&quot;;.
+        ///      &lt;CategoryProtected&gt;false&lt;/Categ [rest of string was truncated]&quot;;.
         /// </summary>
         public static string defaultSettings {
             get {
                 return ResourceManager.GetString("defaultSettings", resourceCulture);
+            }
+        }
+        
+        public static System.Drawing.Bitmap files_downloading {
+            get {
+                object obj = ResourceManager.GetObject("files_downloading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
