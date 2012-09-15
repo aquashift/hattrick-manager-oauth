@@ -682,6 +682,9 @@ namespace HM.Resources {
                     case "buttonClub":
                         toolbarImage = Properties.Resources.icon_club;
                         break;
+                    case "buttonWorld":
+                        toolbarImage = Properties.Resources.icon_world;
+                        break;
                 }
 
                 return toolbarImage;
@@ -724,7 +727,7 @@ namespace HM.Resources {
             return (System.Text.RegularExpressions.Regex.Replace(text, "(\\B[A-Z])", " $1"));
         }
 
-        public static string GetLastWeekPlayerFile(string path) {
+        public static string GetLastWeekPlayerFile(string path, DateTime nextTraingTime) {
             string filename = "";
             string[] files = System.IO.Directory.GetFiles(path);
 
@@ -733,13 +736,23 @@ namespace HM.Resources {
             foreach (string file in files) {
                 System.IO.FileInfo fi = new System.IO.FileInfo(file);
 
-                if (fi.CreationTime < DateTime.Now.AddDays(-7)) {
+                DateTime creation = fi.CreationTime;
+
+                if (fi.CreationTime < nextTraingTime.AddDays(-7)) {
                     filename = fi.Name;
                     break;
                 }
             }
 
             return (filename);
+        }
+
+        public static DateTime ConvertHTDateToLocalDate(DateTime HTDate) {
+            var zones = TimeZoneInfo.GetSystemTimeZones();
+
+            DateTime GMT = TimeZoneInfo.ConvertTime(HTDate, TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"), TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time"));
+
+            return (GMT.ToLocalTime());
         }
 
         /// <summary>

@@ -46,6 +46,7 @@ namespace HM.UserInterface.CustomControls {
 
             if (players != null) {
                 buildingUI = true;
+                SetupPlayerListColumns();
                 PopulatePlayerList();
                 PopulateCategoryList();
                 buildingUI = false;
@@ -91,8 +92,7 @@ namespace HM.UserInterface.CustomControls {
             buttonCategoryName.ForeColor = Color.White;
         }
 
-        private void PopulatePlayerList() {
-            HTEntities.Players.Team team = players.teamField;
+        private void SetupPlayerListColumns() {
             List<HM.Entities.HattrickManager.Settings.Column> playerColumns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
             dataGridViewPlayers.RowCount = 0;
             dataGridViewPlayers.ColumnCount = 0;
@@ -103,7 +103,7 @@ namespace HM.UserInterface.CustomControls {
 
             foreach (HM.Entities.HattrickManager.Settings.Column playerColumn in playerColumns) {
                 int colID = dataGridViewPlayers.ColumnCount;
- 
+
                 if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
                     dataGridViewPlayers.Columns.Add(new DataGridViewImageColumn());
                     dataGridViewPlayers.Columns[colID].ValueType = typeof(Image);
@@ -136,31 +136,33 @@ namespace HM.UserInterface.CustomControls {
             for (int i = 0; i < playerColumns.Count; i++) {
                 dataGridViewPlayers.Columns[i].DisplayIndex = playerColumns[i].displayIndex;
             }
+        }
+
+        private void PopulatePlayerList() {
+            HTEntities.Players.Team team = players.teamField;
+            List<HM.Entities.HattrickManager.Settings.Column> playerColumns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
 
             foreach (HTEntities.Players.Player player in team.playerListField) {
-                HTEntities.Players.Player lastPlayer = new HTEntities.Players.Player();
-
-                foreach (HTEntities.Players.Player p in lastPlayers.teamField.playerListField) {
-                    if (p.playerIdField == player.playerIdField) {
-                        lastPlayer = p;
-                        break;
-                    }
-                }
-
+                HTEntities.Players.Player playerLastWeek = lastPlayers.teamField.playerListField.Find(lp => lp.playerIdField == player.playerIdField);
                 int colNum = 0;
                 int rowNum = (dataGridViewPlayers.RowCount);
+
                 dataGridViewPlayers.RowCount++;
 
                 foreach (HM.Entities.HattrickManager.Settings.Column playerColumn in playerColumns) {
                     HM.Resources.TableColumns columnID = (HM.Resources.TableColumns)playerColumn.columnIDField;
+                    HM.Resources.Constants.TableColumn columnDefault = HM.Resources.Constants.Columns.PlayerTableColumns.Find(tc => (uint)tc.columnIDfield == playerColumn.columnIDField);
 
                     if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID);
-                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(lastPlayer, columnID));
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Name) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(player, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(player, columnID);
+                    }
+
+                    if (columnDefault.canComparefield) {
+                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(playerLastWeek, columnID));
                     }
 
                     colNum++;

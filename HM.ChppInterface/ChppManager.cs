@@ -105,8 +105,6 @@ namespace HM.ChppInterface {
             DownloadTeamDetails();
             DownloadTraining();
             DownloadWorldDetails();
-
-            dataManager.SaveUserSettings(currentUser);
         }
 
         private void DownloadPlayersData() {
@@ -404,9 +402,6 @@ namespace HM.ChppInterface {
                 //Update LatestPlayerFileField
                 currentUser.applicationSettingsField.UpdateLastFile(FileType.Players, fileName);
 
-                //Update LatestLastWeekPlayerFileField
-                currentUser.applicationSettingsField.UpdateLastFile(FileType.LastPlayers, HM.Resources.GenericFunctions.GetLastWeekPlayerFile(currentFilePath));
-
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_players));
 
                 //Returns the PlayerList
@@ -516,14 +511,8 @@ namespace HM.ChppInterface {
         /// </summary>
         private void DownloadWorldDetails() {
             try {
-                string commonFolder = Path.Combine(Directory.GetCurrentDirectory(), FolderNames.CommonDataFolder);
-
-                bool fileExists = File.Exists(Path.Combine(commonFolder, FileNames.WorldDetails));
-
-                if (this.downloadExistingFiles || !fileExists) {
-                    String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.WorldDetails);
-                    dataManager.WriteFile(xmlData, FileNames.WorldDetails);
-                }
+                String xmlData = oAuth.AccessProtectedResource(currentUser, QueryString.WorldDetails);
+                dataManager.WriteFile(xmlData, FileNames.WorldDetails);
 
                 OnChppDownloadProgressChanged(BuildReportArguments(Localization.hm_download_worlddetails));
             } catch (Exception ex) {

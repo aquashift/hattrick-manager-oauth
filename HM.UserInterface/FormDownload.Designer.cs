@@ -32,11 +32,11 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBoxDownload = new System.Windows.Forms.GroupBox();
             this.dataGridViewDownload = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProgress = new System.Windows.Forms.DataGridViewImageColumn();
             this.checkBoxDownloadExistingFiles = new System.Windows.Forms.CheckBox();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.buttonDownload = new System.Windows.Forms.Button();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnProgress = new HM.Resources.DataGridViewProgressColumn();
             this.groupBoxDownload.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDownload)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,24 @@
             this.dataGridViewDownload.Size = new System.Drawing.Size(363, 215);
             this.dataGridViewDownload.TabIndex = 22;
             // 
+            // ColumnName
+            // 
+            this.ColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnName.HeaderText = "Download";
+            this.ColumnName.MinimumWidth = 20;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnProgress
+            // 
+            this.ColumnProgress.DataPropertyName = "Progress";
+            this.ColumnProgress.HeaderText = "Progress";
+            this.ColumnProgress.MinimumWidth = 60;
+            this.ColumnProgress.Name = "ColumnProgress";
+            this.ColumnProgress.ReadOnly = true;
+            this.ColumnProgress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnProgress.Width = 60;
+            // 
             // checkBoxDownloadExistingFiles
             // 
             this.checkBoxDownloadExistingFiles.Location = new System.Drawing.Point(7, 275);
@@ -108,24 +126,6 @@
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
-            // ColumnName
-            // 
-            this.ColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnName.HeaderText = "Download";
-            this.ColumnName.MinimumWidth = 20;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnProgress
-            // 
-            this.ColumnProgress.DataPropertyName = "Progress";
-            this.ColumnProgress.HeaderText = "Progress";
-            this.ColumnProgress.MinimumWidth = 60;
-            this.ColumnProgress.Name = "ColumnProgress";
-            this.ColumnProgress.ReadOnly = true;
-            this.ColumnProgress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnProgress.Width = 60;
-            // 
             // FormDownload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -142,6 +142,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormDownload";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDownload_FormClosing);
             this.groupBoxDownload.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDownload)).EndInit();
             this.ResumeLayout(false);
@@ -157,6 +158,6 @@
         private System.Windows.Forms.CheckBox checkBoxDownloadExistingFiles;
         private System.Windows.Forms.DataGridView dataGridViewDownload;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private Resources.DataGridViewProgressColumn ColumnProgress;
+        private System.Windows.Forms.DataGridViewImageColumn ColumnProgress;
     }
 }
