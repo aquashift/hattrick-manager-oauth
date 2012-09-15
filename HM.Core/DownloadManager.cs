@@ -50,10 +50,10 @@ namespace HM.Core {
         /// <summary>
         /// Performs file download process
         /// </summary>
-        public void Download(bool downloadFullMatchesArchive) {
+        public void Download(bool downloadExistingFiles) {
             try {
                 if (IsConnected()) {
-                    this.chppManager.Download(downloadFullMatchesArchive);
+                    this.chppManager.Download(downloadExistingFiles);
                 }
             } catch (Exception ex) {
                 throw ex;

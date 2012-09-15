@@ -130,7 +130,9 @@ namespace HM.UserInterface {
 
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e) {
-            dataManager.SaveUserSettings();
+            if (currentUser != null) {
+                dataManager.SaveUserSettings();
+            }
         }
 
         #endregion

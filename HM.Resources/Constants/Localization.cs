@@ -224,7 +224,7 @@ namespace HM.Resources.Constants {
 
         public const string ui_download_buttonClose = "ui_download_buttonClose";
         public const string ui_download_buttonDownload = "ui_download_buttonDownload";
-        public const string ui_download_checkBoxDownloadFullMatchesArchive = "ui_download_checkBoxDownloadFullMatchesArchive";
+        public const string ui_download_checkBoxDownloadExistingFiles = "ui_download_checkBoxDownloadExistingFiles";
         public const string ui_download_FormText = "ui_download_FormText";
         public const string ui_download_groupBoxDownload = "ui_download_groupBoxDownload";
 

@@ -78,7 +78,8 @@ namespace HM.Resources {
         Value = 0,
         Name = 1,
         NameValue = 2,
-        Graphical = 3
+        Graphical = 3,
+        All = 4
     };
 
     public enum AchievementCategory : int {

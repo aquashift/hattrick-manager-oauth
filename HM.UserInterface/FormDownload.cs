@@ -44,7 +44,7 @@ namespace HM.UserInterface {
             this.UseWaitCursor = true;
             this.buttonClose.Enabled = false;
             this.buttonDownload.Enabled = false;
-            this.checkBoxDownloadFullMatchesArchive.Enabled = false;
+            this.checkBoxDownloadExistingFiles.Enabled = false;
             this.FormClosing += FormDownload_FormClosing;
 
             Thread downloadThread = new Thread(StartDownload);
@@ -65,7 +65,7 @@ namespace HM.UserInterface {
         #region Methods
 
         private void StartDownload() {
-            downloadManager.Download(checkBoxDownloadFullMatchesArchive.Checked);
+            downloadManager.Download(checkBoxDownloadExistingFiles.Checked);
         }
 
         private void AddDownloadItem(string downloadName, bool complete) {
@@ -74,13 +74,13 @@ namespace HM.UserInterface {
             dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[0].Value = downloadName;
 
             if (complete) {
-                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Complete);
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = 100;
             } else {
-                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Downloading);
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 1].Cells[1].Value = 0;
             }
 
             if (dataGridViewDownload.RowCount > 1) {
-                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 2].Cells[1].Value = HM.Resources.GenericFunctions.GetDownloadStatusImage(Resources.DownloadStatus.Complete);
+                dataGridViewDownload.Rows[dataGridViewDownload.RowCount - 2].Cells[1].Value = 100;
             }
 
             dataGridViewDownload.FirstDisplayedScrollingRowIndex = dataGridViewDownload.RowCount - 1;
@@ -102,7 +102,7 @@ namespace HM.UserInterface {
                     this.UseWaitCursor = false;
                     this.buttonClose.Enabled = true;
                     this.buttonDownload.Enabled = true;
-                    this.checkBoxDownloadFullMatchesArchive.Enabled = true;
+                    this.checkBoxDownloadExistingFiles.Enabled = true;
                     this.FormClosing -= FormDownload_FormClosing;
                 }
             } catch (Exception ex) {
@@ -117,7 +117,7 @@ namespace HM.UserInterface {
             this.Text = resourceManager.GetString(Localization.ui_download_FormText);
             this.buttonDownload.Text = resourceManager.GetString(Localization.ui_download_buttonDownload);
             this.buttonClose.Text = resourceManager.GetString(Localization.ui_download_buttonClose);
-            this.checkBoxDownloadFullMatchesArchive.Text = resourceManager.GetString(Localization.ui_download_checkBoxDownloadFullMatchesArchive);
+            this.checkBoxDownloadExistingFiles.Text = resourceManager.GetString(Localization.ui_download_checkBoxDownloadExistingFiles);
             this.groupBoxDownload.Text = resourceManager.GetString(Localization.ui_download_groupBoxDownload);
         }
 
