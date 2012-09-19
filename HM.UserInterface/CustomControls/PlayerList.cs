@@ -56,8 +56,11 @@ namespace HM.UserInterface.CustomControls {
         private void PopulateCategoryList() {
             int i = 0;
 
+            tableLayoutPanelCategoriesList.Controls.Clear();
             tableLayoutPanelCategoriesList.RowCount = user.applicationSettingsField.playerCategoryListField.Count + 1;
             tableLayoutPanelCategoriesList.RowStyles.Clear();
+
+            user.applicationSettingsField.playerCategoryListField.Sort(delegate(HM.Entities.HattrickManager.Settings.Category c1, HM.Entities.HattrickManager.Settings.Category c2) { return c1.categoryIdField.CompareTo(c2.categoryIdField); });
 
             foreach (HM.Entities.HattrickManager.Settings.Category category in user.applicationSettingsField.playerCategoryListField) {
                 CheckBox box = new CheckBox();
@@ -71,9 +74,20 @@ namespace HM.UserInterface.CustomControls {
                 box.Name = category.categoryIdField.ToString();
                 box.Dock = DockStyle.Fill;
                 box.Checked = category.categoryCheckedField;
-                box.MouseDown += new MouseEventHandler(CategoryCheckItem_MouseDown);
-                box.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+
+                if (i == 0) {
+                    box.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+                } else {
+                    box.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+                }
+
                 box.Padding = new System.Windows.Forms.Padding(0);
+                box.Tag = category.categoryIdField;
+                box.CheckedChanged += new EventHandler(SaveCategoryChecked);
+
+                if (!category.categoryProtectedField) {
+                    box.MouseDown += new MouseEventHandler(CategoryCheckItem_MouseDown);
+                }
 
                 tableLayoutPanelCategoriesList.Controls.Add(box, 0, i++);
                 tableLayoutPanelCategoriesList.RowStyles.Add(new RowStyle(SizeType.Absolute, 22));
@@ -278,15 +292,146 @@ namespace HM.UserInterface.CustomControls {
             }
         }
 
-        private ContextMenuStrip BuildCategoryMenu() {
+        private ContextMenuStrip BuildCategoryMenu(CheckBox RClickedBox) {
+            HM.Entities.HattrickManager.Settings.Category category = user.applicationSettingsField.playerCategoryListField.Find(pc => pc.categoryIdField == Convert.ToUInt16(RClickedBox.Tag));
             ContextMenuStrip menu = new ContextMenuStrip();
+            menu.ShowImageMargin = false;
+            menu.DropShadowEnabled = true;
+            menu.Font = new Font("Calibri", 9, FontStyle.Regular);
+            menu.Tag = RClickedBox.Tag;
+
+            ToolStripMenuItem colours = new ToolStripMenuItem("Colour");
+
+            colours.DropDownItems.AddRange(HM.Resources.GenericFunctions.GetCategoryImageList(category.categoryColourField));
+
+            foreach (ToolStripMenuItem item in colours.DropDownItems) {
+                item.Click += new EventHandler(ChangeCategoryColour);
+            }
+
+            menu.Items.AddRange(new ToolStripItem[] {
+                new ToolStripMenuItem("New Category", null, AddNewCategory_Click),
+                new ToolStripMenuItem("Delete Category", null, DeleteCategory_Click),
+                new ToolStripMenuItem("Rename Category", null, RenameCategory),
+                new ToolStripSeparator(),
+                colours,
+                new ToolStripSeparator(),
+                new ToolStripMenuItem("Clear Category", null, ClearCategory_Click)
+            });
 
             return (menu);
+        }
+
+        private void AddNewCategory() {
+            string promptValue = HM.Resources.CustomClasses.TextPrompt.ShowDialog("Category Name", string.Empty, "New Category");
+
+            if (promptValue != string.Empty) {
+                HM.Entities.HattrickManager.Settings.Category newCategory = new Entities.HattrickManager.Settings.Category();
+
+                newCategory.categoryNameField = promptValue;
+                newCategory.categoryProtectedField = false;
+                newCategory.categoryColourField = 2;
+                newCategory.categoryIdField = user.applicationSettingsField.GetNextCategoryID();
+
+                user.applicationSettingsField.playerCategoryListField.Add(newCategory);
+
+                PopulateCategoryList();
+            }
+
+        }
+
+        private void DeleteCategory(uint categoryID) {
+            if (MessageBox.Show("Really delete?", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                HM.Entities.HattrickManager.Settings.Category category = user.applicationSettingsField.playerCategoryListField.Find(pc => pc.categoryIdField == categoryID);
+
+                user.applicationSettingsField.playerCategoryListField.Remove(category);
+
+                PopulateCategoryList();
+            }
+
+        }
+
+        private void ClearCategory(uint categoryID) {
+
+        }
+
+        private void RenameCategory(uint categoryID) {
+            HM.Entities.HattrickManager.Settings.Category category = user.applicationSettingsField.playerCategoryListField.Find(pc => pc.categoryIdField == categoryID);
+
+            string promptValue = HM.Resources.CustomClasses.TextPrompt.ShowDialog("Category Name", category.categoryNameField, "Rename Category");
+
+            if (promptValue != string.Empty) {
+                category.categoryNameField = promptValue;
+                PopulateCategoryList();
+            }
+        }
+
+        private void ChangeCategoryColour(uint categoryID, uint colourID) {
+            HM.Entities.HattrickManager.Settings.Category category = user.applicationSettingsField.playerCategoryListField.Find(pc => pc.categoryIdField == categoryID);
+
+            category.categoryColourField = colourID;
+            PopulateCategoryList();
+        }
+
+        private void SaveCategoryCheckChange(uint categoryID, bool itemChecked, TableLayoutPanel panel) {
+            HM.Entities.HattrickManager.Settings.Category category = user.applicationSettingsField.playerCategoryListField.Find(pc => pc.categoryIdField == categoryID);
+            category.categoryCheckedField = itemChecked;
+
+            if (category.categoryNameField == "All") {
+                for (int i = 1; i < panel.Controls.Count; i++) {
+                    CheckBox box = (CheckBox)panel.Controls[i];
+
+                    if (itemChecked) {
+                        box.Checked = true;
+                    } else {
+                        box.Checked = false;
+                    }
+                }
+            } else {
+                if (!itemChecked) {
+                    CheckBox all = (CheckBox)panel.Controls[0];
+
+                    if (all.Checked) {
+                        all.CheckedChanged -= SaveCategoryChecked;
+                        all.Checked = false;
+                        all.CheckedChanged += new EventHandler(SaveCategoryChecked);
+                    }
+                }
+                
+            }
         }
 
         #endregion
 
         #region events
+
+        private void AddNewCategory_Click(object sender, EventArgs e) {
+            AddNewCategory();
+        }
+
+        private void DeleteCategory_Click(object sender, EventArgs e) {
+            ToolStripItem item = (ToolStripItem)sender;
+            DeleteCategory(Convert.ToUInt16(item.Owner.Tag));
+        }
+
+        private void ClearCategory_Click(object sender, EventArgs e) {
+            ToolStripItem item = (ToolStripItem)sender;
+            ClearCategory(Convert.ToUInt16(item.Owner.Tag));
+        }
+
+        private void RenameCategory(object sender, EventArgs e) {
+            ToolStripItem item = (ToolStripItem)sender;
+            RenameCategory(Convert.ToUInt16(item.Owner.Tag));
+        }
+
+        private void ChangeCategoryColour(object sender, EventArgs e) {
+            ToolStripItem item = (ToolStripItem)sender;
+            ChangeCategoryColour(Convert.ToUInt16(item.OwnerItem.Owner.Tag), Convert.ToUInt16(item.Tag));
+        }
+
+        private void SaveCategoryChecked(object sender, EventArgs e) {
+            CheckBox item = (CheckBox)sender;
+            SaveCategoryCheckChange(Convert.ToUInt16(item.Tag), item.Checked, (TableLayoutPanel)item.Parent);
+        }
 
         private void dataGridViewPlayers_CellClick(object sender, DataGridViewCellEventArgs e) {
             NewPlayerSelected();
@@ -297,14 +442,12 @@ namespace HM.UserInterface.CustomControls {
         }
 
         private void CategoryCheckItem_MouseDown(object sender, MouseEventArgs e) {
+            CheckBox box = (CheckBox)sender;
+
             if (e.Button == System.Windows.Forms.MouseButtons.Right) {
-                ContextMenuStrip menu = BuildCategoryMenu();
+                ContextMenuStrip menu = BuildCategoryMenu(box);
 
-                MenuItem[] menuItems = new MenuItem[] { new MenuItem("New Category"), new MenuItem("Delete Category"), new MenuItem("Rename Category"), new MenuItem("Colour")};
-
-                ContextMenu buttonMenu = new ContextMenu(menuItems);
-
-                buttonMenu.Show(this, e.Location, LeftRightAlignment.Right);
+                menu.Show(this, e.Location, ToolStripDropDownDirection.Right);
             }
         }
 
@@ -324,30 +467,19 @@ namespace HM.UserInterface.CustomControls {
 
         private void dataGridViewPlayers_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
             if (e.Column.Tag != null && !buildingUI) {
-                List<HM.Entities.HattrickManager.Settings.Column> columns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
+                HM.Entities.HattrickManager.Settings.Column column = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players].Find(col => col.columnIDField == Convert.ToUInt16(e.Column.Tag));
 
-                for (int i = 0; i < columns.Count; i++) {
-                    if (columns[i].columnIDField == Convert.ToUInt16(e.Column.Tag)) {
-                        columns[i].widthField = Convert.ToUInt16(e.Column.Width);
-                        break;
-                    }
-                }
+                column.widthField = Convert.ToUInt16(e.Column.Width);
             }
         }
 
         private void dataGridViewPlayers_ColumnDisplayIndexChanged(object sender, DataGridViewColumnEventArgs e) {
             if (e.Column.Tag != null && !buildingUI) {
-                List<HM.Entities.HattrickManager.Settings.Column> columns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
+                HM.Entities.HattrickManager.Settings.Column column = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players].Find(col => col.columnIDField == Convert.ToUInt16(e.Column.Tag));
 
-                for (int i = 0; i < columns.Count; i++) {
-                    if (columns[i].columnIDField == Convert.ToUInt16(e.Column.Tag)) {
-                        columns[i].displayIndex = Convert.ToInt32(e.Column.DisplayIndex);
-                        break;
-                    }
-                }
+                column.displayIndex = Convert.ToInt32(e.Column.DisplayIndex);
             }
         }
-
         #endregion
     }
 }

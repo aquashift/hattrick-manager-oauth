@@ -343,6 +343,28 @@ namespace HM.Resources {
             return categoryImage;
         }
 
+        public static System.Windows.Forms.ToolStripItem[] GetCategoryImageList(uint currentColour) {
+            System.Windows.Forms.ToolStripItem[] CategoryColours = new System.Windows.Forms.ToolStripItem[12];
+
+            for (int i = 2; i < 14; i++) {
+                System.Windows.Forms.ToolStripMenuItem item = new System.Windows.Forms.ToolStripMenuItem();
+
+                item.BackgroundImage = GetCategoryImage(i);
+                item.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                item.Text = string.Empty;
+                item.Tag = i;
+
+                if (i == currentColour) {
+                    item.Checked = true;
+                }
+
+                CategoryColours[i - 2] = item;
+            }
+
+            return (CategoryColours);
+        }
+
         /// <summary>
         /// Gets the injuries image for a player
         /// </summary>

@@ -1398,7 +1398,6 @@
             this.labelBestPosition.Name = "labelBestPosition";
             this.labelBestPosition.Size = new System.Drawing.Size(193, 25);
             this.labelBestPosition.TabIndex = 3;
-            this.labelBestPosition.Text = "Best";
             this.labelBestPosition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBoxBestLogo

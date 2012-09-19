@@ -424,6 +424,9 @@ namespace HM.DataAccess {
                                 case Tags.CategoryChecked:
                                     category.categoryCheckedField = Convert.ToBoolean(xmlCategoryNode.InnerText);
                                     break;
+                                case Tags.CategoryProtected:
+                                    category.categoryProtectedField = Convert.ToBoolean(xmlCategoryNode.InnerText);
+                                    break;
                             }
                         }
 
@@ -632,10 +635,12 @@ namespace HM.DataAccess {
                     XmlElement xmlElementCategoryName = xmlDocument.CreateElement(Tags.CategoryName);
                     XmlElement xmlElementCategoryColour = xmlDocument.CreateElement(Tags.CategoryColour);
                     XmlElement xmlElementCategoryChecked = xmlDocument.CreateElement(Tags.CategoryChecked);
+                    XmlElement xmlElementCategoryProtected = xmlDocument.CreateElement(Tags.CategoryProtected);
 
                     xmlElementCategoryName.InnerText = currentCategory.categoryNameField;
                     xmlElementCategoryColour.InnerText = currentCategory.categoryColourField.ToString();
                     xmlElementCategoryChecked.InnerText = currentCategory.categoryCheckedField.ToString();
+                    xmlElementCategoryProtected.InnerText = currentCategory.categoryProtectedField.ToString();
 
                     XmlElement xmlCategory = xmlDocument.CreateElement(Tags.Category);
 
@@ -644,6 +649,7 @@ namespace HM.DataAccess {
                     xmlCategory.AppendChild(xmlElementCategoryName);
                     xmlCategory.AppendChild(xmlElementCategoryColour);
                     xmlCategory.AppendChild(xmlElementCategoryChecked);
+                    xmlCategory.AppendChild(xmlElementCategoryProtected);
 
                     xmlElementCategoryList.AppendChild(xmlCategory);
                 }

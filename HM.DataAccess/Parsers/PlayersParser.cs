@@ -206,7 +206,7 @@ namespace HM.DataAccess.Parsers {
                                     player.setPiecesSkillField = (PlayerSkill)Convert.ToInt32(xmlNode.InnerText);
                                     break;
                                 case Tags.PlayerCategoryId:
-                                    player.playerCategoryIdField = (PlayerSkill)Convert.ToInt32(xmlNode.InnerText);
+                                    player.playerCategoryIdField = (PlayerCategory)Convert.ToInt32(xmlNode.InnerText);
                                     break;
                                 case Tags.LastMatch:
                                     if (xmlNode.ChildNodes != null) {
