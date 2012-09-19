@@ -88,6 +88,10 @@ namespace HM.Entities.HattrickManager.Settings {
             return (new Dictionary<HM.Resources.PlayerSkillTypes, double>());
         }
 
+        public uint GetNextCategoryID() {
+            return (playerCategoryListField[playerCategoryListField.Count - 2].categoryIdField + 1);
+        }
+
         #endregion
     }
 }

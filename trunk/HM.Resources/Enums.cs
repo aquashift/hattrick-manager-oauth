@@ -523,6 +523,21 @@ namespace HM.Resources {
         Forward2 = 11
     };
 
+    public enum PlayerCategory : int {
+        Unavailable = -1,
+        NoCategorySet = 0,
+        Keeper = 1,
+        Wingback = 2,
+        CentralDefender = 3,
+        Winger = 4,
+        InnerMidfield = 5,
+        Forward = 6,
+        Substitute = 7,
+        Reserve = 8,
+        Extra1 = 9,
+        Extra2 = 10
+    };
+
     public enum FieldPositionCode : int {
         Unavailable = -1,
         Keeper = 1,
