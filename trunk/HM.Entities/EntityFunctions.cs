@@ -89,7 +89,7 @@ namespace HM.Entities {
         public static Image GetPlayerValueImage(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_Category:
-                    return (HM.Resources.GenericFunctions.GetCategoryImage(player.hmCategoryIdField));
+                    return (HM.Resources.GenericFunctions.GetCategoryImage((int)player.hmCategoryIdField));
                 case TableColumns.Player_Health:
                     return (HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField));
                 case TableColumns.Player_LastPosition:

@@ -9,7 +9,7 @@ namespace HM.Entities.HattrickManager.Settings {
 
         public uint categoryIdField { get; set; }
         public string categoryNameField { get; set; }
-        public uint categoryColourField { get; set; }
+        public int categoryColourField { get; set; }
         public bool categoryCheckedField { get; set; }
         public bool categoryProtectedField { get; set; }
 

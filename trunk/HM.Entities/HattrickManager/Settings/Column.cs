@@ -15,6 +15,7 @@ namespace HM.Entities.HattrickManager.Settings {
         public HM.Resources.ColumnAlignment alignmentField { get; set; }
         public bool displayColumnField { get; set; }
         public int displayIndex { get; set; }
+        public int sortedColumnField { get; set; }
 
         #endregion
 
@@ -32,6 +33,7 @@ namespace HM.Entities.HattrickManager.Settings {
             this.alignmentField = HM.Resources.ColumnAlignment.Left;
             this.displayColumnField = false;
             this.displayIndex = 0;
+            this.sortedColumnField = 0;
         }
 
         #endregion
