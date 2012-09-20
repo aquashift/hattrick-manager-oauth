@@ -52,7 +52,7 @@ namespace HM.Entities.Hattrick.Players {
         public TrainerData trainerDataField { get; set; }
         public LastMatchData lastMatchField { get; set; }
         public PlayerCategory playerCategoryIdField { get; set; }
-        public int hmCategoryIdField { get; set; }
+        public uint hmCategoryIdField { get; set; }
 
         #endregion
 
@@ -106,7 +106,7 @@ namespace HM.Entities.Hattrick.Players {
             trainerDataField = new TrainerData();
             lastMatchField = new LastMatchData();
             playerCategoryIdField = PlayerCategory.NoCategorySet;
-            hmCategoryIdField = 14;
+            hmCategoryIdField = 0;
         }
 
         public string getFullName() {

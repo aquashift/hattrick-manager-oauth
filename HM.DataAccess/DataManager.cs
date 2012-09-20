@@ -419,7 +419,7 @@ namespace HM.DataAccess {
                                     category.categoryNameField = xmlCategoryNode.InnerText;
                                     break;
                                 case Tags.CategoryColour:
-                                    category.categoryColourField = Convert.ToUInt16(xmlCategoryNode.InnerText);
+                                    category.categoryColourField = Convert.ToInt32(xmlCategoryNode.InnerText);
                                     break;
                                 case Tags.CategoryChecked:
                                     category.categoryCheckedField = Convert.ToBoolean(xmlCategoryNode.InnerText);
@@ -500,6 +500,9 @@ namespace HM.DataAccess {
                                         break;
                                     case Tags.ColumnDisplayIndex:
                                         column.displayIndex = Convert.ToInt32(xmlColumnChildNode.InnerText);
+                                        break;
+                                    case Tags.ColumnSortColumn:
+                                        column.sortedColumnField = Convert.ToInt32(xmlColumnChildNode.InnerText);
                                         break;
                                 }
                             }
@@ -699,6 +702,7 @@ namespace HM.DataAccess {
                         XmlElement xmlElementColumnAlignment = xmlDocument.CreateElement(Tags.ColumnAlignment);
                         XmlElement xmlElementColumnDisplay = xmlDocument.CreateElement(Tags.ColumnDisplay);
                         XmlElement xmlElementColumnDisplayIndex = xmlDocument.CreateElement(Tags.ColumnDisplayIndex);
+                        XmlElement xmlElementColumnSorted = xmlDocument.CreateElement(Tags.ColumnSortColumn);
 
                         xmlElementColumnID.InnerText = currentColumn.columnIDField.ToString();
                         xmlElementColumnTitle.InnerText = currentColumn.titleField;
@@ -707,6 +711,7 @@ namespace HM.DataAccess {
                         xmlElementColumnAlignment.InnerText = ((int)currentColumn.alignmentField).ToString();
                         xmlElementColumnDisplay.InnerText = currentColumn.displayColumnField.ToString();
                         xmlElementColumnDisplayIndex.InnerText = currentColumn.displayIndex.ToString();
+                        xmlElementColumnSorted.InnerText = currentColumn.sortedColumnField.ToString();
 
                         XmlElement xmlColumn = xmlDocument.CreateElement(Tags.Column);
 
@@ -717,6 +722,7 @@ namespace HM.DataAccess {
                         xmlColumn.AppendChild(xmlElementColumnAlignment);
                         xmlColumn.AppendChild(xmlElementColumnDisplay);
                         xmlColumn.AppendChild(xmlElementColumnDisplayIndex);
+                        xmlColumn.AppendChild(xmlElementColumnSorted);
 
                         xmlElementColumnList.AppendChild(xmlColumn);
                     }

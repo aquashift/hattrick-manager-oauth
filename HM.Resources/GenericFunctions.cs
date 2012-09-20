@@ -343,7 +343,7 @@ namespace HM.Resources {
             return categoryImage;
         }
 
-        public static System.Windows.Forms.ToolStripItem[] GetCategoryImageList(uint currentColour) {
+        public static System.Windows.Forms.ToolStripItem[] GetCategoryImageList(int currentColour) {
             System.Windows.Forms.ToolStripItem[] CategoryColours = new System.Windows.Forms.ToolStripItem[12];
 
             for (int i = 2; i < 14; i++) {

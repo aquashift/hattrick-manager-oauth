@@ -74,6 +74,8 @@ namespace HM.UserInterface.CustomControls {
                 box.Name = category.categoryIdField.ToString();
                 box.Dock = DockStyle.Fill;
                 box.Checked = category.categoryCheckedField;
+                box.DragDrop += new DragEventHandler(AddPlayerToCategory);
+                box.DragEnter += new DragEventHandler(CheckAddPlayerToCategory);
 
                 if (i == 0) {
                     box.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
@@ -155,6 +157,9 @@ namespace HM.UserInterface.CustomControls {
         private void PopulatePlayerList() {
             HTEntities.Players.Team team = players.teamField;
             List<HM.Entities.HattrickManager.Settings.Column> playerColumns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
+            dataGridViewPlayers.RowCount = 0;
+            int sortCol = -1;
+            ListSortDirection sortDir = ListSortDirection.Descending;
 
             foreach (HTEntities.Players.Player player in team.playerListField) {
                 HTEntities.Players.Player playerLastWeek = lastPlayers.teamField.playerListField.Find(lp => lp.playerIdField == player.playerIdField);
@@ -166,6 +171,14 @@ namespace HM.UserInterface.CustomControls {
                 foreach (HM.Entities.HattrickManager.Settings.Column playerColumn in playerColumns) {
                     HM.Resources.TableColumns columnID = (HM.Resources.TableColumns)playerColumn.columnIDField;
                     HM.Resources.Constants.TableColumn columnDefault = HM.Resources.Constants.Columns.PlayerTableColumns.Find(tc => (uint)tc.columnIDfield == playerColumn.columnIDField);
+
+                    if (playerColumn.sortedColumnField == -1) {
+                        sortCol = colNum;
+                        sortDir = ListSortDirection.Descending;
+                    } else if (playerColumn.sortedColumnField == 1) {
+                        sortCol = colNum;
+                        sortDir = ListSortDirection.Ascending;
+                    }
 
                     if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
                         dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID);
@@ -181,6 +194,10 @@ namespace HM.UserInterface.CustomControls {
 
                     colNum++;
                 }
+            }
+
+            if (sortCol != -1) {
+                dataGridViewPlayers.Sort(dataGridViewPlayers.Columns[sortCol], sortDir);
             }
         }
 
@@ -365,11 +382,29 @@ namespace HM.UserInterface.CustomControls {
             }
         }
 
-        private void ChangeCategoryColour(uint categoryID, uint colourID) {
+        private void ChangeCategoryColour(uint categoryID, int colourID) {
             HM.Entities.HattrickManager.Settings.Category category = user.applicationSettingsField.playerCategoryListField.Find(pc => pc.categoryIdField == categoryID);
 
             category.categoryColourField = colourID;
             PopulateCategoryList();
+        }
+
+        private void AddPlayerToCategory(object sender, DragEventArgs e) {
+            CheckBox selectedCategory = (CheckBox)sender;
+            UInt32 playerID = Convert.ToUInt32(e.Data.GetData(typeof(UInt32)));
+            HTEntities.Players.Player player = players.teamField.playerListField.Find(p => p.playerIdField == playerID);
+
+            player.hmCategoryIdField = Convert.ToUInt16(selectedCategory.Tag);
+
+            PopulatePlayerList();
+        }
+
+        private void CheckAddPlayerToCategory(object sender, DragEventArgs e) {
+            if (e.Data.GetDataPresent(typeof(UInt32))) {
+                e.Effect = DragDropEffects.Copy;
+            } else {
+                e.Effect = DragDropEffects.None;
+            }
         }
 
         private void SaveCategoryCheckChange(uint categoryID, bool itemChecked, TableLayoutPanel panel) {
@@ -397,6 +432,22 @@ namespace HM.UserInterface.CustomControls {
                     }
                 }
                 
+            }
+        }
+
+        private void SetPlayerListSortedColumn(DataGridViewColumn column, SortOrder direction) {
+            foreach (HM.Entities.HattrickManager.Settings.Column col in user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players]) {
+                if (col.sortedColumnField != 0) {
+                    col.sortedColumnField = 0;
+                }
+
+                if (col.columnIDField == Convert.ToUInt16(column.Tag)) {
+                    if (direction == SortOrder.Descending) {
+                        col.sortedColumnField = -1;
+                    } else {
+                        col.sortedColumnField = 1;
+                    }
+                }
             }
         }
 
@@ -480,6 +531,21 @@ namespace HM.UserInterface.CustomControls {
                 column.displayIndex = Convert.ToInt32(e.Column.DisplayIndex);
             }
         }
+
+        private void dataGridViewPlayers_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                uint playerID = Convert.ToUInt32(dataGridViewPlayers.Rows[e.RowIndex].Cells[0].Value);
+
+                dataGridViewPlayers.DoDragDrop(playerID, DragDropEffects.Copy);
+            }
+        }
+
+        private void dataGridViewPlayers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            DataGridView item = (DataGridView)sender;
+
+            SetPlayerListSortedColumn(item.SortedColumn, item.SortOrder);
+        }
+
         #endregion
     }
 }
