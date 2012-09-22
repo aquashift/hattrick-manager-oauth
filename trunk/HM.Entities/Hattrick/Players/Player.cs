@@ -106,7 +106,7 @@ namespace HM.Entities.Hattrick.Players {
             trainerDataField = new TrainerData();
             lastMatchField = new LastMatchData();
             playerCategoryIdField = PlayerCategory.NoCategorySet;
-            hmCategoryIdField = 0;
+            hmCategoryIdField = 99;
         }
 
         public string getFullName() {

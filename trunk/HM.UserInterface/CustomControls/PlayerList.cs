@@ -15,6 +15,7 @@ namespace HM.UserInterface.CustomControls {
     public partial class PlayerList : UserControl {
         #region Properties
 
+        private DataManager dataManager;
         private HTEntities.Players.Players players;
         private HTEntities.Players.Players lastPlayers;
         private User user;
@@ -30,6 +31,7 @@ namespace HM.UserInterface.CustomControls {
 
             if (user != null) {
                 this.entityManager = new EntityManager(user);
+                this.dataManager = new DataManager(user);
                 this.players = entityManager.GetPlayersDetails();
                 this.lastPlayers = entityManager.GetLastWeekPlayersDetails();
             }
@@ -181,15 +183,15 @@ namespace HM.UserInterface.CustomControls {
                     }
 
                     if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(user, player, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Name) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(user, player, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(user, player, columnID);
                     }
 
-                    if (columnDefault.canComparefield) {
-                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(player, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(playerLastWeek, columnID));
+                    if (columnDefault.canComparefield && playerLastWeek.playerIdField == player.playerIdField) {
+                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(user, player, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(user, playerLastWeek, columnID));
                     }
 
                     colNum++;
@@ -387,6 +389,7 @@ namespace HM.UserInterface.CustomControls {
 
             category.categoryColourField = colourID;
             PopulateCategoryList();
+            PopulatePlayerList();
         }
 
         private void AddPlayerToCategory(object sender, DragEventArgs e) {
@@ -397,6 +400,8 @@ namespace HM.UserInterface.CustomControls {
             player.hmCategoryIdField = Convert.ToUInt16(selectedCategory.Tag);
 
             PopulatePlayerList();
+
+            dataManager.SavePlayerCategories(players.teamField.playerListField);
         }
 
         private void CheckAddPlayerToCategory(object sender, DragEventArgs e) {

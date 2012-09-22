@@ -314,6 +314,41 @@ namespace HM.DataAccess {
             WriteUserSettingsFile(currentUser);
         }
 
+        public void SavePlayerCategories(List<HTEntities.Players.Player> players, User currentUser) {
+            WritePlayerCategoriesFile(players, currentUser);
+        }
+
+        public Dictionary<uint, uint> ReadPlayerCategoriesFile(Stream xmlStream) {
+            Dictionary<uint, uint> playerCategories = new Dictionary<uint, uint>();
+
+            try {
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(xmlStream);
+
+                if (xmlDocument.DocumentElement.ChildNodes != null) {
+                    foreach (XmlNode xmlNodeRoot in xmlDocument.DocumentElement.ChildNodes) {
+                        if (xmlNodeRoot.Name == Tags.PlayerData) {
+                            foreach (XmlNode xmlCategoryListNodes in xmlNodeRoot.ChildNodes) {
+                                if (xmlCategoryListNodes.NodeType != XmlNodeType.Comment && xmlCategoryListNodes.ChildNodes != null) {
+                                    foreach (XmlNode xmlCategoryNode in xmlCategoryListNodes.ChildNodes) {
+                                        switch (xmlCategoryNode.Name) {
+                                            case Tags.PlayerCategoryId:
+                                                playerCategories[Convert.ToUInt32(xmlCategoryListNodes.Attributes[Tags.PlayerID].InnerText)] = Convert.ToUInt32(xmlCategoryNode.InnerText);
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return (playerCategories);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Reads UserSettings xml file
         /// </summary>
@@ -762,6 +797,48 @@ namespace HM.DataAccess {
                 path = System.IO.Path.Combine(path, FolderNames.UserSettings);
 
                 string fileName = Path.Combine(path, FileNames.UserSettings);
+
+                if (!System.IO.Directory.Exists(path)) {
+                    System.IO.Directory.CreateDirectory(path);
+                }
+
+                xmlDocument.Save(fileName);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        private void WritePlayerCategoriesFile(List<HTEntities.Players.Player> players, HMEntities.UserProfiles.User hattrickUser) {
+            try {
+                XmlDocument xmlDocument = new XmlDocument();
+
+                XmlElement xmlElementRoot = xmlDocument.CreateElement(Tags.PlayerCategories);
+
+                xmlElementRoot.AppendChild(xmlDocument.CreateElement(Tags.SavedDate)).InnerText = DateTime.Now.ToString(General.DateTimeFormat);
+
+                // Categories
+                XmlElement xmlElementCategoryList = xmlDocument.CreateElement(Tags.PlayerData);
+
+                foreach (HTEntities.Players.Player player in players) {
+                    XmlElement xmlElementPlayerCategory = xmlDocument.CreateElement(Tags.PlayerCategoryId);
+                    xmlElementPlayerCategory.InnerText = player.hmCategoryIdField.ToString();
+
+                    XmlElement xmlElementPlayer = xmlDocument.CreateElement(Tags.Player);
+                    xmlElementPlayer.SetAttribute(Tags.PlayerID, player.playerIdField.ToString());
+
+                    xmlElementPlayer.AppendChild(xmlElementPlayerCategory);
+
+                    xmlElementCategoryList.AppendChild(xmlElementPlayer);
+                }
+
+                xmlElementRoot.AppendChild(xmlElementCategoryList);
+
+                xmlDocument.AppendChild(xmlElementRoot);
+
+                string path = System.IO.Path.Combine(hattrickUser.dataFolderField, hattrickUser.teamIdField.ToString());
+                path = System.IO.Path.Combine(path, FolderNames.HattrickInternal);
+
+                string fileName = Path.Combine(path, FileNames.PlayerData);
 
                 if (!System.IO.Directory.Exists(path)) {
                     System.IO.Directory.CreateDirectory(path);
