@@ -82,6 +82,9 @@ namespace HM.DataAccess {
                     case FileType.Players:
                         hattrickData = new Parsers.PlayersParser().ParseXmlDocument(xmlDocument);
                         break;
+                    case FileType.PlayerInternals:
+                        hattrickData = new Parsers.PlayerInternalsParser().ParseXmlDocument(xmlDocument);
+                        break;
                     case FileType.TeamDetails:
                         hattrickData = new Parsers.TeamDetailsParser().ParseXmlDocument(xmlDocument);
                         break;

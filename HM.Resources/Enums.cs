@@ -58,7 +58,8 @@ namespace HM.Resources {
         TransfersTeam = 19,
         WorldDetails = 20,
         UserSettings = 21,
-        LastPlayers = 22
+        LastPlayers = 22,
+        PlayerInternals = 23
     };
 
     public enum SettingTypes : int {

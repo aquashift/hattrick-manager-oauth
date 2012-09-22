@@ -69,7 +69,6 @@
   <ItemGroup>
     <Compile Include="EntityFunctions.cs" />
     <Compile Include="HattrickManager\HattrickManagerBase.cs" />
-    <Compile Include="HattrickManager\HMInternal\PlayerInternals.cs" />
     <Compile Include="HattrickManager\Settings\Category.cs" />
     <Compile Include="HattrickManager\Settings\Column.cs" />
     <Compile Include="HattrickManager\Settings\HattrickSettings.cs" />
@@ -126,6 +125,8 @@
     <Compile Include="Hattrick\MatchLineup\MatchLineup.cs" />
     <Compile Include="Hattrick\MatchLineup\Player.cs" />
     <Compile Include="Hattrick\MatchLineup\Team.cs" />
+    <Compile Include="Hattrick\Players\Internal\PlayerCategories.cs" />
+    <Compile Include="Hattrick\Players\Internal\PlayersInternal.cs" />
     <Compile Include="Hattrick\Players\LastMatchData.cs" />
     <Compile Include="Hattrick\Players\Players.cs" />
     <Compile Include="Hattrick\Players\Team.cs" />
