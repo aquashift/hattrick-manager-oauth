@@ -139,16 +139,6 @@ namespace HM.Core {
                 }
             }
 
-            Dictionary<uint, uint> playerCategories = dataManager.ReadPlayerCategoriesFile(user);
-
-            if (playerCategories.Count > 0) {
-                foreach (uint key in playerCategories.Keys) {
-                    HTEntities.Players.Player player = players.teamField.playerListField.Find(p => p.playerIdField == key);
-
-                    player.hmCategoryIdField = playerCategories[key];
-                }
-            }
-
             return (players);
         }
 
@@ -170,6 +160,34 @@ namespace HM.Core {
 
             return (players);
         }
+
+        /// <summary>
+        /// Gets last week player details.
+        /// </summary>
+        /// <returns>PlayerList object</returns>
+        public Dictionary<uint, uint> GetPlayerCategories() {
+            try {
+                return (HTEntities.TeamDetails.TeamDetails)dataManager.ReadFile(string.Format(FileNames.TeamDetails, user.teamIdField), HM.Resources.FileType.TeamDetails);
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            
+            
+            Dictionary<uint, uint> categories = new Dictionary<uint,uint>();
+
+            string path = System.IO.Path.Combine(user.dataFolderField, user.teamIdField.ToString());
+            path = System.IO.Path.Combine(path, FolderNames.HattrickInternal);
+
+            string fileName = System.IO.Path.Combine(path, FileNames.PlayerData);
+
+            if (System.IO.File.Exists(fileName)) {
+                categories = dataManager.ReadPlayerCategoriesFile(fileName);
+            }
+            
+            return (categories);
+        }
+
 
         /// <summary>
         /// Gets team's details.

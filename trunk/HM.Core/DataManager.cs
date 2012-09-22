@@ -112,20 +112,6 @@ namespace HM.Core {
             }
         }
 
-        public Dictionary<uint, uint> ReadPlayerCategoriesFile(HM.Entities.HattrickManager.UserProfiles.User selectedUser) {
-            Dictionary<uint, uint> playerCategories = new Dictionary<uint, uint>();
-            string path = System.IO.Path.Combine(selectedUser.dataFolderField, selectedUser.teamIdField.ToString());
-            path = System.IO.Path.Combine(path, FolderNames.HattrickInternal);
-
-            string fileName = System.IO.Path.Combine(path, FileNames.PlayerData);
-
-            if (System.IO.File.Exists(fileName)) {
-                playerCategories = dataManager.ReadPlayerCategoriesFile(GetFileStream(fileName));
-            }
-            
-            return (playerCategories);
-        }
-
         #endregion
 
         #region Private Methods
