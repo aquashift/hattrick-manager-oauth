@@ -86,10 +86,10 @@ namespace HM.Entities {
             return (skills);
         }
 
-        public static Image GetPlayerValueImage(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static Image GetPlayerValueImage(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_Category:
-                    return (HM.Resources.GenericFunctions.GetCategoryImage((int)player.hmCategoryIdField));
+                    return (HM.Resources.GenericFunctions.GetCategoryImage(user.applicationSettingsField.playerCategoryListField.Find(cat => cat.categoryIdField == player.hmCategoryIdField).categoryColourField));
                 case TableColumns.Player_Health:
                     return (HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField));
                 case TableColumns.Player_LastPosition:
@@ -103,7 +103,7 @@ namespace HM.Entities {
             return (null);
         }
 
-        public static string GetPlayerValueName(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static string GetPlayerValueName(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_AgeFull:
                     return (player.getFullAge());
@@ -118,7 +118,7 @@ namespace HM.Entities {
             return (string.Empty);
         }
 
-        public static int GetPlayerValueNumber(HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static int GetPlayerValueNumber(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_AgeDays:
                     return (Convert.ToInt32(player.ageDaysField));

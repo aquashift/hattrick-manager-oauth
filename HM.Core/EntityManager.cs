@@ -139,6 +139,16 @@ namespace HM.Core {
                 }
             }
 
+            Dictionary<uint, uint> playerCategories = dataManager.ReadPlayerCategoriesFile(user);
+
+            if (playerCategories.Count > 0) {
+                foreach (uint key in playerCategories.Keys) {
+                    HTEntities.Players.Player player = players.teamField.playerListField.Find(p => p.playerIdField == key);
+
+                    player.hmCategoryIdField = playerCategories[key];
+                }
+            }
+
             return (players);
         }
 

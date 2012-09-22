@@ -248,7 +248,8 @@ namespace HM.Resources.Constants {
         public const string PlayedMatches = "PlayedMatches";
         public const string Player = "Player";
         public const string PlayerCategoryId = "PlayerCategoryId";
-        public const string PlayerCategoryID = "PlayerCategoryID";
+        public const string PlayerCategories = "PlayerCategories";
+        public const string PlayerData = "PlayerData";
         public const string PlayerForm = "PlayerForm";
         public const string PlayerID = "PlayerID";
         public const string PlayerLanguage = "PlayerLanguage";
