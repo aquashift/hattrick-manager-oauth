@@ -71,6 +71,7 @@
     <Compile Include="Parsers\ArenaDetailsParser.cs" />
     <Compile Include="Parsers\BaseParser.cs" />
     <Compile Include="Parsers\ClubParser.cs" />
+    <Compile Include="Parsers\PlayerInternalsParser.cs" />
     <Compile Include="Parsers\EconomyParser.cs" />
     <Compile Include="Parsers\LeagueDetailsParser.cs" />
     <Compile Include="Parsers\LeagueFixturesParser.cs" />

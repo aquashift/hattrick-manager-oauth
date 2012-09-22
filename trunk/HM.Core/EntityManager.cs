@@ -162,30 +162,15 @@ namespace HM.Core {
         }
 
         /// <summary>
-        /// Gets last week player details.
+        /// Gets internal player details.
         /// </summary>
-        /// <returns>PlayerList object</returns>
-        public Dictionary<uint, uint> GetPlayerCategories() {
+        /// <returns>PlayersInternal object</returns>
+        public HTEntities.Players.Internal.PlayersInternal GetPlayerInternals() {
             try {
-                return (HTEntities.TeamDetails.TeamDetails)dataManager.ReadFile(string.Format(FileNames.TeamDetails, user.teamIdField), HM.Resources.FileType.TeamDetails);
+                return (HTEntities.Players.Internal.PlayersInternal)dataManager.ReadFile(string.Format(FileNames.PlayerInternals, user.teamIdField), HM.Resources.FileType.PlayerInternals);
             } catch (Exception ex) {
                 throw ex;
             }
-
-            
-            
-            Dictionary<uint, uint> categories = new Dictionary<uint,uint>();
-
-            string path = System.IO.Path.Combine(user.dataFolderField, user.teamIdField.ToString());
-            path = System.IO.Path.Combine(path, FolderNames.HattrickInternal);
-
-            string fileName = System.IO.Path.Combine(path, FileNames.PlayerData);
-
-            if (System.IO.File.Exists(fileName)) {
-                categories = dataManager.ReadPlayerCategoriesFile(fileName);
-            }
-            
-            return (categories);
         }
 
 
