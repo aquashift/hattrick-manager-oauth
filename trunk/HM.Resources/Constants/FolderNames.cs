@@ -12,7 +12,7 @@ namespace HM.Resources.Constants {
         public const string Club = "Club";
         public const string Economy = "Economy";
         public const string Fans = "Fans";
-        public const string HattrickInternal = "hmInternal";
+        public const string PlayerInternals = "hmInternal";
         public const string LeagueFixtures = "LeagueFixtures";
         public const string LeagueDetails = "LeagueDetails";
         public const string Matches = "Matches";

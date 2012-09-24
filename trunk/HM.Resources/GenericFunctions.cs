@@ -542,6 +542,9 @@ namespace HM.Resources {
                 case FileType.PlayerDetails:
                     folderName = FolderNames.PlayerDetails;
                     break;
+                case FileType.InternalPlayers:
+                    folderName = FolderNames.PlayerInternals;
+                    break;
                 case FileType.Players:
                     folderName = FolderNames.Players;
                     break;

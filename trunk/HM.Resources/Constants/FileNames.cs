@@ -19,6 +19,7 @@ namespace HM.Resources.Constants {
         public const string Players = "Players_{0}.xml";
         public const string PlayerInternals = "PlayerInternals.xml";
         public const string PlayerDetails = "PlayerDetails_{0}.xml";
+        public const string PlayerData = "PlayerData.xml";
         public const string TeamDetails = "TeamDetails_{0}.xml";
         public const string Training = "Training_{0}.xml";
         public const string TransfersTeam = "TransfersTeam.xml";

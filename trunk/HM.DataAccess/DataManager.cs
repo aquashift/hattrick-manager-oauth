@@ -82,7 +82,7 @@ namespace HM.DataAccess {
                     case FileType.Players:
                         hattrickData = new Parsers.PlayersParser().ParseXmlDocument(xmlDocument);
                         break;
-                    case FileType.PlayerInternals:
+                    case FileType.InternalPlayers:
                         hattrickData = new Parsers.PlayerInternalsParser().ParseXmlDocument(xmlDocument);
                         break;
                     case FileType.TeamDetails:
@@ -317,39 +317,8 @@ namespace HM.DataAccess {
             WriteUserSettingsFile(currentUser);
         }
 
-        public void SavePlayerCategories(List<HTEntities.Players.Player> players, User currentUser) {
-            WritePlayerCategoriesFile(players, currentUser);
-        }
-
-        public Dictionary<uint, uint> ReadPlayerCategoriesFile(Stream xmlStream) {
-            Dictionary<uint, uint> playerCategories = new Dictionary<uint, uint>();
-
-            try {
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(xmlStream);
-
-                if (xmlDocument.DocumentElement.ChildNodes != null) {
-                    foreach (XmlNode xmlNodeRoot in xmlDocument.DocumentElement.ChildNodes) {
-                        if (xmlNodeRoot.Name == Tags.PlayerData) {
-                            foreach (XmlNode xmlCategoryListNodes in xmlNodeRoot.ChildNodes) {
-                                if (xmlCategoryListNodes.NodeType != XmlNodeType.Comment && xmlCategoryListNodes.ChildNodes != null) {
-                                    foreach (XmlNode xmlCategoryNode in xmlCategoryListNodes.ChildNodes) {
-                                        switch (xmlCategoryNode.Name) {
-                                            case Tags.PlayerCategoryId:
-                                                playerCategories[Convert.ToUInt32(xmlCategoryListNodes.Attributes[Tags.PlayerID].InnerText)] = Convert.ToUInt32(xmlCategoryNode.InnerText);
-                                                break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                return (playerCategories);
-            } catch (Exception ex) {
-                throw ex;
-            }
+        public void SaveInternalPlayers(HTEntities.Players.Internal.PlayersInternal players, User currentUser) {
+            WriteInternalPlayerFile(players, currentUser);
         }
 
         /// <summary>
@@ -811,24 +780,27 @@ namespace HM.DataAccess {
             }
         }
 
-        private void WritePlayerCategoriesFile(List<HTEntities.Players.Player> players, HMEntities.UserProfiles.User hattrickUser) {
+        private void WriteInternalPlayerFile(HTEntities.Players.Internal.PlayersInternal players, HMEntities.UserProfiles.User hattrickUser) {
             try {
                 XmlDocument xmlDocument = new XmlDocument();
 
-                XmlElement xmlElementRoot = xmlDocument.CreateElement(Tags.PlayerCategories);
+                XmlElement xmlElementRoot = xmlDocument.CreateElement(Tags.PlayerData);
 
                 xmlElementRoot.AppendChild(xmlDocument.CreateElement(Tags.SavedDate)).InnerText = DateTime.Now.ToString(General.DateTimeFormat);
 
                 // Categories
-                XmlElement xmlElementCategoryList = xmlDocument.CreateElement(Tags.PlayerData);
+                XmlElement xmlElementCategoryList = xmlDocument.CreateElement(Tags.PlayerCategories);
 
-                foreach (HTEntities.Players.Player player in players) {
-                    XmlElement xmlElementPlayerCategory = xmlDocument.CreateElement(Tags.PlayerCategoryId);
-                    xmlElementPlayerCategory.InnerText = player.hmCategoryIdField.ToString();
-
+                foreach (HTEntities.Players.Internal.PlayerCategories playerCategory in players.playerCategories) {
                     XmlElement xmlElementPlayer = xmlDocument.CreateElement(Tags.Player);
-                    xmlElementPlayer.SetAttribute(Tags.PlayerID, player.playerIdField.ToString());
 
+                    XmlElement xmlElementPlayerID = xmlDocument.CreateElement(Tags.PlayerID);
+                    xmlElementPlayerID.InnerText = playerCategory.PlayerIDField.ToString();
+
+                    XmlElement xmlElementPlayerCategory = xmlDocument.CreateElement(Tags.PlayerCategoryId);
+                    xmlElementPlayerCategory.InnerText = playerCategory.PlayerCategoryField.ToString();
+
+                    xmlElementPlayer.AppendChild(xmlElementPlayerID);
                     xmlElementPlayer.AppendChild(xmlElementPlayerCategory);
 
                     xmlElementCategoryList.AppendChild(xmlElementPlayer);
@@ -839,7 +811,7 @@ namespace HM.DataAccess {
                 xmlDocument.AppendChild(xmlElementRoot);
 
                 string path = System.IO.Path.Combine(hattrickUser.dataFolderField, hattrickUser.teamIdField.ToString());
-                path = System.IO.Path.Combine(path, FolderNames.HattrickInternal);
+                path = System.IO.Path.Combine(path, FolderNames.PlayerInternals);
 
                 string fileName = Path.Combine(path, FileNames.PlayerData);
 
