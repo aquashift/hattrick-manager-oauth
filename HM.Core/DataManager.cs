@@ -43,8 +43,8 @@ namespace HM.Core {
             dataManager.SaveUserSettings(currentUser);
         }
 
-        public void SavePlayerCategories(List<HTEntities.Players.Player> players) {
-            dataManager.SavePlayerCategories(players, currentUser);
+        public void SaveInternalPlayers(HTEntities.Players.Internal.PlayersInternal players) {
+            dataManager.SaveInternalPlayers(players, currentUser);
         }
 
         /// <summary>

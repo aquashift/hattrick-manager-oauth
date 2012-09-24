@@ -17,7 +17,7 @@ namespace HM.UserInterface.CustomControls {
 
         private DataManager dataManager;
         private HTEntities.Players.Players players;
-        private HTEntities.Players.Players lastPlayers;
+        private HTEntities.Players.Internal.PlayersInternal playerInternalData;
         private User user;
         private EntityManager entityManager;
         private bool buildingUI;
@@ -33,7 +33,7 @@ namespace HM.UserInterface.CustomControls {
                 this.entityManager = new EntityManager(user);
                 this.dataManager = new DataManager(user);
                 this.players = entityManager.GetPlayersDetails();
-                this.lastPlayers = entityManager.GetLastWeekPlayersDetails();
+                playerInternalData = entityManager.GetPlayerInternals();
             }
         }
 
@@ -157,11 +157,13 @@ namespace HM.UserInterface.CustomControls {
         }
 
         private void PopulatePlayerList() {
+            HTEntities.Players.Players lastPlayers = entityManager.GetLastWeekPlayersDetails();
             HTEntities.Players.Team team = players.teamField;
             List<HM.Entities.HattrickManager.Settings.Column> playerColumns = user.applicationSettingsField.tableColumsListField[Resources.ColumnTables.Players];
-            dataGridViewPlayers.RowCount = 0;
             int sortCol = -1;
             ListSortDirection sortDir = ListSortDirection.Descending;
+
+            dataGridViewPlayers.RowCount = 0;
 
             foreach (HTEntities.Players.Player player in team.playerListField) {
                 HTEntities.Players.Player playerLastWeek = lastPlayers.teamField.playerListField.Find(lp => lp.playerIdField == player.playerIdField);
@@ -183,15 +185,15 @@ namespace HM.UserInterface.CustomControls {
                     }
 
                     if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Value) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(user, player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueNumber(user, player, playerInternalData, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Name) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(user, player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueName(user, player, playerInternalData, columnID);
                     } else if (playerColumn.displayTypeField == Resources.ColumnDisplayType.Graphical) {
-                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(user, player, columnID);
+                        dataGridViewPlayers.Rows[rowNum].Cells[colNum].Value = HM.Entities.EntityFunctions.GetPlayerValueImage(user, player, playerInternalData, columnID);
                     }
 
                     if (columnDefault.canComparefield && playerLastWeek.playerIdField == player.playerIdField) {
-                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(user, player, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(user, playerLastWeek, columnID));
+                        CompareLastWeek(dataGridViewPlayers.Rows[rowNum].Cells[colNum], HM.Entities.EntityFunctions.GetPlayerValueNumber(user, player, playerInternalData, columnID), HM.Entities.EntityFunctions.GetPlayerValueNumber(user, playerLastWeek, playerInternalData, columnID));
                     }
 
                     colNum++;
@@ -395,13 +397,19 @@ namespace HM.UserInterface.CustomControls {
         private void AddPlayerToCategory(object sender, DragEventArgs e) {
             CheckBox selectedCategory = (CheckBox)sender;
             UInt32 playerID = Convert.ToUInt32(e.Data.GetData(typeof(UInt32)));
-            HTEntities.Players.Player player = players.teamField.playerListField.Find(p => p.playerIdField == playerID);
+            HM.Entities.Hattrick.Players.Internal.PlayerCategories playerCat = playerInternalData.playerCategories.Find(pc => pc.PlayerIDField == playerID);
 
-            player.hmCategoryIdField = Convert.ToUInt16(selectedCategory.Tag);
+            if (playerCat == null) {
+                playerCat = new HTEntities.Players.Internal.PlayerCategories();
+                playerInternalData.playerCategories.Add(playerCat);
+            }
+
+            playerCat.PlayerIDField = playerID;
+            playerCat.PlayerCategoryField = Convert.ToUInt16(selectedCategory.Tag);
 
             PopulatePlayerList();
 
-            dataManager.SavePlayerCategories(players.teamField.playerListField);
+            dataManager.SaveInternalPlayers(playerInternalData);
         }
 
         private void CheckAddPlayerToCategory(object sender, DragEventArgs e) {

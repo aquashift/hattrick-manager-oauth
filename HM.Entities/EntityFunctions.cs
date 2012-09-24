@@ -86,10 +86,16 @@ namespace HM.Entities {
             return (skills);
         }
 
-        public static Image GetPlayerValueImage(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static Image GetPlayerValueImage(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Entities.Hattrick.Players.Internal.PlayersInternal playerInternal, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_Category:
-                    return (HM.Resources.GenericFunctions.GetCategoryImage(user.applicationSettingsField.playerCategoryListField.Find(cat => cat.categoryIdField == player.hmCategoryIdField).categoryColourField));
+                    HM.Entities.Hattrick.Players.Internal.PlayerCategories playerCategory = playerInternal.playerCategories.Find(pc => pc.PlayerIDField == player.playerIdField);
+
+                    if (playerCategory != null) {
+                        return (HM.Resources.GenericFunctions.GetCategoryImage(user.applicationSettingsField.playerCategoryListField.Find(cat => cat.categoryIdField == playerCategory.PlayerCategoryField).categoryColourField));
+                    } else {
+                        return (HM.Resources.GenericFunctions.GetCategoryImage(0));
+                    }
                 case TableColumns.Player_Health:
                     return (HM.Resources.GenericFunctions.GetInjuriesImage(player.injuryLevelField));
                 case TableColumns.Player_LastPosition:
@@ -103,7 +109,7 @@ namespace HM.Entities {
             return (null);
         }
 
-        public static string GetPlayerValueName(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static string GetPlayerValueName(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Entities.Hattrick.Players.Internal.PlayersInternal playerInternal, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_AgeFull:
                     return (player.getFullAge());
@@ -118,7 +124,7 @@ namespace HM.Entities {
             return (string.Empty);
         }
 
-        public static int GetPlayerValueNumber(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Resources.TableColumns columnID) {
+        public static int GetPlayerValueNumber(HM.Entities.HattrickManager.UserProfiles.User user, HM.Entities.Hattrick.Players.Player player, HM.Entities.Hattrick.Players.Internal.PlayersInternal playerInternal, HM.Resources.TableColumns columnID) {
             switch (columnID) {
                 case TableColumns.Player_AgeDays:
                     return (Convert.ToInt32(player.ageDaysField));

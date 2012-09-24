@@ -59,7 +59,7 @@ namespace HM.Resources {
         WorldDetails = 20,
         UserSettings = 21,
         LastPlayers = 22,
-        PlayerInternals = 23
+        InternalPlayers = 23
     };
 
     public enum SettingTypes : int {

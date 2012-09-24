@@ -167,9 +167,9 @@ namespace HM.Core {
         /// <returns>PlayersInternal object</returns>
         public HTEntities.Players.Internal.PlayersInternal GetPlayerInternals() {
             try {
-                return (HTEntities.Players.Internal.PlayersInternal)dataManager.ReadFile(string.Format(FileNames.PlayerInternals, user.teamIdField), HM.Resources.FileType.PlayerInternals);
+                return (HTEntities.Players.Internal.PlayersInternal)dataManager.ReadFile(FileNames.PlayerData, HM.Resources.FileType.InternalPlayers);
             } catch (Exception ex) {
-                throw ex;
+                return (new HTEntities.Players.Internal.PlayersInternal());
             }
         }
 
@@ -207,6 +207,7 @@ namespace HM.Core {
             List<HMEntities.UserProfiles.User> userList = userProfiles.userListField;
 
             int index = userList.FindIndex(p => p.teamIdField == user.teamIdField);
+
             if (index == -1) {
                 // If profile with this TeamId does not exist, add it...
                 userList.Add(user);
