@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFunctions.cs" />
+    <Compile Include="EntityInterface.cs" />
     <Compile Include="HattrickManager\HattrickManagerBase.cs" />
     <Compile Include="HattrickManager\Settings\Category.cs" />
     <Compile Include="HattrickManager\Settings\Column.cs" />
